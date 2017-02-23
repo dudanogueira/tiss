@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions name="tissSolicitacaoStatusProtocolo"
+    targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoStatusProtocolo/v20203"
+    xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoStatusProtocolo/v20203"
+    xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+
+  <!-- Type definitions -->
+  <types>
+    <schema targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoStatusProtocolo/v20203"
+            xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoStatusProtocolo/v20203"
+            xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+    >
+        <import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissV2_02_03.xsd"/>
+        <complexType name="ws_solicitacaoStatusProtocolo">
+            <sequence>
+                <element name="cabecalho" type="ans:cabecalhoTransacao"/>
+                <element name="solicitacaoStatusProtocolo" type="ans:ct_solicitacaoStatusProtocolo"/>
+                <element name="hash" type="string"/>
+            </sequence>
+        </complexType>
+        <complexType name="ws_situacaoProtocolo">
+            <sequence>
+                <element name="cabecalho" type="ans:cabecalhoTransacao"/>
+                <element name="situacaoProtocolo" type="ans:ct_StatusProtocolo"/>
+                <element name="hash" type="string"/>
+            </sequence>
+        </complexType>
+        <element name="solicitacaoStatusProtocolo" type="tns:ws_solicitacaoStatusProtocolo"/>
+        <element name="situacaoProtocolo" type="tns:ws_situacaoProtocolo"/>
+        <element name="DestinatarioInvalido" type="xsd:string"/>
+        <element name="RemetenteInvalido" type="xsd:string"/>
+        <element name="VersaoInvalida" type="xsd:string"/>
+        <element name="HashInvalido" type="xsd:string"/>
+        <element name="ProtocoloInexistente" type="xsd:string"/>
+    </schema>
+  </types>
+
+  <!-- Message definitions -->
+  <message name ="tissSolicitacaoStatusProtocolo_Request">
+    <part name="solicitacaoStatusProtocolo" element="tns:solicitacaoStatusProtocolo"/>
+  </message>
+
+  <message name ="tissSolicitacaoStatusProtocolo_Response">
+    <part name="situacaoProtocolo" element="tns:situacaoProtocolo"/>
+  </message>
+
+  <message name="ProtocoloInexistente">
+    <part name="ProtocoloInexistente" element="tns:ProtocoloInexistente"/>
+  </message>
+
+  <message name="DestinatarioInvalido">
+    <part name="DestinatarioInvalido" element="tns:DestinatarioInvalido"/>
+  </message>
+
+  <message name="RemetenteInvalido">
+    <part name="RemetenteInvalido" element="tns:RemetenteInvalido"/>
+  </message>
+
+  <message name="VersaoInvalida">
+    <part name="VersaoInvalida" element="tns:VersaoInvalida"/>
+  </message>
+
+  <message name="HashInvalido">
+    <part name="HashInvalido" element="tns:HashInvalido"/>
+  </message>
+
+  <!-- Port type definitions -->
+  <portType name="tissSolicitacaoStatusProtocolo_PortType">
+    <operation name="tissSolicitacaoStatusProtocolo_Operation">
+      <input message="tns:tissSolicitacaoStatusProtocolo_Request"/>
+      <output message="tns:tissSolicitacaoStatusProtocolo_Response"/>
+      <fault name="ProtocoloInexistente" message="tns:ProtocoloInexistente"/>
+      <fault name="DestinatarioInvalido" message="tns:DestinatarioInvalido"/>
+      <fault name="RemetenteInvalido" message="tns:RemetenteInvalido"/>
+      <fault name="VersaoInvalida" message="tns:VersaoInvalida"/>
+      <fault name="HashInvalido" message="tns:HashInvalido"/>
+    </operation>
+  </portType>
+
+  <!-- Binding definitions -->
+  <binding name="tissSolicitacaoStatusProtocolo_Binding" type="tns:tissSolicitacaoStatusProtocolo_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="tissSolicitacaoStatusProtocolo_Operation">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="ProtocoloInexistente">
+        <soap:fault name="ProtocoloInexistente" use="literal"/>
+      </fault>
+      <fault name="DestinatarioInvalido">
+        <soap:fault name="DestinatarioInvalido" use="literal"/>
+      </fault>
+      <fault name="RemetenteInvalido">
+        <soap:fault name="RemetenteInvalido" use="literal"/>
+      </fault>
+      <fault name="VersaoInvalida">
+        <soap:fault name="VersaoInvalida" use="literal"/>
+      </fault>
+      <fault name="HashInvalido">
+        <soap:fault name="HashInvalido" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+
+  <!-- Service and Port (network address) definitions -->
+  <service name="tissSolicitacaoStatusProtocolo">
+    <port name="tissSolicitacaoStatusProtocolo_Port" binding="tns:tissSolicitacaoStatusProtocolo_Binding">
+      <soap:address location=""/>
+    </port>
+  </service>
+
+</definitions>

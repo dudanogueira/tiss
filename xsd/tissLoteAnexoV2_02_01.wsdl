@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions name="tissLoteAnexo"
+    targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissLoteAnexo/v20201"
+    xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissLoteAnexo/v20201"
+    xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+
+  <!-- Type definitions -->
+  <types>
+    <schema targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissLoteAnexo/v20201"
+            xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissLoteAnexo/v20201"
+            xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+    >
+        <import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissV2_02_01.xsd"/>
+        <complexType name="ws_loteAnexo">
+            <sequence>
+                <element name="cabecalho" type="ans:cabecalhoTransacao"/>
+                <element name="loteAnexo" type="ans:ct_loteAnexo"/>
+                <element name="hash" type="string"/>
+            </sequence>
+        </complexType>
+        <complexType name="ws_protocoloRecebimentoAnexo">
+            <sequence>
+                <element name="cabecalho" type="ans:cabecalhoTransacao"/>
+                <element name="protocoloRecebimento" type="ans:ct_protocoloRecebimentoAnexo"/>
+                <element name="hash" type="string"/>
+            </sequence>
+        </complexType>
+        <element name="loteAnexo" type="tns:ws_loteAnexo"/>
+        <element name="protocoloRecebimento" type="tns:ws_protocoloRecebimentoAnexo"/>
+        <element name="DestinatarioInvalido" type="xsd:string"/>
+        <element name="RemetenteInvalido" type="xsd:string"/>
+        <element name="VersaoInvalida" type="xsd:string"/>
+        <element name="HashInvalido" type="xsd:string"/>
+    </schema>
+  </types>
+
+  <!-- Message definitions -->
+  <message name ="tissLoteAnexo_Request">
+    <part name="loteAnexo" element="tns:loteAnexo"/>
+  </message>
+
+  <message name ="tissLoteAnexo_Response">
+    <part name="protocoloRecebimento" element="tns:protocoloRecebimento"/>
+  </message>
+
+  <message name="DestinatarioInvalido">
+    <part name="DestinatarioInvalido" element="tns:DestinatarioInvalido"/>
+  </message>
+
+  <message name="RemetenteInvalido">
+    <part name="RemetenteInvalido" element="tns:RemetenteInvalido"/>
+  </message>
+
+  <message name="VersaoInvalida">
+    <part name="VersaoInvalida" element="tns:VersaoInvalida"/>
+  </message>
+
+  <message name="HashInvalido">
+    <part name="HashInvalido" element="tns:HashInvalido"/>
+  </message>
+
+  <!-- Port type definitions -->
+  <portType name="tissLoteAnexo_PortType">
+    <operation name="tissLoteAnexo_Operation">
+      <input message="tns:tissLoteAnexo_Request"/>
+      <output message="tns:tissLoteAnexo_Response"/>
+      <fault name="DestinatarioInvalido" message="tns:DestinatarioInvalido"/>
+      <fault name="RemetenteInvalido" message="tns:RemetenteInvalido"/>
+      <fault name="VersaoInvalida" message="tns:VersaoInvalida"/>
+      <fault name="HashInvalido" message="tns:HashInvalido"/>
+    </operation>
+  </portType>
+
+  <!-- Binding definitions -->
+  <binding name="tissLoteAnexo_Binding" type="tns:tissLoteAnexo_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="tissLoteAnexo_Operation">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="DestinatarioInvalido">
+        <soap:fault name="DestinatarioInvalido" use="literal"/>
+      </fault>
+      <fault name="RemetenteInvalido">
+        <soap:fault name="RemetenteInvalido" use="literal"/>
+      </fault>
+      <fault name="VersaoInvalida">
+        <soap:fault name="VersaoInvalida" use="literal"/>
+      </fault>
+      <fault name="HashInvalido">
+        <soap:fault name="HashInvalido" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+
+  <!-- Service and Port (network address) definitions -->
+  <service name="tissLoteAnexo">
+    <port name="tissLoteAnexo_Port" binding="tns:tissLoteAnexo_Binding">
+      <soap:address location=""/>
+    </port>
+  </service>
+
+</definitions>

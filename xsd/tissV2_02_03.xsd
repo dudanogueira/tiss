@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 U (http://www.altova.com) by ans (EMBRACE) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ansTISS="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--VERSÃO TISS 2.02.03-->
+	<!--<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissSimpleTypesV2_02_03.xsd"/>
+	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissComplexTypesV2_02_03.xsd"/>
+	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissGuiasV2_02_03.xsd"/>-->
+	<include schemaLocation="tissSimpleTypesV2_02_03.xsd"/>
+	<include schemaLocation="tissComplexTypesV2_02_03.xsd"/>
+	<include schemaLocation="tissGuiasV2_02_03.xsd"/>
+	<!-- Definicao do cabecalho das mensagens -->
+	<complexType name="cabecalhoTransacao">
+		<sequence>
+			<element name="identificacaoTransacao">
+				<complexType>
+					<sequence>
+						<element name="tipoTransacao" type="ansTISS:st_tipoTransacao"/>
+						<element name="sequencialTransacao" type="ansTISS:st_inteiro12"/>
+						<element name="dataRegistroTransacao" type="ansTISS:st_data"/>
+						<element name="horaRegistroTransacao" type="ansTISS:st_hora"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="falhaNegocio" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_motivoGlosa">
+							<sequence>
+								<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="origem">
+				<complexType>
+					<choice>
+						<!-- origem de mensagens de prestadoreas para as operadoras -->
+						<element name="codigoPrestadorNaOperadora" type="ansTISS:ct_identificacaoPrestadorExecutante"/>
+						<!-- origem de mensagens de operadoras para os prestadores -->
+						<element name="registroANS" type="ansTISS:st_registroANS"/>
+						<element name="cnpjPagador" type="ansTISS:st_CNPJ"/>
+						<!-- campo utilizado apenas por entidades pagadoras não reguladas pela ANS -->
+					</choice>
+				</complexType>
+			</element>
+			<element name="destino">
+				<complexType>
+					<choice>
+						<!--  destino de mensagens de operadoras para prestadores: informar código prestador na operadora -->
+						<element name="codigoPrestadorNaOperadora" type="ansTISS:ct_identificacaoPrestadorExecutante"/>
+						<!-- destino de mensagens de prestadores para as operadoras: informar registro ANS da operadora -->
+						<element name="registroANS" type="ansTISS:st_registroANS"/>
+						<element name="cnpjPagador" type="ansTISS:st_CNPJ"/>
+						<!-- campo utilizado apenas por entidades pagadoras não reguladas pela ANS -->
+					</choice>
+				</complexType>
+			</element>
+			<element name="versaoPadrao" type="ansTISS:st_versao"/>
+			<element name="identificacaoSoftwareGerador" type="ansTISS:ct_identificacaoSoftwareGerador"/>
+		</sequence>
+	</complexType>
+	<element name="mensagemTISS">
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ansTISS:cabecalhoTransacao"/>
+				<choice>
+					<element name="operadoraParaPrestador" minOccurs="0">
+						<complexType>
+							<choice>
+								<element name="protocoloRecebimento" type="ansTISS:ct_protocoloRecebimento" minOccurs="0"/>
+								<element name="protocoloRecebimentoAnexo" type="ansTISS:ct_protocoloRecebimentoAnexo" minOccurs="0"/>
+								<element name="demonstrativosRetorno" minOccurs="0">
+									<complexType>
+										<choice>
+											<element name="demonstrativoAnaliseConta" type="ansTISS:ct_demonstrativoAnaliseConta" maxOccurs="30"/>
+											<element name="demonstrativoOdontologia" type="ansTISS:ct_demonstrativoOdontologia" maxOccurs="30"/>
+											<element name="demonstrativoPagamento" type="ansTISS:ct_demonstrativoPagamento" maxOccurs="30"/>
+											<element name="mensagemErro" type="ansTISS:st_observacao" maxOccurs="30"/>
+										</choice>
+									</complexType>
+								</element>
+								<element name="situacaoProtocolo" type="ansTISS:ct_StatusProtocolo" minOccurs="0"/>
+								<element name="autorizacaoServico" minOccurs="0" maxOccurs="unbounded">
+									<complexType>
+										<complexContent>
+											<extension base="ansTISS:ct_autorizacaoProcedimento">
+												<sequence>
+													<element name="diariaProrrogacaoAutorizada" minOccurs="0">
+														<complexType>
+															<complexContent>
+																<extension base="ansTISS:ct_diariaProrrogacao">
+																	<sequence>
+																		<element name="tipoAcomodacaoAutorizada" type="ansTISS:st_tipoAcomodacao" minOccurs="0"/>
+																		<element name="quantidadeAutorizada" type="ansTISS:st_quantidade" minOccurs="0"/>
+																		<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" minOccurs="0"/>
+																	</sequence>
+																</extension>
+															</complexContent>
+														</complexType>
+													</element>
+												</sequence>
+											</extension>
+										</complexContent>
+									</complexType>
+								</element>
+								<element name="autorizacaoServicoOdonto" minOccurs="0">
+									<complexType>
+										<complexContent>
+											<extension base="ansTISS:ct_autorizacaoProcedimentoOdonto"/>
+										</complexContent>
+									</complexType>
+								</element>
+								<element name="situacaoAutorizacao" type="ansTISS:ct_situacaoAutorizacao" minOccurs="0"/>
+								<element name="respostaElegibilidade" type="ansTISS:ct_retornoElegibilidade" minOccurs="0"/>
+								<element name="reciboCancelaGuia" type="ansTISS:ct_reciboCancelaGuia" minOccurs="0"/>
+								<element name="reciboComunicacao" type="ansTISS:ct_reciboComunicacaoBeneficiario" minOccurs="0"/>
+							</choice>
+						</complexType>
+					</element>
+					<element name="prestadorParaOperadora" minOccurs="0">
+						<complexType>
+							<choice>
+								<element name="loteGuias" type="ansTISS:ct_loteGuias" minOccurs="0"/>
+								<element name="loteAnexo" type="ansTISS:ct_loteAnexo" minOccurs="0"/>
+								<element name="solicitacaoDemonstrativoRetorno" type="ansTISS:ct_solicitacaoDemonstrativoPagamento" minOccurs="0"/>
+								<element name="solicitacaoStatusProtocolo" type="ansTISS:ct_solicitacaoStatusProtocolo" minOccurs="0"/>
+								<element name="solicitacaoProcedimento" minOccurs="0">
+									<complexType>
+										<choice>
+											<element name="guiaSolicInternacao" type="ansTISS:ct_guiaSolicInternacao" minOccurs="0"/>
+											<element name="guiaSolicitacaoSADT" type="ansTISS:ct_guiaSolicitacaoSP_SADT" minOccurs="0"/>
+											<element name="guiaSolicitacaoOdontologia" type="ansTISS:ct_guiaSolicitacaoOdonto" minOccurs="0"/>
+											<element name="guiaSolicitacaoProrrogacao" type="ansTISS:ct_guiaSolicitacaoProrrogacao" minOccurs="0"/>
+										</choice>
+									</complexType>
+								</element>
+								<element name="solicitaStatusAutorizacao" type="ansTISS:ct_solicitaStatusAutorizacao" minOccurs="0"/>
+								<element name="verificaElegibilidade" type="ansTISS:ct_solicitaElegibilidade" minOccurs="0"/>
+								<element name="cancelaGuia" type="ansTISS:ct_cancelaGuia" minOccurs="0"/>
+								<element name="comunicacaoBeneficiario" minOccurs="0">
+									<complexType>
+										<complexContent>
+											<extension base="ansTISS:ct_comunicacaoBeneficiario"/>
+										</complexContent>
+									</complexType>
+								</element>
+							</choice>
+						</complexType>
+					</element>
+				</choice>
+				<element name="epilogo">
+					<complexType>
+						<sequence>
+							<element name="hash" type="string"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

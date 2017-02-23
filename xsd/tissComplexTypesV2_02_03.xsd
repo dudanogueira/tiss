@@ -1,0 +1,1375 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 U (http://www.altova.com) by ans (EMBRACE) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ansTISS="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--VERSÃO TISS 2.02.03-->
+	<!--<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissSimpleTypesV2_02_03.xsd"/>-->
+	<include schemaLocation="tissSimpleTypesV2_02_03.xsd"/>
+	<complexType name="ct_anexoSituacaoInicial">
+		<sequence>
+			<element name="cabecalhoAnexoGuia" type="ansTISS:ct_cabecalhoAnexoOdonto"/>
+			<element name="dadosBeneficiario">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_beneficiario">
+							<sequence>
+								<element name="nomeEmpresa" type="ansTISS:st_descricao40" minOccurs="0"/>
+								<element name="numeroTelefone" type="ansTISS:st_numeroTel" minOccurs="0"/>
+								<element name="nomeTitular" type="ansTISS:st_nome" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosContratadoExecutante">
+				<complexType>
+					<sequence>
+						<element name="dadosContratado">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_contratado">
+										<sequence>
+											<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="dadosExecutante" type="ansTISS:ct_profissionalExecutante" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="situacaoInicial" type="ansTISS:ct_situacaoInicial"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_atendimentoConsulta">
+		<sequence>
+			<element name="dataAtendimento" type="ansTISS:st_data"/>
+			<element name="procedimento">
+				<complexType>
+					<all>
+						<element name="codigoTabela" type="ansTISS:st_tabela"/>
+						<element name="codigoProcedimento" type="ansTISS:st_codigoTabela"/>
+					</all>
+				</complexType>
+			</element>
+			<element name="tipoConsulta" type="ansTISS:st_tipoConsulta"/>
+			<element name="tipoSaida" type="ansTISS:st_tipoSaidaGuiaConsulta"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_atendimentoConsultaReapr">
+		<sequence>
+			<element name="procedimento">
+				<complexType>
+					<all>
+						<element name="codigoTabela" type="ansTISS:st_tabela"/>
+						<element name="codigoProcedimento" type="ansTISS:st_codigoTabela"/>
+						<element name="justificativa" type="ansTISS:st_justificativa"/>
+					</all>
+				</complexType>
+			</element>
+			<element name="tipoConsulta" type="ansTISS:st_tipoConsulta"/>
+			<element name="tipoSaida" type="ansTISS:st_tipoSaidaGuiaConsulta"/>
+			<element name="dataAtendimento" type="ansTISS:st_data"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_atendimentoOdontologia">
+		<sequence>
+			<element name="dataTerminoTratamento" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="tipoAtendimento" type="ansTISS:st_atendimentoOdonto" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_autorizacaoGuia">
+		<sequence>
+			<element name="dataAutorizacao" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="senhaAutorizacao" type="ansTISS:st_senhaAutorizacao" minOccurs="0"/>
+			<element name="validadeSenha" type="ansTISS:st_data" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_autorizacaoGuiaInternacao">
+		<complexContent>
+			<extension base="ansTISS:ct_autorizacaoGuia">
+				<sequence>
+					<element name="diasAutorizado" type="ansTISS:st_numeroInteiro" minOccurs="0"/>
+					<element name="dataProvavelAdmisHosp" type="ansTISS:st_data" minOccurs="0"/>
+					<element name="tipoAcomodacao" type="ansTISS:st_tipoAcomodacao" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ct_autorizacaoProcedimento">
+		<sequence>
+			<element name="identificacaoAutorizacao" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="statusSolicitacao" type="ansTISS:st_statusSolicitacao" minOccurs="0"/>
+			<element name="motivoNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="prestadorAutorizado" type="ansTISS:ct_contratado" minOccurs="0"/>
+			<element name="dadosAutorizacao" type="ansTISS:ct_autorizacaoGuiaInternacao" minOccurs="0"/>
+			<element name="procedimentos" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="procedimento" type="ansTISS:ct_itemSolicitacao" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_autorizacaoProcedimentoOdonto">
+		<sequence>
+			<element name="identificacaoAutorizacao" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="statusSolicitacao" type="ansTISS:st_statusSolicitacao" minOccurs="0"/>
+			<element name="motivoNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="prestadorAutorizado" type="ansTISS:ct_contratado" minOccurs="0"/>
+			<element name="dadosAutorizacao" type="ansTISS:ct_autorizacaoGuiaInternacao" minOccurs="0"/>
+			<element name="procedimentos" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="procedimento" type="ansTISS:ct_itemSolicitacaoOdonto" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="totalOdonto" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="totalvalor" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="totalFranquiaCoparticipacao" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="totalquantidadeUS" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_beneficiario">
+		<sequence>
+			<element name="numeroCarteira" type="ansTISS:st_descricao20"/>
+			<element name="nomeBeneficiario" type="ansTISS:st_nome"/>
+			<element name="nomePlano" type="ansTISS:st_descricao40"/>
+			<element name="validadeCarteira" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="numeroCNS" type="ansTISS:st_descricao15" minOccurs="0"/>
+			<element name="identificadorBeneficiario" type="base64Binary" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_cabecalhoAnexoOdonto">
+		<sequence>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_cabecalhoGuia">
+		<sequence>
+			<element name="identificacaoFontePagadora">
+				<complexType>
+					<choice>
+						<element name="registroANS" type="ansTISS:st_registroANS"/>
+						<element name="cnpjFontePagadora" type="ansTISS:st_CNPJ"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="dataEmissaoGuia" type="ansTISS:st_data"/>
+			<element name="numeroGuiaPrestador" type="ansTISS:st_numeroGuia"/>
+			<element name="numeroGuiaOperadora" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_cabecalhoGuiaOdonto">
+		<sequence>
+			<element name="identificacaoFontePagadora">
+				<complexType>
+					<choice>
+						<element name="registroANS" type="ansTISS:st_registroANS"/>
+						<element name="cnpjFontePagadora" type="ansTISS:st_CNPJ"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="numeroGuiaPrestador" type="ansTISS:st_numeroGuia"/>
+			<element name="numeroGuiaOperadora" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="dataEmissaoGuia" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<sequence>
+				<element name="dataAutorizacao" type="ansTISS:st_data" minOccurs="0"/>
+				<element name="senhaAutorizacao" type="ansTISS:st_senhaAutorizacao" minOccurs="0"/>
+				<element name="validadeSenha" type="ansTISS:st_data" minOccurs="0"/>
+			</sequence>
+		</sequence>
+	</complexType>
+	<complexType name="ct_cabecalhoDemonstrativo">
+		<sequence>
+			<element name="numeroDemonstrativo" type="ansTISS:st_descricao20"/>
+			<element name="dataEmissao" type="ansTISS:st_data"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_cabecalhoSolicitacao">
+		<sequence>
+			<element name="identificacaoFontePagadora">
+				<complexType>
+					<choice>
+						<element name="registroANS" type="ansTISS:st_registroANS"/>
+						<element name="cnpjFontePagadora" type="ansTISS:st_CNPJ"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="dataEmissaoGuia" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="numeroGuiaOperadora" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="numeroGuiaPrestador" type="ansTISS:st_numeroGuia"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_comunicacaoBeneficiario">
+		<sequence>
+			<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dataEvento" type="ansTISS:st_data"/>
+			<element name="tipoEvento" type="ansTISS:st_tipoEvento"/>
+			<choice>
+				<element name="motivoSaida" type="ansTISS:st_motivoSaida"/>
+				<element name="tipoInternacao" type="ansTISS:st_tipoInternacao"/>
+			</choice>
+		</sequence>
+	</complexType>
+	<complexType name="ct_cancelaGuia">
+		<sequence>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="tipoGuia" type="ansTISS:st_tipoGuia"/>
+			<element name="guia">
+				<complexType>
+					<sequence>
+						<element name="dadosGuia" type="ansTISS:ct_cabecalhoGuia" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_contratado">
+		<sequence>
+			<element name="identificacao" type="ansTISS:ct_identificacaoPrestadorExecutante"/>
+			<element name="nomeContratado" type="ansTISS:st_nome"/>
+			<element name="enderecoContratado" type="ansTISS:ct_endereco" minOccurs="0"/>
+			<element name="numeroCNES" type="ansTISS:st_CNES" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_contratadoSolicitante">
+		<sequence>
+			<element name="identificacao" type="ansTISS:ct_identificacaoPrestador"/>
+			<element name="nomeContratado" type="ansTISS:st_nome"/>
+			<element name="enderecoContratado" type="ansTISS:ct_endereco" minOccurs="0"/>
+			<element name="numeroCNES" type="ansTISS:st_CNES" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_conselhoProfissional">
+		<sequence>
+			<element name="siglaConselho" type="ansTISS:st_conselhoProfissional"/>
+			<element name="numeroConselho" type="ansTISS:st_descricao15"/>
+			<element name="ufConselho" type="ansTISS:st_UF"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_creditoOdonto">
+		<sequence>
+			<element name="valorDesconto" type="ansTISS:st_valorMonetario"/>
+			<element name="descricao" type="ansTISS:st_descricao40"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadoBancario">
+		<sequence>
+			<element name="dataPagamento" type="ansTISS:st_data"/>
+			<element name="formaPagamento" type="ansTISS:st_formaPagamento"/>
+			<element name="banco" type="ansTISS:st_banco" minOccurs="0"/>
+			<element name="agencia" type="ansTISS:st_agencia" minOccurs="0"/>
+			<element name="contaCorrente" type="ansTISS:st_conta" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadosConta">
+		<sequence>
+			<element name="numeroFatura" type="ansTISS:st_descricao12" minOccurs="0"/>
+			<element name="lote">
+				<complexType>
+					<sequence>
+						<element name="dadosLote" type="ansTISS:ct_dadosLote" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorProcessadoFatura" type="ansTISS:st_valorMonetario"/>
+			<element name="valorLiberadoFatura" type="ansTISS:st_valorMonetario"/>
+			<element name="valorGlosaFatura" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadosGuia">
+		<sequence>
+			<element name="numeroGuiaPrestador" type="ansTISS:st_numeroGuia"/>
+			<element name="numeroGuiaOperadora" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dataRealizacao" type="ansTISS:st_data"/>
+			<element name="valorProcessadoGuia" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="valorLiberadoGuia" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="valorGlosaGuia" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="procedimentos">
+				<complexType>
+					<choice>
+						<element name="dadosProcedimento" type="ansTISS:ct_dadosProcedimento" maxOccurs="unbounded"/>
+						<element name="dadosProcedimentoOdonto" type="ansTISS:ct_procedimentoOdontoRealizado" maxOccurs="unbounded"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="codigoGlosaGuia" type="ansTISS:ct_motivoGlosa" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadosLote">
+		<sequence>
+			<element name="numeroLote" type="ansTISS:st_descricao12"/>
+			<element name="dataEnvioLote" type="ansTISS:st_data"/>
+			<element name="numeroProtocolo" type="ansTISS:st_protocolo"/>
+			<element name="valorProtocolo" type="ansTISS:st_valorMonetario"/>
+			<element name="valorGlosaProtocolo" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="codigoGlosaProtocolo" type="ansTISS:ct_motivoGlosa" minOccurs="0" maxOccurs="unbounded"/>
+			<element name="guia">
+				<complexType>
+					<sequence>
+						<element name="dadosGuia" type="ansTISS:ct_dadosGuia" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadosPagamento">
+		<sequence>
+			<element name="dataPagamento" type="ansTISS:st_data"/>
+			<element name="loteOdonto" maxOccurs="unbounded">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_loteOdonto">
+							<sequence>
+								<element name="totalGeralLote" type="ansTISS:ct_totalDemoOdonto"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadosProcedimento">
+		<sequence>
+			<element name="procedimento" type="ansTISS:ct_tabela"/>
+			<element name="quantidadeExecutada" type="ansTISS:st_quantidadeProcedimento"/>
+			<element name="valorProcessado" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="valorLiberado" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="grauParticipacao" type="ansTISS:st_posicaoProfissao" minOccurs="0"/>
+			<element name="relacaoGlosa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="tipoGlosa" type="ansTISS:ct_motivoGlosa" maxOccurs="unbounded"/>
+						<element name="valorGlosa" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_dadosResumo">
+		<sequence>
+			<element name="numeroFatura" type="ansTISS:st_descricao12" minOccurs="0"/>
+			<element name="numeroLote" type="ansTISS:st_descricao12"/>
+			<element name="dataEnvioLote" type="ansTISS:st_data"/>
+			<element name="numeroProtocolo" type="ansTISS:st_protocolo"/>
+			<element name="valorInformado" type="ansTISS:st_valorMonetario"/>
+			<element name="valorProcessado" type="ansTISS:st_valorMonetario"/>
+			<element name="valorLiberado" type="ansTISS:st_valorMonetario"/>
+			<element name="valorGlosa" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_demonstrativoAnaliseConta">
+		<sequence>
+			<element name="identificacaoFontePagadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+			<element name="cabecalhoDemonstrativo" type="ansTISS:ct_cabecalhoDemonstrativo"/>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="fatura">
+				<complexType>
+					<sequence>
+						<element name="dadosFatura" type="ansTISS:ct_dadosConta"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorProcessadoGeral" type="ansTISS:st_valorMonetario"/>
+			<element name="valorLiberadoGeral" type="ansTISS:st_valorMonetario"/>
+			<element name="valorGlosaGeral" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_demonstrativoPagamento">
+		<sequence>
+			<element name="cabecalhoDemonstrativo" type="ansTISS:ct_cabecalhoDemonstrativo"/>
+			<element name="identificacaoFontePagadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="dadosPagamento" type="ansTISS:ct_dadoBancario"/>
+			<element name="dadosResumo">
+				<complexType>
+					<sequence>
+						<element name="detalheResumo" type="ansTISS:ct_dadosResumo" maxOccurs="unbounded"/>
+						<element name="totalGeralInformado" type="ansTISS:st_valorMonetario"/>
+						<element name="TotalGeralProcessado" type="ansTISS:st_valorMonetario"/>
+						<element name="TotalGeralGlosa" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="TotalGeralLiberado" type="ansTISS:st_valorMonetario"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorTotal" type="ansTISS:st_valorMonetario"/>
+			<element name="demaisDescontos" type="ansTISS:ct_descontos" minOccurs="0"/>
+			<element name="valorFinalLiberado" type="ansTISS:st_valorMonetario"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_demonstrativoOdontologia">
+		<sequence>
+			<element name="cabecalhoDemonstrativo" type="ansTISS:ct_cabecalhoDemonstrativo"/>
+			<element name="identificacaoFontePagadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+			<element name="dadosPrestador">
+				<complexType>
+					<sequence>
+						<element name="codigoPrestadorNaOperadora" type="ansTISS:st_codigoPrestadorNaOperadora" minOccurs="0"/>
+						<element name="identificadorPrestador" type="ansTISS:ct_identificadorPrestOdontoDemo"/>
+						<element name="nomeContratado" type="ansTISS:st_nome"/>
+						<element name="numeroCNES" type="ansTISS:st_CNES" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosPagamento" maxOccurs="unbounded">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_dadosPagamento">
+							<sequence>
+								<element name="totalGeral" type="ansTISS:ct_totalDemoOdonto"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="debitosCreditosTributaveis">
+				<complexType>
+					<sequence>
+						<element name="descontos" type="ansTISS:ct_descontoOdonto" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="creditos" type="ansTISS:ct_creditoOdonto" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="valorTotalTributavel" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="demaisImpostos">
+				<complexType>
+					<sequence>
+						<element name="descontos" type="ansTISS:ct_descontoOdonto" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="valorTotalImpostos" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="debitosCreditosNaoTributaveis">
+				<complexType>
+					<sequence>
+						<element name="descontos" type="ansTISS:ct_descontoOdonto" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="creditos" type="ansTISS:ct_creditoOdonto" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="valorTotalNaoTributavel" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorFinalReceber" type="ansTISS:st_valorMonetario"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_descontoOdonto">
+		<sequence>
+			<element name="descricao" type="ansTISS:st_descricao40"/>
+			<element name="valorDesconto">
+				<simpleType>
+					<restriction base="ansTISS:st_valorMonetario"/>
+				</simpleType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_detalheGuiaOdonto">
+		<sequence>
+			<element name="numeroGuiaPrestador" type="ansTISS:st_numeroGuia"/>
+			<element name="numeroGuiaOperadora" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="codigoBeneficiario" type="ansTISS:st_codigoBeneficiario"/>
+			<element name="NomeBeneficiario" type="ansTISS:st_nome"/>
+			<element name="procedimentoRealizado">
+				<complexType>
+					<sequence>
+						<element name="procedimentosOdonto" type="ansTISS:ct_procedimentoOdontoRealizado" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorTotalGlosaGuia" type="ansTISS:st_valorMonetario"/>
+			<element name="valorTotalLiberadoGuia" type="ansTISS:st_valorMonetario"/>
+			<element name="valorTotalProcessadoGuia" type="ansTISS:st_valorMonetario"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_detalheProtocolo">
+		<sequence>
+			<element name="numeroProtocolo" type="ansTISS:st_protocolo"/>
+			<element name="valorProtocolo" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="codigoGlosaProtocolo" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" maxOccurs="unbounded"/>
+						<element name="valorGlosaProtocolo" type="ansTISS:st_valorMonetario"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="guias">
+				<complexType>
+					<sequence>
+						<element name="dadosGuia" type="ansTISS:ct_dadosGuia" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_denteRegiao">
+		<choice>
+			<element name="dente" type="ansTISS:st_dente"/>
+			<element name="regiao" type="ansTISS:st_regiao"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_descontos">
+		<sequence>
+			<element name="itemDesconto" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="valorDesconto" type="ansTISS:st_valorMonetario"/>
+						<element name="descricao" type="ansTISS:st_descricao40"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_diagnostico">
+		<sequence>
+			<element name="nomeTabela" type="ansTISS:st_tabelasDiagnostico"/>
+			<element name="codigoDiagnostico" type="ansTISS:st_codigoDiagnostico"/>
+			<element name="descricaoDiagnostico" type="ansTISS:st_nome" nillable="true" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_diagnosticoAtendimento">
+		<sequence>
+			<element name="CID" type="ansTISS:ct_diagnostico" minOccurs="0"/>
+			<element name="tipoDoenca" type="ansTISS:st_tipoDoenca" nillable="true" minOccurs="0"/>
+			<element name="tempoReferidoEvolucaoDoenca" type="ansTISS:ct_tempoEvolucaoDoenca" nillable="true" minOccurs="0"/>
+			<element name="indicadorAcidente" type="ansTISS:st_indicadorAcidente" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_diagnosticoGuia">
+		<sequence>
+			<element name="CID" type="ansTISS:ct_diagnostico"/>
+			<element name="tipoDoenca" type="ansTISS:st_tipoDoenca" nillable="true" minOccurs="0"/>
+			<element name="tempoReferidoEvolucaoDoenca" type="ansTISS:ct_tempoEvolucaoDoenca" nillable="true" minOccurs="0"/>
+			<element name="indicadorAcidente" type="ansTISS:st_indicadorAcidente" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_diagnosticoSaidaInternacao">
+		<sequence>
+			<element name="diagnosticoPrincipal" type="ansTISS:ct_diagnostico" minOccurs="0"/>
+			<element name="indicadorAcidente" type="ansTISS:st_indicadorAcidente" minOccurs="0"/>
+			<element name="diagnosticosSecundarios" type="ansTISS:ct_diagnosticosSecundarios" minOccurs="0"/>
+			<element name="motivoSaidaInternacao" type="ansTISS:st_motivoSaida"/>
+			<element name="obito" type="ansTISS:ct_obitoInternacao" minOccurs="0" maxOccurs="unbounded"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_diagnosticosSecundarios">
+		<sequence>
+			<element name="CID" type="ansTISS:ct_diagnostico" maxOccurs="3"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_diariaProrrogacaoAutorizada">
+		<complexContent>
+			<extension base="ansTISS:ct_diariaProrrogacao">
+				<sequence>
+					<element name="quantidadeAutorizada" type="ansTISS:st_quantidade" minOccurs="0"/>
+					<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" minOccurs="0"/>
+				</sequence>
+			</extension>
+		</complexContent>
+	</complexType>
+	<complexType name="ct_diariaProrrogacao">
+		<sequence>
+			<element name="tipoAcomodacao" type="ansTISS:st_tipoAcomodacao"/>
+			<element name="quantidadeDiaria" type="ansTISS:st_quantidade"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_endereco">
+		<sequence>
+			<element name="tipoLogradouro" type="ansTISS:st_tipoLogradouro"/>
+			<element name="logradouro" type="ansTISS:st_logradouro"/>
+			<element name="numero" type="ansTISS:st_numeroLogradouro"/>
+			<element name="complemento" type="ansTISS:st_descricao15" nillable="true" minOccurs="0"/>
+			<element name="codigoIBGEMunicipio" type="ansTISS:st_codigoMunicipioIBGE"/>
+			<element name="municipio" type="ansTISS:st_descricao40" minOccurs="0"/>
+			<element name="codigoUF" type="ansTISS:st_UF"/>
+			<element name="cep" type="ansTISS:st_CEP"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_executanteComplementar">
+		<sequence>
+			<element name="codigoProfissionalCompl" type="ansTISS:ct_identificacaoPrestador"/>
+			<element name="nomeProfissionalCompl" type="ansTISS:st_nome"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_hipoteseDiagnostica">
+		<sequence>
+			<element name="CIDPrincipal" type="ansTISS:ct_diagnosticoGuia" minOccurs="0"/>
+			<element name="diagnosticosSecundarios" type="ansTISS:ct_diagnosticosSecundarios" nillable="true" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_identificacaoEquipe">
+		<sequence>
+			<element name="membroEquipe" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="codigoProfissional" type="ansTISS:ct_identificacaoPrestadorEquipe"/>
+						<element name="identificacaoProfissional" type="ansTISS:ct_profissionalExecutante"/>
+						<element name="cpf" type="ansTISS:st_CPF" minOccurs="0"/>
+						<element name="posicaoProfissional" type="ansTISS:st_posicaoProfissao"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_identificacaoFontePagadora">
+		<choice>
+			<element name="operadoraRegulada">
+				<complexType>
+					<sequence>
+						<element name="registroANS" type="ansTISS:st_registroANS"/>
+						<element name="CNPJ" type="ansTISS:st_CNPJ"/>
+						<element name="nomeOperadora" type="ansTISS:st_nome"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="entidadeNaoRegulada">
+				<complexType>
+					<sequence>
+						<element name="CNPJ" type="ansTISS:st_CNPJ"/>
+						<element name="nomeOperadoraEntidade" type="ansTISS:st_nome"/>
+					</sequence>
+				</complexType>
+			</element>
+		</choice>
+	</complexType>
+	<complexType name="ct_identificacaoPrestador">
+		<choice>
+			<element name="CNPJ" type="ansTISS:st_CNPJ"/>
+			<element name="cpf" type="ansTISS:st_CPF"/>
+			<element name="codigoPrestadorNaOperadora" type="ansTISS:st_codigoPrestadorNaOperadora"/>
+			<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_identificacaoPrestadorEquipe">
+		<choice>
+			<element name="cpf" type="ansTISS:st_CPF"/>
+			<element name="codigoPrestadorNaOperadora" type="ansTISS:st_codigoPrestadorNaOperadora"/>
+			<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_identificacaoPrestadorExecutante">
+		<choice>
+			<element name="CNPJ" type="ansTISS:st_CNPJ"/>
+			<element name="CPF" type="ansTISS:st_CPF"/>
+			<element name="codigoPrestadorNaOperadora" type="ansTISS:st_codigoPrestadorNaOperadora"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_identificacaoProfissional">
+		<sequence>
+			<element name="nomeProfissional" type="ansTISS:st_nome" minOccurs="0"/>
+			<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+			<element name="cbos" type="ansTISS:st_CBOS" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_identificacaoProfissionalCompl">
+		<choice>
+			<element name="cpf" type="ansTISS:st_CPF"/>
+			<element name="codigoPrestadorNaOperadora" type="ansTISS:st_codigoPrestadorNaOperadora"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_identificacaoSoftwareGerador">
+		<sequence>
+			<element name="nomeAplicativo" type="ansTISS:st_nome"/>
+			<element name="versaoAplicativo" type="ansTISS:st_nome"/>
+			<element name="fabricanteAplicativo" type="ansTISS:st_nome"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_identificadorPrestOdontoDemo">
+		<choice>
+			<element name="CNPJ" type="ansTISS:st_CNPJ"/>
+			<element name="cpf" type="ansTISS:st_CPF"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_internacaoObstetrica">
+		<sequence>
+			<element name="emGestacao" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="aborto" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="transtornoMaternoRelGravidez" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="complicacaoPeriodoPuerperio" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="atendimentoRNSalaParto" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="complicacaoNeonatal" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="baixoPeso" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="partoCesareo" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="partoNormal" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="declaracoesNascidosVivos" type="ansTISS:ct_numeroDN" minOccurs="0"/>
+			<element name="qtdNascidosVivosTermo" type="ansTISS:st_numeroInteiro" minOccurs="0"/>
+			<element name="qtdNascidosMortos" type="ansTISS:st_numeroInteiro" minOccurs="0"/>
+			<element name="qtdVivosPrematuros" type="ansTISS:st_numeroInteiro" minOccurs="0"/>
+			<element name="obitoMulher" type="ansTISS:st_obitoMulher" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_itemSolicitacao">
+		<sequence>
+			<element name="identificacaoProcedimentos" type="ansTISS:ct_tabela"/>
+			<element name="quantidadeSolicitada" type="ansTISS:st_quantidade"/>
+			<element name="quantidadeAutorizada" type="ansTISS:st_quantidade" minOccurs="0"/>
+			<element name="statusSolicitacaoProcedimento" type="ansTISS:st_statusSolicitacao"/>
+			<element name="glosas" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_itemSolicitacaoOdonto">
+		<sequence>
+			<element name="identificacaoProcedimentos" type="ansTISS:ct_tabela"/>
+			<element name="denteRegiao" type="ansTISS:ct_denteRegiao" minOccurs="0"/>
+			<element name="face" type="ansTISS:st_face" minOccurs="0"/>
+			<element name="quantidadeSolicitada" type="ansTISS:st_quantidade"/>
+			<element name="quantidadeAutorizada" type="ansTISS:st_quantidade" minOccurs="0"/>
+			<element name="glosas" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="statusSolicitacaoProcedimento" type="ansTISS:st_statusSolicitacao"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_loteOdonto">
+		<sequence>
+			<element name="numeroLote" type="ansTISS:st_descricao12" minOccurs="0"/>
+			<element name="detalheGuia" type="ansTISS:ct_detalheGuiaOdonto" maxOccurs="unbounded"/>
+			<element name="valorTotalLiberadoLote" type="ansTISS:st_valorMonetario"/>
+			<element name="valorTotalProcessadoLote" type="ansTISS:st_valorMonetario"/>
+			<element name="valorTotalGlosaLote" type="ansTISS:st_valorMonetario"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_motivoGlosa">
+		<sequence>
+			<element name="codigoGlosa" type="ansTISS:st_tipoGlosa"/>
+			<element name="descricaoGlosa" type="ansTISS:st_descricaoGlosa"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_numeroDN">
+		<sequence>
+			<element name="numeroDN" type="ansTISS:st_descricao15" minOccurs="0" maxOccurs="10"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_obitoInternacao">
+		<sequence>
+			<element name="CID" type="ansTISS:ct_diagnostico" minOccurs="0"/>
+			<element name="numeroDeclaracao" type="ansTISS:st_descricao12" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_obitoNeonatal">
+		<choice>
+			<element name="qtdeobitoPrecoce" type="ansTISS:st_quantidadeObito" minOccurs="0"/>
+			<element name="qtdeobitoTardio" type="ansTISS:st_quantidadeObito" minOccurs="0"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_OPMAutorizada">
+		<sequence>
+			<element name="OPMAutorizada" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="quantidadeAutorizada" type="ansTISS:st_quantidade"/>
+						<element name="fabricante" type="ansTISS:st_descricao40" minOccurs="0"/>
+						<element name="OPM" type="ansTISS:ct_tabela"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_OPMSolicitadas">
+		<sequence>
+			<element name="OPMSolicitada" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="quantidadeSolicitada" type="ansTISS:st_quantidade"/>
+						<element name="fabricante" type="ansTISS:st_descricao40" minOccurs="0"/>
+						<element name="valor" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="OPM" type="ansTISS:ct_tabela"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_OPMUtilizada">
+		<sequence>
+			<element name="OPM">
+				<complexType>
+					<sequence>
+						<element name="identificacaoOPM" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="OPM" type="ansTISS:ct_tabela"/>
+									<element name="quantidade" type="ansTISS:st_quantidade"/>
+									<element name="codigoBarra" type="ansTISS:st_descricao20" minOccurs="0"/>
+									<element name="valorUnitario" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+									<element name="valorTotal" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorTotalOPM" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_OPMUtilizadasRevisao">
+		<sequence>
+			<element name="OPMUtilizada">
+				<complexType>
+					<sequence>
+						<element name="OPM" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="OPM" type="ansTISS:ct_tabela"/>
+									<element name="valorUnitario" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+									<element name="quantidade" type="ansTISS:st_quantidade"/>
+									<element name="codigoBarra" type="ansTISS:st_descricao20" minOccurs="0"/>
+									<element name="valorTotal" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+									<element name="justificativa" type="ansTISS:st_justificativa"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorTotalOPM" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_outrasDespesas">
+		<sequence>
+			<element name="despesa" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="identificadorDespesa" type="ansTISS:ct_tabela"/>
+						<element name="tipoDespesa" type="ansTISS:st_outrasDespesas"/>
+						<element name="dataRealizacao" type="ansTISS:st_data"/>
+						<element name="horaInicial" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="horaFinal" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="reducaoAcrescimo" type="ansTISS:st_percentual" minOccurs="0"/>
+						<element name="quantidade" type="ansTISS:st_quantidade"/>
+						<element name="valorUnitario" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="valorTotal" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="totalGeralOutrasDespesas" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_outrasDespesasRevisao">
+		<sequence>
+			<element name="itensDespesas" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="tipoDespesa" type="ansTISS:st_outrasDespesas"/>
+						<element name="dataRealizacao" type="ansTISS:st_data"/>
+						<element name="despesa" type="ansTISS:ct_tabela"/>
+						<element name="reducaoAcrescimo" type="ansTISS:st_percentual" minOccurs="0"/>
+						<element name="quantidade" type="ansTISS:st_quantidade"/>
+						<element name="valorUnitario" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="valorTotal" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="justificativa" type="ansTISS:st_justificativa"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="totalGeralOutrasDespesas" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_periodoProcessamento">
+		<sequence>
+			<element name="dataInicial" type="ansTISS:st_data"/>
+			<element name="dataFinal" type="ansTISS:st_data"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentoOdontologia">
+		<sequence>
+			<element name="procedimentoOdonto" type="ansTISS:ct_tabela"/>
+			<element name="denteRegiao" type="ansTISS:ct_denteRegiao" minOccurs="0"/>
+			<element name="face" type="ansTISS:st_face" minOccurs="0"/>
+			<element name="quantidade" type="ansTISS:st_quantidadeProcedimento" minOccurs="0"/>
+			<element name="quantidadeUS" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="valor" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="franquiaCoparticipacao" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentoOdontoRealizado">
+		<sequence>
+			<element name="procedimentoOdonto" type="ansTISS:ct_tabela"/>
+			<element name="denteRegiao" type="ansTISS:ct_denteRegiao" minOccurs="0"/>
+			<element name="face" type="ansTISS:st_face" minOccurs="0"/>
+			<element name="dataRealizacao" type="ansTISS:st_data"/>
+			<element name="quantidade" type="ansTISS:st_quantidadeProcedimento" minOccurs="0"/>
+			<element name="valorProcessado" type="ansTISS:st_valorMonetario"/>
+			<element name="valorGlosaEstorno" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="glosas" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorLiberado" type="ansTISS:st_valorMonetario"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentosRealizados">
+		<sequence>
+			<element name="procedimentoRealizado" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="data" type="ansTISS:st_data"/>
+						<element name="horaInicio" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="horaFim" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="procedimento" type="ansTISS:ct_tabela"/>
+						<element name="quantidadeRealizada" type="ansTISS:st_quantidadeProcedimento"/>
+						<element name="viaAcesso" type="ansTISS:st_viaDeAcesso" minOccurs="0"/>
+						<element name="tecnicaUtilizada" type="ansTISS:st_tecnicaUtilizada" minOccurs="0"/>
+						<element name="reducaoAcrescimo" type="ansTISS:st_percentual" minOccurs="0"/>
+						<element name="valor" type="ansTISS:st_valorMonetario" nillable="true" minOccurs="0"/>
+						<element name="valorTotal" type="ansTISS:st_valorMonetario" nillable="true" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentoOdontoRevisao">
+		<sequence>
+			<element name="procedimentoOdontologia">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_procedimentoOdontologia">
+							<sequence>
+								<element name="dataRealizacao" type="ansTISS:st_data"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="valorTotal" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="quantidadeTotalUS" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="totalFranquiaCoparticipacao" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="justificativaRevisao" type="ansTISS:st_justificativa"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentoRealizadoEquipe">
+		<sequence>
+			<element name="procedimentos" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="equipe" type="ansTISS:ct_identificacaoEquipe" minOccurs="0"/>
+						<element name="procedimento" type="ansTISS:ct_tabela"/>
+						<element name="data" type="ansTISS:st_data"/>
+						<element name="horaInicio" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="horaFim" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="quantidadeRealizada" type="ansTISS:st_quantidadeProcedimento"/>
+						<element name="viaAcesso" type="ansTISS:st_viaDeAcesso" minOccurs="0"/>
+						<element name="tecnicaUtilizada" type="ansTISS:st_tecnicaUtilizada" minOccurs="0"/>
+						<element name="reducaoAcrescimo" type="ansTISS:st_percentual" minOccurs="0"/>
+						<element name="valor" type="ansTISS:st_valorMonetario" nillable="true" minOccurs="0"/>
+						<element name="valorTotal" type="ansTISS:st_valorMonetario" nillable="true" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentoRevisao">
+		<sequence>
+			<element name="procedimentosRevisao" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="data" type="ansTISS:st_data"/>
+						<element name="horaInicio" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="horaFim" type="ansTISS:st_hora" minOccurs="0"/>
+						<element name="procedimento" type="ansTISS:ct_tabela"/>
+						<element name="quantidadeRealizada" type="ansTISS:st_quantidadeProcedimento"/>
+						<element name="viaAcesso" type="ansTISS:st_viaDeAcesso" minOccurs="0"/>
+						<element name="tecnicaUtilizada" type="ansTISS:st_tecnicaUtilizada" minOccurs="0"/>
+						<element name="reducaoAcrescimo" type="ansTISS:st_percentual" minOccurs="0"/>
+						<element name="valor" type="ansTISS:st_valorMonetario" nillable="true" minOccurs="0"/>
+						<element name="valorTotal" type="ansTISS:st_valorMonetario" nillable="true" minOccurs="0"/>
+						<element name="justificativaRevisao" type="ansTISS:st_justificativa" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_procedimentosSolicitados">
+		<sequence>
+			<element name="procedimentoSolicitado" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="quantidadeSolicitada" type="ansTISS:st_quantidadeProcedimento"/>
+						<element name="procedimento" type="ansTISS:ct_tabela"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_profissionalExecutante">
+		<sequence>
+			<element name="nomeExecutante" type="ansTISS:st_nome" minOccurs="0"/>
+			<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+			<element name="codigoCBOS" type="ansTISS:st_CBOS" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_protocoloRecebimentoAnexo">
+		<choice>
+			<element name="protocoloRecebimento">
+				<complexType>
+					<sequence>
+						<element name="numeroProtocoloRecebimento" type="ansTISS:st_protocolo"/>
+						<element name="dadosOperadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+						<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+						<element name="dataEnvioAnexo" type="ansTISS:st_data"/>
+						<element name="numeroLote" type="ansTISS:st_descricao12"/>
+						<element name="quantidadeAnexo" type="ansTISS:st_numeroInteiro"/>
+						<element name="relacaoAnexo">
+							<complexType>
+								<sequence>
+									<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia" minOccurs="0" maxOccurs="100"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="mensagemErro" type="ansTISS:st_observacao"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_protocoloRecebimento">
+		<choice>
+			<element name="protocoloRecebimento">
+				<complexType>
+					<sequence>
+						<element name="numeroProtocoloRecebimento" type="ansTISS:st_protocolo"/>
+						<element name="dadosOperadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+						<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+						<element name="numeroLote" type="ansTISS:st_descricao12"/>
+						<element name="dataEnvioLote" type="ansTISS:st_data"/>
+						<element name="mensagemDetalheProtocolo" type="ansTISS:ct_detalheProtocolo" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="mensagemErro" type="ansTISS:st_observacao"/>
+		</choice>
+	</complexType>
+	<complexType name="ct_reciboCancelaGuia">
+		<sequence>
+			<element name="operadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+			<element name="guiasCanceladas">
+				<complexType>
+					<sequence>
+						<element name="dadosGuia" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_cabecalhoGuia">
+										<sequence>
+											<element name="statusCancelamento" type="ansTISS:st_statusCancelamento"/>
+											<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_reciboComunicacaoBeneficiario">
+		<choice>
+			<element name="mensagemErro" type="ansTISS:st_observacao"/>
+			<element name="reciboComunicacao">
+				<complexType>
+					<sequence>
+						<element name="statusComunicacaoBeneficiario" type="ansTISS:st_statusComunicacaoBeneficiario"/>
+						<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+						<element name="dataEvento" type="ansTISS:st_data"/>
+						<element name="tipoEvento" type="ansTISS:st_tipoEvento"/>
+						<choice>
+							<element name="motivoSaida" type="ansTISS:st_motivoSaida"/>
+							<element name="tipoInternacao" type="ansTISS:st_tipoInternacao"/>
+						</choice>
+					</sequence>
+				</complexType>
+			</element>
+		</choice>
+	</complexType>
+	<complexType name="ct_retornoElegibilidade">
+		<sequence>
+			<element name="dadosOperadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="respostaSolicitacao" type="ansTISS:st_simNao"/>
+			<element name="motivoNegacao" type="ansTISS:ct_motivoGlosa" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_solicitaStatusAutorizacao">
+		<sequence>
+			<element name="identificacaoAutorizacao">
+				<complexType>
+					<sequence>
+						<element name="identificacaoSolicitacao" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_cabecalhoSolicitacao">
+										<sequence>
+											<element name="profissionalSolicitante" type="ansTISS:ct_contratadoSolicitante"/>
+											<element name="identificacaoBeneficiario" type="ansTISS:ct_beneficiario" minOccurs="0"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dataSolicitaStatus" type="ansTISS:st_dataHora"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_situacaoAutorizacao">
+		<sequence>
+			<element name="dadosAutorizacao" maxOccurs="unbounded">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_autorizacaoProcedimento">
+							<sequence>
+								<element name="totalOdonto" minOccurs="0">
+									<complexType>
+										<sequence>
+											<element name="totalvalor" type="ansTISS:st_quantidade" minOccurs="0"/>
+											<element name="totalFranquiaCoparticipacao" type="ansTISS:st_quantidade" minOccurs="0"/>
+											<element name="totalquantidadeUS" type="ansTISS:st_quantidade" minOccurs="0"/>
+										</sequence>
+									</complexType>
+								</element>
+								<element name="ct_diariaProrrogacaoAutorizada" minOccurs="0">
+									<complexType>
+										<complexContent>
+											<extension base="ansTISS:ct_diariaProrrogacao">
+												<sequence>
+													<element name="tipoAcomodacaoAutorizada" type="ansTISS:st_tipoAcomodacao" minOccurs="0"/>
+													<element name="quantidadeAutorizada" type="ansTISS:st_quantidade" minOccurs="0"/>
+													<element name="motivoGlosa" type="ansTISS:ct_motivoGlosa" minOccurs="0"/>
+												</sequence>
+											</extension>
+										</complexContent>
+									</complexType>
+								</element>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_situacaoClinica">
+		<sequence>
+			<element name="dentes" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="elementoDentario" type="ansTISS:st_dente"/>
+						<element name="condicaoClinica" type="ansTISS:st_condicaoClinica"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_situacaoDentes">
+		<sequence>
+			<element name="dente" type="ansTISS:st_dente"/>
+			<element name="obturado" type="ansTISS:st_simNao"/>
+			<element name="careado" type="ansTISS:st_simNao"/>
+			<element name="perdido" type="ansTISS:st_simNao"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_situacaoInicial">
+		<sequence>
+			<element name="situacaoClinica" type="ansTISS:ct_situacaoClinica"/>
+			<element name="doencaPeriodontal" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="alteracaoTecidoMole" type="ansTISS:st_simNao" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_solicitaElegibilidade">
+		<sequence>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_solicitante">
+		<sequence>
+			<element name="contratado" type="ansTISS:ct_contratadoSolicitante"/>
+			<element name="profissional" type="ansTISS:ct_identificacaoProfissional"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_solicitacaoDemonstrativoPagamento">
+		<sequence>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="dataSolicitacao" type="ansTISS:st_data"/>
+			<element name="tipoDemonstrativo" type="ansTISS:st_tipoDemonstrativo"/>
+			<choice>
+				<sequence>
+					<element name="dataInicial" type="ansTISS:st_data"/>
+					<element name="dataFinal" type="ansTISS:st_data" minOccurs="0"/>
+				</sequence>
+				<element name="numeroProtocolo" type="ansTISS:st_protocolo"/>
+			</choice>
+		</sequence>
+	</complexType>
+	<complexType name="ct_solicitacaoStatusProtocolo">
+		<sequence>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="dataSolicitacao" type="ansTISS:st_data"/>
+			<element name="detalheProtocolo">
+				<complexType>
+					<sequence>
+						<element name="numeroProtocolo" type="ansTISS:st_protocolo" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_statusLote">
+		<sequence>
+			<element name="statusProtocolo" type="ansTISS:st_statusProtocolo" minOccurs="0"/>
+			<element name="numeroProtocolo" type="ansTISS:st_protocolo"/>
+			<element name="numeroLote" type="ansTISS:st_inteiro12"/>
+			<element name="dataEnvioLote" type="ansTISS:st_data"/>
+			<element name="numeroFatura" type="ansTISS:st_inteiro12" minOccurs="0"/>
+			<element name="valorProcessado" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="valorLiberado" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="valorGlosa" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="status" type="ansTISS:st_statusProtocolo"/>
+			<element name="guias">
+				<complexType>
+					<choice>
+						<element name="detalheguiaMedica" minOccurs="0" maxOccurs="100">
+							<complexType>
+								<sequence>
+									<element name="identificacaoGuia" type="ansTISS:ct_cabecalhoGuia"/>
+									<element name="procedimentosAnalisados">
+										<complexType>
+											<sequence>
+												<element name="procedimento" type="ansTISS:ct_itemSolicitacao" maxOccurs="unbounded"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="detalheguiaOdonto" minOccurs="0" maxOccurs="100">
+							<complexType>
+								<sequence>
+									<element name="identificacaoGuia" type="ansTISS:ct_cabecalhoGuia"/>
+									<element name="procedimentosAnalisados">
+										<complexType>
+											<sequence>
+												<element name="procedimento" type="ansTISS:ct_itemSolicitacaoOdonto" maxOccurs="unbounded"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_StatusProtocolo">
+		<sequence>
+			<element name="identificacaoFontePagadora" type="ansTISS:ct_identificacaoFontePagadora"/>
+			<element name="statusProtocolo" type="ansTISS:st_statusProtocolo" minOccurs="0"/>
+			<element name="dadosPrestador" type="ansTISS:ct_contratado"/>
+			<element name="CNESPrestador" type="ansTISS:st_CNES" minOccurs="0"/>
+			<element name="lote">
+				<complexType>
+					<choice>
+						<element name="detalheLote" type="ansTISS:ct_statusLote" maxOccurs="unbounded"/>
+						<element name="mensagemErro" type="ansTISS:st_observacao"/>
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_tabela">
+		<sequence>
+			<element name="codigo" type="ansTISS:st_codigoTabela"/>
+			<element name="tipoTabela" type="ansTISS:st_tabela"/>
+			<element name="descricao" type="ansTISS:st_descricaoTabela" nillable="true" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_tempoEvolucaoDoenca">
+		<sequence>
+			<element name="valor" type="ansTISS:st_numeroInteiro"/>
+			<element name="unidadeTempo" type="ansTISS:st_unidadeTempo"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_totalDemoOdonto">
+		<sequence>
+			<element name="valorTotalGeralGlosa" type="ansTISS:st_valorMonetario"/>
+			<element name="valorTotalGeralLiberado" type="ansTISS:st_valorMonetario"/>
+			<element name="valorTotalProcessadoGuia" type="ansTISS:st_valorMonetario"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_totaisOdonto">
+		<sequence>
+			<element name="servicoExecutado" type="ansTISS:st_valorMonetario"/>
+			<element name="taxas" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="materiais" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="medicamentos" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="totalGeral" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_tratamenteOdontoRealizado">
+		<sequence>
+			<element name="data" type="ansTISS:st_data"/>
+			<element name="procedimento" type="ansTISS:ct_tabela"/>
+			<element name="dente" type="ansTISS:st_dente"/>
+			<element name="face" type="ansTISS:st_face"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_tratamentoOdontoSolicitado">
+		<sequence>
+			<element name="procedimento" type="ansTISS:ct_tabela"/>
+			<element name="dente" type="ansTISS:st_dente"/>
+			<element name="face" type="ansTISS:st_face"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_valorTotalServicos">
+		<sequence>
+			<element name="servicosExecutados" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="diarias" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="taxas" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="materiais" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="medicamentos" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="gases" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+			<element name="totalGeral" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

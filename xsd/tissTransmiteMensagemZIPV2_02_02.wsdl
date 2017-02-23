@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<wsdl:definitions 
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" 
+  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" 
+  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+  xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" 
+  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" 
+  xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagemZIP/v20202" 
+  xmlns:s="http://www.w3.org/2001/XMLSchema" 
+  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" 
+  targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagemZIP/v20202"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+>
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagemZIP/v20202">
+      <s:import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissV2_02_02.xsd"/>
+      <s:element name="tissTransmiteMensagemZIP_Operation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MensagemTissZIP" type="tns:ws_MensagemTissZIP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ws_MensagemTissZIP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MensagemTissZIP" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoMensagem" type="ans:st_tipoTransacao" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="tissTransmiteMensagemZIP_OperationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="tissTransmiteMensagemZIP_OperationResult" type="tns:ws_RespostaMensagemTissZIP" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ws_RespostaMensagemTissZIP">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RespostaMensagemTissZIP" type="s:base64Binary" />
+          <s:element minOccurs="1" maxOccurs="1" name="RespostaTipoMensagem" type="ans:st_tipoTransacao" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SintaxeTISSInvalida" type="s:string"/>
+      <s:element name="MensagemTISSInesperada" type="s:string"/>
+      <s:element name="DestinatarioInvalido" type="s:string"/>
+      <s:element name="RemetenteInvalido" type="s:string"/>
+      <s:element name="HashInvalido" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  
+  <wsdl:message name="tissTransmiteMensagemZIP_OperationSoapIn">
+    <wsdl:part name="parameters" element="tns:tissTransmiteMensagemZIP_Operation" />
+  </wsdl:message>
+  <wsdl:message name="tissTransmiteMensagemZIP_OperationSoapOut">
+    <wsdl:part name="parameters" element="tns:tissTransmiteMensagemZIP_OperationResponse" />
+  </wsdl:message>
+  <wsdl:message name="SintaxeTISSInvalida">
+	  <wsdl:part name="SintaxeTISSInvalida" element="tns:SintaxeTISSInvalida"/>
+  </wsdl:message>
+  <wsdl:message name="MensagemTISSInesperada">
+	  <wsdl:part name="MensagemTISSInesperada" element="tns:MensagemTISSInesperada"/>
+  </wsdl:message>
+  <wsdl:message name="DestinatarioInvalido">
+	  <wsdl:part name="DestinatarioInvalido" element="tns:DestinatarioInvalido"/>
+  </wsdl:message>
+  <wsdl:message name="RemetenteInvalido">
+	  <wsdl:part name="RemetenteInvalido" element="tns:RemetenteInvalido"/>
+  </wsdl:message>
+  <wsdl:message name="HashInvalido">
+	  <wsdl:part name="HashInvalido" element="tns:HashInvalido"/>
+  </wsdl:message>
+  
+  <wsdl:portType name="tissTransmiteMensagemZIP_PortType">
+    <wsdl:operation name="tissTransmiteMensagemZIP_Operation">
+      <wsdl:input message="tns:tissTransmiteMensagemZIP_OperationSoapIn" />
+      <wsdl:output message="tns:tissTransmiteMensagemZIP_OperationSoapOut" />
+      <wsdl:fault name="SintaxeTISSInvalida" message="tns:SintaxeTISSInvalida"/>
+      <wsdl:fault name="MensagemTISSInesperada" message="tns:MensagemTISSInesperada"/>
+      <wsdl:fault name="DestinatarioInvalido" message="tns:DestinatarioInvalido"/>
+      <wsdl:fault name="RemetenteInvalido" message="tns:RemetenteInvalido"/>
+      <wsdl:fault name="HashInvalido" message="tns:HashInvalido"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  
+  <wsdl:portType name="tissTransmiteMensagemZIPHttpGet" />
+  <wsdl:portType name="tissTransmiteMensagemZIPHttpPost" />
+  
+  <wsdl:binding name="tissTransmiteMensagemZIP_Binding" type="tns:tissTransmiteMensagemZIP_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="tissTransmiteMensagemZIP_Operation">
+      <soap:operation soapAction="" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SintaxeTISSInvalida">
+	      <soap:fault name="SintaxeTISSInvalida" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="MensagemTISSInesperada">
+	      <soap:fault name="MensagemTISSInesperada" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="DestinatarioInvalido">
+	      <soap:fault name="DestinatarioInvalido" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="RemetenteInvalido">
+	      <soap:fault name="RemetenteInvalido" use="literal"/>
+      </wsdl:fault>
+      <wsdl:fault name="HashInvalido">
+	      <soap:fault name="HashInvalido" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  
+  <wsdl:service name="tissTransmiteMensagemZIP">
+    <wsdl:port name="tissTransmiteMensagemZIP_PortType" binding="tns:tissTransmiteMensagemZIP_Binding">
+      <soap:address location="" />
+    </wsdl:port>
+  </wsdl:service>
+  
+</wsdl:definitions>

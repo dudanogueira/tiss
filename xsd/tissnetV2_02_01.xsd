@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema xmlns:tissnet="http://www.ans.gov.br/padroes/tiss/schemas" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
+	<include schemaLocation="tissSimpleTypesV2_02_01.xsd"/>
+	<simpleType name="st_host">
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<pattern value="[\p{N}\p{L}\./-_]+"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_wsurl">
+		<restriction base="string">
+			<whiteSpace value="collapse"/>
+			<pattern value="[a-z]+://[\p{N}\p{L}\./-_]+\?wsdl"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_port">
+		<restriction base="integer">
+			<minExclusive value="0"/>
+			<maxExclusive value="65536"/>
+		</restriction>
+	</simpleType>
+	<complexType name="ct_hostporta">
+		<sequence>
+			<element name="host" type="tissnet:st_host"/>
+			<element name="port" type="tissnet:st_port"/>
+		</sequence>
+	</complexType>
+	<complexType name="nodo_tissnet">
+		<sequence>
+			<element name="operadora" type="ans:st_registroANS"/>
+			<element name="pontoAPonto" minOccurs="0">
+				<complexType>
+					<choice>
+						<element name="socket" type="tissnet:ct_hostporta"/>
+						<element name="service" type="tissnet:st_wsurl"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="webServices" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="tissCancelaGuia" type="tissnet:st_wsurl" minOccurs="0"/>
+						<element name="tissLoteGuias" type="tissnet:st_wsurl" minOccurs="0"/>
+						<element name="tissSolicitacaoAnaliseConta" type="tissnet:st_wsurl" minOccurs="0"/>
+						<element name="tissSolicitacaoDemonstrativoPagamento" type="tissnet:st_wsurl" minOccurs="0"/>
+						<element name="tissSolicitacaoProcedimento" type="tissnet:st_wsurl" minOccurs="0"/>
+						<element name="tissSolicitacaoStatusProtocolo" type="tissnet:st_wsurl" minOccurs="0"/>
+						<element name="tissVerificaElegibilidade" type="tissnet:st_wsurl" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<element name="definicaoTissNet">
+		<complexType>
+			<sequence>
+				<element name="nodo" type="tissnet:nodo_tissnet" maxOccurs="unbounded"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

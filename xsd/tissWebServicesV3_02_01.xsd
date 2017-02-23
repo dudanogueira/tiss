@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- TISS versão 3.02.01 - Mensagens utilizadas nos Web Services -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
+	<include schemaLocation="tissComplexTypesV3_02_01.xsd"/>
+	<include schemaLocation="tissGuiasV3_02_01.xsd"/>
+	<include schemaLocation="tissSimpleTypesV3_02_01.xsd"/>
+	<include schemaLocation="tissV3_02_01.xsd"/>
+	<element name="cancelaGuiaWS">
+		<annotation>
+			<documentation> Prestador solicita cancelamento de guia</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="cancelaGuia" type="ans:ct_guiaCancelamento"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="reciboCancelaGuiaWS">
+		<annotation>
+			<documentation>Operadora responde a solicitação de cancelamento de guia</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="reciboCancelaGuia" type="ans:ct_reciboCancelaGuia"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="comunicacaoBeneficiarioWS">
+		<annotation>
+			<documentation>Prestador envia informação sobre internação/alta de beneficiário</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="comunicacaoBeneficiario" type="ans:ctm_beneficiarioComunicacao"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="reciboComunicacaoWS">
+		<annotation>
+			<documentation>Operadora responde a informação de internação/alta de beneficiário</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="reciboComunicacao" type="ans:ct_reciboComunicacao"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="loteGuiasWS">
+		<annotation>
+			<documentation>Prestador envia lote de guias a operadora</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="loteGuias" type="ans:ctm_guiaLote"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="protocoloRecebimentoWS">
+		<annotation>
+			<documentation>Operadora envia protocolo de recebimento das guias</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="recebimentoLote" type="ans:ct_recebimentoLote"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="loteRecursoGlosaWS">
+		<annotation>
+			<documentation>Prestador envia lote com recurso de glosa</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="loteRecurso" type="ans:ct_guiaRecursoLote"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="protocoloRecebimentoRecursoWS">
+		<annotation>
+			<documentation>Operadora envia protocolo de recebimento de recurso de glosa</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="recebimentoRecurso" type="ans:ct_recebimentoRecurso"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="solicitacaoDemonstrativoRetornoWS">
+		<annotation>
+			<documentation>Prestador solicita demonstrativo de retorno de pagamentos</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="solicitacaoDemonstrativoRetorno" type="ans:ct_demonstrativoSolicitacao"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="demonstrativoRetornoWS">
+		<annotation>
+			<documentation>Operadora envia demonstrativos de pagamento (até 30)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="demonstrativoRetorno" type="ans:ct_demonstrativoRetorno"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="solicitacaoProcedimentoWS">
+		<annotation>
+			<documentation>Prestador solicita autorização de procedimento (SpSADT, Internação ou prorrogação de internação)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="solicitacaoProcedimento" type="ans:ct_solicitacaoProcedimento"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="autorizacaoProcedimentoWS">
+		<annotation>
+			<documentation>Operadora responde a autorização de procedimento(SpSadt, internação ou prorrogação)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="autorizacaoProcedimento" type="ans:ct_situacaoAutorizacao"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="solicitacaoStatusAutorizacaoWS">
+		<annotation>
+			<documentation>Prestador solicita status de pedido de autorização</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="solicitacaoStatusAutorizacao" type="ans:ct_autorizacaoSolicitaStatus"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="situacaoAutorizacaoWS">
+		<annotation>
+			<documentation>Operadora responde status de autorização</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="situacaoAutorizacao" type="ans:ct_situacaoAutorizacao"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="solicitacaoStatusProtocoloWS">
+		<annotation>
+			<documentation>Prestador solicita status de protocolo(s)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="solicitacaoStatusProtocolo" type="ans:ct_protocoloSolicitacaoStatus"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="situacaoProtocoloWS">
+		<annotation>
+			<documentation>Operadora responde situação do(s) protocolo(s)</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="situacaoProtocolo" type="ans:ct_situacaoProtocolo"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="pedidoElegibilidadeWS">
+		<annotation>
+			<documentation>Prestador solicita elegibilidade do paciente</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="pedidoElegibilidade" type="ans:ct_elegibilidadeVerifica"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="respostaElegibilidadeWS">
+		<annotation>
+			<documentation>Operadora responde sobre a elegibilidade do paciente</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="respostaElegibilidade" type="ans:ct_respostaElegibilidade"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="loteAnexoWS">
+		<annotation>
+			<documentation>Prestador envia solicitação de quimio, radio e opme</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="loteAnexo" type="ans:ct_anexoLote"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="protocoloRecebimentoAnexoWS">
+		<annotation>
+			<documentation>Operadora envia protocolo de recebimento dos anexos de quimio, radio e opme</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="loteAnexo">
+					<complexType>
+						<choice>
+							<element name="mensagemErro" type="ans:ct_motivoGlosa"/>
+							<element name="protocoloRecebimentoAnexo" type="ans:ct_anexoRecebimento"/>
+						</choice>
+					</complexType>
+				</element>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="solicitacaoStatusRecursoGlosaWS">
+		<annotation>
+			<documentation>Prestador solicita status de protocolo de recurso de glosa</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="solicitacaoStatusProtocoloRecurso" type="ans:ct_protocoloSolicitacaoStatus"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="situacaoProtocoloRecursoWS">
+		<annotation>
+			<documentation>Operadora responde situação do protocolo de recurso de glosa</documentation>
+		</annotation>
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="situacaoProtocoloRecurso" type="ans:ct_respostaGlosa"/>
+				<element name="hash" type="string"/>
+				<element name="assinaturaDigital" type="ans:assinaturaDigital" minOccurs="0"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="tissFaultWS">
+		<complexType>
+			<sequence>
+				<element name="tissFault" type="ans:st_tissFault"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

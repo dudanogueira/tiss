@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tisssolicitacaostatusprotocolo/v30202" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="tissSolicitacaoStatusProtocolo" targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tisssolicitacaostatusprotocolo/v30202">
+	<types>
+		<schema xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissWebServicesV3_02_02.xsd"/>
+		</schema>
+	</types>
+	<message name="tissSolicitacaoStatusProtocolo_Request">
+		<part name="solicitacaoStatusProtocolo" element="ans:solicitacaoStatusProtocoloWS"/>
+	</message>
+	<message name="tissSolicitacaoStatusProtocolo_Response">
+		<part name="situacaoProtocolo" element="ans:situacaoProtocoloWS"/>
+	</message>
+	<message name="tissFault">
+		<part name="tissFault" element="ans:tissFaultWS"/>
+	</message>
+	<portType name="tissSolicitacaoStatusProtocolo_PortType">
+		<operation name="tissSolicitacaoStatusProtocolo_Operation">
+			<input message="tns:tissSolicitacaoStatusProtocolo_Request"/>
+			<output message="tns:tissSolicitacaoStatusProtocolo_Response"/>
+			<fault name="TissFault" message="tns:tissFault"/>
+		</operation>
+	</portType>
+	<binding name="tissSolicitacaoStatusProtocolo_Binding" type="tns:tissSolicitacaoStatusProtocolo_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="tissSolicitacaoStatusProtocolo_Operation">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="TissFault">
+				<soap:fault name="TissFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tissSolicitacaoStatusProtocolo">
+		<port name="tissSolicitacaoStatusProtocolo_Port" binding="tns:tissSolicitacaoStatusProtocolo_Binding">
+			<soap:address/>
+		</port>
+	</service>
+</definitions>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************-->
+<!-- ***   Schema para assinaturas XML  ***-->
+<!-- *** a partir de certificados do padrão (X509)   ***-->
+<!-- *** ICP-Brasil - Projeto TISS***-->
+<!-- ***************************************************-->
+<!-- Schema for XML Signatures-->
+<!--<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" targetNamespace="http://www.w3.org/2000/09/xmldsig#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.1">-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns:ns1="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified" version="0.1">
+	<import namespace="http://www.w3.org/2000/09/xmldsig#" schemaLocation="xmldsig-core-schema.xsd"/>
+	<complexType name="Signature">
+		<complexContent>
+			<extension base="ds:SignatureType"/>
+		</complexContent>
+	</complexType>
+</schema>

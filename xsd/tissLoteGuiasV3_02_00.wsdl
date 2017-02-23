@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissloteguias/v30200" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="tissLoteGuias" targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissloteguias/v30200">
+	<types>
+		<schema xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissWebServicesV3_02_00.xsd"/>
+		</schema>
+	</types>
+	<message name="tissLoteGuias_Request">
+		<part name="loteGuias" element="ans:loteGuiasWS"/>
+	</message>
+	<message name="tissLoteGuias_Response">
+		<part name="protocoloRecebimento" element="ans:protocoloRecebimentoWS"/>
+	</message>
+	<message name="tissFault">
+		<part name="tissFault" element="ans:tissFaultWS"/>
+	</message>
+	<portType name="tissLoteGuias_PortType">
+		<operation name="tissLoteGuias_Operation">
+			<input message="tns:tissLoteGuias_Request"/>
+			<output message="tns:tissLoteGuias_Response"/>
+			<fault name="TissFault" message="tns:tissFault"/>
+		</operation>
+	</portType>
+	<binding name="tissLoteGuias_Binding" type="tns:tissLoteGuias_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="tissLoteGuias_Operation">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="TissFault">
+				<soap:fault name="TissFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tissLoteGuias">
+		<port name="tissLoteGuias_Port" binding="tns:tissLoteGuias_Binding">
+			<soap:address/>
+		</port>
+	</service>
+</definitions>

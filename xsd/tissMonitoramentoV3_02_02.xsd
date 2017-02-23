@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by End User (free.org) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
+	<!--VERSÃO TISS 3.02.02 - TissMonitoramentov3_02_02-->
+	<include schemaLocation="tissSimpleTypesV3_02_02.xsd"/>
+	<include schemaLocation="tissComplexTypesV3_02_02.xsd"/>
+	<!-- Schema com a estrutura dos dados a serem enviados pelas Operadoras a ANS-->
+	<element name="mensagemEnvioANS">
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<element name="Mensagem">
+					<complexType>
+						<choice>
+							<element name="operadoraParaANS">
+								<complexType>
+									<choice>
+										<element name="semMovimentoInclusao" type="ans:dm_semMovimentoInclusao"/>
+										<element name="guiaMonitoramento" type="ans:ct_monitoramentoGuia" maxOccurs="10000"/>
+									</choice>
+								</complexType>
+							</element>
+							<element name="ansParaOperadora">
+								<complexType>
+									<choice>
+										<element name="arquivoRejeitado">
+											<complexType>
+												<sequence>
+													<element name="nomeArquivo" type="ans:st_texto20"/>
+													<element name="codigoRejeicao" type="ans:dm_tipoGlosa"/>
+												</sequence>
+											</complexType>
+										</element>
+										<element name="resumoProcessamento">
+											<complexType>
+												<sequence>
+													<element name="nomeArquivo" type="ans:st_texto20"/>
+													<element name="registrosRejeitados" minOccurs="0" maxOccurs="unbounded">
+														<complexType>
+															<sequence>
+																<element name="contratadoExecutante">
+																	<complexType>
+																		<sequence>
+																			<element name="CNES" type="ans:st_texto7"/>
+																			<element name="identificadorExecutante" type="ans:dm_indicadorIdentificacao"/>
+																			<element name="codigoCNPJ_CPF" type="ans:st_texto14"/>
+																		</sequence>
+																	</complexType>
+																</element>
+																<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+																<element name="numeroGuiaOperadora" type="ans:st_texto20"/>
+																<element name="identificadorReembolso" type="ans:st_texto20"/>
+																<element name="dataProcessamento" type="ans:st_data"/>
+																<element name="errosGuia" minOccurs="0" maxOccurs="unbounded">
+																	<complexType>
+																		<sequence>
+																			<element name="identificadorCampo" type="ans:st_texto3"/>
+																			<element name="codigoErro" type="ans:dm_tipoGlosa"/>
+																		</sequence>
+																	</complexType>
+																</element>
+																<element name="errosItensGuia" minOccurs="0" maxOccurs="unbounded">
+																	<complexType>
+																		<sequence>
+																			<element name="identProcedimento">
+																				<complexType>
+																					<sequence>
+																						<element name="codigoTabela" type="ans:dm_tabelaMonitor"/>
+																						<element name="Procedimento">
+																							<complexType>
+																								<choice>
+																									<element name="grupoProcedimento" type="ans:st_texto3"/>
+																									<element name="codigoProcedimento" type="ans:st_texto10"/>
+																								</choice>
+																							</complexType>
+																						</element>
+																					</sequence>
+																				</complexType>
+																			</element>
+																			<element name="denteRegiao" minOccurs="0">
+																				<complexType>
+																					<choice>
+																						<element name="codDente" type="ans:dm_dente"/>
+																						<element name="codRegiao" type="ans:dm_regiao"/>
+																					</choice>
+																				</complexType>
+																			</element>
+																			<element name="denteFace" type="ans:st_texto5" minOccurs="0"/>
+																			<element name="relacaoErros" maxOccurs="unbounded">
+																				<complexType>
+																					<sequence>
+																						<element name="identificadorCampo" type="ans:st_texto3"/>
+																						<element name="codigoErro" type="ans:dm_tipoGlosa"/>
+																					</sequence>
+																				</complexType>
+																			</element>
+																		</sequence>
+																	</complexType>
+																</element>
+															</sequence>
+														</complexType>
+													</element>
+													<element name="resumoProcessamentoTotais">
+														<complexType>
+															<sequence>
+																<element name="registrosIncluidos" type="ans:st_numerico5"/>
+																<element name="registrosAlterados" type="ans:st_numerico5"/>
+																<element name="registrosExcluidos" type="ans:st_numerico5"/>
+																<element name="registrosComErros" type="ans:st_numerico5"/>
+															</sequence>
+														</complexType>
+													</element>
+													<element name="arquivoProcessadoPelaANS" type="ans:dm_tipoGlosa"/>
+												</sequence>
+											</complexType>
+										</element>
+									</choice>
+								</complexType>
+							</element>
+						</choice>
+					</complexType>
+				</element>
+				<element name="epilogo" type="ans:epilogo"/>
+			</sequence>
+		</complexType>
+	</element>
+	<complexType name="ct_monitoramentoGuia">
+		<sequence>
+			<element name="tipoRegistro" type="ans:dm_statusTransacaoMonitor"/>
+			<element name="versaoTISSPrestador" type="ans:st_texto8" minOccurs="0"/>
+			<element name="indicadorEnvioPapel" type="ans:dm_simNao"/>
+			<element name="dadosContratadoExecutante">
+				<complexType>
+					<sequence>
+						<element name="CNES" type="ans:st_texto7"/>
+						<element name="identificadorExecutante" type="ans:dm_indicadorIdentificacao"/>
+						<element name="codigoCNPJ_CPF" type="ans:st_texto14"/>
+						<element name="municipioExecutante" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosBeneficiario">
+				<complexType>
+					<sequence>
+						<element name="identBeneficiario">
+							<complexType>
+								<choice>
+									<element name="numeroCartaoNacionalSaude" type="ans:st_texto15"/>
+									<element name="dadosSemCartao">
+										<complexType>
+											<sequence>
+												<element name="sexo" type="ans:dm_sexo"/>
+												<element name="dataNascimento" type="ans:st_data"/>
+												<element name="municipioResidencia" type="ans:st_texto7"/>
+											</sequence>
+										</complexType>
+									</element>
+								</choice>
+							</complexType>
+						</element>
+						<element name="numeroRegistroPlano" type="ans:st_texto20"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tipoEventoAtencao" type="ans:dm_tipoEventoMonitoramento"/>
+			<element name="origemEventoAtencao" type="ans:dm_origemEventoAtencaoSaude"/>
+			<element name="numeroGuia_prestador" type="ans:st_texto20"/>
+			<element name="numeroGuia_operadora" type="ans:st_texto20"/>
+			<element name="identificacaoReembolso" type="ans:st_texto20"/>
+			<element name="guiaSolicitacaoInternacao" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dataSolicitacao" type="ans:st_data" minOccurs="0"/>
+			<element name="dataAutorizacao" type="ans:st_data" minOccurs="0"/>
+			<element name="dataRealizacao" type="ans:st_data"/>
+			<element name="dataInicialFaturamento" type="ans:st_data" minOccurs="0"/>
+			<element name="dataFimPeriodo" type="ans:st_data" minOccurs="0"/>
+			<element name="dataProtocoloCobranca" type="ans:st_data"/>
+			<element name="dataPagamento" type="ans:st_data" minOccurs="0"/>
+			<element name="dataProcessamentoGuia" type="ans:st_data"/>
+			<element name="tipoConsulta" type="ans:st_texto1" minOccurs="0"/>
+			<element name="cboExecutante" type="ans:dm_CBOSmonitor" minOccurs="0"/>
+			<element name="indicacaoRecemNato" type="ans:dm_simNao" minOccurs="0"/>
+			<element name="indicacaoAcidente" type="ans:dm_indicadorAcidente" minOccurs="0"/>
+			<element name="caraterAtendimento" type="ans:dm_caraterMonitoramento" minOccurs="0"/>
+			<element name="tipoInternacao" type="ans:dm_tipoInternacaoMonitoramento" minOccurs="0"/>
+			<element name="regimeInternacao" type="ans:dm_regimeInternacao" minOccurs="0"/>
+			<element name="diagnosticosCID10" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="diagnoticoCID" type="ans:st_texto4" maxOccurs="4"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tipoAtendimento" type="ans:dm_tipoAtendimento" minOccurs="0"/>
+			<element name="tipoFaturamento" type="ans:dm_tipoFaturamentoMonitoramento" minOccurs="0"/>
+			<element name="diariasAcompanhante" type="ans:st_numerico3" minOccurs="0"/>
+			<element name="diariasUTI" type="ans:st_numerico3" minOccurs="0"/>
+			<element name="motivoSaida" type="ans:st_texto2" minOccurs="0"/>
+			<element name="valoresGuia">
+				<complexType>
+					<sequence>
+						<element name="valorTotalInformado" type="ans:st_decimal10-2"/>
+						<element name="valorProcessado" type="ans:st_decimal10-2"/>
+						<element name="valorTotalPagoProcedimentos" type="ans:st_decimal10-2"/>
+						<element name="valorTotalDiarias" type="ans:st_decimal10-2"/>
+						<element name="valorTotalTaxas" type="ans:st_decimal10-2"/>
+						<element name="valorTotalMateriais" type="ans:st_decimal10-2"/>
+						<element name="valorTotalOPME" type="ans:st_decimal10-2"/>
+						<element name="valorTotalMedicamentos" type="ans:st_decimal10-2"/>
+						<element name="valorGlosaGuia" type="ans:st_decimal10-2"/>
+						<element name="valorPagoGuia" type="ans:st_decimal10-2"/>
+						<element name="valorPagoFornecedores" type="ans:st_decimal10-2"/>
+						<element name="valorTotalTabelaPropria" type="ans:st_decimal10-2"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="declaracaoNascido" type="ans:st_texto11" minOccurs="0" maxOccurs="8"/>
+			<element name="declaracaoObito" type="ans:st_texto11" minOccurs="0" maxOccurs="8"/>
+			<element name="procedimentos" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="identProcedimento">
+							<complexType>
+								<sequence>
+									<element name="codigoTabela" type="ans:dm_tabelaMonitor"/>
+									<element name="Procedimento">
+										<complexType>
+											<choice>
+												<element name="grupoProcedimento" type="ans:st_texto3"/>
+												<element name="codigoProcedimento" type="ans:st_texto10"/>
+											</choice>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="denteRegiao" minOccurs="0">
+							<complexType>
+								<choice>
+									<element name="codDente" type="ans:dm_dente"/>
+									<element name="codRegiao" type="ans:dm_regiao"/>
+								</choice>
+							</complexType>
+						</element>
+						<element name="denteFace" type="ans:st_texto5" minOccurs="0"/>
+						<element name="quantidadeInformada" type="ans:st_decimal12-4"/>
+						<element name="valorInformado" type="ans:st_decimal10-2"/>
+						<element name="quantidadePaga" type="ans:st_decimal12-4"/>
+						<element name="valorPagoProc" type="ans:st_decimal10-2"/>
+						<element name="valorPagoFornecedor" type="ans:st_decimal10-2"/>
+						<element name="CNPJFornecedor" type="ans:st_CNPJ" minOccurs="0"/>
+						<element name="detalhePacote" minOccurs="0" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="codigoTabela" type="ans:dm_tabela"/>
+									<element name="codigoProcedimento" type="ans:st_texto10"/>
+									<element name="quantidade" type="ans:st_decimal12-4"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- LOTE DE "GUIAS" DE MONITORAMENTO A SER ENVIADO A ANS PELAS OPERADORAS
+	
+	<complexType name="ct_loteMonitoramento">
+		<sequence>
+			<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+			<element name="guiasMonitoramento">
+				<complexType>
+					<sequence>
+						<element name="guiaMonitoramento" type="ans:ct_monitoramentoGuia" maxOccurs="10000"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="epilogo" type="ans:epilogo"/>
+		</sequence>
+	</complexType>
+-->
+	<complexType name="epilogo">
+		<sequence>
+			<element name="hash" type="string"/>
+		</sequence>
+	</complexType>
+	<complexType name="cabecalhoTransacao">
+		<sequence>
+			<element name="identificacaoTransacao">
+				<complexType>
+					<sequence>
+						<element name="tipoTransacao" type="ans:dm_tipoTransacaoANS"/>
+						<element name="numeroLote" type="ans:st_texto12"/>
+						<element name="competenciaLote" type="ans:st_competencia"/>
+						<element name="dataRegistroTransacao" type="ans:st_data"/>
+						<element name="horaRegistroTransacao" type="ans:st_hora"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="versaoPadrao" type="ans:dm_versao_monitor"/>
+		</sequence>
+	</complexType>
+</schema>

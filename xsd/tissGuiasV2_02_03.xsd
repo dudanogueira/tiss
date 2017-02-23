@@ -1,0 +1,538 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 U (http://www.altova.com) by ans (EMBRACE) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ansTISS="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!--VERSÃO TISS 2.02.03-->
+	<!--<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissSimpleTypesV2_02_03.xsd"/>
+	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissComplexTypesV2_02_03.xsd"/>-->
+	<include schemaLocation="tissSimpleTypesV2_02_03.xsd"/>
+	<include schemaLocation="tissComplexTypesV2_02_03.xsd"/>
+	<complexType name="ct_loteAnexo">
+		<sequence>
+			<element name="numeroLote" type="ansTISS:st_descricao12"/>
+			<element name="anexoGuia">
+				<complexType>
+					<choice>
+						<element name="anexoSituacaoInicial" type="ansTISS:ct_anexoSituacaoInicial"/>
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ct_loteGuias">
+		<sequence>
+			<element name="numeroLote" type="ansTISS:st_inteiro12"/>
+			<element name="guias">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_guias"/>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- Schema com as guias que compõem o  padrão TISS-->
+	<complexType name="ct_guias">
+		<choice>
+			<element name="guiaFaturamento">
+				<complexType>
+					<choice>
+						<element name="guiaConsulta" type="ansTISS:ct_guiaConsulta" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaSP_SADT" type="ansTISS:ct_guiaSP_SADT" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaResumoInternacao" type="ansTISS:ct_guiaResumoInternacao" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaHonorarioIndividual" type="ansTISS:ct_guiaHonorarioIndividual" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaOdontologia" type="ansTISS:ct_guiaOdontologia" minOccurs="0" maxOccurs="100"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="guiaRevisaoGlosa">
+				<complexType>
+					<choice>
+						<element name="guiaConsultaReapresentacao" type="ansTISS:ct_guiaConsultaReapresentacao" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaSP_SADTReapresentacao" type="ansTISS:ct_guiaSP_SADTReapresentacao" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaResumoInternacaoReapresentacao" type="ansTISS:ct_guiaResumoInternacaoReapresentacao" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaHonorarioIndividualReapresentacao" type="ansTISS:ct_guiaHonorarioIndividualReapresentacao" minOccurs="0" maxOccurs="100"/>
+						<element name="guiaOdontologiaReapresentacao" type="ansTISS:ct_guiaTratamentoOdontologicoReapresentacao" minOccurs="0" maxOccurs="100"/>
+					</choice>
+				</complexType>
+			</element>
+		</choice>
+	</complexType>
+	<complexType name="ct_guiaHonorarioIndividual">
+		<sequence>
+			<element name="identificacaoGuiaHonorarioIndividual" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="contratado" type="ansTISS:ct_contratado"/>
+			<element name="contratadoExecutante">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_contratado">
+							<sequence>
+								<element name="identificacaoProfissional" type="ansTISS:ct_profissionalExecutante"/>
+								<element name="posicaoProfissional" type="ansTISS:st_posicaoProfissao"/>
+								<element name="tipoAcomodacao" type="ansTISS:st_tipoAcomodacao" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="procedimentosExamesRealizados">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_procedimentosRealizados">
+							<sequence>
+								<element name="totalGeralHonorario" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaHonorarioIndividualReapresentacao">
+		<sequence>
+			<element name="identificacaoGuiaHonorarioIndividual" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="contratado" type="ansTISS:ct_contratado"/>
+			<element name="contratadoExecutante">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_contratado">
+							<sequence>
+								<element name="identificacaoProfissional" type="ansTISS:ct_profissionalExecutante"/>
+								<element name="posicaoProfissional" type="ansTISS:st_posicaoProfissao"/>
+								<element name="tipoAcomodacao" type="ansTISS:st_tipoAcomodacao" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="procedimentosExamesRealizados">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_procedimentoRevisao">
+							<sequence>
+								<element name="totalGeralHonorario" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaConsulta">
+		<sequence>
+			<element name="identificacaoGuia" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosContratado" type="ansTISS:ct_contratado"/>
+			<element name="profissionalExecutante" type="ansTISS:ct_identificacaoProfissional"/>
+			<element name="hipoteseDiagnostica" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_diagnosticoAtendimento">
+							<sequence>
+								<element name="diagnosticoSecundario" type="ansTISS:ct_diagnosticosSecundarios" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosAtendimento">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_atendimentoConsulta"/>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaConsultaReapresentacao">
+		<sequence>
+			<element name="identificacaoGuia" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="beneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosContratado" type="ansTISS:ct_contratado"/>
+			<element name="profissionalExecutante" type="ansTISS:ct_identificacaoProfissional"/>
+			<element name="hipoteseDiagnostica" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_diagnosticoAtendimento">
+							<sequence>
+								<element name="diagnosticoSecundario" type="ansTISS:ct_diagnosticosSecundarios" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosAtendimento" type="ansTISS:ct_atendimentoConsultaReapr"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaOdontologia">
+		<sequence>
+			<element name="cabecalhoGuia" type="ansTISS:ct_cabecalhoGuiaOdonto"/>
+			<element name="dadosBeneficiario">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_beneficiario">
+							<sequence>
+								<element name="nomeEmpresa" type="ansTISS:st_descricao40" minOccurs="0"/>
+								<element name="numeroTelefone" type="ansTISS:st_numeroTel" minOccurs="0"/>
+								<element name="nomeTitular" type="ansTISS:st_nome" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosContratadoExecutante">
+				<complexType>
+					<sequence>
+						<element name="dadosContratado">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_contratado">
+										<sequence>
+											<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="dadosExecutante" type="ansTISS:ct_profissionalExecutante" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosExecutados">
+				<complexType>
+					<sequence>
+						<element name="procedimentoExecutado" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_procedimentoOdontologia">
+										<sequence>
+											<element name="dataRealizacao" type="ansTISS:st_data"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="quantidadeTotalUS" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="valorTotal" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+						<element name="totalFranquiaCoparticipacao" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="outrasDespesas" type="ansTISS:ct_outrasDespesas" minOccurs="0"/>
+			<element name="dadosAtendimento" type="ansTISS:ct_atendimentoOdontologia"/>
+			<element name="tipoFaturamento" type="ansTISS:st_tipoFaturamento" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaResumoInternacao">
+		<sequence>
+			<element name="identificacaoGuiaInternacao" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="numeroGuiaSolicitacao" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="identificacaoExecutante" type="ansTISS:ct_contratado"/>
+			<element name="dadosAutorizacao" type="ansTISS:ct_autorizacaoGuia" minOccurs="0"/>
+			<element name="caraterInternacao" type="ansTISS:st_eletivaEmergencia"/>
+			<element name="acomodacao" type="ansTISS:st_tipoAcomodacao"/>
+			<element name="dataHoraInternacao" type="ansTISS:st_dataHora"/>
+			<element name="dataHoraSaidaInternacao" type="ansTISS:st_dataHora" minOccurs="0"/>
+			<element name="tipoInternacao" type="ansTISS:st_tipoInternacao"/>
+			<element name="regimeInternacao" type="ansTISS:st_regimeInternacao"/>
+			<element name="internacaoObstetrica" type="ansTISS:ct_internacaoObstetrica" minOccurs="0"/>
+			<element name="obitoNeonatal" type="ansTISS:ct_obitoNeonatal" minOccurs="0"/>
+			<element name="diagnosticosSaidaInternacao" type="ansTISS:ct_diagnosticoSaidaInternacao"/>
+			<element name="procedimentosRealizados" type="ansTISS:ct_procedimentoRealizadoEquipe" minOccurs="0"/>
+			<element name="OPMUtilizadas" type="ansTISS:ct_OPMUtilizada" minOccurs="0"/>
+			<element name="outrasDespesas" type="ansTISS:ct_outrasDespesas" minOccurs="0"/>
+			<element name="tipoFaturamento" type="ansTISS:st_tipoFaturamento"/>
+			<element name="valorTotal" type="ansTISS:ct_valorTotalServicos" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaResumoInternacaoReapresentacao">
+		<sequence>
+			<element name="identificacaoGuiaInternacao" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="numeroGuiaSolicitacao" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="identificacaoExecutante" type="ansTISS:ct_contratado"/>
+			<element name="dadosAutorizacao" type="ansTISS:ct_autorizacaoGuia" minOccurs="0"/>
+			<element name="caraterInternacao" type="ansTISS:st_eletivaEmergencia"/>
+			<element name="acomodacao" type="ansTISS:st_tipoAcomodacao"/>
+			<element name="dataHoraInternacao" type="ansTISS:st_dataHora"/>
+			<element name="dataHoraSaidaInternacao" type="ansTISS:st_dataHora" minOccurs="0"/>
+			<element name="tipoInternacao" type="ansTISS:st_tipoInternacao"/>
+			<element name="regimeInternacao" type="ansTISS:st_regimeInternacao"/>
+			<element name="internacaoObstetrica" type="ansTISS:ct_internacaoObstetrica" minOccurs="0"/>
+			<element name="obitoNeonatal" type="ansTISS:ct_obitoNeonatal" minOccurs="0"/>
+			<element name="diagnosticosSaidaInternacao" type="ansTISS:ct_diagnosticoSaidaInternacao"/>
+			<element name="procedimentosRealizados" type="ansTISS:ct_procedimentoRevisao" minOccurs="0"/>
+			<element name="OPMUtilizadas" type="ansTISS:ct_OPMUtilizadasRevisao" minOccurs="0"/>
+			<element name="outrasDespesas" type="ansTISS:ct_outrasDespesasRevisao" minOccurs="0"/>
+			<element name="tipoFaturamento" type="ansTISS:st_tipoFaturamento"/>
+			<element name="valorTotal" type="ansTISS:ct_valorTotalServicos" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaSolicInternacao">
+		<sequence>
+			<element name="identificacaoGuiaSolicitacaoInternacao" type="ansTISS:ct_cabecalhoSolicitacao"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosSolicitanteAtendimento" type="ansTISS:ct_solicitante" minOccurs="0"/>
+			<element name="dadosSolicitante" type="ansTISS:ct_solicitante"/>
+			<element name="prestadorSolicitado" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_identificacaoPrestador">
+							<sequence>
+								<element name="nomePrestador" type="ansTISS:st_nome"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="caraterInternacao" type="ansTISS:st_eletivaEmergencia"/>
+			<element name="tipoInternacao" type="ansTISS:st_tipoInternacao"/>
+			<element name="indicacaoClinica" type="ansTISS:st_indicacaoClinica"/>
+			<element name="regimeInternacao" type="ansTISS:st_regimeInternacao"/>
+			<element name="hipotesesDiagnosticas" type="ansTISS:ct_hipoteseDiagnostica"/>
+			<element name="procedimentosExamesSolicitados" type="ansTISS:ct_procedimentosSolicitados"/>
+			<element name="OPMsSolicitadas" type="ansTISS:ct_OPMSolicitadas" minOccurs="0"/>
+			<element name="diasSolicitados" type="integer"/>
+			<element name="dataProvavelAdmisHosp" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaSolicitacaoOdonto">
+		<sequence>
+			<element name="cabecalhoGuia" type="ansTISS:ct_cabecalhoGuiaOdonto"/>
+			<element name="dadosBeneficiario">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_beneficiario">
+							<sequence>
+								<element name="nomeEmpresa" type="ansTISS:st_descricao40" minOccurs="0"/>
+								<element name="numeroTelefone" type="ansTISS:st_numeroTel" minOccurs="0"/>
+								<element name="nomeTitular" type="ansTISS:st_nome" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosSolicitante">
+				<complexType>
+					<sequence>
+						<element name="dadosContratado">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_contratado">
+										<sequence>
+											<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="dadosProfissional" minOccurs="0">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_profissionalExecutante"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="planoTratamento">
+				<complexType>
+					<sequence>
+						<element name="procedimentoSolicitado" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_procedimentoOdontologia">
+										<sequence>
+											<element name="totalFranquiaCoparticipacao" type="ansTISS:st_valorMonetario" minOccurs="0"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tipoAtendimento" type="ansTISS:st_atendimentoOdonto" minOccurs="0"/>
+			<element name="dataTerminoTratamento" type="ansTISS:st_data" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaSolicitacaoProrrogacao">
+		<sequence>
+			<element name="identificacaoProrrogacao" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="identificacaoGuiaReferencia" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosSolicitante" type="ansTISS:ct_solicitante"/>
+			<element name="indicacaoClinica" type="ansTISS:st_indicacaoClinica"/>
+			<element name="responsavelAutorizacao" type="ansTISS:st_nome" minOccurs="0"/>
+			<element name="procedimentosExamesSolicitados" type="ansTISS:ct_procedimentosSolicitados" minOccurs="0"/>
+			<element name="diarias" type="ansTISS:ct_diariaProrrogacao" minOccurs="0"/>
+			<element name="OPMsSolicitadas" type="ansTISS:ct_OPMSolicitadas" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaSolicitacaoSP_SADT">
+		<sequence>
+			<element name="identificacaoGuiaSolicitacaoSADTSP" type="ansTISS:ct_cabecalhoSolicitacao"/>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosSolicitante" type="ansTISS:ct_solicitante"/>
+			<element name="prestadorExecutante" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_contratado"/>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="caraterSolicitacao" type="ansTISS:st_eletivaEmergencia"/>
+			<element name="dataHoraSolicitacao" type="ansTISS:st_dataHora"/>
+			<element name="Diagnostico" type="ansTISS:ct_diagnostico" nillable="true" minOccurs="0"/>
+			<element name="indicacaoClinica" type="ansTISS:st_indicacaoClinica" nillable="true" minOccurs="0"/>
+			<element name="procedimentosSolicitados" type="ansTISS:ct_procedimentosSolicitados"/>
+			<element name="opmSolicitada" type="ansTISS:ct_OPMSolicitadas" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaSP_SADT">
+		<sequence>
+			<element name="identificacaoGuiaSADTSP" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="dadosAutorizacao" type="ansTISS:ct_autorizacaoGuia" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosSolicitante" type="ansTISS:ct_solicitante"/>
+			<element name="prestadorExecutante">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_contratado">
+							<sequence>
+								<element name="profissionalExecutanteCompl" minOccurs="0">
+									<complexType>
+										<complexContent>
+											<extension base="ansTISS:ct_profissionalExecutante">
+												<sequence>
+													<element name="codigoProfissionalCompl" type="ansTISS:ct_identificacaoProfissionalCompl" minOccurs="0"/>
+												</sequence>
+											</extension>
+										</complexContent>
+									</complexType>
+								</element>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="indicacaoClinica" type="ansTISS:st_indicacaoClinica" minOccurs="0"/>
+			<element name="caraterAtendimento" type="ansTISS:st_eletivaEmergencia"/>
+			<element name="dataHoraAtendimento" type="ansTISS:st_dataHora" minOccurs="0"/>
+			<element name="diagnosticoAtendimento" type="ansTISS:ct_diagnosticoAtendimento" minOccurs="0"/>
+			<element name="tipoSaida" type="ansTISS:st_tipoSaidaGuiaSADT"/>
+			<element name="tipoAtendimento" type="ansTISS:st_tipoAtendimento"/>
+			<element name="procedimentosRealizados" type="ansTISS:ct_procedimentoRealizadoEquipe" minOccurs="0"/>
+			<element name="outrasDespesas" type="ansTISS:ct_outrasDespesas" minOccurs="0"/>
+			<element name="OPMUtilizada" type="ansTISS:ct_OPMUtilizada" minOccurs="0"/>
+			<element name="valorTotal" type="ansTISS:ct_valorTotalServicos" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaSP_SADTReapresentacao">
+		<sequence>
+			<element name="identificacaoGuiaSADTSP" type="ansTISS:ct_cabecalhoGuia"/>
+			<element name="numeroGuiaPrincipal" type="ansTISS:st_numeroGuia" minOccurs="0"/>
+			<element name="dadosAutorizacao" type="ansTISS:ct_autorizacaoGuia" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ansTISS:ct_beneficiario"/>
+			<element name="dadosSolicitante" type="ansTISS:ct_solicitante"/>
+			<element name="prestadorExecutante">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_contratado">
+							<sequence>
+								<element name="profissionalExecutanteCompl" minOccurs="0">
+									<complexType>
+										<complexContent>
+											<extension base="ansTISS:ct_profissionalExecutante">
+												<sequence>
+													<element name="codigoProfissionalCompl" type="ansTISS:ct_identificacaoProfissionalCompl" minOccurs="0"/>
+												</sequence>
+											</extension>
+										</complexContent>
+									</complexType>
+								</element>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="indicacaoClinica" type="ansTISS:st_indicacaoClinica" minOccurs="0"/>
+			<element name="caraterAtendimento" type="ansTISS:st_eletivaEmergencia"/>
+			<element name="dataHoraAtendimento" type="ansTISS:st_dataHora" minOccurs="0"/>
+			<element name="diagnosticoAtendimento" type="ansTISS:ct_diagnosticoAtendimento" minOccurs="0"/>
+			<element name="tipoSaida" type="ansTISS:st_tipoSaidaGuiaSADT"/>
+			<element name="tipoAtendimento" type="ansTISS:st_tipoAtendimento"/>
+			<element name="procedimentosRealizados" type="ansTISS:ct_procedimentoRevisao" minOccurs="0"/>
+			<element name="outrasDespesas" type="ansTISS:ct_outrasDespesasRevisao" minOccurs="0"/>
+			<element name="OPMUtilizada" type="ansTISS:ct_OPMUtilizadasRevisao" minOccurs="0"/>
+			<element name="valorTotal" type="ansTISS:ct_valorTotalServicos" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ct_guiaTratamentoOdontologicoReapresentacao">
+		<sequence>
+			<element name="cabecalhoGuia" type="ansTISS:ct_cabecalhoGuiaOdonto"/>
+			<element name="dadosBeneficiario">
+				<complexType>
+					<complexContent>
+						<extension base="ansTISS:ct_beneficiario">
+							<sequence>
+								<element name="nomeEmpresa" type="ansTISS:st_descricao40" minOccurs="0"/>
+								<element name="numeroTelefone" type="ansTISS:st_numeroTel" minOccurs="0"/>
+								<element name="nomeTitular" type="ansTISS:st_nome" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosContratadoExecutante">
+				<complexType>
+					<sequence>
+						<element name="dadosContratado">
+							<complexType>
+								<complexContent>
+									<extension base="ansTISS:ct_contratado">
+										<sequence>
+											<element name="conselhoProfissional" type="ansTISS:ct_conselhoProfissional"/>
+										</sequence>
+									</extension>
+								</complexContent>
+							</complexType>
+						</element>
+						<element name="dadosExecutante" type="ansTISS:ct_profissionalExecutante" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosExecutados">
+				<complexType>
+					<sequence>
+						<element name="procedimentoExecutado" type="ansTISS:ct_procedimentoOdontoRevisao" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="outrasDespesas" type="ansTISS:ct_outrasDespesas" minOccurs="0"/>
+			<element name="dadosAtendimento" type="ansTISS:ct_atendimentoOdontologia" minOccurs="0"/>
+			<element name="tipoFaturamento" type="ansTISS:st_tipoFaturamento" minOccurs="0"/>
+			<element name="observacao" type="ansTISS:st_observacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+</schema>

@@ -1,0 +1,3830 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
+	<!--VERSÃO TISS 3.02.02 - TissSimpleTypesV3_02_02-->
+	<!-- Schema com os tipos simples de dados utilizados na construção dos tipos complexos -->
+	<simpleType name="dm_caraterAtendimento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<!-- 1- Eletiva -->
+			<!-- 2- Urgência/Emergência  -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_caraterMonitoramento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="E"/>
+			<enumeration value="U"/>
+			<!-- E-Eletiva -->
+			<!-- U-Urgência/Emergência  -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_CBOS">
+		<restriction base="string">
+			<enumeration value="201115"/>
+			<enumeration value="203015"/>
+			<enumeration value="213150"/>
+			<enumeration value="225105"/>
+			<enumeration value="225110"/>
+			<enumeration value="225148"/>
+			<enumeration value="225185"/>
+			<enumeration value="225115"/>
+			<enumeration value="225120"/>
+			<enumeration value="225210"/>
+			<enumeration value="225215"/>
+			<enumeration value="225220"/>
+			<enumeration value="225225"/>
+			<enumeration value="225230"/>
+			<enumeration value="225235"/>
+			<enumeration value="225240"/>
+			<enumeration value="225305"/>
+			<enumeration value="225350"/>
+			<enumeration value="225125"/>
+			<enumeration value="225130"/>
+			<enumeration value="225135"/>
+			<enumeration value="225140"/>
+			<enumeration value="225310"/>
+			<enumeration value="225145"/>
+			<enumeration value="225150"/>
+			<enumeration value="225315"/>
+			<enumeration value="225320"/>
+			<enumeration value="225155"/>
+			<enumeration value="225160"/>
+			<enumeration value="225245"/>
+			<enumeration value="225165"/>
+			<enumeration value="225170"/>
+			<enumeration value="225175"/>
+			<enumeration value="225180"/>
+			<enumeration value="225250"/>
+			<enumeration value="225190"/>
+			<enumeration value="225195"/>
+			<enumeration value="225103"/>
+			<enumeration value="225106"/>
+			<enumeration value="225255"/>
+			<enumeration value="225109"/>
+			<enumeration value="225260"/>
+			<enumeration value="225112"/>
+			<enumeration value="225118"/>
+			<enumeration value="225265"/>
+			<enumeration value="225121"/>
+			<enumeration value="225270"/>
+			<enumeration value="225275"/>
+			<enumeration value="225325"/>
+			<enumeration value="225124"/>
+			<enumeration value="225127"/>
+			<enumeration value="225280"/>
+			<enumeration value="225133"/>
+			<enumeration value="225330"/>
+			<enumeration value="225136"/>
+			<enumeration value="225139"/>
+			<enumeration value="225285"/>
+			<enumeration value="223204"/>
+			<enumeration value="223208"/>
+			<enumeration value="223212"/>
+			<enumeration value="223216"/>
+			<enumeration value="223220"/>
+			<enumeration value="223224"/>
+			<enumeration value="223228"/>
+			<enumeration value="223232"/>
+			<enumeration value="223236"/>
+			<enumeration value="223240"/>
+			<enumeration value="223244"/>
+			<enumeration value="223248"/>
+			<enumeration value="223252"/>
+			<enumeration value="223256"/>
+			<enumeration value="223260"/>
+			<enumeration value="223264"/>
+			<enumeration value="223268"/>
+			<enumeration value="223272"/>
+			<enumeration value="223505"/>
+			<enumeration value="223605"/>
+			<enumeration value="223910"/>
+			<enumeration value="223905"/>
+			<enumeration value="223710"/>
+			<enumeration value="223810"/>
+			<enumeration value="239425"/>
+			<enumeration value="251510"/>
+			<enumeration value="251545"/>
+			<enumeration value="251550"/>
+			<enumeration value="251605"/>
+			<enumeration value="322205"/>
+			<enumeration value="322220"/>
+			<enumeration value="322225"/>
+			<enumeration value="322230"/>
+			<enumeration value="516210"/>
+			<enumeration value="225121"/>
+			<enumeration value="225325"/>
+			<enumeration value="223276"/>
+			<enumeration value="223280"/>
+			<enumeration value="223284"/>
+			<enumeration value="223288"/>
+			<enumeration value="223293"/>
+			<enumeration value="225122"/>
+			<enumeration value="225142"/>
+			<enumeration value="225151"/>
+			<enumeration value="225203"/>
+			<enumeration value="225290"/>
+			<enumeration value="225295"/>
+			<enumeration value="225335"/>
+			<enumeration value="225340"/>
+			<enumeration value="225345"/>
+		
+			<!--CBO de fisioterapia incluidos na versão 3.02.02-->
+			<enumeration value="223625"/>
+			<enumeration value="223630"/>
+			<enumeration value="223635"/>
+			<enumeration value="223640"/>
+			<enumeration value="223645"/>
+			<enumeration value="223650"/>
+			<enumeration value="223655"/>
+			<enumeration value="223660"/>
+            <!--************************************ -->
+			<enumeration value="999999"/>
+		</restriction>
+		<!--		
+201115	Geneticista
+203015	Pesquisador em biologia de microorganismos e parasitas 
+213150	Físico médico 
+221105	Biólogo 
+225105	Médico acupunturista 
+225110	Médico alergista e imunologista
+225148	Médico anatomopatologista
+225115	Médico angiologista 
+225120	Médico cardiologista 
+225210	Médico cirurgião cardiovascular 
+225215	Médico cirurgião de cabeça e pescoço 
+225220	Médico cirurgião do aparelho digestivo 
+225225	Médico cirurgião geral 
+225230	Médico cirurgião pediátrico 
+225235	Médico cirurgião plástico 
+225240	Médico cirurgião torácico 
+225305	Médico citopatologista 
+225125	Médico clínico
+225130	Médico de família e comunidade
+225135	Médico dermatologista 
+225140	Médico do trabalho 
+225310	Médico em endoscopia 
+225145	Médico em medicina de tráfego 
+225150	Médico em medicina intensiva 
+225315	Médico em medicina nuclear 
+225320	Médico em radiologia e diagnóstico por imagem 
+225155	Médico endocrinologista e metabologista 
+225160	Médico fisiatra 
+225245	Médico foniatra 
+225165	Médico gastroenterologista 
+225170	Médico generalista 
+225175	Médico geneticista 
+225180	Médico geriatra 
+225250	Médico ginecologista e obstetra 
+225185	Médico Hematologista
+225190	Médico Hemoterapeuta 
+225195	Médico Homeopata
+225103	Médico infectologista 
+225106	Médico legista
+225255	Médico Mastologista
+225109	Médico Nefrologista
+225260	Médico  neurocirurgião
+225350	Médico neurofisiologista 
+225112	Médico neurologista 
+225118	Médico nutrologista 
+225265	Médico oftalmologista
+225121	Médico oncologista
+225270	Médico ortopedista e traumatologista 
+225275	Médico otorrinolaringologista 
+225325	Médico patologista clínico
+225124	Médico pediatra
+225127	Médico pneumologista 
+225280	Médico proctologista 
+225133	Médico psiquiatra 
+225330	Médico radioterapeuta 
+225136	Médico reumatologista 
+225139	Médico sanitarista
+225285	Médico urologista 
+223204	Cirurgião dentista - auditor 
+223208	Cirurgião dentista - clínico geral 
+223212	Cirurgião dentista - endodontista 
+223216	Cirurgião dentista - epidemiologista 
+223220	Cirurgião dentista - estomatologista 
+223224	Cirurgião dentista - implantodontista 
+223228	Cirurgião dentista - odontogeriatra 
+223232	Cirurgião dentista - odontologista legal 
+223236	Cirurgião dentista - odontopediatra 
+223240	Cirurgião dentista - ortopedista e ortodontista 
+223244	Cirurgião dentista - patologista bucal 
+223248	Cirurgião dentista - periodontista 
+223252	Cirurgião dentista - protesiólogo bucomaxilofacial 
+223256	Cirurgião dentista - protesista 
+223260	Cirurgião dentista - radiologista 
+223264	Cirurgião dentista - reabilitador oral 
+223268	Cirurgião dentista - traumatologista bucomaxilofacial 
+223272	Cirurgião dentista de saúde coletiva 
+223505	Enfermeiro 
+223605	Fisioterapeuta geral
+223910	Ortoptista 
+223620	Peripatologista 
+223905	Terapeuta ocupacional 
+223710	Nutricionista 
+223810	Fonoaudiólogo 
+239425	Psicopedagogo 
+251510	Psicólogo clínico 
+251545	Neuropsicólogo 
+251550	Psicanalista 
+251605	Assistente social 
+
+322205	Técnico de enfermagem 
+322220	Técnico de enfermagem psiquiátrica 
+322225	Instrumentador cirúrgico
+322230	Auxiliar de enfermagem 
+516210	Cuidador de idosos
+
+*************************** Incluidos em Dezembro/2013 - versão 3.01.00 ***************************
+225121	Médico oncologista clínico
+225325	Médico patologista
+223276	Cirurgião dentista - odontologia do trabalho
+223280	Cirurgião dentista - dentística
+223284	Cirurgião dentista - disfunção temporomandibular e dor orofacial
+223288	Cirurgião dentista - odontologia para pacientes com necessidades especiais
+223293	Cirurgião-dentista da estratégia de saúde da família
+225122	Médico cancerologista pediátrico
+225142	Médico da estratégia de saúde da família
+225151	Médico anestesiologista
+225203	Médico em cirurgia vascular
+225290	Médico cancerologista cirúrgico
+225295	Médico cirurgião da mão
+225335	Médico patologista clínico / medicina laboratorial
+225340	Médico hemoterapeuta
+225345	Médico hiperbarista
+**************************************************************************
+
+*************************** Incluidos em Abril/2016 - versão 3.02.02 ***************************
+223625    Fisioterapeuta respiratória
+223630    Fisioterapeuta neurofuncional
+223635    Fisioterapeuta traumato-ortopédica funcional
+223640    Fisioterapeuta osteopata
+223645    Fisioterapeuta quiropraxista
+223650    Fisioterapeuta acupunturista
+223655    Fisioterapeuta esportivo
+223660    Fisioterapeuta  do trabalho
+***************************************************************************************
+
+999999	CBO-S desconhecido ou não informado pelo solicitante
+-->
+	</simpleType>
+	<simpleType name="dm_CBOSmonitor">
+		<restriction base="string">
+			<enumeration value="201115"/>
+			<enumeration value="203015"/>
+			<enumeration value="213150"/>
+			<enumeration value="225105"/>
+			<enumeration value="225110"/>
+			<enumeration value="225148"/>
+			<enumeration value="225185"/>
+			<enumeration value="225115"/>
+			<enumeration value="225120"/>
+			<enumeration value="225210"/>
+			<enumeration value="225215"/>
+			<enumeration value="225220"/>
+			<enumeration value="225225"/>
+			<enumeration value="225230"/>
+			<enumeration value="225235"/>
+			<enumeration value="225240"/>
+			<enumeration value="225305"/>
+			<enumeration value="225350"/>
+			<enumeration value="225125"/>
+			<enumeration value="225130"/>
+			<enumeration value="225135"/>
+			<enumeration value="225140"/>
+			<enumeration value="225310"/>
+			<enumeration value="225145"/>
+			<enumeration value="225150"/>
+			<enumeration value="225315"/>
+			<enumeration value="225320"/>
+			<enumeration value="225155"/>
+			<enumeration value="225160"/>
+			<enumeration value="225245"/>
+			<enumeration value="225165"/>
+			<enumeration value="225170"/>
+			<enumeration value="225175"/>
+			<enumeration value="225180"/>
+			<enumeration value="225250"/>
+			<enumeration value="225190"/>
+			<enumeration value="225195"/>
+			<enumeration value="225103"/>
+			<enumeration value="225106"/>
+			<enumeration value="225255"/>
+			<enumeration value="225109"/>
+			<enumeration value="225260"/>
+			<enumeration value="225112"/>
+			<enumeration value="225118"/>
+			<enumeration value="225265"/>
+			<enumeration value="225121"/>
+			<enumeration value="225270"/>
+			<enumeration value="225275"/>
+			<enumeration value="225325"/>
+			<enumeration value="225124"/>
+			<enumeration value="225127"/>
+			<enumeration value="225280"/>
+			<enumeration value="225133"/>
+			<enumeration value="225330"/>
+			<enumeration value="225136"/>
+			<enumeration value="225139"/>
+			<enumeration value="225285"/>
+			<enumeration value="223204"/>
+			<enumeration value="223208"/>
+			<enumeration value="223212"/>
+			<enumeration value="223216"/>
+			<enumeration value="223220"/>
+			<enumeration value="223224"/>
+			<enumeration value="223228"/>
+			<enumeration value="223232"/>
+			<enumeration value="223236"/>
+			<enumeration value="223240"/>
+			<enumeration value="223244"/>
+			<enumeration value="223248"/>
+			<enumeration value="223252"/>
+			<enumeration value="223256"/>
+			<enumeration value="223260"/>
+			<enumeration value="223264"/>
+			<enumeration value="223268"/>
+			<enumeration value="223272"/>
+			<enumeration value="223505"/>
+			<enumeration value="223605"/>
+			<enumeration value="223910"/>
+			<enumeration value="223905"/>
+			<enumeration value="223710"/>
+			<enumeration value="223810"/>
+			<enumeration value="239425"/>
+			<enumeration value="251510"/>
+			<enumeration value="251545"/>
+			<enumeration value="251550"/>
+			<enumeration value="251605"/>
+			<enumeration value="322205"/>
+			<enumeration value="322220"/>
+			<enumeration value="322225"/>
+			<enumeration value="322230"/>
+			<enumeration value="516210"/>
+			<enumeration value="225121"/>
+			<enumeration value="225325"/>
+			<enumeration value="223276"/>
+			<enumeration value="223280"/>
+			<enumeration value="223284"/>
+			<enumeration value="223288"/>
+			<enumeration value="223293"/>
+			<enumeration value="225122"/>
+			<enumeration value="225142"/>
+			<enumeration value="225151"/>
+			<enumeration value="225203"/>
+			<enumeration value="225290"/>
+			<enumeration value="225295"/>
+			<enumeration value="225335"/>
+			<enumeration value="225340"/>
+			<enumeration value="225345"/>
+			<enumeration value="999999"/>
+			<enumeration value="131205"/>
+			<enumeration value="131210"/>
+			<enumeration value="131120"/>
+			<enumeration value="2011"/>
+			<enumeration value="201115"/>
+			<enumeration value="203305"/>
+			<enumeration value="203010"/>
+			<enumeration value="203015"/>
+			<enumeration value="203020"/>
+			<enumeration value="203025"/>
+			<enumeration value="213150"/>
+			<enumeration value="221105"/>
+			<enumeration value="2231"/>
+			<enumeration value="2232"/>
+			<enumeration value="223101"/>
+			<enumeration value="223102"/>
+			<enumeration value="223103"/>
+			<enumeration value="223104"/>
+			<enumeration value="223105"/>
+			<enumeration value="223106"/>
+			<enumeration value="223107"/>
+			<enumeration value="223108"/>
+			<enumeration value="223109"/>
+			<enumeration value="223110"/>
+			<enumeration value="223111"/>
+			<enumeration value="223112"/>
+			<enumeration value="223113"/>
+			<enumeration value="223114"/>
+			<enumeration value="223115"/>
+			<enumeration value="223116"/>
+			<enumeration value="223117"/>
+			<enumeration value="223118"/>
+			<enumeration value="223119"/>
+			<enumeration value="223120"/>
+			<enumeration value="223121"/>
+			<enumeration value="223122"/>
+			<enumeration value="223123"/>
+			<enumeration value="223124"/>
+			<enumeration value="223125"/>
+			<enumeration value="223126"/>
+			<enumeration value="223127"/>
+			<enumeration value="223128"/>
+			<enumeration value="223129"/>
+			<enumeration value="223130"/>
+			<enumeration value="223131"/>
+			<enumeration value="223132"/>
+			<enumeration value="223133"/>
+			<enumeration value="223134"/>
+			<enumeration value="223135"/>
+			<enumeration value="223136"/>
+			<enumeration value="223137"/>
+			<enumeration value="223138"/>
+			<enumeration value="223139"/>
+			<enumeration value="2235"/>
+			<enumeration value="223204"/>
+			<enumeration value="223208"/>
+			<enumeration value="223212"/>
+			<enumeration value="223216"/>
+			<enumeration value="223220"/>
+			<enumeration value="223224"/>
+			<enumeration value="223228"/>
+			<enumeration value="223232"/>
+			<enumeration value="223236"/>
+			<enumeration value="223305"/>
+			<enumeration value="223405"/>
+			<enumeration value="2236"/>
+			<enumeration value="223605"/>
+			<enumeration value="223615"/>
+			<enumeration value="223620"/>
+			<enumeration value="2237"/>
+			<enumeration value="223705"/>
+			<enumeration value="223710"/>
+			<enumeration value="2238"/>
+			<enumeration value="223810"/>
+			<enumeration value="223140"/>
+			<enumeration value="223141"/>
+			<enumeration value="223142"/>
+			<enumeration value="223143"/>
+			<enumeration value="223144"/>
+			<enumeration value="223145"/>
+			<enumeration value="223146"/>
+			<enumeration value="223147"/>
+			<enumeration value="223148"/>
+			<enumeration value="223540"/>
+			<enumeration value="223550"/>
+			<enumeration value="223244"/>
+			<enumeration value="223240"/>
+			<enumeration value="223248"/>
+			<enumeration value="223545"/>
+			<enumeration value="223149"/>
+			<enumeration value="223150"/>
+			<enumeration value="223151"/>
+			<enumeration value="223152"/>
+			<enumeration value="223252"/>
+			<enumeration value="223153"/>
+			<enumeration value="223154"/>
+			<enumeration value="223155"/>
+			<enumeration value="223156"/>
+			<enumeration value="223157"/>
+			<enumeration value="223256"/>
+			<enumeration value="223510"/>
+			<enumeration value="223515"/>
+			<enumeration value="223520"/>
+			<enumeration value="223525"/>
+			<enumeration value="223530"/>
+			<enumeration value="223535"/>
+			<enumeration value="223555"/>
+			<enumeration value="223260"/>
+			<enumeration value="223560"/>
+			<enumeration value="223264"/>
+			<enumeration value="223268"/>
+			<enumeration value="223272"/>
+			<enumeration value="22415"/>
+			<enumeration value="239425"/>
+			<enumeration value="2515"/>
+			<enumeration value="251505"/>
+			<enumeration value="251605"/>
+			<enumeration value="251510"/>
+			<enumeration value="252105"/>
+			<enumeration value="251515"/>
+			<enumeration value="251520"/>
+			<enumeration value="251525"/>
+			<enumeration value="251530"/>
+			<enumeration value="251535"/>
+			<enumeration value="251540"/>
+			<enumeration value="251545"/>
+			<enumeration value="251550"/>
+			<enumeration value="301105"/>
+			<enumeration value="313505"/>
+			<enumeration value="313410"/>
+			<enumeration value="3225"/>
+			<enumeration value="322105"/>
+			<enumeration value="322205"/>
+			<enumeration value="322305"/>
+			<enumeration value="322405"/>
+			<enumeration value="322505"/>
+			<enumeration value="322605"/>
+			<enumeration value="322210"/>
+			<enumeration value="322410"/>
+			<enumeration value="322115"/>
+			<enumeration value="322215"/>
+			<enumeration value="322415"/>
+			<enumeration value="322220"/>
+			<enumeration value="322420"/>
+			<enumeration value="324105"/>
+			<enumeration value="322225"/>
+			<enumeration value="324205"/>
+			<enumeration value="324110"/>
+			<enumeration value="3251"/>
+			<enumeration value="322230"/>
+			<enumeration value="324210"/>
+			<enumeration value="325105"/>
+			<enumeration value="324115"/>
+			<enumeration value="322235"/>
+			<enumeration value="325110"/>
+			<enumeration value="322240"/>
+			<enumeration value="325310"/>
+			<enumeration value="325115"/>
+			<enumeration value="3522"/>
+			<enumeration value="352210"/>
+			<enumeration value="411010"/>
+			<enumeration value="415120"/>
+			<enumeration value="422105"/>
+			<enumeration value="422110"/>
+			<enumeration value="422115"/>
+			<enumeration value="5151"/>
+			<enumeration value="5152"/>
+			<enumeration value="513220"/>
+			<enumeration value="515105"/>
+			<enumeration value="515110"/>
+			<enumeration value="515210"/>
+			<enumeration value="513430"/>
+			<enumeration value="515115"/>
+			<enumeration value="515120"/>
+			<enumeration value="516210"/>
+			<enumeration value="516805"/>
+			<enumeration value="516115"/>
+			<enumeration value="516135"/>
+			<enumeration value="519305"/>
+			<enumeration value="521130"/>
+			<enumeration value="623315"/>
+			<enumeration value="741105"/>
+			<enumeration value="766420"/>
+			<enumeration value="782310"/>
+			<enumeration value="915105"/>
+			<enumeration value="2231F3"/>
+			<enumeration value="3222B3"/>
+			<enumeration value="2231F4"/>
+			<enumeration value="2231F5"/>
+			<enumeration value="2231F6"/>
+			<enumeration value="2231F7"/>
+			<enumeration value="2231F8"/>
+			<!--CBO de fisioterapia incluidos na versão 3.02.02-->
+			<enumeration value="223625"/>
+			<enumeration value="223630"/>
+			<enumeration value="223635"/>
+			<enumeration value="223640"/>
+			<enumeration value="223645"/>
+			<enumeration value="223650"/>
+			<enumeration value="223655"/>
+			<enumeration value="223660"/>
+            <!--************************************ -->
+		</restriction>
+		<!--		
+201115	Geneticista
+203015	Pesquisador em biologia de microorganismos e parasitas 
+213150	Físico médico 
+221105	Biólogo 
+225105	Médico acupunturista 
+225110	Médico alergista e imunologista
+225148	Médico anatomopatologista
+225115	Médico angiologista 
+225120	Médico cardiologista 
+225210	Médico cirurgião cardiovascular 
+225215	Médico cirurgião de cabeça e pescoço 
+225220	Médico cirurgião do aparelho digestivo 
+225225	Médico cirurgião geral 
+225230	Médico cirurgião pediátrico 
+225235	Médico cirurgião plástico 
+225240	Médico cirurgião torácico 
+225305	Médico citopatologista 
+225125	Médico clínico
+225130	Médico de família e comunidade
+225135	Médico dermatologista 
+225140	Médico do trabalho 
+225310	Médico em endoscopia 
+225145	Médico em medicina de tráfego 
+225150	Médico em medicina intensiva 
+225315	Médico em medicina nuclear 
+225320	Médico em radiologia e diagnóstico por imagem 
+225155	Médico endocrinologista e metabologista 
+225160	Médico fisiatra 
+225245	Médico foniatra 
+225165	Médico gastroenterologista 
+225170	Médico generalista 
+225175	Médico geneticista 
+225180	Médico geriatra 
+225250	Médico ginecologista e obstetra 
+225185	Médico Hematologista
+225190	Médico Hemoterapeuta 
+225195	Médico Homeopata
+225103	Médico infectologista 
+225106	Médico legista
+225255	Médico Mastologista
+225109	Médico Nefrologista
+225260	Médico  neurocirurgião
+225350	Médico neurofisiologista 
+225112	Médico neurologista 
+225118	Médico nutrologista 
+225265	Médico oftalmologista
+225121	Médico oncologista
+225270	Médico ortopedista e traumatologista 
+225275	Médico otorrinolaringologista 
+225325	Médico patologista clínico
+225124	Médico pediatra
+225127	Médico pneumologista 
+225280	Médico proctologista 
+225133	Médico psiquiatra 
+225330	Médico radioterapeuta 
+225136	Médico reumatologista 
+225139	Médico sanitarista
+225285	Médico urologista 
+223204	Cirurgião dentista - auditor 
+223208	Cirurgião dentista - clínico geral 
+223212	Cirurgião dentista - endodontista 
+223216	Cirurgião dentista - epidemiologista 
+223220	Cirurgião dentista - estomatologista 
+223224	Cirurgião dentista - implantodontista 
+223228	Cirurgião dentista - odontogeriatra 
+223232	Cirurgião dentista - odontologista legal 
+223236	Cirurgião dentista - odontopediatra 
+223240	Cirurgião dentista - ortopedista e ortodontista 
+223244	Cirurgião dentista - patologista bucal 
+223248	Cirurgião dentista - periodontista 
+223252	Cirurgião dentista - protesiólogo bucomaxilofacial 
+223256	Cirurgião dentista - protesista 
+223260	Cirurgião dentista - radiologista 
+223264	Cirurgião dentista - reabilitador oral 
+223268	Cirurgião dentista - traumatologista bucomaxilofacial 
+223272	Cirurgião dentista de saúde coletiva 
+223505	Enfermeiro 
+223605	Fisioterapeuta geral
+223910	Ortoptista 
+223620	Peripatologista 
+223905	Terapeuta ocupacional 
+223710	Nutricionista 
+223810	Fonoaudiólogo 
+239425	Psicopedagogo 
+251510	Psicólogo clínico 
+251545	Neuropsicólogo 
+251550	Psicanalista 
+251605	Assistente social 
+
+322205	Técnico de enfermagem 
+322220	Técnico de enfermagem psiquiátrica 
+322225	Instrumentador cirúrgico
+322230	Auxiliar de enfermagem 
+516210	Cuidador de idosos
+
+*************************** Incluidos em Dezembro/2013 - versão 3.01.00 ***************************
+225121	Médico oncologista clínico
+225325	Médico patologista
+223276	Cirurgião dentista - odontologia do trabalho
+223280	Cirurgião dentista - dentística
+223284	Cirurgião dentista - disfunção temporomandibular e dor orofacial
+223288	Cirurgião dentista - odontologia para pacientes com necessidades especiais
+223293	Cirurgião-dentista da estratégia de saúde da família
+225122	Médico cancerologista pediátrico
+225142	Médico da estratégia de saúde da família
+225151	Médico anestesiologista
+225203	Médico em cirurgia vascular
+225290	Médico cancerologista cirúrgico
+225295	Médico cirurgião da mão
+225335	Médico patologista clínico / medicina laboratorial
+225340	Médico hemoterapeuta
+225345	Médico hiperbarista
+**************************************************************************
+
+*************************** Incluidos em Abril/2016 - versão 3.02.02 ***************************
+223625    Fisioterapeuta respiratória
+223630    Fisioterapeuta neurofuncional
+223635    Fisioterapeuta traumato-ortopédica funcional
+223640    Fisioterapeuta osteopata
+223645    Fisioterapeuta quiropraxista
+223650    Fisioterapeuta acupunturista
+223655    Fisioterapeuta esportivo
+223660    Fisioterapeuta  do trabalho
+***************************************************************************************
+
+999999	CBO-S desconhecido ou não informado pelo solicitante
+-->
+	</simpleType>
+	<simpleType name="dm_condicaoClinica">
+		<restriction base="string">
+			<maxLength value="1"/>
+			<enumeration value="A"/>
+			<enumeration value="E"/>
+			<enumeration value="H"/>
+			<enumeration value="C"/>
+			<enumeration value="R"/>
+			<!--	A - Ausente-->
+			<!--	E - Extração Indicada-->
+			<!--	H - Hígido-->
+			<!--	C-Cariado -->
+			<!--	R - Restaurado-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_conselhoProfissional">
+		<restriction base="string">
+			<maxLength value="2"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+			<enumeration value="7"/>
+			<enumeration value="8"/>
+			<enumeration value="9"/>
+			<enumeration value="10"/>
+			<!--	1 CRAS	Conselho Regional de Assistência Social	-->
+			<!--	2 COREN 	Conselho Regional de Enfermagem	-->
+			<!--	3 CRF		Conselho Regional de Farmácia	-->
+			<!--	4 CRFA 	Conselho Regional de Fonoaudiologia	-->
+			<!--	5 CREFITO	Conselho Regional de Fisioterapia e Terapia Ocupacional	-->
+			<!--	6 CRM		Conselho Regional de Medicina	-->
+			<!--	7 CRN		Conselho Regional de Nutrição	-->
+			<!--	8 CRO		Conselho Regional de Odontologia	-->
+			<!--	9 CRP		Conselho Regional de Psicologia	-->
+			<!--	10 OUT		Outros Conselhos	-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_dente">
+		<restriction base="string">
+			<maxLength value="2"/>
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="13"/>
+			<enumeration value="14"/>
+			<enumeration value="15"/>
+			<enumeration value="16"/>
+			<enumeration value="17"/>
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="21"/>
+			<enumeration value="22"/>
+			<enumeration value="23"/>
+			<enumeration value="24"/>
+			<enumeration value="25"/>
+			<enumeration value="26"/>
+			<enumeration value="27"/>
+			<enumeration value="28"/>
+			<enumeration value="29"/>
+			<enumeration value="31"/>
+			<enumeration value="32"/>
+			<enumeration value="33"/>
+			<enumeration value="34"/>
+			<enumeration value="35"/>
+			<enumeration value="36"/>
+			<enumeration value="37"/>
+			<enumeration value="38"/>
+			<enumeration value="39"/>
+			<enumeration value="41"/>
+			<enumeration value="42"/>
+			<enumeration value="43"/>
+			<enumeration value="44"/>
+			<enumeration value="45"/>
+			<enumeration value="46"/>
+			<enumeration value="47"/>
+			<enumeration value="48"/>
+			<enumeration value="49"/>
+			<enumeration value="51"/>
+			<enumeration value="52"/>
+			<enumeration value="53"/>
+			<enumeration value="54"/>
+			<enumeration value="55"/>
+			<enumeration value="59"/>
+			<enumeration value="61"/>
+			<enumeration value="62"/>
+			<enumeration value="63"/>
+			<enumeration value="64"/>
+			<enumeration value="65"/>
+			<enumeration value="69"/>
+			<enumeration value="71"/>
+			<enumeration value="72"/>
+			<enumeration value="73"/>
+			<enumeration value="74"/>
+			<enumeration value="75"/>
+			<enumeration value="79"/>
+			<enumeration value="81"/>
+			<enumeration value="82"/>
+			<enumeration value="83"/>
+			<enumeration value="84"/>
+			<enumeration value="85"/>
+			<enumeration value="89"/>
+			<!-- 11 Incisivo Central Superior Direito -->
+			<!-- 12 Incisivo Lateral Superior Direito -->
+			<!-- 13 Canino Superior Direito -->
+			<!-- 14 Primeiro Pré-molar Superior Direito -->
+			<!-- 15 Segundo Pré-molar Superior Direito -->
+			<!-- 16 Primeiro Molar Superior Direito -->
+			<!-- 17 Segundo Molar Superior Direito -->
+			<!-- 18 Terceiro Molar Superior Direito -->
+			<!-- 19 Dente Permanente Supranumerário em Hemi-arco Superior Direito -->
+			<!-- 21 Incisivo Central Superior Esquerdo -->
+			<!-- 22 Incisivo Lateral Superior Esquerdo -->
+			<!-- 23 Canino Superior Esquerdo -->
+			<!-- 24 Primeiro Pré-molar Superior Esquerdo -->
+			<!-- 25 Segundo Pré-molar Superior Esquerdo -->
+			<!-- 26 Primeiro Molar Superior Esquerdo -->
+			<!-- 27 Segundo Molar Superior Esquerdo -->
+			<!-- 28 Terceiro Molar Superior Esquerdo -->
+			<!-- 29 Dente Permanente Supranumerário em Hemi-arco Superior Esquerdo -->
+			<!-- 31 Incisivo Central Inferior Esquerdo -->
+			<!-- 32 Incisivo Lateral Inferior Esquerdo -->
+			<!-- 33 Canino Inferior Esquerdo -->
+			<!-- 34 Primeiro Pré-molar Inferior Esquerdo -->
+			<!-- 35 Segundo Pré-molar Inferior Esquerdo -->
+			<!-- 36 Primeiro Molar Inferior Esquerdo -->
+			<!-- 37 Segundo Molar Inferior Esquerdo -->
+			<!-- 38 Terceiro Molar Inferior Esquerdo -->
+			<!-- 39 Dente Permanente Supranumerário em Hemi-arco Inferior Esquerdo -->
+			<!-- 41 Incisivo Central Inferior Direito -->
+			<!-- 42 Incisivo Lateral Inferior Direito -->
+			<!-- 43 Canino Inferior Direito -->
+			<!-- 44 Primeiro Pré-molar Inferior Direito -->
+			<!-- 45 Segundo Pré-molar Inferior Direito -->
+			<!-- 46 Primeiro Molar Inferior Direito -->
+			<!-- 47 Segundo Molar Inferior Direito -->
+			<!-- 48 Terceiro Molar Inferior Direito -->
+			<!-- 49 Dente Permanente Supranumerário em Hemi-arco Inferior Direito -->
+			<!-- 51 Incisivo Central Decíduo Superior Direito -->
+			<!-- 52 Incisivo Lateral Decíduo Superior Direito -->
+			<!-- 53 Canino Decíduo Superior Direito -->
+			<!-- 54 Primeiro Molar Decíduo Superior Direito -->
+			<!-- 55 Segundo Molar Decíduo Superior Direito -->
+			<!-- 59 Dente Decíduo Supranumerário em Hemi-arco Superior Direito -->
+			<!-- 61 Incisivo Central Decíduo Superior Esquerdo -->
+			<!-- 62 Incisivo Lateral Decíduo Superior Esquerdo -->
+			<!-- 63 Canino Decíduo Superior Esquerdo -->
+			<!-- 64 Primeiro Molar Decíduo Superior Esquerdo -->
+			<!-- 65 Segundo Molar Decíduo Superior Esquerdo -->
+			<!-- 69 Dente Decíduo Supranumerário em Hemi-arco Superior Esquerdo -->
+			<!-- 71 Incisivo Central Decíduo Inferior Esquerdo -->
+			<!-- 72 Incisivo Lateral Decíduo Inferior Esquerdo -->
+			<!-- 73 Canino Decíduo Inferior Esquerdo -->
+			<!-- 74 Primeiro Molar Decíduo Inferior Esquerdo -->
+			<!-- 75 Segundo Molar Decíduo Inferior Esquerdo -->
+			<!-- 79 Dente Decíduo Supranumerário em Hemi-arco Inferior Esquerdo -->
+			<!-- 81 Incisivo Central Decíduo Inferior Direito -->
+			<!-- 82 Incisivo Lateral Decíduo Inferior Direito -->
+			<!-- 83 Canino Decíduo Inferior Direito -->
+			<!-- 84 Primeiro Molar Decíduo Inferior Direito -->
+			<!-- 85 Segundo molar Decíduo Inferior Direito -->
+			<!-- 89 Dente Decíduo Supranumerário em Hemi-arco Inferior Direito -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_debitoCreditoIndicador">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+		</restriction>
+		<!--1-Debito-->
+		<!--2-Crédito-->
+	</simpleType>
+	<simpleType name="dm_debitoCreditoTipo">
+		<restriction base="string">
+			<maxLength value="2"/>
+			<enumeration value="01"/>
+			<enumeration value="02"/>
+			<enumeration value="03"/>
+			<enumeration value="04"/>
+			<enumeration value="05"/>
+			<enumeration value="06"/>
+			<enumeration value="07"/>
+			<enumeration value="08"/>
+			<enumeration value="09"/>
+		</restriction>
+		<!--01-IRRF-->
+		<!--02-ISS-->
+		<!--03-INSS-->
+		<!--04-PIS-->
+		<!--05-COFINS-->
+		<!--06-CSLL-->
+		<!--07-Descontos financeiros-->
+		<!--08-Ajuste de pagamento anterior-->
+		<!--09-Determinação judicial-->
+	</simpleType>
+	<simpleType name="dm_diagnosticoImagem">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+		</restriction>
+		<!--1 - Tomografia-->
+		<!--2 - Ressonância Magnética-->
+		<!--3 - Raio-X-->
+		<!--4 - Outras-->
+		<!--5 - Ultrassonografia-->
+		<!--6 - PET-->
+	</simpleType>
+	<simpleType name="dm_ecog">
+		<restriction base="string">
+			<enumeration value="0"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!--0 - Totalmente ativo-->
+			<!--1 - Não exerce atividade física-->
+			<!--2 - Caminha e é capaz de realizar atividade de autocuidado-->
+			<!--3 - Capacidade de autocuidado limitada-->
+			<!--4 - Completamente dependente-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_estadiamento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<!--1 - I-->
+			<!--2 - II-->
+			<!--3 - III-->
+			<!--4 - IV-->
+			<!--5 - Não se aplica-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_face">
+		<restriction base="string">
+			<pattern value="[OLMVDIP]{1,5}"/>
+		</restriction>
+	</simpleType>
+	<!--		
+Este campo é uma combinação livre das faces abaixo realizada pelo profissional
+O	Oclusal
+L	Lingual
+M	Mesial
+V	Vestibular
+D	Distal
+I	Incisal
+P	Palatina
+-->
+	<simpleType name="dm_finalidadeTratamento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<!--
+1 - Curativa
+2 - Neoadjuvante
+3 - Adjuvante
+4 - Paliativa
+5 - Controle
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_formaPagamento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!--1 - Depósito/transferência bancária-->
+			<!--2 - Carteira-->
+			<!--3 - Boleto Bancário / DDA-->
+			<!--4 - Dinheiro/cheque-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_grauPart">
+		<restriction base="string">
+			<maxLength value="2"/>
+			<enumeration value="00"/>
+			<enumeration value="01"/>
+			<enumeration value="02"/>
+			<enumeration value="03"/>
+			<enumeration value="04"/>
+			<enumeration value="05"/>
+			<enumeration value="06"/>
+			<enumeration value="07"/>
+			<enumeration value="08"/>
+			<enumeration value="09"/>
+			<enumeration value="10"/>
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="13"/>
+			<!--			
+00	Cirurgião
+01	Primeiro Auxiliar
+02	Segundo Auxiliar
+03	Terceiro Auxiliar
+04	Quarto Auxiliar
+05	Instrumentador				
+06	Anestesista
+07	Auxiliar de Anestesista
+08	Consultor
+09	Perfusionista
+10	Pediatra na sala de parto
+11	Auxiliar SADT
+12	Clínico
+13	Intensivista
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_indicadorAcidente">
+		<restriction base="string">
+			<enumeration value="0"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="9"/>
+			<!--0 - Trabalho -->
+			<!--1 - Trânsito-->
+			<!--2 - Outros Acidentes-->
+			<!--9 - Não Acidentes-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_indicadorIdentificacao">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<!--1 - CNPJ-->
+			<!--2 - CPF-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_motivoSaida">
+		<restriction base="string">
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="14"/>
+			<enumeration value="15"/>
+			<enumeration value="16"/>
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="21"/>
+			<enumeration value="22"/>
+			<enumeration value="23"/>
+			<enumeration value="24"/>
+			<enumeration value="25"/>
+			<enumeration value="26"/>
+			<enumeration value="27"/>
+			<enumeration value="28"/>
+			<enumeration value="31"/>
+			<enumeration value="32"/>
+			<enumeration value="41"/>
+			<enumeration value="42"/>
+			<enumeration value="43"/>
+			<enumeration value="51"/>
+			<enumeration value="61"/>
+			<enumeration value="62"/>
+			<enumeration value="63"/>
+			<enumeration value="64"/>
+			<enumeration value="65"/>
+			<enumeration value="66"/>
+			<enumeration value="67"/>
+			<!-- 11 Alta Curado -->
+			<!-- 12 Alta Melhorado -->
+			<!-- 14 Alta a pedido -->
+			<!-- 15 Alta com previsão de retorno para acompanhamento do paciente -->
+			<!-- 16 Alta por Evasão -->
+			<!-- 17 Alta da Puérpera e recém-nascido -->
+			<!-- 18 Alta por Outros motivos -->
+			<!-- 21 Permanencia por características próprias da doença  -->
+			<!-- 22 Permanencia por Intercorrência -->
+			<!-- 23 Permanencia por impossibilidade sócio-familiar  -->
+			<!-- 24 permanencia por Processo de doação de órgãos, tecidos e células - doador vivo -->
+			<!-- 25 Permanencia por Processo de doação de órgãos, tecidos e células - doador morto -->
+			<!-- 26 Permanencia por mudança de procedimento -->
+			<!-- 27 Permanencia por re-operação -->
+			<!-- 28 Permanencia por outros motivos -->
+			<!-- 31 Transferido para outro estabelecimento -->
+			<!-- 32 Transferencia para internação domiciliar -->
+			<!-- 41 Óbito com declaração de óbito fornecida pelo médico assistente -->
+			<!-- 42 Óbito com declaração de Óbito fornecida pelo Instituto Médico Legal - IML -->
+			<!-- 43 Óbito com declaração de Óbito fornecida pelo Serviço de Verificação de Óbito - SVO.  -->
+			<!-- 51 ENCERRAMENTO ADMINISTRATIVO -->
+			<!-- 61 Alta mãe/puerpera e do recem nascido -->
+			<!-- 62 Alta mãe/puerpera e permanencia do recem-nascido -->
+			<!-- 63 Alta mãe/puerpera e obito do recem-nascido -->
+			<!-- 64 Alta mãe/puerpera com obito fetal -->
+			<!-- 65 Óbito da gestante e do concepto -->
+			<!-- 66 Óbito da mãe/puerpera e alta do recem-nascido  -->
+			<!-- 67 Obito da mae/puerpera e permanencia do recem nascido -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_motivoSaidaObito">
+		<restriction base="string">
+			<enumeration value="41"/>
+			<enumeration value="42"/>
+			<enumeration value="43"/>
+			<!-- 41 Óbito com declaração de óbito fornecida pelo médico assistente -->
+			<!-- 42 Óbito com declaração de Óbito fornecida pelo Instituto Médico Legal - IML -->
+			<!-- 43 Óbito com declaração de Óbito fornecida pelo Serviço de Verificação de Óbito - SVO.  -->
+		</restriction>
+	</simpleType>
+	<!--<simpleType name="dm_nodulo">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+		</restriction>
+		-->
+	<!--
+1	N1
+2	N2
+3	N3
+4	N0
+5	Nx
+-->
+	<!--
+	</simpleType>-->
+	<!--	<simpleType name="dm_obitoMulher">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			-->
+	<!-- 1 Grávida -->
+	<!--
+			-->
+	<!-- 2 Até 42 dias após término gestação -->
+	<!--
+			-->
+	<!-- 3 De 43 dias à 12 meses após término gestação -->
+	<!--
+		</restriction>
+	</simpleType>-->
+	<simpleType name="dm_opcaoFabricante">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!-- 1 Primeira opção de fabricante
+       2 Segunda opção de fabricante 
+       3 Terceira opção de fabricante -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_objetoRecurso">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<!--1 - Recurso de protocolo-->
+			<!--2 - Recurso de guia-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_outrasDespesas">
+		<restriction base="string">
+			<enumeration value="01"/>
+			<enumeration value="02"/>
+			<enumeration value="03"/>
+			<enumeration value="05"/>
+			<enumeration value="07"/>
+			<enumeration value="08"/>
+			<!--
+01	Gases medicinais	
+02	Medicamentos	
+03	Materiais	
+04	Taxas diversas 	Inativo
+05	Diárias	
+06	Aluguéis	Inativo
+07	Taxas e aluguéis	
+08	OPME
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_posicaoProfissao">
+		<restriction base="string">
+			<enumeration value="00"/>
+			<enumeration value="01"/>
+			<enumeration value="02"/>
+			<enumeration value="03"/>
+			<enumeration value="04"/>
+			<enumeration value="05"/>
+			<enumeration value="06"/>
+			<enumeration value="07"/>
+			<enumeration value="08"/>
+			<enumeration value="09"/>
+			<enumeration value="10"/>
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="13"/>
+			<!-- 00 Cirurgião -->
+			<!-- 01 Primeiro Auxiliar -->
+			<!-- 02 Segundo Auxiliar -->
+			<!-- 03 Terceiro Auxiliar -->
+			<!-- 04 Quarto Auxiliar -->
+			<!-- 05 Instrumentador -->
+			<!-- 06 Anestesista -->
+			<!-- 07 Auxiliar de Anestesista -->
+			<!-- 08 Consultor -->
+			<!-- 09 Perfusionista -->
+			<!-- 10 Pediatra na sala de parto -->
+			<!-- 11 Auxiliar SADT -->
+			<!-- 12 Clínico -->
+			<!-- 13 Intensivista -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_regiao">
+		<restriction base="string">
+			<maxLength value="4"/>
+			<enumeration value="AI"/>
+			<enumeration value="AS"/>
+			<enumeration value="HASD"/>
+			<enumeration value="HASE"/>
+			<enumeration value="HAID"/>
+			<enumeration value="HAIE"/>
+			<enumeration value="ASAI"/>
+			<enumeration value="S1"/>
+			<enumeration value="S2"/>
+			<enumeration value="S3"/>
+			<enumeration value="S4"/>
+			<enumeration value="S5"/>
+			<enumeration value="S6"/>
+			<enumeration value="LG"/>
+			<enumeration value="CL"/>
+			<enumeration value="AB"/>
+			<enumeration value="PA"/>
+			<enumeration value="MJ"/>
+			<enumeration value="PD"/>
+			<enumeration value="PM"/>
+			<enumeration value="RM"/>
+			<enumeration value="MA"/>
+			<enumeration value="GI"/>
+			<enumeration value="PT"/>
+			<enumeration value="TP"/>
+			<enumeration value="RIS"/>
+			<enumeration value="RCSD"/>
+			<enumeration value="RPSD"/>
+			<enumeration value="RCID"/>
+			<enumeration value="RMSD"/>
+			<enumeration value="RCSE"/>
+			<enumeration value="RPSE"/>
+			<enumeration value="RMSE"/>
+			<enumeration value="RII"/>
+			<enumeration value="RPID"/>
+			<enumeration value="RMID"/>
+			<enumeration value="RCIE"/>
+			<enumeration value="RPIE"/>
+			<enumeration value="RMIE"/>
+			<enumeration value="RMD"/>
+			<enumeration value="RME"/>
+			<enumeration value="RPD"/>
+			<enumeration value="RPE"/>
+			<enumeration value="RMPE"/>
+			<enumeration value="RMPD"/>
+			<enumeration value="SM"/>
+			<enumeration value="TU"/>
+			<enumeration value="SI"/>
+			<enumeration value="FLI"/>
+			<enumeration value="FLA"/>
+			<enumeration value="UV"/>
+			<enumeration value="PP"/>
+			<enumeration value="PI"/>
+			<enumeration value="LS"/>
+			<enumeration value="LI"/>
+			<enumeration value="RL"/>
+			<enumeration value="RP"/>
+			<enumeration value="RV"/>
+			<enumeration value="RSMD"/>
+			<enumeration value="RSME"/>
+			<enumeration value="RSL"/>
+			<!-- AS Arco Superior -->
+			<!-- AI Arco Inferior -->
+			<!-- HASD Hemi-Arco Superior Direito -->
+			<!-- HASE Hemi-Arco Superior Esquerdo -->
+			<!-- HAID Hemi-Arco Inferior Direito -->
+			<!-- HAIE Hemi-Arco Inferior Esquerdo -->
+			<!-- ASAI Arcadas Superiores e inferiores -->
+			<!-- S1 Sextante superior posterior direito -->
+			<!-- S2 Sextante superior anterior -->
+			<!-- S3 Sextante superior posterior esquerdo -->
+			<!-- S4 Sextante inferior posterior esquerdo -->
+			<!-- S5 Sextante inferior anterior -->
+			<!-- S6 Sextante inferior posterior direito -->
+			<!-- LG Língua -->
+			<!-- CL Comissura labial -->
+			<!-- AB Assoalho de boca -->
+			<!-- PA Palato -->
+			<!-- MJ Mucosa jugal -->
+			<!-- PD Palato duro -->
+			<!-- PM Palato mole -->
+			<!-- RM Região retromolar -->
+			<!-- MA Mucosa alveolar -->
+			<!-- GI Gengiva inserida -->
+			<!-- PT Parótida -->
+			<!-- TP Tonsilas palatinas -->
+			<!-- RIS Região dos Incisivos centrais superiores  -->
+			<!-- RCSD Região do canino e lateral superior direito -->
+			<!-- RPSD Região dos pré-molares superiores direito -->
+			<!-- RMSD Região dos molares superiores direito -->
+			<!-- RCSE Região do canino e lateral superior esquerdo -->
+			<!-- RPSE Região dos pré-molares superiores esquerdo -->
+			<!-- RMSE Região dos molares superiores esquerdo -->
+			<!-- RII Região dos incisivos inferiores -->
+			<!-- RCID Região de canino inferior direito -->
+			<!-- RPID Região dos pré-molares inferiores direito -->
+			<!-- RMID Região dos molares inferiores direito -->
+			<!-- RCIE Região de canino inferior esquerdo -->
+			<!-- RPIE Região dos pré-molares inferiores esquerdo -->
+			<!-- RMIE Região dos molares inferiores esquerdo -->
+			<!-- RMD Região dos molares lado direito -->
+			<!-- RME Região dos molares lado esquerdo -->
+			<!-- RPD Região dos pré-molares lado direito -->
+			<!-- RPE Região dos pré-molares lado esquerdo -->
+			<!-- RMPE Região dos molares e pré-molares lado esquerdo -->
+			<!-- RMPD Região dos molares e pré-molares lado direito -->
+			<!-- SM Região do assoalho do seio maxilar -->
+			<!-- TU Região do Túber -->
+			<!-- SI Região de Sínfise -->
+			<!-- FLI Freio lingual -->
+			<!-- FLA Freios labiais -->
+			<!-- UV Úvula -->
+			<!-- PP Pregas palatinas -->
+			<!-- PI Papila incisiva -->
+			<!-- LS Lábio Superior -->
+			<!-- LI Lábio inferior -->
+			<!-- RL Região lingual -->
+			<!-- RP Região palatina -->
+			<!-- RV Região vestibular -->
+			<!-- RSMD Região Sub-Mandibular Direita -->
+			<!-- RSME Região Sub-Mandibular Esquerda -->
+			<!-- RSL Região Sub-Lingual -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_regimeInternacao">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!--1 - Hospitalar-->
+			<!--2 - Hospital-Dia-->
+			<!--3 - Domiciliar-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_sexo">
+		<restriction base="string">
+			<maxLength value="1"/>
+			<enumeration value="1"/>
+			<enumeration value="3"/>
+			<!--1- Masculino-->
+			<!--3- Feminino-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_simNao">
+		<restriction base="string">
+			<enumeration value="S"/>
+			<enumeration value="N"/>
+			<!-- S- Sim -->
+			<!-- N- Não  -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_statusCancelamento">
+		<restriction base="string">
+			<maxLength value="1"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!-- 1 - Cancelado com sucesso-->
+			<!-- 2 - Não cancelado-->
+			<!-- 3 - Guia inexistente-->
+			<!-- 4-Em análise -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_statusComunicacaoBeneficiario">
+		<restriction base="string">
+			<enumeration value="P"/>
+			<enumeration value="B"/>
+			<!--P - Processado-->
+			<!--B - Beneficiário não reconhecido-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_statusProtocolo">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+			<enumeration value="7"/>
+			<enumeration value="8"/>
+			<!-- 1 - Recebido -->
+			<!-- 2 - Em análise -->
+			<!-- 3 - Liberado para pagamento -->
+			<!-- 4 - Encerrado sem pagamento -->
+			<!-- 5 - Analisado e aguardando liberação para pagamento -->
+			<!-- 6 - Pagamento Efetuado -->
+			<!-- 7 - Não Localizado -->
+			<!-- 8 - Aguardando informação complementar -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_statusSolicitacao">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+			<enumeration value="7"/>
+			<!-- 1 - Autorizado-->
+			<!-- 2 - Em análise-->
+			<!-- 3 - Negado-->
+			<!-- 4 - Aguardando justificativa técnica do solicitante-->
+			<!-- 5 - Aguardando documentação do prestador-->
+			<!-- 6 - Solicitação cancelada-->
+			<!-- 7 - Autorizado parcialmente-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_statusTransacaoMonitor">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!-- 1 - Inclusão de registro-->
+			<!-- 2 - Alteração de registro-->
+			<!-- 3 - Exclusão de registro-->
+		</restriction>
+	</simpleType>
+	<!-- a estrutura abaixo filtra  de dm_tabelaGeral, somente os códigos de tabela que serão utilizados como campos das guias -->
+	<simpleType name="dm_tabelaMonitor">
+		<restriction base="string">
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="20"/>
+			<enumeration value="22"/>
+			<enumeration value="63"/>
+			<enumeration value="90"/>
+			<enumeration value="98"/>
+			<enumeration value="00"/>
+		</restriction>
+		<!-- 18 TUSS _ Taxas hospitalares, diárias e gases medicinais -->
+		<!-- 19 TUSS _ Materiais -->
+		<!-- 20 TUSS - Medicamentos -->
+		<!-- 22 TUSS _ Procedimentos e eventos em saúde (medicina, odonto e demais áreas de saúde) -->
+		<!-- 63 TUSS_ Grupo de procedimentos e itens assistenciais para envio de dados para ANS -->
+		<!-- 00 Tabela Própria das Operadoras -->
+	</simpleType>
+	<simpleType name="dm_tabela">
+		<restriction base="string">
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="20"/>
+			<enumeration value="22"/>
+			<enumeration value="90"/>
+			<enumeration value="98"/>
+			<enumeration value="00"/>
+		</restriction>
+		<!-- 18 TUSS _ Taxas hospitalares, diárias e gases medicinais -->
+		<!-- 19 TUSS _ Materiais -->
+		<!-- 20 TUSS - Medicamentos -->
+		<!-- 22 TUSS _ Procedimentos e eventos em saúde (medicina, odonto e demais áreas de saúde) -->
+		<!-- 00 Tabela Própria das Operadoras -->
+	</simpleType>
+	<simpleType name="dm_tabelaGeral">
+		<restriction base="string">
+			<enumeration value="05"/>
+			<enumeration value="12"/>
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="20"/>
+			<enumeration value="22"/>
+			<enumeration value="23"/>
+			<enumeration value="24"/>
+			<enumeration value="25"/>
+			<enumeration value="26"/>
+			<enumeration value="27"/>
+			<enumeration value="28"/>
+			<enumeration value="29"/>
+			<enumeration value="30"/>
+			<enumeration value="31"/>
+			<enumeration value="32"/>
+			<enumeration value="33"/>
+			<enumeration value="34"/>
+			<enumeration value="35"/>
+			<enumeration value="36"/>
+			<enumeration value="37"/>
+			<enumeration value="38"/>
+			<enumeration value="39"/>
+			<enumeration value="40"/>
+			<enumeration value="41"/>
+			<enumeration value="42"/>
+			<enumeration value="43"/>
+			<enumeration value="44"/>
+			<enumeration value="45"/>
+			<enumeration value="46"/>
+			<enumeration value="47"/>
+			<enumeration value="48"/>
+			<enumeration value="49"/>
+			<enumeration value="50"/>
+			<enumeration value="51"/>
+			<enumeration value="52"/>
+			<enumeration value="53"/>
+			<enumeration value="54"/>
+			<enumeration value="55"/>
+			<enumeration value="56"/>
+			<enumeration value="57"/>
+			<enumeration value="58"/>
+			<enumeration value="59"/>
+			<enumeration value="60"/>
+			<enumeration value="61"/>
+			<enumeration value="90"/>
+			<enumeration value="98"/>
+			<enumeration value="00"/>
+		</restriction>
+		<!-- 01 Lista de Procedimentos Médicos AMB 90 (Inativo)** -->
+		<!-- 02 Lista de Procedimentos Médicos AMB 92 (Inativo)** -->
+		<!-- 03 Lista de Procedimentos Médicos AMB 96 (Inativo)** -->
+		<!-- 04 Lista de Procedimentos Médicos AMB 99 (Inativo)** -->
+		<!-- 05 Tabela Brasíndice -->
+		<!-- 06 Classificação Brasileira Hierarquizada de Procedimentos Médicos (Inativo)** -->
+		<!-- 07 Tabela CIEFAS-93 (Inativo)** -->
+		<!-- 08 Tabela CIEFAS-2000 (Inativo)** -->
+		<!-- 09 Rol de Procedimentos ANS (Inativo)** -->
+		<!-- 10 Tabela de Procedimentos Ambulatoriais SUS (Inativo)** -->
+		<!-- 11 Tabela de Procedimentos Hospitalares SUS (Inativo)** -->
+		<!-- 12 Tabela SIMPRO -->
+		<!-- 13 Tabela TUNEP -->
+		<!-- 14 Tabela VRPO (Inativo)**-->
+		<!-- 15 Tabela de Intercâmbio Sistema Uniodonto (Inativo)** -->
+		<!-- 16 TUSS _ Procedimentos Médicos(Inativo) -->
+		<!-- 17 TUSS _ Procedimentos Odontológicos (Inativo) -->
+		<!-- 18 TUSS _ Taxas hospitalares, diárias e gases medicinais -->
+		<!-- 19 TUSS _ Materiais -->
+		<!-- 20 TUSS - Medicamentos -->
+		<!-- 21 TUSS _ Outras áreas da saúde (Inativo) -->
+		<!-- 22 TUSS _ Procedimentos e eventos em saúde (medicina, odonto e demais áreas de saúde) -->
+		<!--23	Conselho profissional
+			24	Tipo de internação
+			25	Sexo
+			26	Regime de Internação
+			27	Tipo obstétrica
+			28	Tipo de consulta
+			29	Tipo de doença
+			30	Unidade de tempo de doença referida pelo paciente 
+			31	Indicador de Acidente
+			32	Tipo de atendimento
+			33	Tipo de acomodação
+			34	Motivo de saída da internação
+			35	Óbito em mulher
+			36	Tipo de Faturamento 
+			37	Via de acesso
+			38	Técnica utilizada
+			39	Grau de participação
+			40	Faces do dente
+			41	Situação Inicial do Dente
+			42	Regiões da Boca
+			43	Dentes
+			44	Status do protocolo
+			45	CBO-S (especialidade)
+			46	Glosas, negativas e demais mensagens
+			47	Unidade de Medida
+			48	Forma de Pagamento
+			49	Status do Cancelamento
+			50	Status da Solicitação
+			51	Tipo de Demonstrativo
+			52	Escala de Capacidade Funcional (ECOG - Escala de Zubrod)
+			53	Caráter do Atendimento
+			54	Código da Despesa
+			55	Finalidade do Tratamento
+			56	Metástases
+			57	Nódulo
+			58	Diagnóstico por imagem
+			59	Tipo de Quimioterapia
+			60	Tumor
+			61	Via de administração-->
+		<!-- 90 Tabela Própria Pacote Odontológico -->
+		<!-- 98 Tabela Própria de Pacotes -->
+		<!-- 00 Tabela Própria das Operadoras -->
+	</simpleType>
+	<simpleType name="dm_tabelasDiagnostico">
+		<restriction base="string">
+			<enumeration value="CID-10"/>
+		</restriction>
+	</simpleType>
+	<!--<simpleType name="dm_tecnicaRadiografica">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			-->
+	<!--1 - Tomografia-->
+	<!--
+			-->
+	<!--2 - Ressonância Magnética-->
+	<!--
+			-->
+	<!--3 - Raio-X-->
+	<!--
+			-->
+	<!--4 - Outras-->
+	<!--
+		</restriction>
+	</simpleType>-->
+	<simpleType name="dm_tecnicaUtilizada">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!--1 - Convencional-->
+			<!--2 - Videolaparoscopia-->
+			<!--3 - Robótica-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoAcomodacao">
+		<restriction base="string">
+			<enumeration value="02"/>
+			<enumeration value="09"/>
+			<enumeration value="10"/>
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="13"/>
+			<enumeration value="14"/>
+			<enumeration value="15"/>
+			<enumeration value="16"/>
+			<enumeration value="17"/>
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="20"/>
+			<enumeration value="21"/>
+			<enumeration value="22"/>
+			<enumeration value="25"/>
+			<enumeration value="26"/>
+			<enumeration value="27"/>
+			<enumeration value="28"/>
+			<enumeration value="29"/>
+			<enumeration value="30"/>
+			<enumeration value="31"/>
+			<enumeration value="32"/>
+			<enumeration value="33"/>
+			<enumeration value="36"/>
+			<enumeration value="37"/>
+			<enumeration value="38"/>
+			<enumeration value="39"/>
+			<enumeration value="40"/>
+			<enumeration value="41"/>
+			<enumeration value="43"/>
+			<enumeration value="44"/>
+			<enumeration value="45"/>
+			<enumeration value="46"/>
+			<enumeration value="47"/>
+			<enumeration value="48"/>
+			<enumeration value="49"/>
+			<enumeration value="50"/>
+			<enumeration value="51"/>
+			<enumeration value="52"/>
+			<enumeration value="53"/>
+			<enumeration value="56"/>
+			<enumeration value="57"/>
+			<enumeration value="58"/>
+			<enumeration value="59"/>
+			<!--
+02	QUARTO PRIVATIVO / PARTICULAR
+09	APARTAMENTO DE LUXO DA MATERNIDADE
+10	APARTAMENTO DE LUXO DE PSIQUIATRIA
+11	APARTAMENTO DE LUXO
+12	APARTAMENTO SIMPLES
+13	APARTAMENTO STANDARD
+14	APARTAMENTO SUÍTE
+15	APARTAMENTO COM ALOJAMENTO CONJUNTO
+16	APARTAMENTO PARA PACIENTE COM OBESIDADE MÓRBIDA
+17	APARTAMENTO SIMPLES DA MATERNIDADE
+18	APARTAMENTO SIMPLES DE PSIQUIATRIA
+19	APARTAMENTO SUÍTE DA MATERNIDADE
+20	APARTAMENTO SUÍTE DE PSIQUIATRIA
+21	BERÇÁRIO NORMAL
+22	BERÇÁRIO PATOLÓGICO / PREMATURO
+25	ENFERMARIA DE 3 LEITOS DA MATERNIDADE
+26	ENFERMARIA DE 4 OU MAIS LEITOS DA MATERNIDADE
+27	HOSPITAL DIA APARTAMENTO
+28	HOSPITAL DIA ENFERMARIA
+29	HOSPITAL DIA PSIQUIATRIA
+30	QUARTO COLETIVO DE 2 LEITOS DA MATERNIDADE
+31	ENFERMARIA DE 3 LEITOS
+32	ENFERMARIA DE 4 OU MAIS LEITOS
+33	ENFERMARIA COM ALOJAMENTO CONJUNTO
+36	QUARTO PRIVATIVO / PARTICULAR DA MATERNIDADE
+37	QUARTO PRIVATIVO / PARTICULAR DE PSIQUIATRIA
+38	SEMI UTI ADULTO GERAL
+39	SEMI UTI CORONARIANA
+40	SEMI UTI NEONATAL
+41	QUARTO COLETIVO DE 2 LEITOS
+43	QUARTO COM ALOJAMENTO CONJUNTO
+44	SEMI UTI NEUROLÓGICA
+45	SEMI UTI INFANTIL/PEDIÁTRICA
+46	SEMI UTI QUEIMADOS
+47	UNIDADE DE TRANSPLANTE DE MEDULA ÓSSEA
+48	UNIDADE DE TRANSPLANTE EM GERAL
+49	APARTAMENTO STANDARD DA MATERNIDADE
+50	APARTAMENTO STANDARD DE PSIQUIATRIA
+51	UTI ADULTO GERAL
+52	UTI INFANTIL/PEDIÁTRICA
+53	UTI NEONATAL
+56	UNIDADE PARA TRATAMENTO RADIOATIVO
+57	UTI CORONARIANA
+58	UTI NEUROLÓGICA
+59	UTI QUEIMADOS-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoAtendimento">
+		<restriction base="string">
+			<enumeration value="01"/>
+			<enumeration value="02"/>
+			<enumeration value="03"/>
+			<enumeration value="04"/>
+			<enumeration value="05"/>
+			<enumeration value="06"/>
+			<enumeration value="07"/>
+			<enumeration value="08"/>
+			<enumeration value="09"/>
+			<enumeration value="10"/>
+			<enumeration value="11"/>
+			<enumeration value="13"/>
+			<enumeration value="14"/>
+			<enumeration value="15"/>
+			<enumeration value="16"/>
+			<enumeration value="17"/>
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="20"/>
+			<enumeration value="21"/>
+			<!--
+01	Remoção
+02	Pequena Cirurgia
+03	Terapias
+04	Consulta
+05	Exames (englobando exame radiológico)
+06	Atendimento Domiciliar
+07	Internação
+08	Quimioterapia
+09	Radioterapia
+10	Terapia Renal Substitutiva (TRS)
+11	Pronto Socorro
+12	Ocupacional - Inativado na versão 3.01.00
+13	Pequenos atendimentos
+14	Admissional
+15	Demissional
+16	Periódico
+17	Retorno ao trabalho
+18	Mudança de função
+*** Incluidos na versão 3.01.00
+14	Saúde Ocupacional - Admissional
+15	Saúde Ocupacional - Demissional
+16	Saúde Ocupacional - Periódico
+17	Saúde Ocupacional - Retorno ao trabalho
+18	Saúde Ocupacional - Mudança de função
+19	Saúde Ocupacional - Promoção a saúde
+20	Saúde Ocupacional - Beneficiário novo
+21	Saúde Ocupacional - Assistência a demitidos
+
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoAtendimentoOdonto">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<!--
+É um subconjunto da tabela tipo de atendimento
+1 Tratamento odontologico
+2  Exame radiologico
+3 Ortodontia
+4 Urgencia/emergencia
+5 Auditoria
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoConsulta">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!--1 - Primeira-->
+			<!--2 - Seguimento-->
+			<!--3 - Pré-Natal-->
+			<!--4 - Por encaminhamento-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoDemonstrativo">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!--1 - Demonstrativo de Pagamento -->
+			<!--2 - Demonstrativo de análise da conta médica -->
+			<!--3 - Demonstrativo de Pagamento - Odontologia -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoDemonstrativoPagamento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="3"/>
+			<!--1 - Demonstrativo de Pagamento -->
+			<!--2 - Demonstrativo de análise da conta médica -->
+			<!--3 - Demonstrativo de Pagamento - Odontologia -->
+		</restriction>
+	</simpleType>
+	<!--<simpleType name="dm_tipoDoenca">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			-->
+	<!--1- A - Aguda-->
+	<!--
+			-->
+	<!--2- C - Crônica-->
+	<!--
+		</restriction>
+	</simpleType>-->
+	<simpleType name="dm_tipoEvento">
+		<restriction base="string">
+			<enumeration value="I"/>
+			<enumeration value="A"/>
+			<!-- Inicio Internação -->
+			<!-- Alta -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoEventoMonitoramento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<!-- 
+			1 - Consulta
+			2 - SP/SADT
+			3 - Internação
+			4 - Tratamento Odontológico
+			5 - Honorarios
+	-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_origemEventoAtencaoSaude">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!-- 	1 - Rede Contratada, referenciada ou credenciada
+			2 - Rede Própria - Cooperados
+			3 - Rede Própria - Demais prestadores
+			4 - Reembolso ao beneficiário
+	-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoFaturamento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!--1- Parcial-->
+			<!--2- Final-->
+			<!--3- Complementar-->
+			<!--4- Total-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoFaturamentoMonitoramento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="F"/>
+			<enumeration value="T"/>
+			<enumeration value="P"/>
+			<!-- Versão 3.0 em diante -->
+			<!--1- Parcial-->
+			<!--2- Final-->
+			<!--3- Complementar-->
+			<!--4- Total-->
+			<!--F ou P - final ou parcial da versão 1-->
+			<!--T ou P - total ou parcial da versão 2-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoFaturamentoOdonto">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="4"/>
+			<!--1- Parcial-->
+			<!--4- Total-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoGuia">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<!--1 - Solicitação-->
+			<!--2 - Faturamento-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoGlosa">
+		<restriction base="string">
+			<maxLength value="4"/>
+			<enumeration value="1001"/>
+			<enumeration value="1002"/>
+			<enumeration value="1003"/>
+			<enumeration value="1004"/>
+			<enumeration value="1005"/>
+			<enumeration value="1006"/>
+			<enumeration value="1007"/>
+			<enumeration value="1008"/>
+			<enumeration value="1009"/>
+			<enumeration value="1010"/>
+			<enumeration value="1011"/>
+			<enumeration value="1012"/>
+			<enumeration value="1013"/>
+			<enumeration value="1014"/>
+			<enumeration value="1015"/>
+			<enumeration value="1016"/>
+			<enumeration value="1017"/>
+			<enumeration value="1018"/>
+			<enumeration value="1019"/>
+			<enumeration value="1020"/>
+			<enumeration value="1021"/>
+			<enumeration value="1022"/>
+			<enumeration value="1023"/>
+			<enumeration value="1024"/>
+			<enumeration value="1025"/>
+			<enumeration value="1101"/>
+			<enumeration value="1102"/>
+			<enumeration value="1103"/>
+			<enumeration value="1104"/>
+			<enumeration value="1201"/>
+			<enumeration value="1202"/>
+			<enumeration value="1203"/>
+			<enumeration value="1204"/>
+			<enumeration value="1205"/>
+			<enumeration value="1206"/>
+			<enumeration value="1207"/>
+			<enumeration value="1208"/>
+			<enumeration value="1209"/>
+			<enumeration value="1210"/>
+			<enumeration value="1211"/>
+			<enumeration value="1212"/>
+			<enumeration value="1213"/>
+			<enumeration value="1214"/>
+			<enumeration value="1215"/>
+			<enumeration value="1216"/>
+			<enumeration value="1217"/>
+			<enumeration value="1218"/>
+			<enumeration value="1301"/>
+			<enumeration value="1302"/>
+			<enumeration value="1303"/>
+			<enumeration value="1304"/>
+			<enumeration value="1305"/>
+			<enumeration value="1306"/>
+			<enumeration value="1307"/>
+			<enumeration value="1308"/>
+			<enumeration value="1309"/>
+			<enumeration value="1310"/>
+			<enumeration value="1311"/>
+			<enumeration value="1312"/>
+			<enumeration value="1313"/>
+			<enumeration value="1314"/>
+			<enumeration value="1315"/>
+			<enumeration value="1316"/>
+			<enumeration value="1317"/>
+			<enumeration value="1318"/>
+			<enumeration value="1319"/>
+			<enumeration value="1320"/>
+			<enumeration value="1321"/>
+			<enumeration value="1322"/>
+			<enumeration value="1323"/>
+			<enumeration value="1401"/>
+			<enumeration value="1402"/>
+			<enumeration value="1403"/>
+			<enumeration value="1404"/>
+			<enumeration value="1405"/>
+			<enumeration value="1406"/>
+			<enumeration value="1407"/>
+			<enumeration value="1408"/>
+			<enumeration value="1409"/>
+			<enumeration value="1410"/>
+			<enumeration value="1411"/>
+			<enumeration value="1412"/>
+			<enumeration value="1413"/>
+			<enumeration value="1414"/>
+			<enumeration value="1415"/>
+			<enumeration value="1416"/>
+			<enumeration value="1417"/>
+			<enumeration value="1418"/>
+			<enumeration value="1419"/>
+			<enumeration value="1420"/>
+			<enumeration value="1421"/>
+			<enumeration value="1422"/>
+			<enumeration value="1423"/>
+			<enumeration value="1424"/>
+			<enumeration value="1425"/>
+			<enumeration value="1426"/>
+			<enumeration value="1427"/>
+			<enumeration value="1428"/>
+			<enumeration value="1429"/>
+			<enumeration value="1430"/>
+			<enumeration value="1431"/>
+			<enumeration value="1432"/>
+			<enumeration value="1433"/>
+			<enumeration value="1434"/>
+			<enumeration value="1435"/>
+			<enumeration value="1436"/>
+			<enumeration value="1437"/>
+			<enumeration value="1438"/>
+			<enumeration value="1501"/>
+			<enumeration value="1502"/>
+			<enumeration value="1503"/>
+			<enumeration value="1504"/>
+			<enumeration value="1505"/>
+			<enumeration value="1506"/>
+			<enumeration value="1507"/>
+			<enumeration value="1508"/>
+			<enumeration value="1509"/>
+			<enumeration value="1601"/>
+			<enumeration value="1602"/>
+			<enumeration value="1603"/>
+			<enumeration value="1604"/>
+			<enumeration value="1605"/>
+			<enumeration value="1606"/>
+			<enumeration value="1607"/>
+			<enumeration value="1608"/>
+			<enumeration value="1609"/>
+			<enumeration value="1610"/>
+			<enumeration value="1611"/>
+			<enumeration value="1612"/>
+			<enumeration value="1613"/>
+			<enumeration value="1614"/>
+			<enumeration value="1615"/>
+			<enumeration value="1701"/>
+			<enumeration value="1702"/>
+			<enumeration value="1703"/>
+			<enumeration value="1704"/>
+			<enumeration value="1705"/>
+			<enumeration value="1706"/>
+			<enumeration value="1707"/>
+			<enumeration value="1708"/>
+			<enumeration value="1709"/>
+			<enumeration value="1710"/>
+			<enumeration value="1711"/>
+			<enumeration value="1712"/>
+			<enumeration value="1713"/>
+			<enumeration value="1714"/>
+			<enumeration value="1715"/>
+			<enumeration value="1716"/>
+			<enumeration value="1717"/>
+			<enumeration value="1718"/>
+			<enumeration value="1719"/>
+			<enumeration value="1720"/>
+			<enumeration value="1721"/>
+			<enumeration value="1722"/>
+			<enumeration value="1723"/>
+			<enumeration value="1724"/>
+			<enumeration value="1725"/>
+			<enumeration value="1726"/>
+			<enumeration value="1727"/>
+			<enumeration value="1728"/>
+			<enumeration value="1729"/>
+			<enumeration value="1730"/>
+			<enumeration value="1731"/>
+			<enumeration value="1732"/>
+			<enumeration value="1733"/>
+			<enumeration value="1734"/>
+			<enumeration value="1735"/>
+			<enumeration value="1736"/>
+			<enumeration value="1737"/>
+			<enumeration value="1738"/>
+			<enumeration value="1739"/>
+			<enumeration value="1740"/>
+			<enumeration value="1741"/>
+			<enumeration value="1742"/>
+			<enumeration value="1743"/>
+			<enumeration value="1744"/>
+			<enumeration value="1745"/>
+			<enumeration value="1746"/>
+			<enumeration value="1747"/>
+			<enumeration value="1748"/>
+			<enumeration value="1749"/>
+			<enumeration value="1801"/>
+			<enumeration value="1802"/>
+			<enumeration value="1803"/>
+			<enumeration value="1804"/>
+			<enumeration value="1805"/>
+			<enumeration value="1806"/>
+			<enumeration value="1807"/>
+			<enumeration value="1808"/>
+			<enumeration value="1809"/>
+			<enumeration value="1810"/>
+			<enumeration value="1811"/>
+			<enumeration value="1812"/>
+			<enumeration value="1813"/>
+			<enumeration value="1814"/>
+			<enumeration value="1815"/>
+			<enumeration value="1816"/>
+			<enumeration value="1817"/>
+			<enumeration value="1818"/>
+			<enumeration value="1819"/>
+			<enumeration value="1820"/>
+			<enumeration value="1821"/>
+			<enumeration value="1822"/>
+			<enumeration value="1823"/>
+			<enumeration value="1824"/>
+			<enumeration value="1825"/>
+			<enumeration value="1826"/>
+			<enumeration value="1827"/>
+			<enumeration value="1828"/>
+			<enumeration value="1829"/>
+			<enumeration value="1830"/>
+			<enumeration value="1831"/>
+			<enumeration value="1832"/>
+			<enumeration value="1833"/>
+			<enumeration value="1834"/>
+			<enumeration value="1835"/>
+			<enumeration value="1836"/>
+			<enumeration value="1837"/>
+			<enumeration value="1838"/>
+			<enumeration value="1839"/>
+			<enumeration value="1840"/>
+			<enumeration value="1901"/>
+			<enumeration value="1902"/>
+			<enumeration value="1903"/>
+			<enumeration value="1904"/>
+			<enumeration value="1905"/>
+			<enumeration value="1906"/>
+			<enumeration value="1907"/>
+			<enumeration value="1908"/>
+			<enumeration value="1909"/>
+			<enumeration value="1910"/>
+			<enumeration value="1911"/>
+			<enumeration value="1912"/>
+			<enumeration value="1913"/>
+			<enumeration value="1914"/>
+			<enumeration value="1915"/>
+			<enumeration value="1916"/>
+			<enumeration value="1917"/>
+			<enumeration value="1918"/>
+			<enumeration value="2001"/>
+			<enumeration value="2002"/>
+			<enumeration value="2003"/>
+			<enumeration value="2004"/>
+			<enumeration value="2005"/>
+			<enumeration value="2006"/>
+			<enumeration value="2007"/>
+			<enumeration value="2008"/>
+			<enumeration value="2009"/>
+			<enumeration value="2010"/>
+			<enumeration value="2011"/>
+			<enumeration value="2012"/>
+			<enumeration value="2013"/>
+			<enumeration value="2014"/>
+			<enumeration value="2015"/>
+			<enumeration value="2101"/>
+			<enumeration value="2102"/>
+			<enumeration value="2103"/>
+			<enumeration value="2104"/>
+			<enumeration value="2105"/>
+			<enumeration value="2106"/>
+			<enumeration value="2107"/>
+			<enumeration value="2108"/>
+			<enumeration value="2109"/>
+			<enumeration value="2110"/>
+			<enumeration value="2111"/>
+			<enumeration value="2112"/>
+			<enumeration value="2113"/>
+			<enumeration value="2114"/>
+			<enumeration value="2115"/>
+			<enumeration value="2201"/>
+			<enumeration value="2202"/>
+			<enumeration value="2203"/>
+			<enumeration value="2204"/>
+			<enumeration value="2205"/>
+			<enumeration value="2206"/>
+			<enumeration value="2207"/>
+			<enumeration value="2208"/>
+			<enumeration value="2209"/>
+			<enumeration value="2210"/>
+			<enumeration value="2211"/>
+			<enumeration value="2212"/>
+			<enumeration value="2213"/>
+			<enumeration value="2301"/>
+			<enumeration value="2302"/>
+			<enumeration value="2303"/>
+			<enumeration value="2304"/>
+			<enumeration value="2305"/>
+			<enumeration value="2306"/>
+			<enumeration value="2307"/>
+			<enumeration value="2308"/>
+			<enumeration value="2309"/>
+			<enumeration value="2310"/>
+			<enumeration value="2401"/>
+			<enumeration value="2402"/>
+			<enumeration value="2403"/>
+			<enumeration value="2404"/>
+			<enumeration value="2405"/>
+			<enumeration value="2406"/>
+			<enumeration value="2407"/>
+			<enumeration value="2408"/>
+			<enumeration value="2409"/>
+			<enumeration value="2410"/>
+			<enumeration value="2411"/>
+			<enumeration value="2412"/>
+			<enumeration value="2413"/>
+			<enumeration value="2414"/>
+			<enumeration value="2415"/>
+			<enumeration value="2416"/>
+			<enumeration value="2417"/>
+			<enumeration value="2418"/>
+			<enumeration value="2419"/>
+			<enumeration value="2420"/>
+			<enumeration value="2421"/>
+			<enumeration value="2422"/>
+			<enumeration value="2423"/>
+			<enumeration value="2424"/>
+			<enumeration value="2501"/>
+			<enumeration value="2502"/>
+			<enumeration value="2503"/>
+			<enumeration value="2504"/>
+			<enumeration value="2505"/>
+			<enumeration value="2506"/>
+			<enumeration value="2507"/>
+			<enumeration value="2508"/>
+			<enumeration value="2509"/>
+			<enumeration value="2510"/>
+			<enumeration value="2511"/>
+			<enumeration value="2512"/>
+			<enumeration value="2513"/>
+			<enumeration value="2514"/>
+			<enumeration value="2515"/>
+			<enumeration value="2516"/>
+			<enumeration value="2601"/>
+			<enumeration value="2602"/>
+			<enumeration value="2603"/>
+			<enumeration value="2604"/>
+			<enumeration value="2605"/>
+			<enumeration value="2606"/>
+			<enumeration value="2607"/>
+			<enumeration value="2608"/>
+			<enumeration value="2609"/>
+			<enumeration value="2610"/>
+			<enumeration value="2611"/>
+			<enumeration value="2612"/>
+			<enumeration value="2613"/>
+			<enumeration value="2614"/>
+			<enumeration value="2701"/>
+			<enumeration value="2702"/>
+			<enumeration value="2703"/>
+			<enumeration value="2704"/>
+			<enumeration value="2705"/>
+			<enumeration value="2706"/>
+			<enumeration value="2707"/>
+			<enumeration value="2708"/>
+			<enumeration value="2709"/>
+			<enumeration value="2710"/>
+			<enumeration value="2711"/>
+			<enumeration value="2712"/>
+			<enumeration value="2713"/>
+			<enumeration value="2714"/>
+			<enumeration value="2715"/>
+			<enumeration value="2716"/>
+			<enumeration value="2717"/>
+			<enumeration value="2718"/>
+			<enumeration value="2801"/>
+			<enumeration value="2802"/>
+			<enumeration value="2803"/>
+			<enumeration value="2804"/>
+			<enumeration value="2805"/>
+			<enumeration value="2806"/>
+			<enumeration value="2807"/>
+			<enumeration value="2808"/>
+			<enumeration value="2809"/>
+			<enumeration value="2810"/>
+			<enumeration value="2811"/>
+			<enumeration value="2812"/>
+			<enumeration value="2813"/>
+			<enumeration value="2814"/>
+			<enumeration value="2815"/>
+			<enumeration value="2816"/>
+			<enumeration value="2817"/>
+			<enumeration value="2818"/>
+			<enumeration value="2819"/>
+			<enumeration value="2820"/>
+			<enumeration value="2821"/>
+			<enumeration value="2822"/>
+			<enumeration value="2901"/>
+			<enumeration value="2902"/>
+			<enumeration value="2903"/>
+			<enumeration value="2904"/>
+			<enumeration value="2905"/>
+			<enumeration value="2906"/>
+			<enumeration value="2907"/>
+			<enumeration value="2908"/>
+			<enumeration value="2909"/>
+			<enumeration value="3001"/>
+			<enumeration value="3002"/>
+			<enumeration value="3003"/>
+			<enumeration value="3004"/>
+			<enumeration value="3005"/>
+			<enumeration value="3006"/>
+			<enumeration value="3007"/>
+			<enumeration value="3008"/>
+			<enumeration value="3009"/>
+			<enumeration value="3010"/>
+			<enumeration value="3011"/>
+			<enumeration value="3012"/>
+			<enumeration value="3013"/>
+			<enumeration value="3014"/>
+			<enumeration value="3015"/>
+			<enumeration value="3016"/>
+			<enumeration value="3017"/>
+			<enumeration value="3018"/>
+			<enumeration value="3019"/>
+			<enumeration value="3020"/>
+			<enumeration value="3021"/>
+			<enumeration value="3022"/>
+			<enumeration value="3023"/>
+			<enumeration value="3024"/>
+			<enumeration value="3025"/>
+			<enumeration value="3026"/>
+			<enumeration value="3027"/>
+			<enumeration value="3028"/>
+			<enumeration value="3029"/>
+			<enumeration value="3030"/>
+			<enumeration value="3031"/>
+			<enumeration value="3032"/>
+			<enumeration value="3033"/>
+			<enumeration value="3034"/>
+			<enumeration value="3035"/>
+			<enumeration value="3036"/>
+			<enumeration value="3037"/>
+			<enumeration value="3038"/>
+			<enumeration value="3039"/>
+			<enumeration value="3040"/>
+			<enumeration value="3041"/>
+			<enumeration value="3042"/>
+			<enumeration value="3043"/>
+			<enumeration value="3044"/>
+			<enumeration value="3045"/>
+			<enumeration value="3046"/>
+			<enumeration value="3047"/>
+			<enumeration value="3048"/>
+			<enumeration value="3049"/>
+			<enumeration value="3050"/>
+			<enumeration value="3051"/>
+			<enumeration value="3052"/>
+			<enumeration value="3053"/>
+			<enumeration value="3054"/>
+			<enumeration value="3055"/>
+			<enumeration value="3056"/>
+			<enumeration value="3057"/>
+			<enumeration value="3058"/>
+			<enumeration value="3059"/>
+			<enumeration value="3060"/>
+			<enumeration value="3061"/>
+			<enumeration value="3062"/>
+			<enumeration value="3063"/>
+			<enumeration value="3064"/>
+			<enumeration value="3065"/>
+			<enumeration value="3066"/>
+			<enumeration value="3067"/>
+			<enumeration value="3068"/>
+			<enumeration value="3069"/>
+			<enumeration value="3070"/>
+			<enumeration value="3071"/>
+			<enumeration value="3072"/>
+			<enumeration value="3073"/>
+			<enumeration value="3074"/>
+			<enumeration value="3075"/>
+			<enumeration value="3076"/>
+			<enumeration value="3077"/>
+			<enumeration value="3078"/>
+			<enumeration value="3079"/>
+			<enumeration value="3080"/>
+			<enumeration value="3081"/>
+			<enumeration value="3082"/>
+			<enumeration value="3083"/>
+			<enumeration value="3084"/>
+			<enumeration value="3085"/>
+			<enumeration value="3086"/>
+			<enumeration value="3087"/>
+			<enumeration value="3088"/>
+			<enumeration value="3089"/>
+			<enumeration value="3090"/>
+			<enumeration value="3091"/>
+			<enumeration value="3092"/>
+			<enumeration value="3093"/>
+			<enumeration value="3094"/>
+			<enumeration value="3095"/>
+			<enumeration value="3096"/>
+			<enumeration value="3097"/>
+			<enumeration value="3098"/>
+			<enumeration value="3100"/>
+			<enumeration value="3101"/>
+			<enumeration value="3102"/>
+			<enumeration value="3103"/>
+			<enumeration value="3104"/>
+			<enumeration value="3105"/>
+			<enumeration value="3106"/>
+			<enumeration value="3107"/>
+			<enumeration value="3108"/>
+			<enumeration value="3109"/>
+			<enumeration value="3110"/>
+			<enumeration value="3111"/>
+			<enumeration value="3112"/>
+			<enumeration value="3113"/>
+			<enumeration value="3114"/>
+			<enumeration value="3115"/>
+			<enumeration value="3116"/>
+			<enumeration value="3117"/>
+			<enumeration value="3118"/>
+			<enumeration value="3119"/>
+			<enumeration value="3120"/>
+			<enumeration value="3121"/>
+			<enumeration value="3122"/>
+			<enumeration value="3123"/>
+			<enumeration value="3124"/>
+			<enumeration value="3125"/>
+			<enumeration value="3126"/>
+			<enumeration value="3127"/>
+			<enumeration value="3128"/>
+			<enumeration value="3129"/>
+			<enumeration value="3130"/>
+			<enumeration value="3131"/>
+			<enumeration value="3132"/>
+			<enumeration value="3133"/>
+			<enumeration value="3134"/>
+			<enumeration value="3135"/>
+			<enumeration value="3136"/>
+			<enumeration value="3137"/>
+			<enumeration value="3138"/>
+			<enumeration value="3139"/>
+			<enumeration value="3140"/>
+			<enumeration value="3141"/>
+			<enumeration value="3142"/>
+			<enumeration value="3143"/>
+			<enumeration value="3144"/>
+			<enumeration value="3145"/>
+			<enumeration value="3146"/>
+			<enumeration value="3147"/>
+			<enumeration value="3148"/>
+			<enumeration value="3149"/>
+			<enumeration value="3150"/>
+			<enumeration value="3151"/>
+			<enumeration value="3152"/>
+			<enumeration value="3153"/>
+			<enumeration value="3154"/>
+			<enumeration value="3155"/>
+			<enumeration value="5001"/>
+			<enumeration value="5002"/>
+			<enumeration value="5003"/>
+			<enumeration value="5004"/>
+			<enumeration value="5005"/>
+			<enumeration value="5006"/>
+			<enumeration value="5007"/>
+			<enumeration value="5008"/>
+			<enumeration value="5009"/>
+			<enumeration value="5010"/>
+			<enumeration value="5011"/>
+			<enumeration value="5012"/>
+			<enumeration value="5013"/>
+			<enumeration value="5014"/>
+			<enumeration value="5015"/>
+			<enumeration value="5016"/>
+			<enumeration value="5017"/>
+			<enumeration value="5018"/>
+			<enumeration value="5019"/>
+			<enumeration value="5020"/>
+			<enumeration value="5021"/>
+			<enumeration value="5022"/>
+			<enumeration value="5023"/>
+			<enumeration value="5024"/>
+			<enumeration value="5025"/>
+			<enumeration value="5026"/>
+			<enumeration value="5027"/>
+			<enumeration value="5028"/>
+			<enumeration value="5029"/>
+			<enumeration value="5030"/>
+			<enumeration value="5031"/>
+			<enumeration value="5032"/>
+			<enumeration value="5033"/>
+			<enumeration value="5034"/>
+			<enumeration value="5035"/>
+			<enumeration value="5036"/>
+			<enumeration value="5037"/>
+			<enumeration value="5038"/>
+			<enumeration value="5039"/>
+			<enumeration value="5040"/>
+			<enumeration value="5041"/>
+			<enumeration value="5042"/>
+			<enumeration value="5043"/>
+			<enumeration value="5044"/>
+			<enumeration value="5045"/>
+			<enumeration value="5046"/>
+			<enumeration value="5047"/>
+			<enumeration value="5048"/>
+			<enumeration value="5049"/>
+			<enumeration value="5050"/>
+			<enumeration value="5051"/>
+			<enumeration value="5052"/>
+			<enumeration value="5053"/>
+			<enumeration value="5054"/>
+			<enumeration value="5055"/>
+			<enumeration value="5056"/>
+			<enumeration value="5057"/>
+			<enumeration value="5058"/>
+			<enumeration value="5059"/>
+			<enumeration value="5060"/>
+			<!--	
+1001	NÚMERO DA CARTEIRA INVÁLIDO
+1002	NÚMERO DO CARTÃO NACIONAL DE SAÚDE INVÁLIDO
+1003	A ADMISSÃO DO BENEFICIÁRIO NO PRESTADOR OCORREU ANTES DA INCLUSÃO DO BENEFICIÁRIO NA OPERADORA
+1004	SOLICITAÇÃO ANTERIOR À INCLUSÃO DO BENEFICIÁRIO
+1005	ATENDIMENTO ANTERIOR À INCLUSÃO DO BENEFICIÁRIO
+1006	ATENDIMENTO APÓS O DESLIGAMENTO DO BENEFICIÁRIO
+1007	ATENDIMENTO DENTRO DA CARÊNCIA DO BENEFICIÁRIO
+1008	ASSINATURA DIVERGENTE
+1009	BENEFICIÁRIO COM PAGAMENTO EM ABERTO
+1010	ASSINATURA DO TITULAR / RESPONSÁVEL INEXISTENTE
+1011	IDENTIFICAÇÃO DO BENEFICIÁRIO NÃO CONSISTENTE
+1012	SERVIÇO PROFISSIONAL HOSPITALAR NÃO É COBERTO PELO PLANO DO BENEFICIÁRIO
+1013	CADASTRO DO BENEFICIÁRIO COM PROBLEMAS
+1014	BENEFICIÁRIO COM DATA DE EXCLUSÃO
+1015	IDADE DO BENEFICIÁRIO ACIMA IDADE LIMITE
+1016	BENEFICIÁRIO COM ATENDIMENTO SUSPENSO
+1017	DATA VALIDADE DA CARTEIRA VENCIDA
+1018	EMPRESA DO BENEFICIÁRIO SUSPENSA / EXCLUÍDA
+1019	FAMÍLIA DO BENEFICIÁRIO COM ATENDIMENTO SUSPENSO
+1020	VIA DE CARTÃO DO BENEFICIÁRIO CANCELADA
+1021	VIA DE CARTÃO DO BENEFICIÁRIO NÃO LIBERADA
+1022	VIA DE CARTÃO DO BENEFICIÁRIO NÃO COMPATÍVEL
+1023	NOME DO TITULAR INVÁLIDO
+1024	PLANO NÃO EXISTENTE
+1025	BENEFICIÁRIO NÃO POSSUI COBERTURA PARA ASSISTÊNCIA ODONTOLÓGICA
+1101	QUANTIDADE DE GUIAS INFORMADAS NO PROTOCOLO DIFERENTE DAS CADASTRADAS
+1102	PROTOCOLO É DE RE-APRESENTAÇÃO
+1103	PROTOCOLO NÃO É DE REAPRESENTAÇÃO
+1104	VALOR TOTAL DO PROTOCOLO DIFERENTE DO VALOR TOTAL DAS GUIAS
+1201	ATENDIMENTO FORA DA VIGÊNCIA DO CONTRATO COM O CREDENCIADO
+1202	NÚMERO DO CNES INVÁLIDO
+1203	CÓDIGO PRESTADOR INVÁLIDO
+1204	ADMISSÃO ANTERIOR À INCLUSÃO DO CREDENCIADO NA REDE
+1205	ADMISSÃO APÓS O DESLIGAMENTO DO CREDENCIADO DA REDE
+1206	CPF / CNPJ INVÁLIDO
+1207	CREDENCIADO NÃO PERTENCE À REDE CREDENCIADA
+1208	SOLICITAÇÃO ANTERIOR À INCLUSÃO DO CREDENCIADO
+1209	SOLICITAÇÃO APÓS O DESLIGAMENTO DO CREDENCIADO
+1210	SOLICITANTE CREDENCIADO NÃO CADASTRADO
+1211	ASSINATURA / CARIMBO DO CREDENCIADO INEXISTENTE
+1212	ATENDIMENTO / REFERÊNCIA FORA DA VIGÊNCIA DO CONTRATO DO PRESTADOR
+1213	CBO (ESPECIALIDADE) INVÁLIDO
+1214	CREDENCIADO NÃO HABILITADO A REALIZAR O PROCEDIMENTO
+1215	CREDENCIADO FORA DA ABRANGÊNCIA GEOGRÁFICA DO PLANO
+1216	ESPECIALIDADE NÃO CADASTRADA
+1217	ESPECIALIDADE NÃO CADASTRADA PARA O PRESTADOR
+1218	CÓDIGO DE PRESTADOR IMCOMPATIVEL COM PROCEDIMENTO / EXAME COBRADO
+1301	TIPO GUIA INVÁLIDO
+1302	CÓDIGO TIPO GUIA PRINCIPAL E NÚMERO GUIAS INCOMPATÍVEIS
+1303	NÃO EXISTE O NÚMERO GUIA PRINCIPAL INFORMADO
+1304	COBRANÇA EM GUIA INDEVIDA
+1305	ITEM PAGO EM OUTRA GUIA
+1306	NÃO EXISTE NÚMERO GUIA PRINCIPAL E/OU CÓDIGO GUIA PRINCIPAL
+1307	NÚMERO DA GUIA INVÁLIDO
+1308	GUIA JÁ APRESENTADA
+1309	PROCEDIMENTO CONTRATADO NÃO ESTÁ DE ACORDO COM O TIPO DE GUIA UTILIZADO
+1310	SERVIÇO DO TIPO CIRÚRGICO E INVASIVO. EQUIPE MÉDICA NÃO INFORMADA NA GUIA
+1311	PRESTADOR EXECUTANTE NÃO INFORMADO
+1312	PRESTADOR CONTRATADO NÃO INFORMADO
+1313	GUIA COM RASURA
+1314	GUIA SEM ASSINATURA E/OU CARIMBO DO CREDENCIADO.
+1315	GUIA SEM DATA DO ATO CIRÚRGICO.
+1316	GUIA COM LOCAL DE ATENDIMENTO PREENCHIDO INCORRETAMENTE.
+1317	GUIA SEM DATA DO ATENDIMENTO
+1318	GUIA COM CÓDIGO DE SERVIÇO PREENCHIDO INCORRETAMENTE.
+1319	GUIA SEM ASSINATURA DO ASSISTIDO.
+1320	IDENTIFICAÇÃO DO ASSISTIDO INCOMPLETA
+1321	VALIDADE DA GUIA EXPIRADA
+1322	COMPROVANTE PRESENCIAL OU GTO NÃO ENVIADO
+1323	DATA PREENCHIDA INCORRETAMENTE
+1401	ACOMODAÇÃO NÃO AUTORIZADA
+1402	PROCEDIMENTO NÃO AUTORIZADO
+1403	NÃO EXISTE INFORMAÇÃO SOBRE A SENHA DE AUTORIZAÇÃO DO PROCEDIMENTO
+1404	NÃO EXISTE GUIA DE AUTORIZAÇÃO RELACIONADA
+1405	DATA DE VALIDADE DA SENHA É ANTERIOR A DATA DO ATENDIMENTO
+1406	NÚMERO DA SENHA INFORMADO DIFERENTE DO LIBERADO
+1407	SERVIÇO SOLICITADO NÃO POSSUI COBERTURA
+1408	QUANTIDADE SERVIÇO SOLICITADA ACIMA DA AUTORIZADA
+1409	QUANTIDADE SERVIÇO SOLICITADA ACIMA COBERTA
+1410	SERVIÇO SOLICITADO EM CARÊNCIA
+1411	SOLICITANTE NÃO INFORMADO
+1412	PROBLEMAS NO SISTEMA AUTORIZADOR
+1413	ACOMODAÇÃO NÃO POSSUI COBERTURA
+1414	DATA DE VALIDADE DA SENHA EXPIRADA
+1415	PROCEDIMENTO NÃO AUTORIZADO PARA O BENEFICIÁRIO
+1416	SOLICITANTE NÃO CADASTRADO
+1417	SOLICITANTE NÃO HABILITADO
+1418	SOLICITANTE SUSPENSO
+1419	SERVIÇO SOLICITADO JÁ AUTORIZADO
+1420	SERVIÇO SOLICITADO FORA DA COBERTURA
+1421	SERVIÇO SOLICITADO É DE PRÉ-EXISTÊNCIA
+1422	ESPECIALIDADE NÃO CADASTRADA PARA O SOLICITANTE
+1423	QUANTIDADE SOLICITADA ACIMA DA QUANTIDADE PERMITIDA
+1424	QUANTIDADE AUTORIZADA ACIMA DA QUANTIDADE PERMITIDA
+1425	NECESSITA PRÉ-AUTORIZAÇÃO DA EMPRESA
+
+1426	NÃO AUTORIZADO PELA AUDITORIA
+
+1427	NECESSIDADE DE AUDITORIA MÉDICA
+1428	FALTA DE AUTORIZAÇÃO DA EMPRESA DE CONECTIVIDADE
+1429	CBO-S (ESPECIALIDADE) NÃO AUTORIZADO A REALIZAR O SERVIÇO
+1430	PROCEDIMENTO ODONTOLÓGICO NÃO AUTORIZADO
+1431	PROCEDIMENTO NÃO AUTORIZADO NA FACE SOLICITADA
+1432	PROCEDIMENTO NÃO AUTORIZADO PARA DENTE/REGIÃO SOLICITADA
+1433	PROCEDIMENTO NÃO AUTORIZADO, DENTE AUSENTE 
+1434	COBRANÇA DE CONTA DE CTI NEONATAL NA SENHA DO PARTO
+1435	VIGÊNCIA DO ACORDO POSTERIOR À DATA DE REALIZAÇÃO DO PROCEDIMENTO
+1436	CANCELAMENTO DO ACORDO ANTERIOR À DATA DE REALIZAÇÃO DO PROCEDIMENTO
+1437	SENHA DE AUTORIZAÇÃO CANCELADA
+1438	PROCEDIMENTO SOLICITADO NÃO AUTORIZADO POR NÃO ATENDER A DIRETRIZ DE UTILIZAÇÃO (DUT) DO ROL DE PROCEDIMENTOS E EVENTOS EM SAÚDE DA ANS
+1501	TEMPO DE EVOLUÇÃO DA DOENÇA INVÁLIDO
+1502	TIPO DE DOENÇA INVÁLIDO
+1503	INDICADOR DE ACIDENTE INVÁLIDO
+1504	CARÁTER DE INTERNAÇÃO INVÁLIDO
+1505	REGIME DA INTERNAÇÃO INVÁLIDO
+1506	TIPO DE INTERNAÇÃO INVÁLIDO
+
+1507	URGÊNCIA/EMERGÊNCIA NÃO APLICÁVEL
+
+1508	CÓDIGO CID NÃO INFORMADO
+1509	CÓDIGO CID INVÁLIDO
+1601	REINCIDÊNCIA NO ATENDIMENTO
+1602	TIPO DE ATENDIMENTO INVÁLIDO OU NÃO INFORMADO
+1603	TIPO DE CONSULTA INVÁLIDO
+1604	TIPO DE SAÍDA INVÁLIDO
+1605	INTERVENÇÃO ANTERIOR A ADMISSÃO
+1606	FINAL DA INTERVENÇÃO ANTERIOR AO INÍCIO DA INTERVENÇÃO
+1607	ALTA HOSPITALAR ANTERIOR AO FINAL DA INTERVENÇÃO
+1608	ALTA ANTERIOR À DATA DE INTERNAÇÃO
+1609	MOTIVO SAÍDA INVÁLIDO
+1610	ÓBITO MULHER INVÁLIDO
+1611	INTERVENÇÃO ANTERIOR A INTERNAÇÃO
+1612	SERVIÇO NÃO PODE SER REALIZADO NO LOCAL ESPECIFICADO
+1613	CONSULTA NÃO AUTORIZADA
+1614	SERVIÇO AMBULATORIAL NÃO AUTORIZADO
+1615	INTERNAÇÃO NÃO AUTORIZADA
+1701	COBRANÇA FORA DO PRAZO DE VALIDADE
+1702	COBRANÇA DE PROCEDIMENTO EM DUPLICIDADE
+1703	HORÁRIO DO ATENDIMENTO NÃO ESTÁ NA FAIXA DE URGÊNCIA/EMERGÊNCIA
+1704	VALOR COBRADO SUPERIOR AO ACORDADO EM PACOTE
+1705	VALOR APRESENTADO A MAIOR
+1706	VALOR APRESENTADO A MENOR
+1707	NÃO EXISTE INFORMAÇÃO SOBRE A TABELA QUE SERÁ UTILIZADA NA VALORAÇÃO. VERIFIQUE O CONTRATO DO PRESTADOR
+1708	NÃO EXISTE VALOR PARA O PROCEDIMENTO REALIZADO
+1709	FALTA PRESCRIÇÃO MÉDICA
+1710	FALTA VISTO DA ENFERMAGEM
+1711	PROCEDIMENTO PERTENCE A UM PACOTE ACORDADO E JÁ COBRADO
+1712	ASSINATURA DO MÉDICO RESPONSÁVEL PELO EXAME INEXISTENTE
+1713	FATURAMENTO INVÁLIDO
+1714	VALOR DO SERVIÇO SUPERIOR AO VALOR DE TABELA
+1715	VALOR DO SERVIÇO INFERIOR AO VALOR DE TABELA
+1716	PERCENTUAL DE REDUÇÃO/ACRÉSCIMO FORA DOS VALORES DEFINIDOS EM TABELA
+1717	PAGO  CONFORME RELATÓRIO DE AUDITORIA EXTERNA - CONTA INICIAL
+1718	REANÁLISE NEGADA, PAGO CONFORME RELATÓRIO AUDITORIA
+1719	REANÁLISE NEGADA, ANÁLISE CONFORME TABELA ACORDADA
+1720	LIBERADOS 150% DE VÍDEO, SEM COBERTURA PARA ADICIONAL DE ACOMODAÇÃO
+1721	CÓDIGO COBRADO SUBSTITUÍDO PELO CÓDIGO PAGO
+1722	PAGO CONFORME NEGOCIAÇÃO
+1723	ADICIONAL DE URGÊNCIA NÃO PREVISTO PARA ATENDIMENTO CLÍNICO
+1724	VISITA MÉDICA COBRADA PELA EQUIPE CIRÚRGICA INCLUÍDA NO PERÍODO DE 10 DIAS APÓS REALIZAÇÃO DO PROCEDIMENTO CIRÚRGICO 
+1725	VALOR PAGO A MAIOR REFERENTE À TAXA ADMINISTRATIVA
+1726	VALOR APRESENTADO A MAIOR - PLANO INDIVIDUAL
+1727	PAGO VALOR COMPATIVEL COM O PROCEDIMENTO
+1728	COBRANÇA DE MATERIAL INCLUSO NO PROCEDIMENTO / EXAME REALIZADO
+1729	COBRANÇA DE MATERIAL COM VALOR ACIMA DO PERMITIDO PARA PROCEDIMENTO/EXAME REALIZADO
+1730	FILME INCLUSO NO EXAME REALIZADO
+1731	TAXA INCOMPATIVEL PARA ATENDIMENTO AMBULATORIAL
+1732	QT COM DATA DE EVENTO DIVERGENTE DA LIBERADA
+1733	RECUPERAÇÃO DE VALORES POR PAGAMENTO INDEVIDO
+1734	COBRADO CONTA ABERTA, PAGO O PACOTE CONFORME NEGOCIAÇÃO
+1735	COBRANÇA DE PACOTE NÃO NEGOCIADO COM O PRESTADOR
+1736	CONTA AGUARDANDO NEGOCIAÇÃO PARA PAGAMENTO
+1737	DIFERENÇA DEVE SER COBRADA DO BENEFICIÁRIO PELO PRESTADOR COMO FRANQUIA
+1738	DOCUMENTO FISCAL NÃO ENVIADO
+1739	DUPLICIDADE DE CONTA DEVIDO A PERIODO COBRADO JÁ EFETUADO EM OUTRA PARCIAL
+1740	ESTORNO DO VALOR DE PROCEDIMENTO PAGO
+1741	HONORÁRIO OU PROCEDIMENTO JÁ PAGO A OUTRO PRESTADOR
+1742	HONORÁRIO OU PROCEDIMENTO JÁ PAGO POR REEMBOLSO AO BENEFICIÁRIO
+1743	NÃO HÁ NEGOCIAÇÃO PARA COBRANÇA DO KIT, DISCRIMINAR POR ITENS
+1744	NEGOCIAÇÃO DIFERENCIADA DEVIDO A LIMINAR
+1745	PAGAMENTO DA EQUIPE CONFORME RELATÓRIO DO CIRURGIÃO
+1746	PERCENTUAL DE ACRÉSCIMO DIFERENTE DO NEGOCIADO
+1747	PLANO DO BENEFICIÁRIO E O TIPO DE ACOMODAÇÃO NÃO PERMITEM ACRÉSCIMO DE HONORÁRIOS
+1748	PROCEDIMENTO NÃO CARACTERIZA URGÊNCIA/EMÊRGENCIA
+1749	RELATÓRIO DE AUDITORIA NÃO ENVIADO NA CONTA.
+1801	PROCEDIMENTO INVÁLIDO
+1802	PROCEDIMENTO INCOMPATÍVEL COM O SEXO DO BENEFICIÁRIO
+1803	IDADE DO BENEFICIÁRIO INCOMPATÍVEL COM O PROCEDIMENTO
+1804	NÚMERO DE DIAS LIBERADOS / SESSÕES AUTORIZADAS NÃO INFORMADAS
+1805	VALOR TOTAL DO PROCEDIMENTO DIFERENTE DO VALOR PROCESSADO
+1806	QUANTIDADE DE PROCEDIMENTO DEVE SER MAIOR QUE ZERO
+1807	PROCEDIMENTOS MÉDICOS DUPLICADOS
+1808	PROCEDIMENTO NÃO CONFORME COM CID
+1809	COBRANÇA DE PROCEDIMENTO NÃO EXECUTADO
+1810	COBRANÇA DE PROCEDIMENTO NÃO SOLICITADO PELO MÉDICO
+1811	PROCEDIMENTO SEM REGISTRO DE EXECUÇÃO
+1812	COBRANÇA DE PROCEDIMENTO NÃO CORRELACIONADO AO RELATÓRIO ESPECÍFICO
+1813	COBRANÇA DE PROCEDIMENTO SEM JUSTIFICATIVA PARA REALIZAÇÃO OU COM JUSTIFICATIVA INSUFICIENTE.
+1814	COBRANÇA DE PROCEDIMENTO COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+1815	PROCEDIMENTO NÃO AUTORIZADO
+1816	COBRANÇA DE PROCEDIMENTO EM QUANTIDADE INCOMPATÍVEL COM O PROCEDIMENTO/EVOLUÇÃO CLÍNICA
+1817	COBRANÇA DE PROCEDIMENTO INCLUSO NO PROCEDIMENTO PRINCIPAL
+1818	COBRANÇA DE PROCEDIMENTO QUE EXIGE AUTORIZAÇÃO PRÉVIA
+1819	COBRANÇA DE PROCEDIMENTO COM HISTÓRIA CLÍNICA/HIPÓTESE DIAGNÓSTICA NÃO COMPATÍVEL
+1820	COBRANÇA DE PROCEDIMENTO EM QUANTIDADE ACIMA DA MÁXIMA PERMITIDA/AUTORIZADA
+1821	COBRANÇA DE PROCEDIMENTO NÃO COMPATÍVEL COM A IDADE.
+1822	COBRANÇA DE PROCEDIMENTO COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO.
+1823	PROCEDIMENTO REALIZADO PELO MESMO PROFISSIONAL, NA MESMA ESPECIALIDADE, NO PRAZO INFERIOR AO ESTIPULADO SEM JUSTIFICATIVA ADEQUADA.
+1824	PROCEDIMENTO COBRADO NÃO CORRESPONDE AO EXAME EXECUTADO
+1825	COBRANÇA DE PROCEDIMENTO AMBULATORIAL COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+1826	VIAS DE ACESSO DOS PROCEDIMENTOS COBRADOS NÃO ESTÃO PREVISTAS NA LISTAGEM DE PROCEDIMENTOS MÚLTIPLOS.
+1827	COBRANÇA DE OUTRO PROCEDIMENTO EM OUTRA GUIA, NA MESMA DATA, PELO MESMO PROFISSIONAL COM MESMO GRAU DE PARTICIPAÇÃO - LIBERADO VALOR REFERENTE À VIA DE ACESSO DO PROCEDIMENTO SECUNDÁRIO.
+1828	ADICIONAL DE URGÊNCIA NÃO PREVISTO PARA PROCEDIMENTO CIRÚRGICO ELETIVO.
+1829	ADICIONAL DE VÍDEO NÃO PREVISTO PARA O PROCEDIMENTO.
+1830	COBRANÇA DE PROCEDIMENTO SEM INFORMAÇÃO DAS DATAS DE ATENDIMENTO-VISITA, PLANTÃO, INTENSIVISTA, AVALIAÇÃO ENTERAL/PARENTERAL
+1831	LAUDO DO EXAME ENVIADO NÃO JUSTIFICA A COBRANÇA DO PROCEDIMENTO
+1832	PROCEDIMENTO NÃO PERMITE COBRANÇA DE AUXILIAR DE ANESTESISTA
+1833	PROCEDIMENTO COBRADO NÃO PERMITE ACRÉSCIMO DE ACOMODAÇÃO 
+1834	PORTE ANESTÉSICO COBRADO INCOMPATÍVEL COM O PORTE DO PROCEDIMENTO REALIZADO
+1835	"ANALGESIA POR DIA SUBSEQUENTE" NÃO JUSTIFICADA EM RELATÓRIO MÉDICO, PARA O PROCEDIMENTO REALIZADO E/OU DATA DO ATENDIMENTO
+1836	"ANALGESIA POR DIA SUBSEQUENTE" INCOMPATÍVEL COM A VIA DE ADMINISTRAÇÃO DO MEDICAMENTO - VO OU IV PERIFÉRICA - SENDO LIBERADA VISITA HOSPITALAR
+1837	NÃO CABE PAGAMENTO DO HONORÁRIO INTEGRAL POR SER VIA DE ACESSO CIRÚRGICO DIFERENTE
+1838	GRAU DE PARTICIPAÇÃO INFORMADO INCOMPATÍVEL COM EVENTO COBRADO.
+1839	NECESSÁRIO ENVIO DO RESULTADO DO EXAME ANÁTOMO PATOLÓGICO
+1840	PROCEDIMENTO EXECUTADO ANTES DA AUTORIZAÇÃO
+1901	ACOMODAÇÃO INVÁLIDA
+1902	ACOMODAÇÃO INFORMADA NÃO ESTÁ DE ACORDO COM ACOMODAÇÃO CONTRATADA
+1903	PERMANÊNCIA HOSPITALAR INCOMPATÍVEL COM A EVOLUÇÃO CLÍNICA
+1904	PERMANÊNCIA HOSPITALAR INCOMPATÍVEL COM O PROCEDIMENTO AUTORIZADO
+1905	QUANTIDADE DE DIÁRIAS DEVE SER MAIOR QUE ZERO
+1906	ACOMODAÇÃO NÃO INFORMADA
+1907	QUANTIDADE UTI NÃO PREVISTA PARA PROCEDIMENTO
+1908	USUÁRIO NÃO POSSUI COBERTURA DE UTI
+1909	ACOMODAÇÃO NÃO AUTORIZADA
+1910	COBRANÇA DE DIÁRIAS EM LOCAIS DE ACOMODAÇÕES DIFERENTES, NO MESMO DIA.
+1911	PERMANÊNCIA HOSPITALAR PARA INVESTIGAÇÃO INJUSTIFICADA.
+1912	EVOLUÇÃO CLÍNICA NÃO COMPATÍVEL COM A PERMANÊNCIA EM UTI.
+1913	CÓDIGO DE DIÁRIA INCOMPATÍVEL COM O LOCAL DE ATENDIMENTO.
+1914	COBRANÇA DE DIÁRIA EM QUANTIDADE INCOMPATÍVEL COM A PERMANÊNCIA HOSPITALAR.
+1915	MUDANÇA DE ACOMODAÇÃO SEM COMUNICAÇÃO AO PACIENTE, FAMILIAR OU ACOMPANHANTE, OU SEM SOLICITAÇÃO DESTES.
+1916	COBRANÇA DE DIÁRIAS DE UTI INCOMPATÍVEL COM DIAGNÓSTICO E EVOLUÇÃO CLÍNICA.
+1917	FALTA PRORROGAÇÃO PARA QUANTIDADE DE DIÁRIAS COBRADAS.
+1918	PLANO DO BENEFICIÁRIO NÃO CONTEMPLA DIÁRIA DE ACOMPANHANTE
+2001	MATERIAL INVÁLIDO
+2002	MATERIAL SEM COBERTURA PARA ATENDIMENTO AMBULATORIAL
+2003	MATERIAL NÃO ESPECIFICADO
+2004	MATERIAL SEM NOTA FISCAL DO FORNECEDOR
+2005	QUANTIDADE DE MATERIAL DEVE SER MAIOR QUE ZERO
+2006	MATERIAL INFORMADO NÃO COBERTO
+2007	COBRANÇA DE MATERIAL EM QUANTIDADE INCOMPATÍVEL COM A PERMANÊNCIA.
+2008	COBRANÇA DE MATERIAL EM QUANTIDADES INCOMPATÍVEIS COM O PROCEDIMENTO REALIZADO.
+2009	QUANTIDADE DE MATERIAL SUPERIOR A QUANTIDADE COBERTA
+2010	COBRANÇA DE MATERIAIS INCLUSOS NAS TAXAS
+2011	COBRANÇA DE MATERIAL INCLUSO NO PACOTE NEGOCIADO.
+2012	COBRANÇA DE MATERIAL INCOMPATÍVEL COM O RELATÓRIO TÉCNICO.
+2013	COBRANÇA DE MATERIAL EM PERMANÊNCIA HOSPITALAR NÃO AUTORIZADA.
+2014	COBRANÇA DE MATERIAL NÃO UTILIZADO
+2015	MATERIAL NÃO AUTORIZADO
+2101	MEDICAMENTO INVÁLIDO
+2102	MEDICAMENTO SEM COBERTURA PARA ATENDIMENTO AMBULATORIAL
+2103	MEDICAMENTO NÃO ESPECIFICADO
+2104	MEDICAMENTO SEM NOTA FISCAL DO FORNECEDOR
+2105	QUANTIDADE DE MEDICAMENTOS DEVE SER MAIOR QUE ZERO
+2106	MEDICAMENTO INFORMADO NÃO COBERTO
+2107	COBRANÇA DE MEDICAMENTO EM QUANTIDADE INCOMPATÍVEL COM A PERMANÊNCIA.
+2108	COBRANÇA DE MEDICAMENTO EM QUANTIDADES INCOMPATÍVEIS COM O PROCEDIMENTO REALIZADO.
+2109	QUANTIDADE DE MEDICAMENTO SUPERIOR A QUANTIDADE COBERTA
+2110	COBRANÇA DE MEDICAMENTO INCLUSOS NAS TAXAS
+2111	COBRANÇA DE MEDICAMENTO INCLUSO NO PACOTE NEGOCIADO.
+2112	COBRANÇA DE MEDICAMENTO INCOMPATÍVEL COM O RELATÓRIO TÉCNICO.
+2113	COBRANÇA DE MEDICAMENTO EM PERMANÊNCIA HOSPITALAR NÃO AUTORIZADA.
+2114	COBRANÇA DE MEDICAMENTO NÃO UTILIZADO
+2115	MEDICAMENTO NÃO AUTORIZADO
+2201	OPME INVÁLIDO
+2202	OPME SEM COBERTURA PARA ATENDIMENTO AMBULATORIAL
+2203	OPME SEM NOTA FISCAL DO FORNECEDOR
+2204	QUANTIDADE DE OPME DEVE SER MAIOR QUE ZERO
+2205	OPME INFORMADO NÃO COBERTO
+2206	OPME INFORMADO NÃO AUTORIZADO
+2207	COBRANÇA DE OPME NÃO UTILIZADO
+2208	COBRANÇA DE OPME NO ITEM MATERIAL E MEDICAMENTOS.
+2209	COBRANÇA DE OPME EM DESACORDO COM RELATÓRIO TÉCNICO
+2210	COBRANÇA DE OPME EM QUANTIDADE INCOMPATÍVEL COM O PROCEDIMENTO REALIZADO
+
+2211	COBRANÇA DE OPME INCLUSA NO PACOTE NEGOCIADO
+
+2212	OPME EM DESACORDO COM OS CRITÉRIOS TÉCNICOS ADOTADOS PELA OPERADORA
+2213	OPME PAGO A FORNECEDOR TERCEIRIZADO
+2301	GASES MEDICINAIS INVÁLIDOS
+2302	COBRANÇA DE OXIGENOTERAPIA SEM PRESCRIÇÃO MÉDICA.
+2303	COBRANÇA DE OXIGENOTERAPIA COM QUANTITATIVO DE USO EM DIVERGÊNCIA/PAGO VALOR CORRIGIDO.
+2304	COBRANÇA DE OXIGÊNIO INCLUSO NA TAXA DE NEBULIZAÇÃO ESPECIFICADA.
+2305	COBRANÇA DE OXIGENOTERAPIA EM USO PROLONGADO  SEM  JUSTIFICATIVA DE USO.
+2306	COBRANÇA DE OXIGENOTERAPIA SEM REGISTRO DE CONTROLE DE USO (ENTRADA E SAÍDA).
+2307	COBRANÇA DE GASES EM QUANTIDADE SUPERIOR AO PERÍODO DE PERMANÊNCIA
+2308	COBRANÇA DE CO2 NAS CIRURGIAS VIDEOLAPAROSCÓPICAS DURANTE TODA A REALIZAÇÃO DO PROCEDIMENTO (INÍCIO AO FIM).
+2309	COBRANÇA DE AR COMPRIMIDO SEM REGISTRO NO BOLETIM ANESTÉSICO E DURAÇÃO DE USO.
+2310	COBRANÇA DE GASES INCOMPATÍVEL COM O UTILIZADO/ PRESCRITO.
+2401	TAXA / ALUGUEL INVÁLIDO
+2402	COBRANÇA DE TAXA POR USO DE EQUIPAMENTO INCOMPATÍVEL COM O PROCEDIMENTO REALIZADO/USO PREVISTO NO PROCEDIMENTO.
+2403	COBRANÇA DE TAXA DE USO DE BOMBA DE INFUSÃO EM PACIENTE INTERNADO NA UTI
+2404	COBRANÇA DE OUTRAS TAXAS ASSOCIADAS/INCLUSAS NA COBRANÇA DA TAXA DE SALA PREVISTA.
+2405	COBRANÇA DE MAIS DE UMA TAXA DE SALA DE CIRURGIA, POR CONTA DO NÚMERO DE PROCEDIMENTOS REALIZADOS NO MESMO TEMPO CIRÚRGICO.
+2406	COBRANÇA INDEVIDA DE TAXA DE SALA POR ADMINISTRAÇÃO DE MEDICAMENTOS.
+2407	COBRANÇA DE TAXAS, DE SERVIÇOS REALIZADOS EM AMBIENTES INCOMPATÍVEIS COM O USO DE EQUIPAMENTOS.
+2408	COBRANÇA DE TAXAS EM QUANTIDADE SUPERIOR AO TEMPO DE PERMANÊNCIA HOSPITALAR
+2409	COBRANÇA DE TAXA DE OBSERVAÇÃO EM PRONTO SOCORRO COM PERMANÊNCIA MENOR QUE O PERÍODO ESTIPULADO
+2410	COBRANÇA DE TAXA DE OBSERVAÇÃO EM PRONTO SOCORRO SEM O REGISTRO DA PERMANÊNCIA.
+2411	COBRANÇA DE TAXA DE SALA DE PRONTO SOCORRO, PARA APLICAÇÃO DE MEDICAMENTOS.
+2412	COBRANÇA DE TAXA DE RECUPERAÇÃO ANESTÉSICA NÃO JUSTIFICADA PARA O PROCEDIMENTO.
+2413	COBRANÇA DE TAXA INCLUSA NO PACOTE NEGOCIADO.
+2414	COBRANÇA DE TAXA DE EQUIPAMENTO EM CONCOMITÂNCIA COM A COBRANÇA DE TAXA PARA O PROCEDIMENTO.
+2415	TAXA EXIGE INFORMAÇÃO DO VALOR NA GUIA.
+2416	COBRANÇA DE TAXA DE RECUPERAÇÃO ANESTÉSICA PARA PACIENTES COM PÓS-OPERATÓRIO IMEDIATO REALIZADO NA UTI/CTI.
+2417	COBRANÇA DE TAXA DE RECUPERAÇÃO ANESTÉSICA SEM A PRESENÇA DO ANESTESISTA.
+2418	COBRANÇA DE TAXA DE SALA INCOMPATÍVEL COM O PROCEDIMENTO.
+2419	COBRANÇA DE TAXA DE OBSERVAÇÃO PARA ATENDIMENTO QUE GEROU UMA INTERNAÇÃO.
+2420	COBRANÇA DE TAXA DE SALA CIRÚRGICA COM PORTE ANESTÉSICO DIFERENTE DO PROCEDIMENTO AUTORIZADO/REALIZADO.
+2421	COBRANÇA DE TAXA EM QUANTIDADE INCORRETA.
+2422	COBRANÇA DE TAXA POR USO DE EQUIPAMENTO DE USO OBRIGATÓRIO NA SALA DE CIRURGIA, CUJA TAXA DE SALA CIRÚRGICA JÁ INCLUI SEU USO.
+2423	COBRANÇA DE TAXA DE EQUIPAMENTOS DE USO OBRIGATÓRIO NO LOCAL DE ATENDIMENTO.
+2424	COBRANÇA DE TAXA DE OBSERVAÇÃO PARA ATENDIMENTO QUE GEROU UMA INTERNAÇÃO.
+2501	PROCEDIMENTO EM SÉRIE INVÁLIDO
+2502	COBRANÇA DE DUAS AVALIAÇÕES FISIOTERÁPICAS
+2503	COBRANÇA DE PSICOTERAPIA INDIVIDUAL, QUANDO O APLICADO É A COBRANÇA DE PSICOTERAPIA EM GRUPO
+2504	QUANTIDADE DE SESSÕES COBRADAS NÃO CONDIZEM COM AS ASSINATURAS NO CONTROLE DE TRATAMENTO SERIADO
+2505	O CÓDIGO COBRADO É DIFERENTE DO CÓDIGO AUTORIZADO
+2506	A QUANTIDADE DE SESSÕES COBRADAS É DIFERENTE DA QUANTIDADE AUTORIZADA
+2507	O CÓDIGO AUTORIZADO ESTÁ INCOMPATÍVEL COM A PRESCRIÇÃO MÉDICA SOLICITADA
+2508	COBRANÇA DE SESSÕES SEM O DEVIDO PLANO DE TRATAMENTO E, OU, COM O PRAZO DE PAGAMENTO EXPIRADO
+2509	COBRANÇA DO PROCEDIMENTO SERIADO INCOMPATÍVEL COM O QUADRO CLÍNICO
+2510	COBRANÇA DO PROCEDIMENTO SERIADO EM NÚMERO DE SESSÕES ACIMA DA QUANTIDADE ESTABELECIDA
+2511	AUSÊNCIA DE EVOLUÇÃO NO PRONTUÁRIO MÉDICO DO TRATAMENTO SERIADO REALIZADO.
+2512	COBRANÇA DE SESSÕES DE FISIOTERAPIA EM DESACORDO COM AS EVOLUÇÕES DO PRONTUÁRIO MÉDICO
+2513	COBRANÇA DE TRATAMENTO SERIADO SEM JUSTIFICATIVA CLÍNICA/TÉCNICA
+2514	SERVIÇO NÃO CONTRATADO PARA O PRESTADOR
+2515	LOCAL DE ATENDIMENTO INADEQUADO
+2516	QUANTIDADE COBRADA DIFERENTE DA REALIZADA
+2601	CODIFICAÇÃO INCORRETA/INADEQUADA DO PROCEDIMENTO.
+2602	COBRANÇA DE HONORÁRIO INCLUSO NO PROCEDIMENTO PRINCIPAL
+2603	COBRANÇA DE HONORÁRIO SEM REGISTRO DA EFETIVA PARTICIPAÇÃO DO PROFISSIONAL
+2604	PROCEDIMENTO PRINCIPAL NÃO REQUER EQUIPE MÉDICA
+2605	NÃO CABE PAGAMENTO DO HONORÁRIO INTEGRAL POR SER A MESMA VIA DE ACESSO CIRÚRGICO.
+2606	COBRANÇA DO HONORÁRIO EM LOCAL DE ATENDIMENTO INCORRETO (INEXISTENTE).
+2607	COBRANÇA DE HONORÁRIOS EM DUPLICIDADE.
+2608	COBRANÇA DE CONSULTA INDEVIDA, QUANDO O PROCEDIMENTO PRINCIPAL JÁ ESTÁ SENDO REMUNERADO.
+2609	LOCAL DE ATENDIMENTO NÃO INFORMADO.
+2610	GRAU DE PARTICIPAÇÃO DE AUXILIAR INCOMPATÍVEL COM PROCEDIMENTO COBRADO
+2611	COBRANÇA DE ESPECIALISTA NÃO JUSTIFICADA NO EVENTO
+2612	COBRANÇA INDEVIDA DE EQUIPE "STAND-BY", JÁ QUE ANGIOPLASTIA SEGUIDA DE CIRURGIA CARDÍACA
+2613	HONORÁRIO MÉDICO DO ANESTESISTA JÁ LIBERADO NO PROCEDIMENTO CIRÚRGICO, POIS "ANALGESIA POR DIA SUBSEQUENTE" COBRADA NA MESMA DATA DO EVENTO CIRÚRGICO
+2614	COBRANÇA DE CADA PARTICIPANTE DA EQUIPE DEVE SER FEITA EM GUIAS DIFERENTES
+2701	PROCEDIMENTO INVÁLIDO
+2702	COBRANÇA DE EXAME NÃO SOLICITADO PELO MÉDICO
+2703	EXAME SEM REGISTRO DE EXECUÇÃO
+2704	COBRANÇA DE EXAME NÃO CORRELACIONADO AO RELATÓRIO ESPECÍFICO
+2705	COBRANÇA DE PROCEDIMENTO/EXAME SEM JUSTIFICATIVA PARA REALIZAÇÃO OU COM JUSTIFICATIVA INSUFICIENTE.
+2706	COBRANÇA DE PROCEDIMENTO/EXAME COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+2707	EXAME NÃO AUTORIZADO
+2708	COBRANÇA DE EXAME EM QUANTIDADE INCOMPATÍVEL COM O PROCEDIMENTO/EVOLUÇÃO CLÍNICA
+2709	COBRANÇA DE PROCEDIMENTO INCLUSO NO PROCEDIMENTO PRINCIPAL
+2710	COBRANÇA DE EXAME QUE EXIGE AUTORIZAÇÃO PRÉVIA
+2711	COBRANÇA DE EXAME COM HISTÓRIA CLÍNICA/HIPÓTESE DIAGNÓSTICA NÃO COMPATÍVEL
+2712	COBRANÇA DE EXAME EM QUANTIDADE ACIMA DA MÁXIMA PERMITIDA/AUTORIZADA
+2713	COBRANÇA DE EXAME NÃO COMPATÍVEL COM A IDADE.
+2714	COBRANÇA DE EXAME COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO.
+2715	EXAME REALIZADO PELO MESMO PROFISSIONAL, NA MESMA ESPECIALIDADE, NO PRAZO INFERIOR AO ESTIPULADO SEM JUSTIFICATIVA ADEQUADA.
+2716	EXAME COBRADO NÃO CORRESPONDE AO EXAME EXECUTADO
+2717	COBRANÇA DE EXAME AMBULATORIAL COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+2718	EXAMES NÃO JUSTIFICAM CARÁTER DE URGÊNCIA
+2801	PACOTE INVÁLIDO
+2802	PACOTE INCOMPATÍVEL COM O SEXO DO BENEFICIÁRIO
+2803	IDADE DO BENEFICIÁRIO INCOMPATÍVEL COM O PACOTE
+2804	VALOR TOTAL DO PACOTE DIFERENTE DO VALOR PROCESSADO
+2805	VALOR DO PACOTE SUPERIOR AO VALOR DOS ITENS
+2806	COBRANÇA DE PACOTE NÃO EXECUTADO
+2807	COBRANÇA DE PACOTE NÃO SOLICITADO PELO MÉDICO
+2808	PACOTE SEM REGISTRO DE EXECUÇÃO
+2809	COBRANÇA DE PACOTE NÃO CORRELACIONADO AO RELATÓRIO ESPECÍFICO
+2810	COBRANÇA DE PACOTE SEM JUSTIFICATIVA PARA REALIZAÇÃO OU COM JUSTIFICATIVA INSUFICIENTE.
+2811	COBRANÇA DE PACOTE COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+2812	PACOTE NÃO AUTORIZADO
+2813	COBRANÇA DE PACOTE EM QUANTIDADE INCOMPATÍVEL COM O PROCEDIMENTO/EVOLUÇÃO CLÍNICA
+2814	ITENS DE COMPOSIÇÃO DO PACOTE NÃO REALIZADOS
+2815	COBRANÇA DO PACOTE EXIGE AUTORIZAÇÃO PRÉVIA
+2816	COBRANÇA DE PACOTE COM HISTÓRIA CLÍNICA/HIPÓTESE DIAGNÓSTICA NÃO COMPATÍVEL
+2817	COBRANÇA DE PACOTE EM QUANTIDADE ACIMA DA MÁXIMA PERMITIDA/AUTORIZADA
+2818	COBRANÇA DE PACOTE NÃO COMPATÍVEL COM A IDADE.
+2819	COBRANÇA DE PACOTE COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO.
+2820	PACOTE REALIZADO PELO MESMO PROFISSIONAL, NA MESMA ESPECIALIDADE, NO PRAZO INFERIOR AO ESTIPULADO SEM JUSTIFICATIVA ADEQUADA.
+2821	PACOTE COBRADO NÃO CORRESPONDE AO EXAME EXECUTADO
+2822	COBRANÇA DE PACOTE AMBULATORIAL COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+2901	REVISÃO DE GLOSA INVÁLIDA
+2902	GLOSA MANTIDA
+2903	PEDIDO DE REVISÃO SEM JUSTIFICATIVA
+2904	MAIS DE UM RECURSO DE GLOSA PARA A MESMA GUIA/PROTOCOLO
+2905	A GUIA NÃO É DE REVISÃO
+2906	NÚMERO DA GUIA INVÁLIDO
+2907	PRAZO DE 180 DIAS ULTRAPASSADO PARA SOLICITAÇÃO DE REANÁLISE
+2908	SOLICITAÇÃO DE REANÁLISE EFETUADA DE FORMA INCORRETA 
+2909	PRAZO PARA SOLICITAÇÃO DE RECURSO DE GLOSA PRESCRITO
+3001	PROCEDIMENTO ODONTOLÓGICO INVÁLIDO
+3002	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO QUE EXIGE AUTORIZAÇÃO PRÉVIA
+3003	IDADE DO BENEFICIÁRIO INCOMPATÍVEL COM O PROCEDIMENTO ODONTOLÓGICO
+3004	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO EM QUANTIDADE ACIMA DA MÁXIMA PERMITIDA/AUTORIZADA
+3005	VALOR TOTAL DO PROCEDIMENTO DIFERENTE DO VALOR PROCESSADO
+3006	QUANTIDADE DE PROCEDIMENTO DEVE SER MAIOR QUE ZERO
+3007	PROCEDIMENTOS ODONTOLÓGICOS DUPLICADOS
+
+3008	PROCEDIMENTO ODONTOLÓGICO INCLUSO NO PROCEDIMENTO PRINCIPAL
+
+3009	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO NÃO EXECUTADO
+3010	COBRANÇA DE PROCEDIMENTO NÃO SOLICITADO PELO CIRURGIÃO-DENTISTA
+3011	PROCEDIMENTO ODONTOLÓGICO SEM REGISTRO DE EXECUÇÃO
+3012	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO NÃO CORRELACIONADO AO RELATÓRIO ESPECÍFICO
+3013	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO SEM JUSTIFICATIVA PARA REALIZAÇÃO OU COM JUSTIFICATIVA INSUFICIENTE.
+3014	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO COM DATA DE AUTORIZAÇÃO POSTERIOR À DO ATENDIMENTO.
+3015	COBRANÇA DE PROCEDIMENTO ODONTOLÓGICO COM AUSÊNCIA DE RESULTADO OU LAUDO TÉCNICO.
+
+3016	PROCEDIMENTO ODONTOLÓGICO REALIZADO, NA MESMA ESPECIALIDADE, NO PRAZO INFERIOR AO ESTIPULADO, SEM JUSTIFICATIVA
+
+3017	PROCEDIMENTO COBRADO NÃO CORRESPONDE A PERÍCIA (ESPECIFICAR).
+3018	EVENTO GLOSADO POR AUDITORIA (ESPECIFICAR)
+3019	EVENTO SOB ANÁLISE TÉCNICA, AGUARDANDO LIBERAÇÃO DE CONFIRMAÇÃO PARA POSTERIOR PAGAMENTO
+3020	CONFORME DOCUMENTAÇÃO RADIOGRÁFICA ENVIADA, EVENTO REALIZADO INADEQUADAMENTE
+3021	FALHA EM INFORMAÇÃO DE DADOS DE ARCADAS/HEMI-ARCOS
+3022	FALHA EM INFORMAÇÃO DE DADOS DE DENTE INICIAL E/OU FINAL
+3023	FALHA EM INFORMAÇÃO DE DADOS DE FACES DOS DENTES
+3024	EVENTO SÓ POSSÍVEL EM DENTES DECÍDUOS
+3025	EVENTO SÓ POSSÍVEL EM DENTES PERMANENTES
+3026	ERRO NAS INFORMAÇÕES DE ORDEM DOS DENTES INICIAL E FINAL
+3027	DESACORDO ENTRE O TIPO DE DENTE E O NÚMERO DE CANAIS SOLICITADOS
+3028	EVENTO RESTRITO À ESPECIALISTAS
+3029	EVENTO NÃO INDICADO PELA AUDITORIA INICIAL
+3030	AUDITORIA FINAL CONSTA QUE A RESTAURAÇÃO FOI REALIZADA EM OUTRO MATERIAL
+3031	RADIOGRAFIA FORA DOS PADRÕES TÉCNICOS
+3032	INTERVALO DA ÚLTIMA MPP INFERIOR A TRÊS MESES
+3033	INTERVALO DA ÚLTIMA MPP INFERIOR A QUATRO MESES
+3034	JUSTIFICATIVA TECNICAMENTE NÃO SATISFATÓRIA
+3035	PACIENTE EM TRATAMENTO COM O MESMO PROFISSIONAL
+3036	PACIENTE EM TRATAMENTO COM OUTRO PROFISSIONAL
+3037	PROCEDIMENTO COBRADO NÃO É IGUAL AO EXECUTADO 
+3038	RADIOGRAFIA INICIAL INCONGRUENTE COM A RADIOGRAFIA FINAL
+3039	RADIOGRAFIA NÃO CORRESPONDE AO PROCEDIMENTO COBRADO
+3040	GLOSA TÉCNICA (ESPECIFICAR DETALHADAMENTE)
+3041	AGUARDANDO DOCUMENTAÇÃO DE ORTODONTIA
+3042	APÓS ANÁLISE DA RADIOGRAFIA INICIAL VERIFICOU-SE EXODONTIA DE INCLUSO
+3043	APÓS ANÁLISE DA RADIOGRAFIA INICIAL VERIFICOU-SE EXODONTIA DE SEMI-INCLUSO
+3044	APÓS ANÁLISE DA RADIOGRAFIA INICIAL VERIFICOU-SE EXODONTIA SIMPLES
+3045	APÓS ANÁLISE DA RADIOGRAFIA INICIAL, VERIFICOU-SE EXODONTIA DE FRAGMENTO RADICULAR
+3046	AUDITORIA FINAL CONSTA QUE O PROCEDIMENTO FOI REALIZADO COM OUTRO MATERIAL 
+3047	AUSÊNCIA DE IMAGEM/FOTO/RADIOGRAFIA/ DIAGNÓSTICO PÓS PROCEDIMENTO ODONTOLÓGICO
+3048	CANCELAMENTO DO PROCEDIMENTO ODONTOLÓGICO POR SOLICITAÇÃO DO BENEFICIÁRIO.
+3049	CANCELAMENTO DO PROCEDIMENTO ODONTOLÓGICO POR SOLICITAÇÃO DO PRESTADOR.
+3050	COBRANÇA DE URGÊNCIA/EMERGÊNCIA NA VIGÊNCIA DO TRATAMENTO ODONTOLÓGICO.
+3051	DOCUMENTAÇÃO EM ANÁLISE
+3052	DOCUMENTAÇÃO INCOMPLETA, INCORRETA OU AUSENTE
+3053	ELEMENTOS PODEM SER VISUALIZADOS EM UMA MESMA PELÍCULA.
+3054	IDENTIFICADO CONDUTO(S) NÃO OBTURADO(S)
+3055	IDENTIFICADO TRATAMENTO ENDODÔNTICO E NÃO RETRATAMENTO
+3056	NA AUDITORIA FOI CONSTATADA DIVERGÊNCIA NA QUANTIDADE DE FACES RESTAURADAS
+3057	NÃO APRESENTA A QUANTIDADE MÍNIMA DE ELEMENTOS DENTÁRIOS POR SEGMENTO
+3058	NECESSÁRIA AUDITORIA FINAL
+3059	NECESSÁRIA AUDITORIA INICIAL
+3060	NECESSÁRIA AUDITORIA INTERMEDIÁRIA
+3061	NECESSÁRIA AVALIAÇÃO DO ESPECIALISTA
+3062	NECESSÁRIO ENVIAR LAUDO OU RELATÓRIO TÉCNICO SOBRE O TRATAMENTO SOLICITADO.
+3063	O PLANO DE TRATAMENTO AUTORIZADO SERÁ CANCELADO DEVIDO À TROCA DE PROFISSIONAL
+3064	PROCEDIMENTO AUTORIZADO APENAS PARA DENTES TRATADOS ENDODONTICAMENTE
+3065	PROCEDIMENTO AUTORIZADO SOMENTE PARA DENTES ANTERIORES
+3066	PROCEDIMENTO EM DESACORDO COM O ANEXO GUIA TRATAMENTO ODONTOLÓGICO SITUAÇÃO INICIAL
+3067	RADIOGRAFIA FINAL NÃO ENVIADA
+3068	RADIOGRAFIA FINAL SEM DISSOCIAÇÃO DOS CONDUTOS
+3069	RADIOGRAFIA INDICA A NECESSIDADE DE TRATAMENTO ENDODONTICO
+3070	RADIOGRAFIA INDICA A PRESENÇA DE RAIZ RESIDUAL NO ALVEOLO
+3071	RADIOGRAFIA INDICA AUSENCIA DE NÚCLEO
+3072	RADIOGRAFIA INDICA CANAL(AIS) NÃO OBTURADO(S)
+3073	RADIOGRAFIA INDICA DESVIO DA TRAJETORIA DO CANAL 
+3074	RADIOGRAFIA INDICA EXCESSO DE MATERIAL
+3075	RADIOGRAFIA INDICA FALHA NA OBTURAÇÃO DO(S) CONDUTO(S)
+3076	RADIOGRAFIA INDICA FALTA DE ADAPTAÇÃO DA COROA/NÚCLEO
+3077	RADIOGRAFIA INDICA FALTA DE ADAPTAÇÃO DA COROA/PEÇA PROTÉTICA
+3078	RADIOGRAFIA INDICA NÚCLEO INADEQUADO
+3079	RADIOGRAFIA INDICA TRATAMENTO ENDODÔNTICO E NÃO RETRATATAMENTO  ENDODÔNTICO
+3080	RADIOGRAFIA INICIAL E FINAL NÃO ENVIADA
+3081	RADIOGRAFIA INICIAL NÃO ENVIADA
+3082	RADIOGRAFIA/IMAGEM INDICA FALHA NA RESTAURAÇÃO
+3083	REAVALIAR O PLANO DE TRATAMENTO OBSERVANDO CRITÉRIOS DE INDICAÇÃO, OPORTUNIDADE E VIABILIDADE.
+3084	RELATÓRIO ANALISE TÉCNICA SEM CARIMBO/ASSINATURA DO  PRESTADOR
+3085	RADIOGRAFIA NÃO CORRESPONDE AO PROCEDIMENTO SOLICITADO
+3086	TRATAMENTO ODONTOLÓGICO NÃO CARACTERIZADO COMO URGÊNCIA.
+
+INCLUIDAS NA VERSÃO 3.02.02 (3087 A 3098)
+
+3087	COBRANÇA INDEVIDA DE TAXA ADMINISTRATIVA
+3088	VALOR ACATADO, CONFORME REAJUSTE RETROATIVO
+3089	QUANTIDADE DE ITENS INCOMPATÍVEL COM O PERÍODO DE INTERNAÇÃO
+3090	NECESSÁRIO ENVIAR AS ETIQUETAS E SELOS HEMOTERÁPICOS DO MATERIAL UTILIZADO
+3091	COBRANÇA FORA DO PRAZO ESTIPULADO NO CONTRATO
+3092	VALOR ACATADO POR GLOSA REALIZADA INDEVIDAMENTE, APÓS AVALIAÇÃO DO RECURSO
+3093	VALOR ACATADO POR AUTORIZAÇÃO ESPECIAL
+3094	VALOR DA TAXA ADMINISTRATIVA ALTERADO EM RAZÃO DE GLOSAS
+3095	RECURSO DE GLOSA ACATADO
+3096	ATENDIMENTO NÃO CONFIRMADO PELO BENEFICIÁRIO
+3097	TIPO DE ATENDIMENTO INCOMPATÍVEL COM A SEGMENTAÇÃO ASSISTENCIAL CONTRATADA
+3098	O PRESTADOR POSSUI PACOTE CONTRATADO PARA ESTE PROCEDIMENTO. VERIFIQUE O CÓDIGO CORRESPONDENTE
+
+INCLUIDAS NA VERSÃO 3.02.02 (3100 A 3.155)
+
+3100	PARA LIBERAR ESTE ACESSO, ENTRE EM CONTATO COM A OPERADORA E SOLICITE O CADASTRAMENTO DO SEU CÓDIGO DE ORIGEM
+3101	O PROCEDIMENTO SOLICITADO É DE EXECUÇÃO ÚNICA E JÁ FOI REALIZADO PELO BENEFICIÁRIO
+3102	É NECESSÁRIO TER UM PROCEDIMENTO RELACIONADO À SOLICITAÇÃO
+3103	SOLICITAÇÃO DE AUTORIZAÇÃO FORA DO PRAZO ACORDADO
+3104	RECUSADO, CONFORME JUNTA MÉDICA/ODONTOLÓGICA
+3105	ITEM COM UTILIZAÇÃO SUSPENSA PELO ÓRGÃO COMPETENTE
+3106	REGISTRO ANVISA INVÁLIDO OU NÃO INFORMADO
+3107	ITEM CATEGORIZADO COMO NÃO DESCARTÁVEL
+3108	ITEM INCLUSO NO PACOTE NEGOCIADO
+3109	PROCEDIMENTO SOLICITADO NÃO AUTORIZADO POR NÃO CONSTAR DO ROL DE PROCEDIMENTOS E EVENTOS EM SAÚDE DA ANS
+3110	BLOQUEIO JUDICIAL
+3111	CAMPO CONDICIONADO NÃO PREENCHIDO OU INCORRETO
+3112	DESCONTO DE COPARTICIPAÇÃO/FRANQUIA CONFORME CONTRATO
+3113	NECESSÁRIO ENVIO DE  RADIOGRAFIA  PERIAPICAL DA REGIÃO
+3114	NECESSÁRIO ENVIO DE RADIOGRAFIA INTERPROXIMAL DA REGIÃO
+3115	NECESSÁRIO ENVIO DE RADIOGRAFIA OCLUSAL DA REGIÃO
+3116	REALIZAÇÃO DE PROCEDIMENTO COM NECESSIDADE ESTÉTICA
+3117	PROCEDIMENTO ODONTOLÓGICO COM INDICAÇÃO TÉCNICA EM PROGNÓSTICO DESFAVORÁVEL
+3118	NECESSÁRIO ENVIAR TERMO DE CONSENTIMENTO INFORMADO
+3119	NECESSÁRIO ENVIAR TERMO DE RESPONSABILIDADE PROFISSIONAL
+3120	NECESSÁRIO O ENVIO DO PEDIDO DO PROFISSIONAL SOLICITANTE
+3121	ITEM AUTORIZADO E AINDA NÃO INDENIZADO
+3122	SOLICITAÇÃO DE REEMBOLSO EM PLANO SEM DIREITO À LIVRE ESCOLHA
+3123	ITEM PARA A MESMA FINALIDADE JÁ AUTORIZADO
+3124	RADIOGRAFIA SUGERE INDICAÇÃO DE EXODONTIA
+3125	RADIOGRAFIA SUGERE INDICAÇÃO DE RETRATAMENTO ENDODONTICO
+3126	COBRANÇA DE ITEM ANTERIOR À DATA DE REALIZAÇÃO
+3127	IMAGEM SUGERE ALTERAÇÃO PATOLÓGICA
+3128	IMAGEM SUGERE PRESENÇA DE ARTEFATO DE IMAGEM
+3129	IMAGEM SUGERE PRESENÇA DE CORPO ESTRANHO
+3130	IMAGEM SUGERE IMPLANTE EM PROCESSO DE OSSEOINTEGRAÇÃO
+3131	ENVIAR PLANO DE TRATAMENTO ORTODÔNTICO INICIAL
+3132	ENVIAR PLANO DE TRATAMENTO ORTODÔNTICO INTERMEDIÁRIO
+3133	TRATAMENTO ORTODÔNTICO CONCLUÍDO
+3134	TRATAMENTO ORTODÔNTICO EM  FASE DE CONTENÇÃO
+3135	PROFISSIONAL INFORMADO PARA REEMBOLSO PERTENCE A REDE DA OPERADORA
+3136	PROCEDIMENTO OU ITEM ASSISTENCIAL AUTORIZADO
+3137	PROCEDIMENTO PREVÊ COPARTICIPAÇÃO/FRANQUIA CONFORME CONTRATO
+3138	CONDIÇÃO CLÍNICA INCOMPATÍVEL COM A SOLICITAÇÃO
+3139	TRATAMENTO ORTODONTICO SUSPENSO A PEDIDO DO DENTISTA
+3140	ABANDONO DE TRATAMENTO PELO BENEFICIÁRIO
+3141	BENEFICIÁRIO NÃO POSSUI COBERTURA PARA ASSISTÊNCIA AMBULATORIAL
+3142	ITEM NÃO CONTRATADO
+3143	VALOR ACATADO POR DECISÃO JUDICIAL /LIMINAR
+3144	NÃO É NECESSÁRIA AUTORIZAÇÃO PRÉVIA
+3145	NÃO AUTORIZADO POR MOTIVO TÉCNICO
+3146	PRODUTO CONTRATADO NÃO ADAPTADO À LEI 9.656/98, SEM COBERTURA CONTRATUAL PARA O ITEM SOLICITADO
+3147	MATERIAL PASSÍVEL DE REPROCESSAMENTO
+3148	TIPO DE TRANSAÇÃO INVÁLIDO
+3149	INDICADOR DE ENVIO EM PAPEL INVÁLIDO
+3150	CÓDIGO DA TABELA INVÁLIDO
+3151	O ESTABELECIMENTO DE SAÚDE PARA O QUAL FOI SOLICITADA A INFORMAÇÃO SOBRE PARTOS NÃO POSSUÍA VÍNCULO COM A OPERADORA NO PERÍODO A QUE SE REFERE A INFORMAÇÃO
+3152	O PROFISSIONAL PARA O QUAL FOI SOLICITADA A INFORMAÇÃO SOBRE PARTOS NÃO POSSUÍA VÍNCULO COM A OPERADORA NO PERÍODO A QUE SE REFERE A INFORMAÇÃO
+3153	O ESTABELECIMENTO DE SAÚDE PARA O QUAL FOI SOLICITADA A INFORMAÇÃO SOBRE PARTOS NÃO POSSUI VÍNCULO COM A OPERADORA
+3154	O PROFISSIONAL PARA O QUAL FOI SOLICITADA A INFORMAÇÃO SOBRE PARTOS NÃO POSSUI VÍNCULO COM A OPERADORA
+3155	PARTOGRAMA OU RELATÓRIO MÉDICO NÃO DISPONÍVEL PARA CONSULTA DA OPERADORA
+
+MENSAGENS UTILIZADAS ENTRE ANS E OPERADORAS (5001 em diante)
+
+5001	MENSAGEM ELETRÔNICA FORA DO PADRÃO TISS
+5002	NÃO FOI POSSÍVEL VALIDAR O ARQUIVO XML
+5003	ENDEREÇO DO REMETENTE INVÁLIDO
+5004	ENDEREÇO DO DESTINATÁRIO INVÁLIDO
+5005	REMETENTE NÃO IDENTIFICADO
+5006	DESTINATÁRIO NÃO IDENTIFICADO
+5007	MENSAGEM INCONSISTENTE OU INCOMPLETA
+5008	ESPAÇO RESERVADO PARA A CAIXA DE SAÍDA INSUFICIENTE
+5009	ESPAÇO RESERVADO PARA A CAIXA DE ENTRADA INSUFICIENTE
+5010	ENVIO DE MENSAGEM NÃO FOI TERMINADO
+5011	ENVIO DE MENSAGEM FINALIZADA
+5012	RECEBIMENTO DE MENSAGEM NÃO FINALIZADO
+5013	RECEBIMENTO DE MENSAGEM FINALIZADA
+5014	CÓDIGO HASH INVÁLIDO. MENSAGEM PODE ESTAR CORROMPIDA.
+5015	NÚMERO DE GUIAS/DEMONSTRATIVOS DENTRO DA MENSAGEM SUPERIOR AO TAMANHO MÁXIMO PERMITIDO.
+*** incluidos na versão 3.01.00
+5016  SEM NENHUMA OCORRENCIA DE MOVIMENTO NA COMPETENCIA PARA ENVIO A ANS
+5017 ARQUIVO PROCESSADO PELA ANS
+*** incluidos na versão 3.01.01
+5018	CERTIFICADO DIGITAL INVÁLIDO
+5019	CERTIFICADO DIGITAL VENCIDO
+5020	CERTIFICADO DIGITAL REVOGADO
+5021	CADEIA DE CERTIFICAÇÃO INVÁLIDA
+5022	ASSINATURA DIGITAL NÃO CONFERE
+5023	COMPETÊNCIA NÃO ESTÁ LIBERADA PARA ENVIO DE DADOS
+5024	OPERADORA INATIVA NA COMPETÊNCIA DOS DADOS
+5025	DATA DE REGISTRO DA TRANSAÇÃO INVÁLIDA
+5026	HORA DE REGISTRO DA TRANSAÇÃO INVÁLIDA
+5027	REGISTRO ANS DA OPERADORA INVÁLIDO
+5028	VERSÃO DO PADRÃO INVÁLIDA
+5029	INDICADOR INVÁLIDO
+5030	CÓDIGO DO MUNÍCIPIO INVÁLIDO
+5031	CARÁTER DE ATENDIMENTO INVÁLIDO
+5032	INDICADOR DE RECÉM-NATO INVÁLIDO
+5033	MOTIVO DE ENCERRAMENTO INVÁLIDO
+5034	VALOR NÃO INFORMADO
+5035	CÓDIGO DA TABELA DE REFERÊNCIA NÃO INFORMADO
+5036	CÓDIGO DO GRUPO DO PROCEDIMENTO INVÁLIDO
+5037	CÓDIGO DO DENTE INVÁLIDO
+5038	CÓDIGO DA REGIÃO DA BOCA INVÁLIDO
+5039	CÓDIGO DA FACE DO DENTE INVÁLIDO
+5040	VALOR DEVE SER MAIOR QUE ZERO
+5041	QUANTIDADE NÃO INFORMADA
+5042	VALOR INFORMADO DA GUIA DIFERENTE DO SOMATÓRIO DO VALOR INFORMADO DOS ITENS
+5043	MOTIVO INVÁLIDO
+5044	JÁ EXISTEM INFORMAÇÕES NA ANS PARA A COMPETÊNCIA INFORMADA
+5045    COMPETENCIA ANTERIOR NÃO ENVIADA
+5046    COMPETENCIA INVÁLIDA
+
+INCLUIDAS NA VERSÃO 3.02.02 (5047 A 5060)
+
+5047	NÚMERO DO LOTE NÃO INFORMADO
+5048	DATA DE NASCIMENTO DO BENEFICIÁRIO INVÁLIDA
+5049	VALOR TOTAL MENOR QUE ZERO NA GUIA
+5050	VALOR INFORMADO INVÁLIDO
+5051	COMPETENCIA DO ARQUIVO DIFERENTE DA COMPETENCIA DA DATA DE PROCESSAMENTO DO LANÇAMENTO
+5052	IDENTIFICADOR INEXISTENTE
+5053	IDENTIFICADOR JÁ INFORMADO
+5054	IDENTIFICADOR NÃO ENCONTRADO
+5055	IDENTIFICADOR JÁ INFORMADO NA COMPETÊNCIA
+5056	IDENTIFICADOR NÃO INFORMADO NA COMPETÊNCIA
+5057	GUIA DE CONSULTA COM MAIS DE UM PROCEDIMENTO
+5058	PROCEDIMENTO INCOMPATÍVEL COM O TIPO DE GUIA
+5059	EXCLUSÃO INVÁLIDA - EXISTEM LANÇAMENTOS VINCULADOS A ESTA FORMA DE CONTRATAÇÃO
+5060	VALOR TOTAL PAGO DIFERENTE DA SOMA DAS PARCELAS PAGAS NO LANÇAMENTO
+
+ -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_semMovimentoInclusao">
+		<restriction base="string">
+			<maxLength value="4"/>
+			<enumeration value="5016"/>
+			<!--5016 SEM NENHUMA OCORRENCIA DE MOVIMENTO DE INCLUSÃO NA COMPETENCIA PARA ENVIO A ANS.-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoInternacao">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<!-- 1 Clínica -->
+			<!-- 2 Cirúrgica -->
+			<!-- 3 Obstétrica -->
+			<!-- 4 Pediátrica -->
+			<!-- 5 Psiquiátrica -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoInternacaoMonitoramento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<enumeration value="5"/>
+			<enumeration value="6"/>
+			<enumeration value="7"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoLancamento">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<!--1 - Débito-->
+			<!--2 - Crédito-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoQuimioterapia">
+		<restriction base="string">
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<enumeration value="4"/>
+			<!--1 - 1ª linha-->
+			<!--2 - 2ª linha-->
+			<!--3 - 3ª linha-->
+			<!--4 - Outras Linhas-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoTransacaoANS">
+		<restriction base="string">
+			<enumeration value="MONITORAMENTO"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_tipoTransacao">
+		<restriction base="string">
+			<enumeration value="ENVIO_LOTE_GUIAS"/>
+			<enumeration value="ENVIO_ANEXO"/>
+			<enumeration value="SOLIC_DEMONSTRATIVO_RETORNO"/>
+			<enumeration value="SOLIC_STATUS_PROTOCOLO"/>
+			<enumeration value="SOLICITACAO_PROCEDIMENTOS"/>
+			<enumeration value="SOLICITA_STATUS_AUTORIZACAO"/>
+			<enumeration value="VERIFICA_ELEGIBILIDADE"/>
+			<enumeration value="CANCELA_GUIA"/>
+			<enumeration value="COMUNICACAO_BENEFICIARIO"/>
+			<enumeration value="RECURSO_GLOSA"/>
+			<enumeration value="SOLIC_STATUS_RECURSO_GLOSA"/>
+			<enumeration value="PROTOCOLO_RECEBIMENTO"/>
+			<enumeration value="PROTOCOLO_RECEBIMENTO_ANEXO"/>
+			<enumeration value="RECEBIMENTO_RECURSO_GLOSA"/>
+			<enumeration value="DEMONSTRATIVO_ANALISE_CONTA"/>
+			<enumeration value="DEMONSTRATIVO_PAGAMENTO"/>
+			<enumeration value="DEMONSTRATIVO_ODONTOLOGIA"/>
+			<enumeration value="SITUACAO_PROTOCOLO"/>
+			<enumeration value="RESPOSTA_SOLICITACAO"/>
+			<enumeration value="AUTORIZACAO_ODONTOLOGIA"/>
+			<enumeration value="STATUS_AUTORIZACAO"/>
+			<enumeration value="SITUACAO_ELEGIBILIDADE"/>
+			<enumeration value="CANCELAMENTO_GUIA_RECIBO"/>
+			<enumeration value="RECIBO_COMUNICACAO"/>
+			<enumeration value="RESPOSTA_RECURSO_GLOSA"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_UF">
+		<restriction base="string">
+			<length value="2"/>
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="13"/>
+			<enumeration value="14"/>
+			<enumeration value="15"/>
+			<enumeration value="16"/>
+			<enumeration value="17"/>
+			<enumeration value="21"/>
+			<enumeration value="22"/>
+			<enumeration value="23"/>
+			<enumeration value="24"/>
+			<enumeration value="25"/>
+			<enumeration value="26"/>
+			<enumeration value="27"/>
+			<enumeration value="28"/>
+			<enumeration value="29"/>
+			<enumeration value="31"/>
+			<enumeration value="32"/>
+			<enumeration value="33"/>
+			<enumeration value="35"/>
+			<enumeration value="41"/>
+			<enumeration value="42"/>
+			<enumeration value="43"/>
+			<enumeration value="50"/>
+			<enumeration value="51"/>
+			<enumeration value="52"/>
+			<enumeration value="53"/>
+			<enumeration value="98"/>
+			<!--			
+11	Rondônia	RO
+12	Acre	AC
+13	Amazonas	AM
+14	Roraima	RR
+15	Pará	PA
+16	Amapá	AP
+17	Tocantins	TO
+21	Maranhão	MA
+22	Piauí	PI
+23	Ceará	CE
+24	Rio Grande do Norte	RN
+25	Paraíba	PB
+26	Pernambuco	PE
+27	Alagoas	AL
+28	Sergipe	SE
+29	Bahia	BA
+31	Minas Gerais	MG
+32	Espírito Santo	ES
+33	Rio de Janeiro	RJ
+35	São Paulo	SP
+41	Paraná	PR
+42	Santa Catarina	SC
+43	Rio Grande do Sul	RS
+50	Mato Grosso do Sul	MS
+51	Mato Grosso	MT
+52	Goiás	GO
+53	Distrito Federal	DF
+98	Países Estrangeiros	EX
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_unidadeMedida">
+		<restriction base="string">
+			<length value="3"/>
+			<enumeration value="001"/>
+			<enumeration value="002"/>
+			<enumeration value="003"/>
+			<enumeration value="004"/>
+			<enumeration value="005"/>
+			<enumeration value="006"/>
+			<enumeration value="007"/>
+			<enumeration value="008"/>
+			<enumeration value="009"/>
+			<enumeration value="010"/>
+			<enumeration value="011"/>
+			<enumeration value="012"/>
+			<enumeration value="013"/>
+			<enumeration value="014"/>
+			<enumeration value="015"/>
+			<enumeration value="016"/>
+			<enumeration value="017"/>
+			<enumeration value="018"/>
+			<enumeration value="019"/>
+			<enumeration value="020"/>
+			<enumeration value="021"/>
+			<enumeration value="022"/>
+			<enumeration value="023"/>
+			<enumeration value="024"/>
+			<enumeration value="025"/>
+			<enumeration value="026"/>
+			<enumeration value="027"/>
+			<enumeration value="028"/>
+			<enumeration value="029"/>
+			<enumeration value="030"/>
+			<enumeration value="031"/>
+			<enumeration value="032"/>
+			<enumeration value="033"/>
+			<enumeration value="034"/>
+			<enumeration value="035"/>
+			<enumeration value="036"/>
+			<enumeration value="037"/>
+			<enumeration value="038"/>
+			<enumeration value="039"/>
+			<enumeration value="040"/>
+			<enumeration value="041"/>
+			<enumeration value="042"/>
+			<enumeration value="043"/>
+			<enumeration value="044"/>
+			<enumeration value="045"/>
+			<enumeration value="046"/>
+			<enumeration value="047"/>
+			<enumeration value="048"/>
+			<enumeration value="049"/>
+			<enumeration value="050"/>
+			<enumeration value="051"/>
+			<enumeration value="052"/>
+			<!--
+001	AMP	Ampola
+002	BUI	Bilhões de Unidades Internacionais
+003	BG	Bisnaga
+004	BOLS	Bolsa
+005	CX	Caixa
+006	CAP	Cápsula
+007	CARP	Carpule
+008	COM	Comprimido
+009	DOSE	Dose
+010	DRG	Drágea
+011	ENV	Envelope
+012	FLAC	Flaconete
+013	FR	Frasco
+014	FA	Frasco Ampola
+015	GAL	Galão
+016	GLOB	Glóbulo
+017	GTS	Gotas
+018	G	Grama
+019	L	Litro
+020	MCG	Microgramas
+021	MUI	Milhões de Unidades Internacionais
+022	MG	Miligrama
+023	ML	Mililitro
+024	OVL	Óvulo
+025	PAS	Pastilha
+026	LT	Lata
+027	PER	Pérola
+028	PIL	Pílula
+029	PT	Pote
+030	KG	Quilograma
+031	SER	Seringa
+032	SUP	Supositório
+033	TABLE	Tablete 
+034	TUB	Tubete
+035	TB	Tubo
+036	UN	Unidade
+037	UI	Unidade Internacional 
+038	CM	Centímetro
+039	CONJ	Conjunto
+040	KIT	Kit
+041	MÇ	Maço
+042	M	Metro
+043	PC	Pacote
+044	PÇ	Peça
+045	RL	Rolo
+046	GY	Gray
+047	CGY	Centgray
+048	PAR	Par
+049	ADES	Adesivo Transdérmico
+050	COM EFEV	Comprimido Efervecente
+051	COM MST	Comprimido Mastigável
+052	SACHE	Sache
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_unidadeTempoCiclo">
+		<restriction base="string">
+			<length value="1"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!--
+			1- hora 
+			2 - dia 
+			3 - mes -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_versao">
+		<restriction base="string">
+			<enumeration value="3.02.00"/>
+			<enumeration value="3.02.01"/>
+			<enumeration value="3.02.02"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_versao_monitor">
+		<restriction base="string">
+			<enumeration value="3.02.00"/>
+			<enumeration value="3.02.01"/>
+			<enumeration value="3.02.02"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_viaDeAcesso">
+		<restriction base="string">
+			<maxLength value="1"/>
+			<enumeration value="1"/>
+			<enumeration value="2"/>
+			<enumeration value="3"/>
+			<!-- 1- Única -->
+			<!-- 2- Mesma Via -->
+			<!-- 3- Diferentes vias -->
+		</restriction>
+	</simpleType>
+	<simpleType name="dm_viaAdministracao">
+		<restriction base="string">
+			<maxLength value="2"/>
+			<enumeration value="01"/>
+			<enumeration value="02"/>
+			<enumeration value="03"/>
+			<enumeration value="04"/>
+			<enumeration value="05"/>
+			<enumeration value="06"/>
+			<enumeration value="07"/>
+			<enumeration value="08"/>
+			<enumeration value="09"/>
+			<enumeration value="10"/>
+			<enumeration value="11"/>
+			<enumeration value="12"/>
+			<enumeration value="13"/>
+			<enumeration value="14"/>
+			<enumeration value="15"/>
+			<enumeration value="16"/>
+			<enumeration value="17"/>
+			<enumeration value="18"/>
+			<enumeration value="19"/>
+			<enumeration value="20"/>
+			<enumeration value="21"/>
+			<enumeration value="22"/>
+			<enumeration value="23"/>
+			<enumeration value="24"/>
+			<enumeration value="25"/>
+			<enumeration value="26"/>
+			<enumeration value="27"/>
+			<enumeration value="28"/>
+			<enumeration value="29"/>
+			<enumeration value="30"/>
+			<enumeration value="31"/>
+			<enumeration value="32"/>
+			<enumeration value="33"/>
+			<enumeration value="34"/>
+			<enumeration value="35"/>
+			<!--
+01	Bucal
+02	Capilar
+03	Dermatológica
+04	Epidural
+05	Gastrostomia/jejunostomia
+06	Inalatória
+07	Intra- Óssea
+08	Intra-arterial
+09	Intra-articular
+10	Intracardíaca
+11	Intradérmica
+12	Intralesional
+13	Intramuscular
+14	Intraperitonial
+15	Intrapleural
+16	Intratecal
+17	Intratraqueal
+18	Intrauterina
+19	Intravenosa
+20	Intravesical
+21	Intravítrea
+22	Irrigação
+23	Nasal
+24	Oftálmica
+25	Oral
+26	Otológica
+27	Retal
+28	Sonda enteral
+29	Sonda gástrica
+30	Subcutânea
+31	Sublingual
+32	Transdérmica
+33	Uretral
+34	Vaginal
+35	Outras
+
+-->
+		</restriction>
+	</simpleType>
+	<simpleType name="st_CNPJ">
+		<restriction base="string">
+			<pattern value="[0-9]{14}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_CPF">
+		<restriction base="string">
+			<pattern value="[0-9]{11}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_competencia">
+		<restriction base="string">
+			<pattern value="[0-9]{4}[0-9]{2}"/>
+		</restriction>
+		<!--formato ano/mes -->
+	</simpleType>
+	<simpleType name="st_data">
+		<restriction base="date"/>
+	</simpleType>
+	<simpleType name="st_dataHora">
+		<restriction base="dateTime"/>
+	</simpleType>
+	<simpleType name="st_decimal3-2">
+		<restriction base="decimal">
+			<totalDigits value="3"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal4-2">
+		<restriction base="decimal">
+			<totalDigits value="4"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal5-2">
+		<restriction base="decimal">
+			<totalDigits value="5"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal7-2">
+		<restriction base="decimal">
+			<totalDigits value="7"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal8-2">
+		<restriction base="decimal">
+			<totalDigits value="8"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal9-2">
+		<restriction base="decimal">
+			<totalDigits value="9"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal7-4">
+		<restriction base="decimal">
+			<totalDigits value="7"/>
+			<fractionDigits value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal8-4">
+		<restriction base="decimal">
+			<totalDigits value="8"/>
+			<fractionDigits value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal10-2">
+		<restriction base="decimal">
+			<fractionDigits value="2"/>
+			<totalDigits value="10"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal12-2">
+		<restriction base="decimal">
+			<totalDigits value="12"/>
+			<fractionDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_decimal12-4">
+		<restriction base="decimal">
+			<totalDigits value="12"/>
+			<fractionDigits value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_hora">
+		<restriction base="time"/>
+	</simpleType>
+	<simpleType name="st_logico">
+		<restriction base="boolean"/>
+	</simpleType>
+	<simpleType name="st_numerico2">
+		<restriction base="integer">
+			<totalDigits value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_numerico3">
+		<restriction base="integer">
+			<totalDigits value="3"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_numerico4">
+		<restriction base="integer">
+			<totalDigits value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_numerico5">
+		<restriction base="integer">
+			<totalDigits value="5"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_numerico12">
+		<restriction base="integer">
+			<totalDigits value="12"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_registroANS">
+		<restriction base="string">
+			<maxLength value="6"/>
+			<pattern value="[0-9]{6}"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto1">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="1"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto2">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="2"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto3">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="3"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto4">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="4"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto5">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="5"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto6">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="6"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto7">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="7"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto8">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="8"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto10">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="10"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto11">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="11"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto12">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="12"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto14">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="14"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto15">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="15"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto20">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="20"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto30">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="30"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto32">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="32"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto40">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="40"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto60">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="60"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto70">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="70"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto100">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="100"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto150">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="150"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto500">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="500"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_texto1000">
+		<restriction base="string">
+			<minLength value="1"/>
+			<maxLength value="1000"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="st_tissFault">
+		<restriction base="string">
+			<enumeration value="DestinatarioInvalido"/>
+			<enumeration value="RemetenteInvalido"/>
+			<enumeration value="LoginInvalido"/>
+			<enumeration value="VersaoInvalida"/>
+			<enumeration value="HashInvalido"/>
+			<enumeration value="SchemaInvalido"/>
+			<enumeration value="ErroInesperadoServidor"/>
+		</restriction>
+	</simpleType>
+</schema>

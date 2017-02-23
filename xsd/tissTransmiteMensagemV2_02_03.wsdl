@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagem/v20203" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagem/v20203" name="tissTransmiteMensagem">
+	<types>
+		<schema targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagem/v20203" xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissTransmiteMensagem/v20203" xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<element name="mensagemTISSString" type="xsd:string"/>
+			<element name="respostaTISSString" type="xsd:string"/>
+			<element name="SintaxeTISSInvalida" type="xsd:string"/>
+			<element name="MensagemTISSInesperada" type="xsd:string"/>
+			<element name="DestinatarioInvalido" type="xsd:string"/>
+			<element name="RemetenteInvalido" type="xsd:string"/>
+			<element name="HashInvalido" type="xsd:string"/>
+		</schema>
+	</types>
+	<message name="enviarMensagemTISS_Request">
+		<part name="mensagem" element="tns:mensagemTISSString"/>
+	</message>
+	<message name="enviarMensagemTISS_Response">
+		<part name="resposta" element="tns:respostaTISSString"/>
+	</message>
+	<message name="SintaxeTISSInvalida">
+		<part name="SintaxeTISSInvalida" element="tns:SintaxeTISSInvalida"/>
+	</message>
+	<message name="MensagemTISSInesperada">
+		<part name="MensagemTISSInesperada" element="tns:MensagemTISSInesperada"/>
+	</message>
+	<message name="DestinatarioInvalido">
+		<part name="DestinatarioInvalido" element="tns:DestinatarioInvalido"/>
+	</message>
+	<message name="RemetenteInvalido">
+		<part name="RemetenteInvalido" element="tns:RemetenteInvalido"/>
+	</message>
+	<message name="HashInvalido">
+		<part name="HashInvalido" element="tns:HashInvalido"/>
+	</message>
+	<portType name="tissTransmiteMensagem_PortType">
+		<operation name="tissTransmiteMensagem_Operation">
+			<input message="tns:enviarMensagemTISS_Request"/>
+			<output message="tns:enviarMensagemTISS_Response"/>
+			<fault name="SintaxeTISSInvalida" message="tns:SintaxeTISSInvalida"/>
+			<fault name="MensagemTISSInesperada" message="tns:MensagemTISSInesperada"/>
+			<fault name="DestinatarioInvalido" message="tns:DestinatarioInvalido"/>
+			<fault name="RemetenteInvalido" message="tns:RemetenteInvalido"/>
+			<fault name="HashInvalido" message="tns:HashInvalido"/>
+		</operation>
+	</portType>
+	<binding name="tissTransmiteMensagem_Binding" type="tns:tissTransmiteMensagem_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="tissTransmiteMensagem_Operation">
+			<soap:operation/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="SintaxeTISSInvalida">
+				<soap:fault name="SintaxeTISSInvalida" use="literal"/>
+			</fault>
+			<fault name="MensagemTISSInesperada">
+				<soap:fault name="MensagemTISSInesperada" use="literal"/>
+			</fault>
+			<fault name="DestinatarioInvalido">
+				<soap:fault name="DestinatarioInvalido" use="literal"/>
+			</fault>
+			<fault name="RemetenteInvalido">
+				<soap:fault name="RemetenteInvalido" use="literal"/>
+			</fault>
+			<fault name="HashInvalido">
+				<soap:fault name="HashInvalido" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tissTransmiteMensagem">
+		<port name="tissTransmiteMensagem_Port" binding="tns:tissTransmiteMensagem_Binding">
+			<soap:address location=""/>
+		</port>
+	</service>
+</definitions>

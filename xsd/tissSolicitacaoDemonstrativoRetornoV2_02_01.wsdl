@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions name="tissSolicitacaoDemonstrativoRetorno"
+    targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoDemonstrativoRetorno/v20201"
+    xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoDemonstrativoRetorno/v20201"
+    xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas"
+    xmlns="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    >
+
+  <!-- Type definitions -->
+  <types>
+    <schema targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoDemonstrativoRetorno/v20201"
+            xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissSolicitacaoDemonstrativoRetorno/v20201"
+            xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/"
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+            xmlns="http://www.w3.org/2001/XMLSchema"
+    >
+        <import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissV2_02_01.xsd"/>
+        <complexType name="ws_solicitacaoDemonstrativoRetorno">
+            <sequence>
+                <element name="cabecalho" type="ans:cabecalhoTransacao"/>
+                <element name="solicitacaoDemonstrativoRetorno" type="ans:ct_solicitacaoDemonstrativoPagamento"/>
+                <element name="hash" type="string"/>
+            </sequence>
+        </complexType>
+        <complexType name="ws_DemonstrativoRetorno">
+            <sequence>
+                <element name="cabecalho" type="ans:cabecalhoTransacao"/>
+                <element name="demonstrativoRetorno">
+                    <complexType>
+                        <choice>
+                            <element name="demonstrativoAnaliseConta" type="ans:ct_demonstrativoAnaliseConta" minOccurs="0" maxOccurs="30"/>
+                            <element name="demonstrativoOdontologia" type="ans:ct_demonstrativoOdontologia" minOccurs="0" maxOccurs="30"/>
+                            <element name="demonstrativoPagamento" type="ans:ct_demonstrativoPagamento" minOccurs="0" maxOccurs="30"/>
+                        </choice>
+                    </complexType>
+                </element>
+                <element name="hash" type="string"/>
+            </sequence>
+        </complexType>
+        <element name="solicitacaoDemonstrativoRetorno" type="tns:ws_solicitacaoDemonstrativoRetorno"/>
+        <element name="DemonstrativoRetorno" type="tns:ws_DemonstrativoRetorno"/>
+        <element name="DestinatarioInvalido" type="xsd:string"/>
+        <element name="RemetenteInvalido" type="xsd:string"/>
+        <element name="VersaoInvalida" type="xsd:string"/>
+        <element name="HashInvalido" type="xsd:string"/>
+    </schema>
+  </types>
+
+  <!-- Message definitions -->
+  <message name ="tissSolicitacaoDemonstrativoRetorno_Request">
+    <part name="solicitacaoDemonstrativoRetorno" element="tns:solicitacaoDemonstrativoRetorno"/>
+  </message>
+
+  <message name ="tissSolicitacaoDemonstrativoRetorno_Response">
+    <part name="DemonstrativoRetorno" element="tns:DemonstrativoRetorno"/>
+  </message>
+
+  <message name="DestinatarioInvalido">
+    <part name="DestinatarioInvalido" element="tns:DestinatarioInvalido"/>
+  </message>
+
+  <message name="RemetenteInvalido">
+    <part name="RemetenteInvalido" element="tns:RemetenteInvalido"/>
+  </message>
+
+  <message name="VersaoInvalida">
+    <part name="VersaoInvalida" element="tns:VersaoInvalida"/>
+  </message>
+
+  <message name="HashInvalido">
+    <part name="HashInvalido" element="tns:HashInvalido"/>
+  </message>
+
+  <!-- Port type definitions -->
+  <portType name="tissSolicitacaoDemonstrativoRetorno_PortType">
+    <operation name="tissSolicitacaoDemonstrativoRetorno_Operation">
+      <input message="tns:tissSolicitacaoDemonstrativoRetorno_Request"/>
+      <output message="tns:tissSolicitacaoDemonstrativoRetorno_Response"/>
+      <fault name="DestinatarioInvalido" message="tns:DestinatarioInvalido"/>
+      <fault name="RemetenteInvalido" message="tns:RemetenteInvalido"/>
+      <fault name="VersaoInvalida" message="tns:VersaoInvalida"/>
+      <fault name="HashInvalido" message="tns:HashInvalido"/>
+    </operation>
+  </portType>
+
+  <!-- Binding definitions -->
+  <binding name="tissSolicitacaoDemonstrativoRetorno_Binding" type="tns:tissSolicitacaoDemonstrativoRetorno_PortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="tissSolicitacaoDemonstrativoRetorno_Operation">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+      <fault name="DestinatarioInvalido">
+        <soap:fault name="DestinatarioInvalido" use="literal"/>
+      </fault>
+      <fault name="RemetenteInvalido">
+        <soap:fault name="RemetenteInvalido" use="literal"/>
+      </fault>
+      <fault name="VersaoInvalida">
+        <soap:fault name="VersaoInvalida" use="literal"/>
+      </fault>
+      <fault name="HashInvalido">
+        <soap:fault name="HashInvalido" use="literal"/>
+      </fault>
+    </operation>
+  </binding>
+
+  <!-- Service and Port (network address) definitions -->
+  <service name="tissSolicitacaoDemonstrativoRetorno">
+    <port name="tissSolicitacaoDemonstrativoRetorno_Port" binding="tns:tissSolicitacaoDemonstrativoRetorno_Binding">
+      <soap:address location=""/>
+    </port>
+  </service>
+
+</definitions>

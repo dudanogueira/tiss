@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tissloteanexo/v30202" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="tissLoteAnexo" targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tissloteanexo/v30202">
+	<types>
+		<schema xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissWebServicesV3_02_02.xsd"/>
+		</schema>
+	</types>
+	<message name="tissLoteAnexo_Request">
+		<part name="loteAnexo" element="ans:loteAnexoWS"/>
+	</message>
+	<message name="tissLoteAnexo_Response">
+		<part name="protocoloRecebimentoAnexo" element="ans:protocoloRecebimentoAnexoWS"/>
+	</message>
+	<message name="tissFault">
+		<part name="tissFault" element="ans:tissFaultWS"/>
+	</message>
+	<portType name="tissLoteAnexo_PortType">
+		<operation name="tissLoteAnexo_Operation">
+			<input message="tns:tissLoteAnexo_Request"/>
+			<output message="tns:tissLoteAnexo_Response"/>
+			<fault name="TissFault" message="tns:tissFault"/>
+		</operation>
+	</portType>
+	<binding name="tissLoteAnexo_Binding" type="tns:tissLoteAnexo_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="tissLoteAnexo_Operation">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="TissFault">
+				<soap:fault name="TissFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tissLoteAnexo">
+		<port name="tissLoteAnexo_Port" binding="tns:tissLoteAnexo_Binding">
+			<soap:address/>
+		</port>
+	</service>
+</definitions>

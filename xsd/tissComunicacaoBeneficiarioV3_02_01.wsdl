@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<definitions xmlns:tns="http://www.ans.gov.br/tiss/ws/tipos/tisscomunicacaobeneficiario/v30201" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="tissComunicacaoBeneficiario" targetNamespace="http://www.ans.gov.br/tiss/ws/tipos/tisscomunicacaobeneficiario/v30201">
+	<types>
+		<schema xmlns:soap11-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://www.ans.gov.br/padroes/tiss/schemas" schemaLocation="tissWebServicesV3_02_01.xsd"/>
+		</schema>
+	</types>
+	<message name="tissComunicacaoBeneficiario_Request">
+		<part name="comunicacaoBeneficiario" element="ans:comunicacaoBeneficiarioWS"/>
+	</message>
+	<message name="tissComunicacaoBeneficiario_Response">
+		<part name="reciboComunicacao" element="ans:reciboComunicacaoWS"/>
+	</message>
+	<message name="tissFault">
+		<part name="tissFault" element="ans:tissFaultWS"/>
+	</message>
+	<portType name="tissComunicacaoBeneficiario_PortType">
+		<operation name="tissComunicacaoBeneficiario_Operation">
+			<input message="tns:tissComunicacaoBeneficiario_Request"/>
+			<output message="tns:tissComunicacaoBeneficiario_Response"/>
+			<fault name="TissFault" message="tns:tissFault"/>
+		</operation>
+	</portType>
+	<binding name="tissComunicacaoBeneficiario_Binding" type="tns:tissComunicacaoBeneficiario_PortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<operation name="tissComunicacaoBeneficiario_Operation">
+			<soap:operation soapAction=""/>
+			<input>
+				<soap:body use="literal"/>
+			</input>
+			<output>
+				<soap:body use="literal"/>
+			</output>
+			<fault name="TissFault">
+				<soap:fault name="TissFault" use="literal"/>
+			</fault>
+		</operation>
+	</binding>
+	<service name="tissComunicacaoBeneficiario">
+		<port name="tissComunicacaoBeneficiario_Port" binding="tns:tissComunicacaoBeneficiario_Binding">
+			<soap:address/>
+		</port>
+	</service>
+</definitions>

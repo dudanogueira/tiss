@@ -1,0 +1,1402 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by EndUser (free.org) -->
+<schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
+	<!--VERSÃO TISS 3.03.00 - TissGuiasv3_03_01-->
+	<!--<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissSimpleTypesV3_00_00.xsd"/>
+	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissComplexTypesV3_00_00.xsd"/>-->
+	<include schemaLocation="tissAssinaturaDigital_v1.01.xsd"/>
+	<include schemaLocation="tissSimpleTypesV3_03_01.xsd"/>
+	<include schemaLocation="tissComplexTypesV3_03_01.xsd"/>
+	<!--<complexType name="ctm_anexoLote">
+		<sequence>
+			<element name="numeroLote" type="ans:st_texto12"/>
+			<element name="anexosClinicos">
+				<complexType>
+					<choice>
+						<element name="solicitacaoQuimioterapia" type="ans:ctm_anexoSolicitacaoQuimio"/>
+						<element name="solicitacaoRadioterapia" type="ans:ctm_anexoSolicitacaoRadio"/>
+						<element name="solicitacaoOPME" type="ans:ctm_anexoSolicitacaoOPME"/>
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>-->
+	<!--************************************************ OPME SOLICITAÇÃO  ************************************ -->
+	<complexType name="ctm_anexoSolicitacaoOPME">
+		<sequence>
+			<element name="cabecalhoAnexo" type="ans:ct_anexoCabecalho"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="profissionalSolicitante" type="ans:ctm_anexoSolicitante"/>
+			<element name="justificativaTecnica" type="ans:st_texto1000"/>
+			<element name="especificacaoMaterial" type="ans:st_texto500" minOccurs="0"/>
+			<element name="opmeSolicitadas">
+				<complexType>
+					<sequence>
+						<element name="opmeSolicitada" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="identificacaoOPME" type="ans:ct_procedimentoDados"/>
+									<element name="opcaoFabricante" type="ans:dm_opcaoFabricante"/>
+									<element name="quantidadeSolicitada" type="ans:st_numerico3"/>
+									<element name="valorSolicitado" type="ans:st_decimal8-2" minOccurs="0"/>
+									<element name="registroANVISA" type="ans:st_texto15" minOccurs="0"/>
+									<element name="codigoRefFabricante" type="ans:st_texto60" minOccurs="0"/>
+									<element name="autorizacaoFuncionamento" type="ans:st_texto30" minOccurs="0"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="Observacao" type="ans:st_texto500" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--************************************************ QUIMIOTERAPIA  ************************************ -->
+	<complexType name="ctm_anexoSolicitacaoQuimio">
+		<sequence>
+			<element name="cabecalhoAnexo" type="ans:ct_anexoCabecalho"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="dadosComplementaresBeneficiario" type="ans:ct_dadosComplementaresBeneficiario"/>
+			<element name="medicoSolicitante" type="ans:ctm_anexoSolicitante"/>
+			<element name="diagnosticoOncologicoQuimioterapia">
+				<complexType>
+					<sequence>
+						<element name="diagQuimio" type="ans:ct_diagnosticoOncologico"/>
+						<element name="tumor" type="ans:dm_tumor"/>
+						<element name="nodulo" type="ans:dm_nodulo"/>
+						<element name="metastase" type="ans:dm_metastase"/>
+						<element name="tipoQuimioterapia" type="ans:dm_tipoQuimioterapia"/>
+						<element name="planoTerapeutico" type="ans:st_texto1000"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="drogasSolicitadas">
+				<complexType>
+					<sequence>
+						<element name="drogaSolicitada" type="ans:ct_drogasSolicitadas" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tratamentosAnteriores" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="cirurgia" type="ans:st_texto40" minOccurs="0"/>
+						<element name="datacirurgia" type="ans:st_data" minOccurs="0"/>
+						<element name="areaIrradiada" type="ans:st_texto40" minOccurs="0"/>
+						<element name="dataIrradiacao" type="ans:st_data" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="numeroCiclos" type="ans:st_numerico2"/>
+			<element name="cicloAtual" type="ans:st_numerico2"/>
+			<element name="diasCicloAtual" type="ans:st_numerico3"/>
+			<element name="intervaloCiclos" type="ans:st_numerico3"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--************************************************ RADIOTERAPIA  ************************************ -->
+	<complexType name="ctm_anexoSolicitacaoRadio">
+		<sequence>
+			<element name="cabecalhoAnexo" type="ans:ct_anexoCabecalho"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="dadosComplementaresBeneficiario" type="ans:ct_dadosComplementaresBeneficiarioRadio"/>
+			<element name="medicoSolicitante" type="ans:ctm_anexoSolicitante"/>
+			<element name="diagnosticoOncologicoRadio">
+				<complexType>
+					<sequence>
+						<element name="diagRadio" type="ans:ct_diagnosticoOncologico"/>
+						<element name="diagnosticoImagem" type="ans:dm_diagnosticoImagem" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tratamentosAnteriores" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="cirurgia" type="ans:st_texto40" minOccurs="0"/>
+						<element name="datacirurgia" type="ans:st_data" minOccurs="0"/>
+						<element name="quimioterapia" type="ans:st_texto40" minOccurs="0"/>
+						<element name="dataQuimioterapia" type="ans:st_data" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<!--<element name="procedimentosComplementares">  RETIRADO NA VERSAO 3.03.00
+				<complexType>
+					<sequence>
+						<element name="procedimentoComplementar" type="ans:ct_procedimentosComplementares" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>-->
+			<element name="numeroCampos" type="ans:st_numerico3"/>
+			<element name="doseCampo" type="ans:st_numerico4"/>
+			<element name="doseTotal" type="ans:st_numerico4"/>
+			<element name="nrDias" type="ans:st_numerico3"/>
+			<element name="dtPrevistaInicio" type="ans:st_data"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--******************************************************** Fim da Radioterapia ***************************************************** -->
+	<complexType name="ctm_anexoSolicitante">
+		<sequence>
+			<element name="nomeProfissional" type="ans:st_texto70"/>
+			<element name="telefoneProfissional" type="ans:st_texto11"/>
+			<element name="emailProfissional" type="ans:st_texto60" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!-- Utilizado na resposta da operadora na autorização de solic prorrogação de internação -->
+	<complexType name="ctm_autorizacaoProrrogacao">
+		<sequence>
+			<element name="autorizacaoDosServicos" type="ans:ctm_autorizacaoServico"/>
+			<element name="diariasAutorizadas" type="ans:st_numerico3" minOccurs="0"/>
+			<element name="acomodacaoAutorizada" type="ans:dm_tipoAcomodacao" minOccurs="0"/>
+			<element name="justificativaOperadora" type="ans:st_texto500" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--  Utilizado na resposta da operadora na autorização de solicitacao de internação  -->
+	<complexType name="ctm_autorizacaoInternacao">
+		<sequence>
+			<element name="autorizacaoDosServicos" type="ans:ctm_autorizacaoServico"/>
+			<element name="dataProvavelAdmissao" type="ans:st_data" minOccurs="0"/>
+			<element name="qtdDiariasAutorizadas" type="ans:st_numerico3" minOccurs="0"/>
+			<element name="tipoAcomodacaoAutorizada" type="ans:dm_tipoAcomodacao" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!-- Utilizado na resposta da operadora ao recebimento dos anexo de soliccitação de OPME -->
+	<complexType name="ctm_autorizacaoOPME">
+		<sequence>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="statusSolicitacao" type="ans:dm_statusSolicitacao"/>
+			<element name="motivosNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoNegativa" type="ans:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="prestadorAutorizado" type="ans:ct_contratadoDados" minOccurs="0"/>
+			<element name="servicosAutorizadosOPME" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<complexContent>
+						<extension base="ans:ct_procedimentoAutorizado"/>
+					</complexContent>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ctm_autorizacaoRadio">
+		<sequence>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
+			<element name="numeroCarteira" type="ans:st_texto20"/>
+			<element name="nomeBeneficiario" type="ans:st_texto70"/>
+			<element name="numeroCNS" type="ans:st_texto15" minOccurs="0"/>
+			<element name="statusSolicitacao" type="ans:dm_statusSolicitacao"/>
+			<element name="dadosComplementaresBeneficiario" type="ans:ct_dadosComplementaresBeneficiarioRadio"/>
+			<element name="medicoSolicitante" type="ans:ctm_anexoSolicitante"/>
+			<element name="diagnosticoOncologicoRadio">
+				<complexType>
+					<sequence>
+						<element name="diagRadio" type="ans:ct_diagnosticoOncologico"/>
+						<element name="diagnosticoImagem" type="ans:dm_diagnosticoImagem" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tratamentosAnteriores" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="cirurgia" type="ans:st_texto40" minOccurs="0"/>
+						<element name="datacirurgia" type="ans:st_data" minOccurs="0"/>
+						<element name="quimioterapia" type="ans:st_texto40" minOccurs="0"/>
+						<element name="dataQuimioterapia" type="ans:st_data" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<!--<element name="procedimentosComplementares">
+				<complexType>
+					<sequence>
+						<element name="procedimentoComplementar" type="ans:ct_procedimentosComplementares" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>-->
+			<element name="numeroCampos" type="ans:st_numerico3"/>
+			<element name="doseCampo" type="ans:st_numerico4"/>
+			<element name="doseTotal" type="ans:st_numerico4"/>
+			<element name="nrDias" type="ans:st_numerico3"/>
+			<element name="dtPrevistaInicio" type="ans:st_data"/>
+			<element name="motivosNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoNegativa" type="ans:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ctm_autorizacaoQuimio">
+		<sequence>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
+			<element name="numeroCarteira" type="ans:st_texto20"/>
+			<element name="statusSolicitacao" type="ans:dm_statusSolicitacao"/>
+			<element name="nomeBeneficiario" type="ans:st_texto70"/>
+			<element name="numeroCNS" type="ans:st_texto15" minOccurs="0"/>
+			<element name="dadosComplementaresBeneficiario" type="ans:ct_dadosComplementaresBeneficiario"/>
+			<element name="medicoSolicitante" type="ans:ctm_anexoSolicitante"/>
+			<element name="diagnosticoOncologicoQuimioterapia">
+				<complexType>
+					<sequence>
+						<element name="diagQuimio" type="ans:ct_diagnosticoOncologico"/>
+						<element name="tumor" type="ans:dm_tumor"/>
+						<element name="nodulo" type="ans:dm_nodulo"/>
+						<element name="metastase" type="ans:dm_metastase"/>
+						<element name="tipoQuimioterapia" type="ans:dm_tipoQuimioterapia"/>
+						<element name="planoTerapeutico" type="ans:st_texto1000"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="drogasSolicitadas">
+				<complexType>
+					<sequence>
+						<element name="drogaSolicitada" type="ans:ct_drogasSolicitadas" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="tratamentosAnteriores" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="cirurgia" type="ans:st_texto40" minOccurs="0"/>
+						<element name="datacirurgia" type="ans:st_data" minOccurs="0"/>
+						<element name="areaIrradiada" type="ans:st_texto40" minOccurs="0"/>
+						<element name="dataIrradiacao" type="ans:st_data" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="numeroCiclos" type="ans:st_numerico2"/>
+			<element name="cicloAtual" type="ans:st_numerico2"/>
+			<element name="diasCicloAtual" type="ans:st_numerico3"/>
+			<element name="intervaloCiclos" type="ans:st_numerico3"/>
+			<element name="motivosNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoNegativa" type="ans:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- Utilizado na resposta da operadora na autorização de solic de internação e de prorrogação de internação -->
+	<complexType name="ctm_autorizacaoServico">
+		<sequence>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="prestadorAutorizado" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="dadosContratado" type="ans:ct_contratadoDados"/>
+						<element name="cnesContratado" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="statusSolicitacao" type="ans:dm_statusSolicitacao"/>
+			<element name="motivosNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoNegativa" type="ans:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="servicosAutorizados" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="servicoAutorizado" type="ans:ct_procedimentoAutorizado" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ans:st_texto1000" minOccurs="0"/>
+			<element name="autorizacaoQuimio" type="ans:ctm_autorizacaoQuimio" minOccurs="0"/>
+			<element name="autorizacaoRadio" type="ans:ctm_autorizacaoRadio" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ctm_beneficiarioComunicacao">
+		<sequence>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="dataEvento" type="ans:st_data"/>
+			<element name="tipoEvento" type="ans:dm_tipoEvento"/>
+			<element name="dadosInternacao">
+				<complexType>
+					<choice>
+						<element name="motivoEncerramento" type="ans:dm_motivoSaida"/>
+						<element name="tipoInternacao" type="ans:dm_tipoInternacao"/>
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ctm_beneficiarioComunicacaoRecibo">
+		<sequence>
+			<element name="statusComunicacao" type="ans:dm_simNao"/>
+			<element name="beneficiarioComunicacao" type="ans:ctm_beneficiarioComunicacao"/>
+			<element name="mensagemErro" type="ans:ct_motivoGlosa" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<complexType name="ctm_consultaAtendimento">
+		<sequence>
+			<element name="dataAtendimento" type="ans:st_data"/>
+			<element name="tipoConsulta" type="ans:dm_tipoConsulta"/>
+			<element name="procedimento">
+				<complexType>
+					<sequence>
+						<element name="codigoTabela" type="ans:dm_tabela"/>
+						<element name="codigoProcedimento" type="ans:st_texto10"/>
+						<element name="valorProcedimento" type="ans:st_decimal8-2"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!--============================= GUIA DE CONSULTA ===========================-->
+	<complexType name="ctm_consultaGuia">
+		<sequence>
+			<element name="cabecalhoConsulta" type="ans:ct_guiaCabecalho"/>
+			<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="contratadoExecutante">
+				<complexType>
+					<complexContent>
+						<extension base="ans:ct_contratadoDados">
+							<sequence>
+								<element name="CNES" type="ans:st_texto7"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="profissionalExecutante" type="ans:ct_contratadoProfissionalDados"/>
+			<element name="indicacaoAcidente" type="ans:dm_indicadorAcidente"/>
+			<element name="dadosAtendimento" type="ans:ctm_consultaAtendimento"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<element name="assinaturaDigitalGuia" type="ans:Signature" minOccurs="0"/>
+			<!--<element name="assinaturaDigitalGuia" type="ans:assinaturaDigital" minOccurs="0"/>-->
+		</sequence>
+	</complexType>
+	<!--=============================  DEMONSTRATIVO DE ANALISE DE CONTA ===========================-->
+	<complexType name="ctm_demonstrativoAnaliseConta">
+		<sequence>
+			<element name="cabecalhoDemonstrativo" type="ans:ct_demonstrativoCabecalho"/>
+			<element name="dadosPrestador">
+				<complexType>
+					<sequence>
+						<element name="dadosContratado" type="ans:ct_contratadoDados"/>
+						<element name="CNES" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosConta">
+				<complexType>
+					<sequence>
+						<element name="dadosProtocolo" maxOccurs="unbounded">
+							<complexType>
+								<complexContent>
+									<extension base="ans:ct_contaMedicaResumo"/>
+								</complexContent>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorInformadoGeral" type="ans:st_decimal10-2"/>
+			<element name="valorProcessadoGeral" type="ans:st_decimal10-2"/>
+			<element name="valorLiberadoGeral" type="ans:st_decimal10-2"/>
+			<element name="valorGlosaGeral" type="ans:st_decimal10-2" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--============================= DEMONSTRATIVO DE PAGAMENTO ===========================-->
+	<complexType name="ctm_demonstrativoPagamento">
+		<sequence>
+			<element name="cabecalhoDemonstrativo" type="ans:ct_demonstrativoCabecalho"/>
+			<element name="dadosContratado">
+				<complexType>
+					<sequence>
+						<element name="dadosPrestador" type="ans:ct_contratadoDados"/>
+						<element name="CNES" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="pagamentos">
+				<complexType>
+					<sequence>
+						<element name="pagamentosPorData" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="dadosPagamento" type="ans:ct_pagamentoDados"/>
+									<element name="dadosResumo">
+										<complexType>
+											<sequence>
+												<element name="relacaoProtocolos" type="ans:ct_dadosResumoDemonstrativo" maxOccurs="unbounded"/>
+											</sequence>
+										</complexType>
+									</element>
+									<element name="totaisBrutosPorData">
+										<complexType>
+											<sequence>
+												<element name="totalInformadoPorData" type="ans:st_decimal10-2"/>
+												<element name="totalProcessadoPorData" type="ans:st_decimal10-2"/>
+												<element name="totaLiberadoPorData" type="ans:st_decimal10-2"/>
+												<element name="totalGlosaPorData" type="ans:st_decimal10-2"/>
+											</sequence>
+										</complexType>
+									</element>
+									<element name="debitosCreditosPorData" minOccurs="0">
+										<complexType>
+											<sequence>
+												<element name="debitosCreditos" type="ans:ct_descontos" maxOccurs="unbounded"/>
+											</sequence>
+										</complexType>
+									</element>
+									<element name="totaisLiquidosPorData">
+										<complexType>
+											<sequence>
+												<element name="totalDebitosPorData" type="ans:st_decimal10-2"/>
+												<element name="totalCreditosPorData" type="ans:st_decimal10-2"/>
+												<element name="liquidoPorData" type="ans:st_decimal10-2"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="totaisDemonstrativo">
+				<complexType>
+					<sequence>
+						<element name="totaisBrutosDemonstrativo">
+							<complexType>
+								<sequence>
+									<element name="valorInformadoBruto" type="ans:st_decimal10-2"/>
+									<element name="valorProcessadoBruto" type="ans:st_decimal10-2"/>
+									<element name="valorLiberadoBruto" type="ans:st_decimal10-2"/>
+									<element name="valorGlosaBruto" type="ans:st_decimal10-2"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="debitosCreditosDemonstrativo" type="ans:ct_descontos" minOccurs="0" maxOccurs="unbounded"/>
+						<element name="totaisLiquidosDemonstrativo">
+							<complexType>
+								<sequence>
+									<element name="totalDebitosDemonstrativo" type="ans:st_decimal10-2"/>
+									<element name="totalCreditosdemonstrativo" type="ans:st_decimal10-2"/>
+									<element name="valorLiberadoDemonstrativo" type="ans:st_decimal10-2"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!-- estrututra utilizada nos anexos de quimioterapia e radioterapia -->
+	<!--<complexType name="ctm_estadiamento">
+		<sequence>
+			<element name="tumor" type="ans:dm_tumor"/>
+			<element name="nodulo" type="ans:dm_nodulo"/>
+			<element name="metastase" type="ans:dm_metastase"/>
+		</sequence>
+	</complexType>-->
+	<!-- LOTE DE GUIAS A SER ENVIADO A OPERADORA PELO PRESTADOR -->
+	<complexType name="ctm_guiaLote">
+		<sequence>
+			<element name="numeroLote" type="ans:st_texto12"/>
+			<element name="guiasTISS">
+				<complexType>
+					<choice>
+						<element name="guiaSP-SADT" type="ans:ctm_sp-sadtGuia" maxOccurs="100"/>
+						<element name="guiaResumoInternacao" type="ans:ctm_internacaoResumoGuia" maxOccurs="100"/>
+						<element name="guiaHonorarios" type="ans:ctm_honorarioIndividualGuia" maxOccurs="100"/>
+						<element name="guiaConsulta" type="ans:ctm_consultaGuia" maxOccurs="100"/>
+						<element name="guiaOdonto" type="ans:cto_guiaOdontologia" maxOccurs="100"/>
+					</choice>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!--============================= GUIA DE HONORARIO INDIVIDUAL ===========================-->
+	<complexType name="ctm_honorarioIndividualGuia">
+		<sequence>
+			<element name="cabecalhoGuia" type="ans:ct_guiaCabecalho"/>
+			<element name="guiaSolicInternacao" type="ans:st_texto20"/>
+			<element name="senha" type="ans:st_texto20" minOccurs="0"/>
+			<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<!-- dados beneficiario -->
+			<element name="beneficiario">
+				<complexType>
+					<sequence>
+						<element name="numeroCarteira" type="ans:st_texto20"/>
+						<element name="nomeBeneficiario" type="ans:st_texto70"/>
+						<element name="atendimentoRN" type="ans:dm_simNao"/>
+					</sequence>
+				</complexType>
+			</element>
+			<!-- dados do contratado - onde foi executado o procedimento -->
+			<element name="localContratado">
+				<complexType>
+					<sequence>
+						<element name="codigoContratado">
+							<complexType>
+								<choice>
+									<element name="codigoNaOperadora" type="ans:st_texto14"/>
+									<element name="cnpjLocalExecutante" type="ans:st_CNPJ"/>
+								</choice>
+							</complexType>
+						</element>
+						<element name="nomeContratado" type="ans:st_texto70"/>
+						<element name="cnes" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosContratadoExecutante">
+				<complexType>
+					<sequence>
+						<element name="codigonaOperadora" type="ans:st_texto14"/>
+						<element name="nomeContratadoExecutante" type="ans:st_texto70"/>
+						<element name="cnesContratadoExecutante" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosInternacao">
+				<complexType>
+					<sequence>
+						<element name="dataInicioFaturamento" type="ans:st_data"/>
+						<element name="dataFimFaturamento" type="ans:st_data"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosRealizados">
+				<complexType>
+					<sequence>
+						<element name="procedimentoRealizado" type="ans:ct_procedimentoExecutadoHonorIndiv" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<element name="valorTotalHonorarios" type="ans:st_decimal10-2"/>
+			<element name="dataEmissaoGuia" type="ans:st_data"/>
+			<element name="assinaturaDigitalGuia" type="ans:Signature" minOccurs="0"/>
+			<!--<element name="assinaturaDigitalGuia" type="ans:assinaturaDigital" minOccurs="0"/>-->
+		</sequence>
+	</complexType>
+	<!-- Fim de honorario individual -->
+	<complexType name="ctm_internacaoDados">
+		<sequence>
+			<element name="caraterAtendimento" type="ans:dm_caraterAtendimento"/>
+			<element name="tipoFaturamento" type="ans:dm_tipoFaturamento"/>
+			<element name="dataInicioFaturamento" type="ans:st_data"/>
+			<element name="horaInicioFaturamento" type="ans:st_hora"/>
+			<element name="dataFinalFaturamento" type="ans:st_data"/>
+			<element name="horaFinalFaturamento" type="ans:st_hora"/>
+			<element name="tipoInternacao" type="ans:dm_tipoInternacao"/>
+			<element name="regimeInternacao" type="ans:dm_regimeInternacao"/>
+			<!--<element name="qtRNutiNeonatal" type="ans:st_numerico2" minOccurs="0"/>
+			<element name="obitoMulher" type="ans:dm_obitoMulher" minOccurs="0"/>
+			<element name="qtObitoNeonatalPrecoce" type="ans:st_numerico2" minOccurs="0"/>
+			<element name="qtObitoNeonatalTardio" type="ans:st_numerico2" minOccurs="0"/>
+			<element name="qtNascidoVivoTermo" type="ans:st_numerico2" minOccurs="0"/>
+			<element name="qtNascidoMorto" type="ans:st_numerico2" minOccurs="0"/>
+			<element name="qtNascidoPrematuro" type="ans:st_numerico2" minOccurs="0"/>-->
+			<element name="declaracoes" minOccurs="0" maxOccurs="8">
+				<complexType>
+					<sequence>
+						<element name="declaracaoNascido" type="ans:st_texto11" minOccurs="0"/>
+						<element name="diagnosticoObito" type="ans:st_texto4" minOccurs="0"/>
+						<element name="declaracaoObito" type="ans:st_texto11" minOccurs="0"/>
+						<element name="indicadorDORN" type="ans:dm_simNao" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="ctm_internacaoDadosSaida">
+		<sequence>
+			<element name="diagnostico" type="ans:st_texto4" minOccurs="0" maxOccurs="4"/>
+			<element name="indicadorAcidente" type="ans:dm_indicadorAcidente"/>
+			<element name="motivoEncerramento" type="ans:dm_motivoSaida"/>
+		</sequence>
+	</complexType>
+	<!--============================= GUIA DE RESUMO DE INTERNACAO ===========================-->
+	<complexType name="ctm_internacaoResumoGuia">
+		<sequence>
+			<element name="cabecalhoGuia" type="ans:ct_guiaCabecalho"/>
+			<element name="numeroGuiaSolicitacaoInternacao" type="ans:st_texto20"/>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoInternacao"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="dadosExecutante">
+				<complexType>
+					<sequence>
+						<element name="contratadoExecutante" type="ans:ct_contratadoDados"/>
+						<element name="CNES" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosInternacao" type="ans:ctm_internacaoDados"/>
+			<element name="dadosSaidaInternacao" type="ans:ctm_internacaoDadosSaida"/>
+			<element name="procedimentosExecutados" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="procedimentoExecutado" type="ans:ct_procedimentoExecutadoInt" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="valorTotal" type="ans:ct_guiaValorTotal"/>
+			<element name="outrasDespesas" type="ans:ct_outrasDespesas" minOccurs="0"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<!--	<element name="relatorioTecnico" type="base64Binary" minOccurs="0"/>-->
+			<element name="assinaturaDigitalGuia" type="ans:Signature" minOccurs="0"/>
+			<!--<element name="assinaturaDigitalGuia" type="ans:assinaturaDigital" minOccurs="0"/>-->
+		</sequence>
+	</complexType>
+	<!--============================= GUIA DE SOLICITACAO DE INTERNACAO ===========================-->
+	<complexType name="ctm_internacaoSolicitacaoGuia">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="identificacaoSolicitante">
+				<complexType>
+					<sequence>
+						<element name="dadosDoContratado" type="ans:ct_contratadoDados"/>
+						<element name="dadosProfissionalContratado" type="ans:ct_contratadoProfissionalDados"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosHospitalSolicitado">
+				<complexType>
+					<sequence>
+						<element name="codigoIndicadonaOperadora" type="ans:st_texto14"/>
+						<element name="nomeContratadoIndicado" type="ans:st_texto70"/>
+						<element name="dataSugeridaInternacao" type="ans:st_data"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosInternacao">
+				<complexType>
+					<sequence>
+						<element name="caraterAtendimento" type="ans:dm_caraterAtendimento"/>
+						<element name="tipoInternacao" type="ans:dm_tipoInternacao"/>
+						<element name="regimeInternacao" type="ans:dm_regimeInternacao"/>
+						<element name="qtDiariasSolicitadas" type="ans:st_numerico2"/>
+						<element name="indicadorOPME" type="ans:dm_simNao"/>
+						<element name="indicadorQuimio" type="ans:dm_simNao"/>
+						<element name="indicacaoClinica" type="ans:st_texto500"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="hipotesesDiagnosticas">
+				<complexType>
+					<sequence>
+						<element name="diagnosticoCID" type="ans:st_texto4" minOccurs="0" maxOccurs="4"/>
+						<element name="indicadorAcidente" type="ans:dm_indicadorAcidente"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosSolicitados" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="procedimento" type="ans:ct_procedimentoDados"/>
+						<element name="quantidadeSolicitada" type="ans:st_numerico3"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dataSolicitacao" type="ans:st_data"/>
+			<element name="observacao" type="ans:st_texto1000" minOccurs="0"/>
+			<!--<element name="relatorioTecnico" type="base64Binary" minOccurs="0"/>-->
+			<element name="anexoClinico" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="solicitacaoQuimioterapia" type="ans:ctm_anexoSolicitacaoQuimio" minOccurs="0"/>
+						<element name="solicitacaoRadioterapia" type="ans:ctm_anexoSolicitacaoRadio" minOccurs="0"/>
+						<element name="solicitacaoOPME" type="ans:ctm_anexoSolicitacaoOPME" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- Fim da solicitação de internação -->
+	<!--============================= GUIA DE SOLICITACAO DE PRORROGAÇÃO DE INTERNACAO ===========================-->
+	<complexType name="ctm_prorrogacaoSolicitacaoGuia">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+			<element name="nrGuiaReferenciada" type="ans:st_texto20"/>
+			<element name="dadosBeneficiario">
+				<complexType>
+					<sequence>
+						<element name="numeroCarteira" type="ans:st_texto20"/>
+						<element name="nomeBeneficiario" type="ans:st_texto70"/>
+						<element name="identificadorBeneficiario" type="base64Binary" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosContratadoSolicitante" type="ans:ct_contratadoDados"/>
+			<element name="dadosProfissionalSolicitante" type="ans:ct_contratadoProfissionalDados"/>
+			<element name="dadosInternacao">
+				<complexType>
+					<sequence>
+						<element name="qtDiariasAdicionais" type="ans:st_numerico3" minOccurs="0"/>
+						<element name="tipoAcomodacaoSolicitada" type="ans:dm_tipoAcomodacao" minOccurs="0"/>
+						<element name="indicacaoClinica" type="ans:st_texto500"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosAdicionais" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="procedimento" type="ans:ct_procedimentoDados"/>
+						<element name="quantidadeSolicitada" type="ans:st_numerico3"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="anexoClinicoProrrogacao" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="solicitacaoQuimioterapia" type="ans:ctm_anexoSolicitacaoQuimio" minOccurs="0"/>
+						<element name="solicitacaoRadioterapia" type="ans:ctm_anexoSolicitacaoRadio" minOccurs="0"/>
+						<element name="solicitacaoOPME" type="ans:ctm_anexoSolicitacaoOPME" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<!--<element name="relatorioTecnico" type="base64Binary" minOccurs="0"/>-->
+			<element name="dataSolicitacao" type="ans:st_data"/>
+		</sequence>
+	</complexType>
+	<!-- Fim da solicitação de prorrogação de internação -->
+	<complexType name="ctm_sp-sadtAtendimento">
+		<sequence>
+			<element name="tipoAtendimento" type="ans:dm_tipoAtendimento"/>
+			<element name="indicacaoAcidente" type="ans:dm_indicadorAcidente"/>
+			<element name="tipoConsulta" type="ans:dm_tipoConsulta" minOccurs="0"/>
+			<element name="motivoEncerramento" type="ans:dm_motivoSaidaObito" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!-- estrutura das solicitações de autorização do prestador para a operadora  de sp_sadt, internação e prorrogação -->
+	<complexType name="ctm_solicitacaoLote">
+		<choice>
+			<element name="solicitacaoSP-SADT" type="ans:ctm_sp-sadtSolicitacaoGuia"/>
+			<element name="solicitacaoInternacao" type="ans:ctm_internacaoSolicitacaoGuia"/>
+			<element name="solicitacaoProrrogacao" type="ans:ctm_prorrogacaoSolicitacaoGuia"/>
+			<element name="solicitacaoOdontologia" type="ans:cto_odontoSolicitacaoGuia"/>
+		</choice>
+	</complexType>
+	<!--============================= GUIA DE SOLICITACAO DE SP E SADT (execução) ==============-->
+	<complexType name="ctm_sp-sadtGuia">
+		<sequence>
+			<element name="cabecalhoGuia">
+				<complexType>
+					<complexContent>
+						<extension base="ans:ct_guiaCabecalho">
+							<sequence>
+								<element name="guiaPrincipal" type="ans:st_texto20" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoSADT" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="dadosSolicitante">
+				<complexType>
+					<sequence>
+						<element name="contratadoSolicitante" type="ans:ct_contratadoDados"/>
+						<element name="profissionalSolicitante" type="ans:ct_contratadoProfissionalDados"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosSolicitacao">
+				<complexType>
+					<sequence>
+						<element name="dataSolicitacao" type="ans:st_data" minOccurs="0"/>
+						<element name="caraterAtendimento" type="ans:dm_caraterAtendimento"/>
+						<element name="indicacaoClinica" type="ans:st_texto500" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosExecutante">
+				<complexType>
+					<sequence>
+						<element name="contratadoExecutante" type="ans:ct_contratadoDados"/>
+						<element name="CNES" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosAtendimento" type="ans:ctm_sp-sadtAtendimento"/>
+			<element name="procedimentosExecutados" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="procedimentoExecutado" type="ans:ct_procedimentoExecutadoSadt" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="outrasDespesas" type="ans:ct_outrasDespesas" minOccurs="0"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<element name="valorTotal" type="ans:ct_guiaValorTotal"/>
+			<!--<element name="relatorioTecnico" type="base64Binary" minOccurs="0"/>-->
+			<element name="assinaturaDigitalGuia" type="ans:Signature" minOccurs="0"/>
+			<!--<element name="assinaturaDigitalGuia" type="ans:assinaturaDigital" minOccurs="0"/>-->
+		</sequence>
+	</complexType>
+	<!--============================= GUIA DE SOLICITACAO DE SP E SADT ===========================-->
+	<complexType name="ctm_sp-sadtSolicitacaoGuia">
+		<sequence>
+			<element name="cabecalhoSolicitacao" type="ans:ct_guiaCabecalho"/>
+			<element name="numeroGuiaPrincipal" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="dadosSolicitante">
+				<complexType>
+					<sequence>
+						<element name="contratadoSolicitante" type="ans:ct_contratadoDados"/>
+						<element name="profissionalSolicitante" type="ans:ct_contratadoProfissionalDados"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="caraterAtendimento" type="ans:dm_caraterAtendimento"/>
+			<element name="dataSolicitacao" type="ans:st_data"/>
+			<element name="indicacaoClinica" type="ans:st_texto500" minOccurs="0"/>
+			<element name="procedimentosSolicitados" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="procedimento" type="ans:ct_procedimentoDados"/>
+						<element name="quantidadeSolicitada" type="ans:st_numerico3"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosExecutante" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="codigonaOperadora" type="ans:st_texto14"/>
+						<element name="nomeContratado" type="ans:st_texto70"/>
+						<element name="CNES" type="ans:st_texto7"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="anexoClinico" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="solicitacaoQuimioterapia" type="ans:ctm_anexoSolicitacaoQuimio" minOccurs="0"/>
+						<element name="solicitacaoRadioterapia" type="ans:ctm_anexoSolicitacaoRadio" minOccurs="0"/>
+						<element name="solicitacaoOPME" type="ans:ctm_anexoSolicitacaoOPME" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<!--	<element name="relatorioTecnico" type="base64Binary" minOccurs="0"/>-->
+		</sequence>
+	</complexType>
+	<!-- ==========================  RECURSO DE GLOSA =========================== -->
+	<complexType name="ctm_recursoGlosa">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaRecGlosaPrestador" type="ans:st_texto20"/>
+			<element name="nomeOperadora" type="ans:st_texto70"/>
+			<element name="objetoRecurso" type="ans:dm_objetoRecurso"/>
+			<element name="numeroGuiaRecGlosaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dadosContratado" type="ans:ct_contratadoDados"/>
+			<element name="numeroLote" type="ans:st_texto12"/>
+			<element name="numeroProtocolo" type="ans:st_numerico12"/>
+			<element name="opcaoRecurso">
+				<complexType>
+					<choice>
+						<element name="recursoProtocolo">
+							<complexType>
+								<sequence>
+									<element name="codigoGlosaProtocolo" type="ans:dm_tipoGlosa"/>
+									<element name="justificativaProtocolo" type="ans:st_texto150"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="recursoGuia" maxOccurs="100">
+							<complexType>
+								<sequence>
+									<element name="numeroGuiaOrigem" type="ans:st_texto20"/>
+									<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+									<element name="senha" type="ans:st_texto20" minOccurs="0"/>
+									<element name="opcaoRecursoGuia">
+										<complexType>
+											<choice>
+												<element name="recursoGuiaCompleta" maxOccurs="unbounded">
+													<complexType>
+														<sequence>
+															<element name="codGlosaGuia" type="ans:dm_tipoGlosa"/>
+															<element name="justificativaGuia" type="ans:st_texto150"/>
+														</sequence>
+													</complexType>
+												</element>
+												<element name="itensGuia" maxOccurs="unbounded">
+													<complexType>
+														<sequence>
+															<element name="dataInicio" type="ans:st_data"/>
+															<element name="dataFim" type="ans:st_data" minOccurs="0"/>
+															<element name="procRecurso" type="ans:ct_procedimentoDados"/>
+															<element name="grauParticipacao" type="ans:dm_grauPart" minOccurs="0"/>
+															<element name="codGlosaItem" type="ans:dm_tipoGlosa"/>
+															<element name="valorRecursado" type="ans:st_decimal8-2"/>
+															<element name="justificativaItem" type="ans:st_texto150"/>
+														</sequence>
+													</complexType>
+												</element>
+											</choice>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</choice>
+				</complexType>
+			</element>
+			<element name="valorTotalRecursado" type="ans:st_decimal10-2"/>
+			<element name="dataRecurso" type="ans:st_data"/>
+		</sequence>
+	</complexType>
+	<!-- Utilizado na resposta da operadora na autorização de serviços da odontologia -->
+	<complexType name="cto_autorizacaoServico">
+		<sequence>
+			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
+			<element name="numeroCarteira" type="ans:st_texto20"/>
+			<element name="nomeBeneficiario" type="ans:st_texto70"/>
+			<element name="numeroCNS" type="ans:st_texto15" minOccurs="0"/>
+			<element name="identificadorBeneficiario" type="base64Binary" minOccurs="0"/>
+			<element name="statusSolicitacao" type="ans:dm_statusSolicitacao"/>
+			<element name="prestadorAutorizado" type="ans:ct_contratadoDados" minOccurs="0"/>
+			<element name="procedimentosAutorizados" minOccurs="0" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="procSolic" type="ans:ct_procedimentoDados"/>
+						<element name="denteRegiao" minOccurs="0">
+							<complexType>
+								<choice>
+									<element name="codDente" type="ans:dm_dente"/>
+									<element name="codRegiao" type="ans:dm_regiao"/>
+								</choice>
+							</complexType>
+						</element>
+						<element name="denteFace" type="ans:st_texto5" minOccurs="0"/>
+						<element name="qtdProc" type="ans:st_numerico2"/>
+						<element name="qtdUS" type="ans:st_decimal8-2" minOccurs="0"/>
+						<element name="valorProc" type="ans:st_decimal8-2"/>
+						<element name="valorFranquia" type="ans:st_decimal8-2" minOccurs="0"/>
+						<element name="aut" type="ans:dm_simNao"/>
+						<element name="motivosNegativa" type="ans:ct_motivoGlosa" minOccurs="0" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="motivosNegativa" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="motivoNegativa" type="ans:ct_motivoGlosa" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- ========================= ANEXO ODONTOLOGIA SITUAÇÃO INICIAL ======================= -->
+	<complexType name="cto_anexoSituacaoInicial">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaAnexo" type="ans:st_texto20"/>
+			<element name="numeroGuiaReferenciada" type="ans:st_texto20"/>
+			<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<element name="nomeBeneficiario" type="ans:st_texto70"/>
+			<element name="numeroCarteira" type="ans:st_texto20"/>
+			<element name="ct_situacaoInicial">
+				<complexType>
+					<sequence>
+						<element name="situacaoClinica" type="ans:ct_situacaoClinica"/>
+						<element name="doencaPeriodontal" type="ans:st_logico"/>
+						<element name="alteracaoTecidoMole" type="ans:st_logico"/>
+						<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<complexType name="cto_anexoSituacaoInicialnaGTO">
+		<sequence>
+			<element name="numeroGuiaAnexo" type="ans:st_texto20"/>
+			<element name="numeroGuiaReferenciada" type="ans:st_texto20"/>
+			<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<element name="ct_situacaoInicial">
+				<complexType>
+					<sequence>
+						<element name="situacaoClinica" type="ans:ct_situacaoClinica"/>
+						<element name="doencaPeriodontal" type="ans:st_logico" minOccurs="0"/>
+						<element name="alteracaoTecidoMole" type="ans:st_logico" minOccurs="0"/>
+						<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+		</sequence>
+	</complexType>
+	<!-- =============  DEMONSTRATIVO PAGAMENTO ODONTOLOGIA ==========================-->
+	<complexType name="cto_demonstrativoOdontologia">
+		<sequence>
+			<element name="cabecalhoDemonstrativoOdonto">
+				<complexType>
+					<sequence>
+						<element name="registroANS" type="ans:st_registroANS"/>
+						<element name="numeroDemonstrativo" type="ans:st_texto12"/>
+						<element name="nomeOperadora" type="ans:st_texto70"/>
+						<element name="cnpjOper" type="ans:st_CNPJ"/>
+						<element name="periodoProc">
+							<complexType>
+								<sequence>
+									<element name="datainicio" type="ans:st_data"/>
+									<element name="datafim" type="ans:st_data"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dadosPrestador">
+				<complexType>
+					<sequence>
+						<element name="codigoPrestador" type="ans:st_texto14"/>
+						<element name="nomePrestador" type="ans:st_texto70"/>
+						<element name="cpfCNPJContratado">
+							<complexType>
+								<choice>
+									<element name="cnpjPrestador" type="ans:st_CNPJ"/>
+									<element name="cpfContratado" type="ans:st_CPF"/>
+								</choice>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<!-- PROTOCOLO ===========================================-->
+			<element name="dadosPagamentoPorData" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="dadosPagamento">
+							<complexType>
+								<sequence>
+									<element name="dataPagamento" type="ans:st_data"/>
+									<element name="banco" type="ans:st_texto4" minOccurs="0"/>
+									<element name="agencia" type="ans:st_texto7" minOccurs="0"/>
+									<element name="conta" type="ans:st_texto20" minOccurs="0"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="protocolos" maxOccurs="unbounded">
+							<complexType>
+								<sequence>
+									<element name="numeroLote" type="ans:st_texto12"/>
+									<element name="numeroProtocolo" type="ans:st_texto12"/>
+									<element name="dadosPagamentoGuia" maxOccurs="unbounded">
+										<complexType>
+											<sequence>
+												<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+												<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+												<element name="recurso" type="ans:dm_simNao"/>
+												<element name="nomeExecutante" type="ans:st_texto70"/>
+												<element name="carteiraBeneficiario" type="ans:st_texto20"/>
+												<element name="nomeBeneficiario" type="ans:st_texto70"/>
+												<!-- PROCEDIMENTOS DA GUIA====================================================-->
+												<element name="dadosPagamento" maxOccurs="unbounded">
+													<complexType>
+														<sequence>
+															<element name="procedimento" type="ans:ct_procedimentoDados"/>
+															<element name="denteRegiao" minOccurs="0">
+																<complexType>
+																	<choice>
+																		<element name="codDente" type="ans:dm_dente"/>
+																		<element name="codRegiao" type="ans:dm_regiao"/>
+																	</choice>
+																</complexType>
+															</element>
+															<element name="denteFace" type="ans:st_texto5" minOccurs="0"/>
+															<element name="dataRealizacao" type="ans:st_data"/>
+															<element name="qtdProc" type="ans:st_numerico2"/>
+															<element name="valorInformado" type="ans:st_decimal7-2"/>
+															<element name="valorProcessado" type="ans:st_decimal7-2"/>
+															<element name="valorGlosaEstorno" type="ans:st_decimal7-2"/>
+															<element name="valorFranquia" type="ans:st_decimal7-2"/>
+															<element name="valorLiberado" type="ans:st_decimal7-2"/>
+															<element name="codigosGlosa" type="ans:dm_tipoGlosa" minOccurs="0" maxOccurs="unbounded"/>
+														</sequence>
+													</complexType>
+												</element>
+												<element name="observacaoGuia" type="ans:st_texto500" minOccurs="0"/>
+												<element name="valorTotalInformadoGuia" type="ans:st_decimal8-2"/>
+												<element name="valorTotalProcessadoGuia" type="ans:st_decimal8-2"/>
+												<element name="valorTotalGlosaGuia" type="ans:st_decimal8-2"/>
+												<element name="valorTotalFranquiaGuia" type="ans:st_decimal8-2"/>
+												<element name="valorTotalLiberadoGuia" type="ans:st_decimal8-2"/>
+											</sequence>
+										</complexType>
+									</element>
+									<element name="totaisPorProtocolo">
+										<complexType>
+											<sequence>
+												<element name="valorTotalInformadoPorProtocolo" type="ans:st_decimal10-2"/>
+												<element name="valorTotalProcessadoPorProtocolo" type="ans:st_decimal10-2"/>
+												<element name="valorTotalGlosaPorProtocolo" type="ans:st_decimal10-2"/>
+												<element name="valorTotalFranquiaPorProtocolo" type="ans:st_decimal10-2"/>
+												<element name="valorTotalLiberadoPorProtocolo" type="ans:st_decimal10-2"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+						<!-- GUIA =================================================================================-->
+						<element name="totaisPorData">
+							<complexType>
+								<sequence>
+									<element name="valorBrutonformadoPorData" type="ans:st_decimal10-2"/>
+									<element name="valorBrutoProcessadoPorData" type="ans:st_decimal10-2"/>
+									<element name="valorBrutoGlosaPorData" type="ans:st_decimal10-2"/>
+									<element name="valorBrutoFranquiaPorData" type="ans:st_decimal10-2"/>
+									<element name="valorBrutoLiberadoPorData" type="ans:st_decimal10-2"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="debCredPorDataPagamento" minOccurs="0">
+							<complexType>
+								<sequence>
+									<element name="descontos" type="ans:ct_descontos" maxOccurs="unbounded"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="totalLiquidoPorData">
+							<complexType>
+								<sequence>
+									<element name="valorTotalDebitosPorData" type="ans:st_decimal10-2"/>
+									<element name="valorTotalCreditosPorData" type="ans:st_decimal10-2"/>
+									<element name="valorFinalAReceberPorData" type="ans:st_decimal10-2"/>
+								</sequence>
+							</complexType>
+						</element>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="totaisBrutoDemonstrativo">
+				<complexType>
+					<sequence>
+						<element name="valorInformadoPorDemonstrativoData" type="ans:st_decimal10-2"/>
+						<element name="valorlProcessadoPorDemonstrativo" type="ans:st_decimal10-2"/>
+						<element name="valorlGlosaPorDemonstrativo" type="ans:st_decimal10-2"/>
+						<element name="valoFranquiaPorDemonstrativo" type="ans:st_decimal10-2"/>
+						<element name="valorLiberadoPorDemonstrativo" type="ans:st_decimal10-2"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="debCredDemonstrativo" minOccurs="0">
+				<complexType>
+					<sequence>
+						<element name="descontos" type="ans:ct_descontos" maxOccurs="unbounded"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="totalDebitosDemonstativo" type="ans:st_decimal10-2"/>
+			<element name="totalCreditosDemonstrativo" type="ans:st_decimal10-2"/>
+			<element name="valorRecebidoDemonstrativo" type="ans:st_decimal10-2"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!--============== GUIA DE TRATAMENTO ODONTOLOGICO - COBRANÇA ===========-->
+	<complexType name="cto_guiaOdontologia">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+			<element name="numeroGuiaPrincipal" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dataAutorizacao" type="ans:st_data" minOccurs="0"/>
+			<element name="senhaAutorizacao" type="ans:st_texto20" minOccurs="0"/>
+			<element name="validadeSenha" type="ans:st_data" minOccurs="0"/>
+			<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dadosBeneficiario" type="ans:ct_beneficiarioDados"/>
+			<element name="planoBeneficiario" type="ans:st_texto40"/>
+			<element name="nomeEmpresa" type="ans:st_texto40" minOccurs="0"/>
+			<element name="numeroTelefone" type="ans:st_texto11" minOccurs="0"/>
+			<element name="nomeTitular" type="ans:st_texto70" minOccurs="0"/>
+			<element name="dadosProfissionaisResponsaveis">
+				<complexType>
+					<sequence>
+						<element name="nomeProfSolic" type="ans:st_texto70" minOccurs="0"/>
+						<element name="croSolic" type="ans:st_texto15" minOccurs="0"/>
+						<element name="ufSolic" type="ans:dm_UF" minOccurs="0"/>
+						<element name="cbosSolic" type="ans:dm_CBOS" minOccurs="0"/>
+						<element name="codigoProfExec" type="ans:st_texto14"/>
+						<element name="nomeProfExec" type="ans:st_texto70"/>
+						<element name="croExec" type="ans:st_texto15"/>
+						<element name="ufExec" type="ans:dm_UF"/>
+						<element name="cnesExec" type="ans:st_texto7"/>
+						<element name="nomeProfExec2" type="ans:st_texto70" minOccurs="0"/>
+						<element name="croExec2" type="ans:st_texto15" minOccurs="0"/>
+						<element name="ufExec2" type="ans:dm_UF" minOccurs="0"/>
+						<element name="cbosExec2" type="ans:dm_CBOS"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosExecutados" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="procSolic" type="ans:ct_procedimentoDados"/>
+						<element name="denteRegiao" minOccurs="0">
+							<complexType>
+								<choice>
+									<element name="codDente" type="ans:dm_dente"/>
+									<element name="codRegiao" type="ans:dm_regiao"/>
+								</choice>
+							</complexType>
+						</element>
+						<element name="denteFace" type="ans:st_texto5" minOccurs="0"/>
+						<element name="qtdProc" type="ans:st_numerico2"/>
+						<element name="qtdUS" type="ans:st_decimal8-2" minOccurs="0"/>
+						<element name="valorProc" type="ans:st_decimal8-2"/>
+						<element name="valorFranquia" type="ans:st_decimal8-2" minOccurs="0"/>
+						<element name="autorizado" type="ans:st_logico"/>
+						<element name="dataRealizacao" type="ans:st_data"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dataTerminoTrat" type="ans:st_data" minOccurs="0"/>
+			<element name="tipoAtendimento" type="ans:dm_tipoAtendimentoOdonto"/>
+			<element name="tipoFaturamento" type="ans:dm_tipoFaturamentoOdonto"/>
+			<element name="qtdTotalUS" type="ans:st_decimal8-2" minOccurs="0"/>
+			<element name="valorTotalProc" type="ans:st_decimal10-2"/>
+			<element name="valorTotalFranquia" type="ans:st_decimal10-2" minOccurs="0"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<element name="odontoInicial" type="ans:cto_anexoSituacaoInicialnaGTO" minOccurs="0"/>
+			<element name="assinaturaDigitalGuia" type="ans:Signature" minOccurs="0"/>
+			<!--<element name="assinaturaDigitalGuia" type="ans:assinaturaDigital" minOccurs="0"/>-->
+		</sequence>
+	</complexType>
+	<!--============== GUIA DE TRATAMENTO ODONTOLOGICO - SOLICITAÇÃO===========-->
+	<complexType name="cto_odontoSolicitacaoGuia">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+			<!--<element name="dataEmissaoGuia" type="ans:st_data" minOccurs="0"/>-->
+			<element name="numeroGuiaPrincipal" type="ans:st_texto20" minOccurs="0"/>
+			<element name="numeroCarteira" type="ans:st_texto20"/>
+			<element name="nomeBeneficiario" type="ans:st_texto70"/>
+			<element name="atendimentoRN" type="ans:dm_simNao"/>
+			<element name="numeroCNS" type="ans:st_texto15" minOccurs="0"/>
+			<element name="identificadorBeneficiario" type="base64Binary" minOccurs="0"/>
+			<element name="planoBeneficiario" type="ans:st_texto40"/>
+			<element name="nomeEmpresa" type="ans:st_texto40" minOccurs="0"/>
+			<element name="numeroTelefone" type="ans:st_texto20" minOccurs="0"/>
+			<element name="nomeTitular" type="ans:st_texto70" minOccurs="0"/>
+			<element name="dadosProfissionaisResponsaveis">
+				<complexType>
+					<sequence>
+						<element name="nomeProfSolic" type="ans:st_texto70" minOccurs="0"/>
+						<element name="croSolic" type="ans:st_texto20" minOccurs="0"/>
+						<element name="ufSolic" type="ans:dm_UF" minOccurs="0"/>
+						<element name="cbosSolic" type="ans:dm_CBOS" minOccurs="0"/>
+						<element name="codigoProfExec" type="ans:st_texto14"/>
+						<element name="nomeProfExec" type="ans:st_texto70"/>
+						<element name="croExec" type="ans:st_texto20"/>
+						<element name="ufExec" type="ans:dm_UF"/>
+						<element name="cnesExec" type="ans:st_texto7"/>
+						<element name="nomeProfExec2" type="ans:st_texto70" minOccurs="0"/>
+						<element name="croExec2" type="ans:st_texto20" minOccurs="0"/>
+						<element name="ufExec2" type="ans:dm_UF" minOccurs="0"/>
+						<element name="cbosExec2" type="ans:dm_CBOS"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="procedimentosSolicitados" maxOccurs="unbounded">
+				<complexType>
+					<sequence>
+						<element name="procSolic" type="ans:ct_procedimentoDados"/>
+						<element name="denteRegiao" minOccurs="0">
+							<complexType>
+								<choice>
+									<element name="codDente" type="ans:dm_dente"/>
+									<element name="codRegiao" type="ans:dm_regiao"/>
+								</choice>
+							</complexType>
+						</element>
+						<element name="denteFace" type="ans:st_texto5" minOccurs="0"/>
+						<element name="qtdProc" type="ans:st_numerico2"/>
+						<element name="qtdUS" type="ans:st_decimal7-2" minOccurs="0"/>
+						<element name="valorProc" type="ans:st_decimal8-2"/>
+						<element name="valorFranquia" type="ans:st_decimal8-2" minOccurs="0"/>
+						<element name="aut" type="ans:dm_simNao" minOccurs="1"/>
+						<element name="dataRealizacao" type="ans:st_data" minOccurs="0"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="dataTerminoTrat" type="ans:st_data" minOccurs="0"/>
+			<element name="tipoAtendimento" type="ans:dm_tipoAtendimentoOdonto"/>
+			<element name="qtdTotalUS" type="ans:st_decimal8-2" minOccurs="0"/>
+			<element name="valorTotalProc" type="ans:st_decimal8-2"/>
+			<element name="valorTotalFranquia" type="ans:st_decimal8-2" minOccurs="0"/>
+			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
+			<element name="odontoInicial" type="ans:cto_anexoSituacaoInicial" minOccurs="0"/>
+		</sequence>
+	</complexType>
+	<!-- ==========================  RECURSO DE GLOSA ODONTOLOGIA =========================== -->
+	<complexType name="cto_recursoGlosaOdonto">
+		<sequence>
+			<element name="registroANS" type="ans:st_registroANS"/>
+			<element name="numeroGuiaRecGlosaPrestador" type="ans:st_texto20"/>
+			<element name="nomeOperadora" type="ans:st_texto70"/>
+			<element name="objetoRecurso" type="ans:dm_objetoRecurso"/>
+			<element name="numeroGuiaRecGlosaOperadora" type="ans:st_texto20" minOccurs="0"/>
+			<element name="dadosContratado" type="ans:ct_contratadoDados"/>
+			<element name="numeroLote" type="ans:st_texto12"/>
+			<element name="numeroProtocolo" type="ans:st_numerico12"/>
+			<element name="opcaoRecurso">
+				<complexType>
+					<choice>
+						<element name="recursoProtocolo">
+							<complexType>
+								<sequence>
+									<element name="codigoGlosaProtocolo" type="ans:dm_tipoGlosa"/>
+									<element name="justificativaProtocolo" type="ans:st_texto150"/>
+								</sequence>
+							</complexType>
+						</element>
+						<element name="recursoGuia" maxOccurs="100">
+							<complexType>
+								<sequence>
+									<element name="numeroGuiaPrestador" type="ans:st_texto20"/>
+									<element name="numeroGuiaOperadora" type="ans:st_texto20" minOccurs="0"/>
+									<element name="senha" type="ans:st_texto20" minOccurs="0"/>
+									<element name="nomeBeneficiario" type="ans:st_texto70"/>
+									<element name="codGlosaGuia" type="ans:dm_tipoGlosa"/>
+									<element name="justificativaGuia" type="ans:st_texto150"/>
+									<element name="recursoProcedimento" minOccurs="0" maxOccurs="unbounded">
+										<complexType>
+											<sequence>
+												<element name="dataRealizacao" type="ans:st_data"/>
+												<element name="denteRegiao" minOccurs="0">
+													<complexType>
+														<choice>
+															<element name="codDente" type="ans:dm_dente"/>
+															<element name="codRegiao" type="ans:dm_regiao"/>
+														</choice>
+													</complexType>
+												</element>
+												<element name="denteFace" type="ans:dm_face" minOccurs="0"/>
+												<element name="quantidade" type="ans:st_numerico2"/>
+												<element name="procRecurso" type="ans:ct_procedimentoDados"/>
+												<element name="codGlosaProc" type="ans:dm_tipoGlosa"/>
+												<element name="justificativaProc" type="ans:st_texto150"/>
+												<element name="valorRecursado" type="ans:st_decimal8-2"/>
+											</sequence>
+										</complexType>
+									</element>
+								</sequence>
+							</complexType>
+						</element>
+					</choice>
+				</complexType>
+			</element>
+			<element name="valorTotalRecursado" type="ans:st_decimal10-2"/>
+			<element name="dataRecurso" type="ans:st_data"/>
+		</sequence>
+	</complexType>
+</schema>

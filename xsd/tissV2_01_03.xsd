@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSpy v2006 U (http://www.altova.com) by luiz.vieira (ANS) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
+	<!--<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissSimpleTypesV2_01_03.xsd"/>
+	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissComplexTypesV2_01_03.xsd"/>
+	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissGuiasV2_01_03.xsd"/>-->
+	<include schemaLocation="tissSimpleTypesV2_01_03.xsd"/>
+	<include schemaLocation="tissComplexTypesV2_01_03.xsd"/>
+	<include schemaLocation="tissGuiasV2_01_03.xsd"/>
+	<!-- Definicao do cabecalho das mensagens -->
+	<complexType name="cabecalhoTransacao">
+		<sequence>
+			<element name="identificacaoTransacao">
+				<complexType>
+					<sequence>
+						<element name="tipoTransacao" type="ans:st_tipoTransacao"/>
+						<element name="sequencialTransacao" type="ans:st_inteiro12"/>
+						<element name="dataRegistroTransacao" type="ans:st_data"/>
+						<element name="horaRegistroTransacao" type="ans:st_hora"/>
+					</sequence>
+				</complexType>
+			</element>
+			<element name="falhaNegocio" minOccurs="0">
+				<complexType>
+					<complexContent>
+						<extension base="ans:ct_motivoGlosa">
+							<sequence>
+								<element name="observacao" type="ans:st_observacao" minOccurs="0"/>
+							</sequence>
+						</extension>
+					</complexContent>
+				</complexType>
+			</element>
+			<element name="origem">
+				<complexType>
+					<choice>
+						<!-- origem de mensagens de prestadoreas para as operadoras -->
+						<element name="codigoPrestadorNaOperadora" type="ans:ct_identificacaoPrestadorExecutante"/>
+						<!-- origem de mensagens de operadoras para os prestadores -->
+						<element name="registroANS" type="ans:st_registroANS"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="destino">
+				<complexType>
+					<choice>
+						<!--  destino de mensagens de operadoras para prestadores: informar código prestador na operadora -->
+						<element name="codigoPrestadorNaOperadora" type="ans:ct_identificacaoPrestadorExecutante"/>
+						<!-- destino de mensagens de prestadores para as operadoras: informar registro ANS da operadora -->
+						<element name="registroANS" type="ans:st_registroANS"/>
+					</choice>
+				</complexType>
+			</element>
+			<element name="versaoPadrao" type="ans:st_versao"/>
+		</sequence>
+	</complexType>
+	<element name="mensagemTISS">
+		<complexType>
+			<sequence>
+				<element name="cabecalho" type="ans:cabecalhoTransacao"/>
+				<choice>
+					<element name="operadoraParaPrestador" minOccurs="0">
+						<complexType>
+							<choice>
+								<element name="protocoloRecebimento" type="ans:ct_protocoloRecebimento" minOccurs="0"/>
+								<element name="demonstrativosRetorno" minOccurs="0">
+									<complexType>
+										<choice>
+											<element name="demonstrativoAnaliseConta" type="ans:ct_demonstrativoAnaliseConta" minOccurs="0" maxOccurs="30"/>
+											<element name="demonstrativoOdontologia" type="ans:ct_demonstrativoOdontologia" minOccurs="0" maxOccurs="30"/>
+											<element name="demonstrativoPagamento" type="ans:ct_demonstrativoPagamento" minOccurs="0" maxOccurs="30"/>
+										</choice>
+									</complexType>
+								</element>
+								<element name="situacaoProtocolo" type="ans:ct_StatusProtocolo" minOccurs="0"/>
+								<element name="autorizacaoServico" minOccurs="0" maxOccurs="unbounded">
+									<complexType>
+										<complexContent>
+											<extension base="ans:ct_autorizacaoProcedimento">
+												<sequence>
+													<element name="totalOdonto" minOccurs="0">
+														<complexType>
+															<sequence>
+																<element name="totalvalor" type="ans:st_valorMonetario" minOccurs="0"/>
+																<element name="totalFranquiaCoparticipacao" type="ans:st_valorMonetario" minOccurs="0"/>
+																<element name="totalquantidadeUS" type="ans:st_valorMonetario" minOccurs="0"/>
+															</sequence>
+														</complexType>
+													</element>
+													<element name="diariaProrrogacaoAutorizada" minOccurs="0">
+														<complexType>
+															<complexContent>
+																<extension base="ans:ct_diariaProrrogacao">
+																	<sequence>
+																		<element name="tipoAcomodacaoAutorizada" type="ans:st_tipoAcomodacao" minOccurs="0"/>
+																		<element name="quantidadeAutorizada" type="ans:st_quantidade" minOccurs="0"/>
+																		<element name="motivoGlosa" type="ans:ct_motivoGlosa" minOccurs="0"/>
+																	</sequence>
+																</extension>
+															</complexContent>
+														</complexType>
+													</element>
+												</sequence>
+											</extension>
+										</complexContent>
+									</complexType>
+								</element>
+								<element name="situacaoAutorizacao" type="ans:ct_situacaoAutorizacao" minOccurs="0"/>
+								<element name="respostaElegibilidade" type="ans:ct_retornoElegibilidade" minOccurs="0"/>
+								<element name="reciboCancelaGuia" type="ans:ct_reciboCancelaGuia" minOccurs="0"/>
+							</choice>
+						</complexType>
+					</element>
+					<element name="prestadorParaOperadora" minOccurs="0">
+						<complexType>
+							<choice>
+								<element name="loteGuias" type="ans:ct_loteGuias" minOccurs="0"/>
+								<element name="solicitacaoDemonstrativoRetorno" type="ans:ct_solicitacaoDemonstrativoPagamento" minOccurs="0"/>
+								<element name="solicitacaoStatusProtocolo" type="ans:ct_solicitacaoStatusProtocolo" minOccurs="0"/>
+								<element name="solicitacaoProcedimento" minOccurs="0">
+									<complexType>
+										<choice>
+											<element name="guiaSolicInternacao" type="ans:ct_guiaSolicInternacao" minOccurs="0"/>
+											<element name="guiaSolicitacaoSADT" type="ans:ct_guiaSolicitacaoSP_SADT" minOccurs="0"/>
+											<element name="guiaSolicitacaoOdontologia" type="ans:ct_guiaSolicitacaoOdonto" minOccurs="0"/>
+											<element name="guiaSolicitacaoProrrogacao" type="ans:ct_guiaSolicitacaoProrrogacao" minOccurs="0"/>
+										</choice>
+									</complexType>
+								</element>
+								<element name="solicitaStatusAutorizacao" type="ans:ct_solicitaStatusAutorizacao" minOccurs="0"/>
+								<element name="verificaElegibilidade" type="ans:ct_solicitaElegibilidade" minOccurs="0"/>
+								<element name="cancelaGuia" type="ans:ct_cancelaGuia" minOccurs="0"/>
+							</choice>
+						</complexType>
+					</element>
+				</choice>
+				<element name="epilogo">
+					<complexType>
+						<sequence>
+							<element name="hash" type="string"/>
+						</sequence>
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
