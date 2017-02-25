@@ -1,8 +1,13 @@
 # -*- coding: utf-8 -*-
 #! /usr/bin/python
 from lxml import etree
+from yapsy.PluginManager import PluginManager
 import os
 import hashlib
+
+import logging
+logging.basicConfig(level=logging.DEBUG)
+logging.getLogger('yapsy').setLevel(logging.DEBUG)
 
 
 __author__ = 'Duda Nogueira'
@@ -11,14 +16,18 @@ __license__ = 'MIT'
 
 class Parser(object):
 
-    def __init__(self, arquivo, xsd_path=None):
+    def __init__(self, arquivo, xsd_path=None, plugins_path=None):
         self.arquivo = arquivo
         self.version = None
+        self.plugins_path = plugins_path
         self.xsd_path = xsd_path
         self.xsd_valido = False
         self.xsd_erros = []
         self.valido = False
-        self.erros = []
+        self.erros = {
+            'lote': {},
+            'guias': {},
+        }
         self.arquivo_xsd = None
         # analisa o arquivo
         self.parse()
@@ -31,6 +40,10 @@ class Parser(object):
                 if self.xsd_valido:
                     # valida o arquivo
                     self.tiss_validate()
+                    # executa plugins do lote
+                    #self.executa_plugins()
+                    
+
         xml_errors = None
 
     def parse(self):
@@ -42,9 +55,12 @@ class Parser(object):
 
         if not self.arquivo_xsd:
             self.valido = False
-            self.erros.append('Tipo de Transação não identificado ou não suportado: %s')
-       
-
+            self.erros['lote']['_tipo_transacao'] = 'Tipo de Transação não identificado ou não suportado: %s' % self.tipo_transacao
+        
+        try:
+            self.guias = self.root.xpath('//ans:guiasTISS', namespaces=self.root.nsmap)[0].getchildren()
+        except IndexError:
+            self.erros['lote']['_guias_inacessiveis'] = u"Não foi possível extrair guias"
 
     def get_version(self):
         try:
@@ -67,7 +83,7 @@ class Parser(object):
         except etree.XMLSchemaParseError, xsd_erros:
             self.xsd_valido = False
             self.xsd_erros = xsd_erros.error_log
-            self.erros.append(u'XSD Inválido!')
+            self.erros['lote']['_xsd_invalido'] = u'XSD Inválido!'
 
     def tiss_validate(self):
         try:
@@ -77,7 +93,7 @@ class Parser(object):
             self.valida_hash()
         except etree.DocumentInvalid, xml_errors:
             self.valid = False
-            self.erros = xml_errors.error_log
+            self.erros['lote']['_xsd'] = xml_errors.error_log
 
     def calcula_hash(self):
         # remove epilogo do calculo
@@ -100,5 +116,25 @@ class Parser(object):
     def valida_hash(self):
         if self.hash != self.hash_fornecido:
             self.valido = False
-            self.erros.append("Hash Inválido! Fornecido: %s, Calculado: %s" % (
-                self.hash_fornecido, self.hash))
+            self.erros['lote']['_hash'] = "Hash Inválido! Fornecido: %s, Calculado: %s" % (
+                self.hash_fornecido, self.hash)
+    
+
+
+    def executa_plugins(self, plugin_path=None):
+        print "Executando plugins"
+        self.manager = PluginManager()
+        if not self.plugins_path:
+            self.plugins_path = os.path.join(os.path.dirname(__file__), 'plugins')
+        self.manager.setPluginPlaces([self.plugins_path])
+        self.manager.collectPlugins()
+        print self.manager.getAllPlugins()
+        for plugin in self.manager.getAllPlugins():
+            plugin.plugin_object.executa(self)
+    
+    def registra_erro_guia(self, numero, texto):
+        try:
+            self.erros['guias'][numero]
+        except KeyError:
+            self.erros['guias'][numero] = []
+        self.erros['guias'][numero].append(texto)

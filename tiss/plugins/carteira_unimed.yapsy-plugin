@@ -1,0 +1,9 @@
+[Core]
+Name = Carteira Unimed
+Module = carteira_unimed
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Valida a Carteira do Beneficiário em Cada Guia, conforme specs da Unimed
