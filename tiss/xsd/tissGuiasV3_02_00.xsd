@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- edited with XMLSpy v2011 sp1 (http://www.altova.com) by EndUser (free.org) -->
 <schema xmlns:ds="http://www.w3.org/2000/09/xmldsig#" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ans="http://www.ans.gov.br/padroes/tiss/schemas" targetNamespace="http://www.ans.gov.br/padroes/tiss/schemas" elementFormDefault="qualified">
-	<!--VERSÃO TISS 3.01.01 - TissGuiasv3_01_00-->
+	<!--VERSï¿½O TISS 3.01.01 - TissGuiasv3_01_00-->
 	<!--<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissSimpleTypesV3_00_00.xsd"/>
 	<include schemaLocation="http://www.ans.gov.br/padroes/tiss/schemas/tissComplexTypesV3_00_00.xsd"/>-->
 	<include schemaLocation="tissAssinaturaDigital_v1.01.xsd"/>
@@ -21,7 +21,7 @@
 			</element>
 		</sequence>
 	</complexType>-->
-	<!--************************************************ OPME SOLICITAÇÃO  ************************************ -->
+	<!--************************************************ OPME SOLICITAï¿½ï¿½O  ************************************ -->
 	<complexType name="ctm_anexoSolicitacaoOPME">
 		<sequence>
 			<element name="cabecalhoAnexo" type="ans:ct_anexoCabecalho"/>
@@ -138,7 +138,7 @@
 			<element name="emailProfissional" type="ans:st_texto60" minOccurs="0"/>
 		</sequence>
 	</complexType>
-	<!-- Utilizado na resposta da operadora na autorização de solic prorrogação de internação -->
+	<!-- Utilizado na resposta da operadora na autorizaï¿½ï¿½o de solic prorrogaï¿½ï¿½o de internaï¿½ï¿½o -->
 	<complexType name="ctm_autorizacaoProrrogacao">
 		<sequence>
 			<element name="autorizacaoDosServicos" type="ans:ctm_autorizacaoServico"/>
@@ -147,7 +147,7 @@
 			<element name="justificativaOperadora" type="ans:st_texto500" minOccurs="0"/>
 		</sequence>
 	</complexType>
-	<!--  Utilizado na resposta da operadora na autorização de solicitacao de internação  -->
+	<!--  Utilizado na resposta da operadora na autorizaï¿½ï¿½o de solicitacao de internaï¿½ï¿½o  -->
 	<complexType name="ctm_autorizacaoInternacao">
 		<sequence>
 			<element name="autorizacaoDosServicos" type="ans:ctm_autorizacaoServico"/>
@@ -156,7 +156,7 @@
 			<element name="tipoAcomodacaoAutorizada" type="ans:dm_tipoAcomodacao" minOccurs="0"/>
 		</sequence>
 	</complexType>
-	<!-- Utilizado na resposta da operadora ao recebimento dos anexo de soliccitação de OPME -->
+	<!-- Utilizado na resposta da operadora ao recebimento dos anexo de soliccitaï¿½ï¿½o de OPME -->
 	<complexType name="ctm_autorizacaoOPME">
 		<sequence>
 			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
@@ -274,7 +274,7 @@
 			</element>
 		</sequence>
 	</complexType>
-	<!-- Utilizado na resposta da operadora na autorização de solic de internação e de prorrogação de internação -->
+	<!-- Utilizado na resposta da operadora na autorizaï¿½ï¿½o de solic de internaï¿½ï¿½o e de prorrogaï¿½ï¿½o de internaï¿½ï¿½o -->
 	<complexType name="ctm_autorizacaoServico">
 		<sequence>
 			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
@@ -709,8 +709,8 @@
 			</element>
 		</sequence>
 	</complexType>
-	<!-- Fim da solicitação de internação -->
-	<!--============================= GUIA DE SOLICITACAO DE PRORROGAÇÃO DE INTERNACAO ===========================-->
+	<!-- Fim da solicitaï¿½ï¿½o de internaï¿½ï¿½o -->
+	<!--============================= GUIA DE SOLICITACAO DE PRORROGAï¿½ï¿½O DE INTERNACAO ===========================-->
 	<complexType name="ctm_prorrogacaoSolicitacaoGuia">
 		<sequence>
 			<element name="registroANS" type="ans:st_registroANS"/>
@@ -758,7 +758,7 @@
 			<element name="dataSolicitacao" type="ans:st_data"/>
 		</sequence>
 	</complexType>
-	<!-- Fim da solicitação de prorrogação de internação -->
+	<!-- Fim da solicitaï¿½ï¿½o de prorrogaï¿½ï¿½o de internaï¿½ï¿½o -->
 	<complexType name="ctm_sp-sadtAtendimento">
 		<sequence>
 			<element name="tipoAtendimento" type="ans:dm_tipoAtendimento"/>
@@ -767,7 +767,7 @@
 			<element name="motivoEncerramento" type="ans:dm_motivoSaidaObito" minOccurs="0"/>
 		</sequence>
 	</complexType>
-	<!-- estrutura das solicitações de autorização do prestador para a operadora  de sp_sadt, internação e prorrogação -->
+	<!-- estrutura das solicitaï¿½ï¿½es de autorizaï¿½ï¿½o do prestador para a operadora  de sp_sadt, internaï¿½ï¿½o e prorrogaï¿½ï¿½o -->
 	<complexType name="ctm_solicitacaoLote">
 		<choice>
 			<element name="solicitacaoSP-SADT" type="ans:ctm_sp-sadtSolicitacaoGuia"/>
@@ -776,7 +776,7 @@
 			<element name="solicitacaoOdontologia" type="ans:cto_odontoSolicitacaoGuia"/>
 		</choice>
 	</complexType>
-	<!--============================= GUIA DE SOLICITACAO DE SP E SADT (execução) ==============-->
+	<!--============================= GUIA DE SOLICITACAO DE SP E SADT (execuï¿½ï¿½o) ==============-->
 	<complexType name="ctm_sp-sadtGuia">
 		<sequence>
 			<element name="cabecalhoGuia">
@@ -944,7 +944,7 @@
 			<element name="dataRecurso" type="ans:st_data"/>
 		</sequence>
 	</complexType>
-	<!-- Utilizado na resposta da operadora na autorização de serviços da odontologia -->
+	<!-- Utilizado na resposta da operadora na autorizaï¿½ï¿½o de serviï¿½os da odontologia -->
 	<complexType name="cto_autorizacaoServico">
 		<sequence>
 			<element name="dadosAutorizacao" type="ans:ct_autorizacaoDados"/>
@@ -984,7 +984,7 @@
 			</element>
 		</sequence>
 	</complexType>
-	<!-- ========================= ANEXO ODONTOLOGIA SITUAÇÃO INICIAL ======================= -->
+	<!-- ========================= ANEXO ODONTOLOGIA SITUAï¿½ï¿½O INICIAL ======================= -->
 	<complexType name="cto_anexoSituacaoInicial">
 		<sequence>
 			<element name="registroANS" type="ans:st_registroANS"/>
@@ -1190,7 +1190,7 @@
 			<element name="observacao" type="ans:st_texto500" minOccurs="0"/>
 		</sequence>
 	</complexType>
-	<!--============== GUIA DE TRATAMENTO ODONTOLOGICO - COBRANÇA ===========-->
+	<!--============== GUIA DE TRATAMENTO ODONTOLOGICO - COBRANï¿½A ===========-->
 	<complexType name="cto_guiaOdontologia">
 		<sequence>
 			<element name="registroANS" type="ans:st_registroANS"/>
@@ -1257,7 +1257,7 @@
 			<element name="assinaturaDigitalGuia" type="ans:assinaturaDigital" minOccurs="0"/>
 		</sequence>
 	</complexType>
-	<!--============== GUIA DE TRATAMENTO ODONTOLOGICO - SOLICITAÇÃO===========-->
+	<!--============== GUIA DE TRATAMENTO ODONTOLOGICO - SOLICITAï¿½ï¿½O===========-->
 	<complexType name="cto_odontoSolicitacaoGuia">
 		<sequence>
 			<element name="registroANS" type="ans:st_registroANS"/>

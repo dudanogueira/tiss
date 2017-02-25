@@ -13,4 +13,9 @@
 			<extension base="ds:SignatureType"/>
 		</complexContent>
 	</complexType>
+	<complexType name="assinaturaDigital">
+        <complexContent>
+            <extension base="ds:SignatureType" />
+        </complexContent>
+    </complexType>
 </schema>
