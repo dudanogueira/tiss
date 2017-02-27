@@ -28,8 +28,8 @@ class PluginModelo(IPlugin):
             usuario = objeto.provider_conf['cardio']['usuario']
             senha = usuario = objeto.provider_conf['cardio']['senha']
             print servidor
-            #conn = pymssql.connect(servidor, usuario, senha, "CARDIO", as_dict=True)
-            #cursor = conn.cursor()
+            conn = pymssql.connect(servidor, usuario, senha, "CARDIO", as_dict=True)
+            cursor = conn.cursor()
             query = '''
             select
             	SolicitacaoServico.Codigo as senha,
