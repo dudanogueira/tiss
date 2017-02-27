@@ -56,5 +56,5 @@ class PluginModelo(IPlugin):
                     "carteira" : carteira,
                     "procedimentos" : procedimentos,
                 }
-            provider[senha] = dados
-        objeto.registra_provider('senha', provider)
+                provider[senha] = dados
+                objeto.registra_provider('senha', provider)
