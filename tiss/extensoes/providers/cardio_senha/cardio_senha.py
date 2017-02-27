@@ -53,7 +53,7 @@ class PluginModelo(IPlugin):
                 # para cada um
                 # conecta no Cardio e Puxa os dados
                 dados = {
-                    "carteira" : carteira,
+                    "carteira" : '0'+str(carteira),
                     "procedimentos" : procedimentos,
                 }
                 provider[senha] = dados
