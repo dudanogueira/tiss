@@ -1,0 +1,9 @@
+[Core]
+Name = Cardio Beneficiario
+Module = cardio_beneficiario
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Provider de Beneficiario para o Cardio

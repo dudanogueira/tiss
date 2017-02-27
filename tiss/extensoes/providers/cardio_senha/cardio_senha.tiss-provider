@@ -1,0 +1,9 @@
+[Core]
+Name = Cardio Senha
+Module = cardio_senha
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Provider de Senhas para o Cardio

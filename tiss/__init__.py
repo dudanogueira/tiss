@@ -16,10 +16,19 @@ __license__ = 'MIT'
 
 class Parser(object):
 
-    def __init__(self, arquivo, xsd_path=None, plugins_path=None):
+    def __init__(
+            self, 
+            arquivo,
+            provider_conf = {},
+            xsd_path=None, 
+            plugins_path=None, 
+            providers_path=None
+        ):
+        self.provider_conf = provider_conf
         self.arquivo = arquivo
         self.version = None
         self.plugins_path = plugins_path
+        self.providers_path = providers_path
         self.xsd_path = xsd_path
         self.xsd_valido = False
         self.xsd_erros = []
@@ -28,6 +37,7 @@ class Parser(object):
             'lote': {},
             'guias': {},
         }
+        self.providers = {}
         self.arquivo_xsd = None
         # analisa o arquivo
         self.parse()
@@ -38,10 +48,15 @@ class Parser(object):
                 # valida o xsd
                 self.xsd_validate()
                 if self.xsd_valido:
-                    # valida o arquivo
-                    self.tiss_validate()
-                    # executa plugins do lote
-                    #self.executa_plugins()
+                    # validação estrutural
+                    self.valida_estrutura()
+                    if self.valido:
+                        # executa plugins de providers
+                        self.executa_providers()
+                        # validação do negócios em modelo de plugins
+                        self.executa_plugins()
+                    else:
+                        self.erros['lote']['_estrutura'] = "Estrutura não é válida"
                     
 
         xml_errors = None
@@ -50,25 +65,29 @@ class Parser(object):
         self.root = etree.fromstring(open(self.arquivo).read())
         self.tipo_transacao = self.root.xpath(
             '//ans:tipoTransacao', namespaces=self.root.nsmap)[0].text
+        # no momento so suporta envio de lote
         if self.tipo_transacao == 'ENVIO_LOTE_GUIAS':
+            # neste caso, o arquivo xsd é  o tiss, dentro da pasta xsd
             self.arquivo_xsd = 'tiss'
 
+        # arquivo xsd não encontrado.
         if not self.arquivo_xsd:
             self.valido = False
-            self.erros['lote']['_tipo_transacao'] = 'Tipo de Transação não identificado ou não suportado: %s' % self.tipo_transacao
+            self.erros['lote']['_transacao'] = 'Tipo de Transação não identificado ou não suportado: %s' % self.tipo_transacao
         
-        try:
-            self.guias = self.root.xpath('//ans:guiasTISS', namespaces=self.root.nsmap)[0].getchildren()
-        except IndexError:
-            self.erros['lote']['_guias_inacessiveis'] = u"Não foi possível extrair guias"
+        # extrai as guias para utilizacao nos plugins
+        self.guias = self.root.xpath('//ans:guiasTISS', namespaces=self.root.nsmap)[0].getchildren()
+        
 
     def get_version(self):
+        '''retorna versao no formato N.NN.NN, conforme xml
+        '''
         try:
             self.version = self.root.xpath(
                 '//ans:versaoPadrao', namespaces=self.root.nsmap)[0].text
         except:
             self.valid = False
-            self.errors.append("Não foi possível determinar a versão TISS")
+            self.errors['lote']['_versao'] = u"Erro ao detectar a versão do padrão TISS"
 
     def xsd_validate(self):
 
@@ -85,7 +104,7 @@ class Parser(object):
             self.xsd_erros = xsd_erros.error_log
             self.erros['lote']['_xsd_invalido'] = u'XSD Inválido!'
 
-    def tiss_validate(self):
+    def valida_estrutura(self):
         try:
             self.xsd_schema.assertValid(self.root)
             self.valido = True
@@ -123,18 +142,42 @@ class Parser(object):
 
     def executa_plugins(self, plugin_path=None):
         print "Executando plugins"
-        self.manager = PluginManager()
+        self.plugin_manager = PluginManager()
+        self.plugin_manager.setPluginInfoExtension("tiss-plugin")
         if not self.plugins_path:
-            self.plugins_path = os.path.join(os.path.dirname(__file__), 'plugins')
-        self.manager.setPluginPlaces([self.plugins_path])
-        self.manager.collectPlugins()
-        print self.manager.getAllPlugins()
-        for plugin in self.manager.getAllPlugins():
-            plugin.plugin_object.executa(self)
+            self.plugins_path = os.path.join(os.path.dirname(__file__), 'extensoes/plugins')
+        self.plugin_manager.setPluginPlaces([self.plugins_path])
+        self.plugin_manager.collectPlugins()
+        print self.plugin_manager.getAllPlugins()
+        for plugin in self.plugin_manager.getAllPlugins():
+            plugin.plugin_object.executa(objeto=self)
     
-    def registra_erro_guia(self, numero, texto):
+    def executa_providers(self, providers_path=None):
+        print "Executando Providers"
+        self.provider_manager = PluginManager()
+        self.provider_manager.setPluginInfoExtension("tiss-provider")
+        if not self.providers_path:
+            self.providers_path = os.path.join(os.path.dirname(__file__), 'extensoes/providers')
+        self.provider_manager.setPluginPlaces([self.providers_path])
+        self.provider_manager.collectPlugins()
+        print self.provider_manager.getAllPlugins()
+        for plugin in self.provider_manager.getAllPlugins():
+            plugin.plugin_object.executa(objeto=self)
+
+
+    def registra_erro_guia(self, erro):
         try:
-            self.erros['guias'][numero]
+            self.erros['guias'][erro['numero']]
         except KeyError:
-            self.erros['guias'][numero] = []
-        self.erros['guias'][numero].append(texto)
+            self.erros['guias'][erro['numero']] = []
+        self.erros['guias'][erro['numero']].append(erro)
+    
+    def registra_provider(self, provider_name, provider):
+        '''
+        registra os dados de uma provider
+        '''
+        try:
+            self.providers[provider_name]
+        except:
+            self.providers[provider_name] = {}
+        self.providers[provider_name] = provider
