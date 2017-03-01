@@ -15,11 +15,11 @@ class PluginModelo(IPlugin):
     name = "PROVIDER BENEFICIARIO"
 
     def executa(self, objeto):
-        print '''
+        print('''
         #
         # Executando: %s
         #
-        ''' % self.name
+        ''' % self.name)
         # para todos os beneficiarios presentes na guia
         beneficiarios_unicos = set([ i.text for i in objeto.root.xpath("//ans:numeroCarteira", namespaces=objeto.root.nsmap)])
         provider = {}

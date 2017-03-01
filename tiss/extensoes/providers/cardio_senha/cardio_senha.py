@@ -14,19 +14,20 @@ class PluginModelo(IPlugin):
     name = "PROVIDER SENHA"
 
     def executa(self, objeto):
-        print '''
+        print('''
         #
         # Executando: %s
         #
-        ''' % self.name
+        ''' % self.name)
         # para todas as senhas da guia
         senhas = [ i.text for i in objeto.root.xpath("//ans:senha", namespaces=objeto.root.nsmap)]
         # provider a ser registrado
         provider = {}
-        if objeto.provider_conf:
-            servidor = objeto.provider_conf['cardio']['servidor']
-            usuario = objeto.provider_conf['cardio']['usuario']
-            senha = objeto.provider_conf['cardio']['senha']
+        try:
+            provider_conf = objeto.provider_conf['cardio']
+            servidor = provider_conf['servidor']
+            usuario = provider_conf['usuario']
+            senha = provider_conf['senha']
             conn = pymssql.connect(servidor, usuario, senha, "CARDIO", as_dict=True)
             cursor = conn.cursor()
             query = '''
@@ -43,7 +44,7 @@ class PluginModelo(IPlugin):
                 SolicitacaoServico.Codigo,
                 SolicitacaoServico.BenefCodigoCartao
             ''' % ",".join(senhas)
-            print query
+            print(query)
             cursor.execute(query)
             rows = cursor.fetchall()
             for row in rows:
@@ -58,3 +59,5 @@ class PluginModelo(IPlugin):
                 }
                 provider[senha] = dados
                 objeto.registra_provider('senha', provider)
+        except KeyError:
+            print(u"Erro! Provider Conf do Cardio não encontrado!")

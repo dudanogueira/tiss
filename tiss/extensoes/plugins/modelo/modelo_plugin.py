@@ -7,9 +7,9 @@ class PluginModelo(IPlugin):
     name = "MODELO"
 
     def executa(self, objeto):
-        print '''
+        print('''
         #
         # Executando PLUGIN: %s
         #
-        ''' % self.name
-        print u"Nao faço nada!"
+        ''' % self.name)
+        print(u"Nao faço nada!")

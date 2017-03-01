@@ -5,11 +5,11 @@ class CarteiraUnimed(IPlugin):
     name = "CARTEIRA UNIMED"
 
     def executa(self, objeto):
-        print '''
+        print('''
         #
         # Executando PLUGIN: %s
         #
-        ''' % self.name
+        ''' % self.name)
         # das guias do objeto
         for guia in objeto.guias:
             # aqui usa o xpath com o . antes pra indicar que a busca e dentro do elemento guia

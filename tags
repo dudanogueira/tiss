@@ -16,15 +16,16 @@ __init__.py	tests/__init__.py	1;"	kind:file	line:1
 __init__.py	tiss/__init__.py	1;"	kind:file	line:1
 __license__	tiss/__init__.py	/^__license__ = 'MIT'$/;"	kind:variable	line:15
 __version__	tiss/__init__.py	/^__version__ = '0.0.1'$/;"	kind:variable	line:14
-author	setup.py	/^    author='Duda Nogueira',$/;"	kind:variable	line:35
-author_email	setup.py	/^    author_email='dudanogueira@gmail.com',$/;"	kind:variable	line:36
+author	setup.py	/^    author='Duda Nogueira',$/;"	kind:variable	line:36
+author_email	setup.py	/^    author_email='dudanogueira@gmail.com',$/;"	kind:variable	line:37
 calc_check_digit	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	/^def calc_check_digit(number, factors = "86423597"):$/;"	kind:function	line:47
 calcula_hash	tiss/__init__.py	/^    def calcula_hash(self):$/;"	kind:member	line:117
 cardio_beneficiario.py	tiss/extensoes/providers/cardio_beneficiario/cardio_beneficiario.py	1;"	kind:file	line:1
 cardio_senha.py	tiss/extensoes/providers/cardio_senha/cardio_senha.py	1;"	kind:file	line:1
 carteira_unimed.py	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	1;"	kind:file	line:1
-classifiers	setup.py	/^    classifiers=[$/;"	kind:variable	line:42
+classifiers	setup.py	/^    classifiers=[$/;"	kind:variable	line:43
 description	setup.py	/^    description=u'Analisador do Padrão TISS da ANS',$/;"	kind:variable	line:28
+download_url	setup.py	/^    download_url = "https:\/\/github.com\/dudanogueira\/tiss\/archive\/0.0.2.zip",$/;"	kind:variable	line:33
 executa	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	/^    def executa(self, objeto):$/;"	kind:member	line:7
 executa	tiss/extensoes/plugins/modelo/modelo_plugin.py	/^    def executa(self, objeto):$/;"	kind:member	line:9
 executa	tiss/extensoes/plugins/senha/senha_plugin.py	/^    def executa(self, objeto):$/;"	kind:member	line:8
@@ -32,13 +33,13 @@ executa	tiss/extensoes/providers/cardio_beneficiario/cardio_beneficiario.py	/^  
 executa	tiss/extensoes/providers/cardio_senha/cardio_senha.py	/^    def executa(self, objeto):$/;"	kind:member	line:16
 executa_plugins	tiss/__init__.py	/^    def executa_plugins(self, plugin_path=None):$/;"	kind:member	line:143
 executa_providers	tiss/__init__.py	/^    def executa_providers(self, providers_path=None):$/;"	kind:member	line:155
-extras_require	setup.py	/^    extras_require={$/;"	kind:variable	line:88
+extras_require	setup.py	/^    extras_require={$/;"	kind:variable	line:89
 get_version	tiss/__init__.py	/^    def get_version(self):$/;"	kind:member	line:82
 here	setup.py	/^here = path.abspath(path.dirname(__file__))$/;"	kind:variable	line:14
-include_package_data	setup.py	/^    include_package_data=True,$/;"	kind:variable	line:92
-install_requires	setup.py	/^    install_requires=['lxml', 'yapsy'],$/;"	kind:variable	line:82
-keywords	setup.py	/^    keywords='tiss ans',$/;"	kind:variable	line:68
-license	setup.py	/^    license='MIT',$/;"	kind:variable	line:39
+include_package_data	setup.py	/^    include_package_data=True,$/;"	kind:variable	line:93
+install_requires	setup.py	/^    install_requires=['lxml', 'yapsy'],$/;"	kind:variable	line:83
+keywords	setup.py	/^    keywords='tiss ans',$/;"	kind:variable	line:69
+license	setup.py	/^    license='MIT',$/;"	kind:variable	line:40
 long_description	setup.py	/^    long_description = f.read()$/;"	kind:variable	line:18
 long_description	setup.py	/^    long_description=long_description,$/;"	kind:variable	line:29
 mod11_unimed	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	/^def mod11_unimed(a):$/;"	kind:function	line:36
@@ -49,7 +50,7 @@ name	tiss/extensoes/plugins/modelo/modelo_plugin.py	/^    name = "MODELO"$/;"	ki
 name	tiss/extensoes/plugins/senha/senha_plugin.py	/^    name = "SENHA"$/;"	kind:variable	line:6
 name	tiss/extensoes/providers/cardio_beneficiario/cardio_beneficiario.py	/^    name = "PROVIDER BENEFICIARIO"$/;"	kind:variable	line:15
 name	tiss/extensoes/providers/cardio_senha/cardio_senha.py	/^    name = "PROVIDER SENHA"$/;"	kind:variable	line:14
-packages	setup.py	/^    packages=['tiss'],$/;"	kind:variable	line:72
+packages	setup.py	/^    packages=['tiss'],$/;"	kind:variable	line:73
 parse	tiss/__init__.py	/^    def parse(self):$/;"	kind:member	line:64
 registra_erro_guia	tiss/__init__.py	/^    def registra_erro_guia(self, erro):$/;"	kind:member	line:168
 registra_provider	tiss/__init__.py	/^    def registra_provider(self, provider_name, provider):$/;"	kind:member	line:175

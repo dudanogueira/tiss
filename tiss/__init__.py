@@ -42,7 +42,7 @@ class Parser(object):
         # analisa o arquivo
         self.parse()
         if self.arquivo_xsd:
-            # descobre versao
+        #     # descobre versao
             self.get_version()
             if self.version:
                 # valida o xsd
@@ -62,7 +62,7 @@ class Parser(object):
         xml_errors = None
 
     def parse(self):
-        self.root = etree.fromstring(open(self.arquivo).read())
+        self.root = etree.parse(self.arquivo).getroot()
         self.tipo_transacao = self.root.xpath(
             '//ans:tipoTransacao', namespaces=self.root.nsmap)[0].text
         # no momento so suporta envio de lote
@@ -94,12 +94,12 @@ class Parser(object):
         if not self.xsd_path:
             xsd_file = 'xsd/%sV%s.xsd' % (self.arquivo_xsd, self.version.replace('.', '_'))
             self.xsd_path = os.path.join(os.path.dirname(__file__), xsd_file)
-        f = open(self.xsd_path)
-        self.root_xsd = etree.parse(f)
+        #f = open(self.xsd_path)
+        self.root_xsd = etree.parse(self.xsd_path)
         try:
             self.xsd_schema = etree.XMLSchema(self.root_xsd)
             self.xsd_valido = True
-        except etree.XMLSchemaParseError, xsd_erros:
+        except etree.XMLSchemaParseError as xsd_erros:
             self.xsd_valido = False
             self.xsd_erros = xsd_erros.error_log
             self.erros['lote']['_xsd_invalido'] = u'XSD Inválido!'
@@ -110,7 +110,7 @@ class Parser(object):
             self.valido = True
             self.calcula_hash()
             self.valida_hash()
-        except etree.DocumentInvalid, xml_errors:
+        except etree.DocumentInvalid as xml_errors:
             self.valid = False
             self.erros['lote']['_xsd'] = xml_errors.error_log
 
@@ -141,26 +141,24 @@ class Parser(object):
 
 
     def executa_plugins(self, plugin_path=None):
-        print "Executando plugins"
+        print("Executando plugins")
         self.plugin_manager = PluginManager()
         self.plugin_manager.setPluginInfoExtension("tiss-plugin")
         if not self.plugins_path:
             self.plugins_path = os.path.join(os.path.dirname(__file__), 'extensoes/plugins')
         self.plugin_manager.setPluginPlaces([self.plugins_path])
         self.plugin_manager.collectPlugins()
-        print self.plugin_manager.getAllPlugins()
         for plugin in self.plugin_manager.getAllPlugins():
             plugin.plugin_object.executa(objeto=self)
     
     def executa_providers(self, providers_path=None):
-        print "Executando Providers"
+        print("Executando Providers")
         self.provider_manager = PluginManager()
         self.provider_manager.setPluginInfoExtension("tiss-provider")
         if not self.providers_path:
             self.providers_path = os.path.join(os.path.dirname(__file__), 'extensoes/providers')
         self.provider_manager.setPluginPlaces([self.providers_path])
         self.provider_manager.collectPlugins()
-        print self.provider_manager.getAllPlugins()
         for plugin in self.provider_manager.getAllPlugins():
             plugin.plugin_object.executa(objeto=self)
 
