@@ -55,6 +55,17 @@ class Parser(object):
                         self.executa_providers()
                         # validação do negócios em modelo de plugins
                         self.executa_plugins()
+                        # se existir erros de guia, marca lote invalido
+                        guias_invalidas = len(self.erros['guias'].items())
+                        inconsistencias = 0
+                        if guias_invalidas:
+                            for guia in self.erros['guias'].items():
+                                inconsistencias += len(guia[1])
+                            self.valido = False
+                            self.erros['lote']['_guias'] = u"%s Guias apresentaram %s inconsistências" % (
+                                guias_invalidas,
+                                inconsistencias
+                            )
                     else:
                         self.erros['lote']['_estrutura'] = "Estrutura não é válida"
                     
