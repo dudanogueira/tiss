@@ -5,7 +5,7 @@ Instalação (breve):
 
 pip install tiss
 
-Uso:
+Uso Simples:
 ```
 >> from tiss import Parser
 >> t = Parser("arquivo-valido.xml")
@@ -19,12 +19,15 @@ False
 ["Erro apresentado"]
 ```
 
-## Validações Realizadas
-- Identifica a versao do TISS
-- Valida a estrutura com base no Schema XSD da ANS
-- Calcula e valida o hash
+Uso 
+
+## Funcionalidades e Validações
+- [validacao] Identifica a versao do TISS
+- [validacao]  Valida a estrutura com base no Schema XSD da ANS
+- [validacao] Calcula e valida o hash
+- [funcionalidade] Permite plugins e providers externos
 
 ## ROADMAP
-- Permitir plugins para validacao de carteirinha, e confronto com base de dados
 - Melhorar sistema de logs, permitindo modo verboso
-- Outros
+- Desenhar modelo de plugin Orientado a Objeto, permitindo a criação de testes unitários por guia, etc.
+- Escrever testes básicos.

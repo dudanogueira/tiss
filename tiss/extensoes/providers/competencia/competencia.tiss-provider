@@ -1,0 +1,9 @@
+[Core]
+Name = Competencia Provider
+Module = competencia
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Define as propriedades da competencia do lote tiss

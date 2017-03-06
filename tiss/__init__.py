@@ -22,11 +22,13 @@ class Parser(object):
             provider_conf = {},
             xsd_path=None, 
             plugins_path=None, 
-            providers_path=None
+            providers_path=None,
+            skeep=False
         ):
         self.provider_conf = provider_conf
         self.arquivo = arquivo
         self.version = None
+        self.skeep_validation = skeep 
         self.plugins_path = plugins_path
         self.providers_path = providers_path
         self.xsd_path = xsd_path
@@ -40,46 +42,70 @@ class Parser(object):
         self.providers = {}
         self.arquivo_xsd = None
         # analisa o arquivo
-        self.parse()
-        if self.arquivo_xsd:
-        #     # descobre versao
-            self.get_version()
-            if self.version:
-                # valida o xsd
-                self.xsd_validate()
-                if self.xsd_valido:
-                    # validação estrutural
-                    self.valida_estrutura()
-                    if self.valido:
-                        # executa plugins de providers
-                        self.executa_providers()
-                        # validação do negócios em modelo de plugins
-                        self.executa_plugins()
-                        # se existir erros de guia, marca lote invalido
-                        guias_invalidas = len(self.erros['guias'].items())
-                        inconsistencias = 0
-                        if guias_invalidas:
-                            for guia in self.erros['guias'].items():
-                                inconsistencias += len(guia[1])
-                            self.valido = False
-                            self.erros['lote']['_guias'] = u"%s Guias apresentaram %s inconsistências" % (
-                                guias_invalidas,
-                                inconsistencias
-                            )
-                    else:
-                        self.erros['lote']['_estrutura'] = "Estrutura não é válida"
-                    
+        if not self.skeep_validation:
+            self.parse()
+            if self.arquivo_xsd:
+            #     # descobre versao
+                self.get_version()
+                if self.version:
+                    # valida o xsd
+                    self.xsd_validate()
+                    if self.xsd_valido:
+                        # validação estrutural
+                        self.valida_estrutura()
+                        if self.valido:
+                            # executa plugins de providers
+                            self.executa_providers()
+                            # validação do negócios em modelo de plugins
+                            self.executa_plugins()
+                            # se existir erros de guia, marca lote invalido
+                            guias_invalidas = len(self.erros['guias'].items())
+                            inconsistencias = 0
+                            if guias_invalidas:
+                                for guia in self.erros['guias'].items():
+                                    inconsistencias += len(guia[1])
+                                self.valido = False
+                                self.erros['lote']['_guias'] = u"%s Guias apresentaram %s inconsistências" % (
+                                    guias_invalidas,
+                                    inconsistencias
+                                )
+                        else:
+                            self.erros['lote']['_estrutura'] = "Estrutura não é válida"
+                        
 
-        xml_errors = None
+            xml_errors = None
 
     def parse(self):
         self.root = etree.parse(self.arquivo).getroot()
-        self.tipo_transacao = self.root.xpath(
-            '//ans:tipoTransacao', namespaces=self.root.nsmap)[0].text
+        # checa se namespace valido.
+        # namespace errado da erro de interpretação.
+        try:
+            # se nao possuir o esquema da ans no namespace
+            # forçar definir hardcoded.
+            self.nsmap = self.root.nsmap
+            self.schema_ans_url = self.nsmap['ans']
+        except KeyError:
+            self.nsmap = {
+                'ans': 'http://www.ans.gov.br/padroes/tiss/schemas',
+                'ds': 'http://www.w3.org/2000/09/xmldsig#',
+                'xsi': 'http://www.w3.org/2001/XMLSchema-instance'
+            }
+            # devoler pro root o nsmap forçado
+            #self.root.nsmap = self.nsmap
+        
+        # define o tipo de trasacao
+        self.tipo_transacao = self.get_xpath(
+            '//ans:tipoTransacao'
+            )[0].text.replace("\n", '').replace("\t", '')
+
         # no momento so suporta envio de lote
         if self.tipo_transacao == 'ENVIO_LOTE_GUIAS':
             # neste caso, o arquivo xsd é  o tiss, dentro da pasta xsd
             self.arquivo_xsd = 'tiss'
+        #
+        # aqui precisa fazer testes em outros tipos de transação
+        #  deve ser possivel/necessario filtrar isso nos plugins e providers
+        #
 
         # arquivo xsd não encontrado.
         if not self.arquivo_xsd:
@@ -87,18 +113,23 @@ class Parser(object):
             self.erros['lote']['_transacao'] = 'Tipo de Transação não identificado ou não suportado: %s' % self.tipo_transacao
         
         # extrai as guias para utilizacao nos plugins
-        self.guias = self.root.xpath('//ans:guiasTISS', namespaces=self.root.nsmap)[0].getchildren()
-        
+        self.guias = self.root.xpath('//ans:guiasTISS', namespaces=self.nsmap)[0].getchildren()
+
+        # extrai o prestador do lote
+        #self.codigo_prestador =  self.get_xpath(
+        #        "//ans:cabecalho//ans:codigoPrestadorNaOperadora"
+        #)[0].text
 
     def get_version(self):
         '''retorna versao no formato N.NN.NN, conforme xml
         '''
         try:
-            self.version = self.root.xpath(
-                '//ans:versaoPadrao', namespaces=self.root.nsmap)[0].text
+            self.version = self.get_xpath(
+                '//ans:versaoPadrao'
+            )[0].text.replace("\n", '').replace("\t", '')
         except:
             self.valid = False
-            self.errors['lote']['_versao'] = u"Erro ao detectar a versão do padrão TISS"
+            self.erros['lote']['_versao'] = u"Erro ao detectar a versão do padrão TISS"
 
     def xsd_validate(self):
 
@@ -129,7 +160,7 @@ class Parser(object):
         # remove epilogo do calculo
         self.root_no_epilogo = self.root
         self.epilogo = self.root_no_epilogo.xpath(
-            '//ans:epilogo', namespaces=self.root_no_epilogo.nsmap)[0]
+            '//ans:epilogo', namespaces=self.nsmap)[0]
         self.root_no_epilogo.remove(self.epilogo)
         self.hash_fornecido = self.epilogo.getchildren()[0].text
         reslist = list(self.root_no_epilogo.iter())
@@ -189,4 +220,7 @@ class Parser(object):
             self.providers[provider_name]
         except:
             self.providers[provider_name] = {}
-        self.providers[provider_name] = provider
+        self.providers[provider_name] = [provider]
+    
+    def get_xpath(self, xpath):
+        return self.root.xpath(xpath, namespaces=self.nsmap)

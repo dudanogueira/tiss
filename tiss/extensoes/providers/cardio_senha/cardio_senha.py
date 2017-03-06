@@ -10,6 +10,26 @@ class PluginModelo(IPlugin):
         - Senha (indice)
         - Cod Beneficiario
         - Procedimentos: list com todos aprovados
+    Cardio Provider:
+    provider_confs = {
+            'cardio':   {
+                 'servidor': '192.0.0.4',
+                 'usuario': 'sa',
+                 'banco': 'CARDIO',
+                 'senha': 'senhabd',
+             },
+             'autoridade':{
+                 'operadora': {
+                    'registroANS': '316881',
+                 },
+                 'prestador': {
+                    'codigoPrestadorNaOperadora': '1000001',
+                    'CNPJ': '66343559000394'
+                 }
+             },
+         }
+
+
     '''
     name = "PROVIDER SENHA"
 
@@ -19,16 +39,18 @@ class PluginModelo(IPlugin):
         # Executando: %s
         #
         ''' % self.name)
-        # para todas as senhas da guia
-        senhas = [ i.text for i in objeto.root.xpath("//ans:senha", namespaces=objeto.root.nsmap)]
+        # para todas as senhas da guia. textos são ignorados.
+        senhas = [ i.text for i in objeto.root.xpath("//ans:senha", namespaces=objeto.nsmap) if i.text.isdigit()]
         # provider a ser registrado
         provider = {}
         try:
             provider_conf = objeto.provider_conf['cardio']
             servidor = provider_conf['servidor']
             usuario = provider_conf['usuario']
+            banco = provider_conf['banco']
             senha = provider_conf['senha']
-            conn = pymssql.connect(servidor, usuario, senha, "CARDIO", as_dict=True)
+            print("conectando a banco...")
+            conn = pymssql.connect(servidor, usuario, senha, banco, as_dict=True)
             cursor = conn.cursor()
             query = '''
             select

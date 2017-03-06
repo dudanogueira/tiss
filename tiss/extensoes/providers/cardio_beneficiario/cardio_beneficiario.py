@@ -21,7 +21,7 @@ class PluginModelo(IPlugin):
         #
         ''' % self.name)
         # para todos os beneficiarios presentes na guia
-        beneficiarios_unicos = set([ i.text for i in objeto.root.xpath("//ans:numeroCarteira", namespaces=objeto.root.nsmap)])
+        beneficiarios_unicos = set([ i.text for i in objeto.root.xpath("//ans:numeroCarteira", namespaces=objeto.nsmap)])
         provider = {}
         for codigo in beneficiarios_unicos:
             # para cada um
@@ -32,5 +32,5 @@ class PluginModelo(IPlugin):
                     "sexo" : "M",
                     "nascimento" : datetime.date.today() + datetime.timedelta(days=random.randrange(20000)*-1)
                 }
-                provider[codigo] = dados
+                #provider[codigo] = dados
             objeto.registra_provider('beneficiario', provider)

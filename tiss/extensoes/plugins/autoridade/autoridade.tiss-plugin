@@ -1,0 +1,9 @@
+[Core]
+Name = Validacao de Autoridade
+Module = autoridade
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Valida a autoridade do Lote entre Receptor e Emissor

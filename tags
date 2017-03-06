@@ -19,22 +19,22 @@ __version__	tiss/__init__.py	/^__version__ = '0.0.1'$/;"	kind:variable	line:14
 author	setup.py	/^    author='Duda Nogueira',$/;"	kind:variable	line:36
 author_email	setup.py	/^    author_email='dudanogueira@gmail.com',$/;"	kind:variable	line:37
 calc_check_digit	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	/^def calc_check_digit(number, factors = "86423597"):$/;"	kind:function	line:47
-calcula_hash	tiss/__init__.py	/^    def calcula_hash(self):$/;"	kind:member	line:117
+calcula_hash	tiss/__init__.py	/^    def calcula_hash(self):$/;"	kind:member	line:128
 cardio_beneficiario.py	tiss/extensoes/providers/cardio_beneficiario/cardio_beneficiario.py	1;"	kind:file	line:1
 cardio_senha.py	tiss/extensoes/providers/cardio_senha/cardio_senha.py	1;"	kind:file	line:1
 carteira_unimed.py	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	1;"	kind:file	line:1
 classifiers	setup.py	/^    classifiers=[$/;"	kind:variable	line:43
 description	setup.py	/^    description=u'Analisador do Padrão TISS da ANS',$/;"	kind:variable	line:28
-download_url	setup.py	/^    download_url = "https:\/\/github.com\/dudanogueira\/tiss\/archive\/0.0.2.zip",$/;"	kind:variable	line:33
+download_url	setup.py	/^    download_url = "https:\/\/github.com\/dudanogueira\/tiss\/archive\/0.0.3.zip",$/;"	kind:variable	line:33
 executa	tiss/extensoes/plugins/carteira_unimed/carteira_unimed.py	/^    def executa(self, objeto):$/;"	kind:member	line:7
 executa	tiss/extensoes/plugins/modelo/modelo_plugin.py	/^    def executa(self, objeto):$/;"	kind:member	line:9
 executa	tiss/extensoes/plugins/senha/senha_plugin.py	/^    def executa(self, objeto):$/;"	kind:member	line:8
 executa	tiss/extensoes/providers/cardio_beneficiario/cardio_beneficiario.py	/^    def executa(self, objeto):$/;"	kind:member	line:17
 executa	tiss/extensoes/providers/cardio_senha/cardio_senha.py	/^    def executa(self, objeto):$/;"	kind:member	line:16
-executa_plugins	tiss/__init__.py	/^    def executa_plugins(self, plugin_path=None):$/;"	kind:member	line:143
-executa_providers	tiss/__init__.py	/^    def executa_providers(self, providers_path=None):$/;"	kind:member	line:155
+executa_plugins	tiss/__init__.py	/^    def executa_plugins(self, plugin_path=None):$/;"	kind:member	line:154
+executa_providers	tiss/__init__.py	/^    def executa_providers(self, providers_path=None):$/;"	kind:member	line:165
 extras_require	setup.py	/^    extras_require={$/;"	kind:variable	line:89
-get_version	tiss/__init__.py	/^    def get_version(self):$/;"	kind:member	line:82
+get_version	tiss/__init__.py	/^    def get_version(self):$/;"	kind:member	line:93
 here	setup.py	/^here = path.abspath(path.dirname(__file__))$/;"	kind:variable	line:14
 include_package_data	setup.py	/^    include_package_data=True,$/;"	kind:variable	line:93
 install_requires	setup.py	/^    install_requires=['lxml', 'yapsy'],$/;"	kind:variable	line:83
@@ -51,13 +51,13 @@ name	tiss/extensoes/plugins/senha/senha_plugin.py	/^    name = "SENHA"$/;"	kind:
 name	tiss/extensoes/providers/cardio_beneficiario/cardio_beneficiario.py	/^    name = "PROVIDER BENEFICIARIO"$/;"	kind:variable	line:15
 name	tiss/extensoes/providers/cardio_senha/cardio_senha.py	/^    name = "PROVIDER SENHA"$/;"	kind:variable	line:14
 packages	setup.py	/^    packages=['tiss'],$/;"	kind:variable	line:73
-parse	tiss/__init__.py	/^    def parse(self):$/;"	kind:member	line:64
-registra_erro_guia	tiss/__init__.py	/^    def registra_erro_guia(self, erro):$/;"	kind:member	line:168
-registra_provider	tiss/__init__.py	/^    def registra_provider(self, provider_name, provider):$/;"	kind:member	line:175
+parse	tiss/__init__.py	/^    def parse(self):$/;"	kind:member	line:75
+registra_erro_guia	tiss/__init__.py	/^    def registra_erro_guia(self, erro):$/;"	kind:member	line:177
+registra_provider	tiss/__init__.py	/^    def registra_provider(self, provider_name, provider):$/;"	kind:member	line:184
 senha_plugin.py	tiss/extensoes/plugins/senha/senha_plugin.py	1;"	kind:file	line:1
 setup.py	setup.py	1;"	kind:file	line:1
 url	setup.py	/^    url='https:\/\/github.com\/dudanogueira\/tiss_parser',$/;"	kind:variable	line:32
-valida_estrutura	tiss/__init__.py	/^    def valida_estrutura(self):$/;"	kind:member	line:107
-valida_hash	tiss/__init__.py	/^    def valida_hash(self):$/;"	kind:member	line:135
-version	setup.py	/^    version='0.0.2',$/;"	kind:variable	line:26
-xsd_validate	tiss/__init__.py	/^    def xsd_validate(self):$/;"	kind:member	line:92
+valida_estrutura	tiss/__init__.py	/^    def valida_estrutura(self):$/;"	kind:member	line:118
+valida_hash	tiss/__init__.py	/^    def valida_hash(self):$/;"	kind:member	line:146
+version	setup.py	/^    version='0.0.3',$/;"	kind:variable	line:26
+xsd_validate	tiss/__init__.py	/^    def xsd_validate(self):$/;"	kind:member	line:103

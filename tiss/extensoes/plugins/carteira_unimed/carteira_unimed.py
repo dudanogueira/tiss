@@ -13,15 +13,15 @@ class CarteiraUnimed(IPlugin):
         # das guias do objeto
         for guia in objeto.guias:
             # aqui usa o xpath com o . antes pra indicar que a busca e dentro do elemento guia
-            # guia.nsmap é o namespace da ANS
-            numero = guia.xpath('.//ans:numeroGuiaPrestador', namespaces=guia.nsmap)[0].text
-            carteira = guia.xpath('.//ans:numeroCarteira', namespaces=guia.nsmap)[0].text
+            # objeto.nsmap é o namespace da ANS
+            numero = guia.xpath('.//ans:numeroGuiaPrestador', namespaces=objeto.nsmap)[0].text
+            carteira = guia.xpath('.//ans:numeroCarteira', namespaces=objeto.nsmap)[0].text
             # carteira nao tem 17 digitos
             if len(carteira) != 17:
                 erro = {
                     'numero': numero,
                     'tag': 'ans:numeroCarteira',
-                    'mensagem': "Quantidade de Caracteres deve ser igual a 17"
+                    'mensagem': "Quantidade de caracteres da CARTEIRA UNIMED deve ser igual a 17"
                 }
                 objeto.registra_erro_guia(erro)
             else:
@@ -29,7 +29,7 @@ class CarteiraUnimed(IPlugin):
                     erro = {
                         'numero': numero,
                         'tag': "ans:numeroCarteira",
-                        'mensagem': u"Dígito Verificador da Carteirinha está errado."
+                        'mensagem': u"Dígito Verificador da CARTEIRA UNIMED incorreto."
                     }
                     objeto.registra_erro_guia(erro)
 

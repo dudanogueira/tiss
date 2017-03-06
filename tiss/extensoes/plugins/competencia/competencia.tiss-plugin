@@ -1,0 +1,9 @@
+[Core]
+Name = Competencia
+Module = competencia
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Valida se a competencia das guias esta dentro da competnecia de reconhecimento do lote

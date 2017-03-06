@@ -10,53 +10,66 @@ class PluginModelo(IPlugin):
         #
         # Executando PLUGIN: %s
         #
-        ''' % self.name) 
+        ''' % self.name)
         senhas = [i.text for i in objeto.root.xpath(
-            "//ans:senha", namespaces=objeto.root.nsmap)]
+            "//ans:senha", namespaces=objeto.nsmap)]
         senhas_unicas = []
         #
         # este plugin espera o provider SENHA para análise
         #
-        senhas_provider = getattr(objeto.providers, 'senha', None)
-        if not senhas_provider:
+        try:
+            senhas_provider = objeto.providers['senha']
+        except KeyError:
             print("         INFO! Não  foi encontrado o PROVIDER_SENHA para análise!")
             return False
-        for guia in objeto.guias:
-            # pega a senha dessa guia
-            senha = guia.xpath(
-                ".//ans:senha", namespaces=objeto.root.nsmap)[0].text
-            numero = guia.xpath('.//ans:numeroGuiaPrestador',
-                                namespaces=guia.nsmap)[0].text
-            carteira = guia.xpath('.//ans:numeroCarteira', namespaces=guia.nsmap)[0].text
-            # senha ainda nao usada nessa guia
-            if senha not in senhas_unicas:
-                senhas_unicas.append(senha)
-                # confere  com senhas disponiveis no provider
-                
+        if senhas_provider:
+            for guia in objeto.guias:
+                numero = guia.xpath('.//ans:numeroGuiaPrestador',
+                    namespaces=objeto.nsmap)[0].text
+                # print("#" * 10)
+                # print("NUMERO DA GUIA: %s" % numero)
+                # pega a senha dessa guia
+                senha_tag = guia.xpath(
+                    ".//ans:senha", namespaces=objeto.nsmap)
+                if senha_tag:
+                    senha = senha_tag[0].text
+                    carteira = guia.xpath(
+                        './/ans:numeroCarteira', namespaces=objeto.nsmap)[0].text
+                    # senha ainda nao usada nessa guia
+                    if senha not in senhas_unicas:
+                        senhas_unicas.append(senha)
 
-                try:
-                    carteira_senha = objeto.providers['senha'][int(senha)]['carteira']
-                    if not str(carteira_senha) == carteira:
+                        # senha ja usada nessa guia
+                    else:
                         erro = {
                             'numero': numero,
-                            'tag': "//ans:senha",
-                            'mensagem': u"Senha %s Encontrada no Autorizador, porém o Código do Beneficiário apontado é diferente do Código Autorizado." % senha
+                            'tag': "ans:senha",
+                            'mensagem': u"Senha já utilizada em outra guia."
                         }
-                        objeto.registra_erro_guia(erro)        
+                        objeto.registra_erro_guia(erro)
 
-                except KeyError:
+                    # confere  com senhas disponiveis no provider
+                    try:
+                        carteira_senha = objeto.providers['senha'][0][int(senha)]['carteira']
+                        if not int(carteira_senha) == int(carteira):
+                            erro = {
+                                'numero': numero,
+                                'tag': "ans:senha",
+                                'mensagem': u"Senha informada não percente a este beneficiário."
+                            }
+                            objeto.registra_erro_guia(erro)
+
+                    except (KeyError, IndexError, ValueError):
+                        erro = {
+                            'numero': numero,
+                            'tag': "ans:senha",
+                            'mensagem': u"Senha não encontrada no Sistema Autorizador."
+                        }
+                        objeto.registra_erro_guia(erro)
+                else:
                     erro = {
                         'numero': numero,
-                        'tag': "//ans:senha",
-                        'mensagem': u"Senha %s Não encontrada no Sistema Autorizado" % senha
+                        'tag': "ans:senha",
+                        'mensagem': u"Senha não pode ser definida/encontrada."
                     }
-                    objeto.registra_erro_guia(erro)    
-                    
-            # senha ja usada nessa guia
-            else:
-                erro = {
-                    'numero': numero,
-                    'tag': "//ans:senha",
-                    'mensagem': u"Senha %s já utilizada em outra guia" % senha
-                }
-                objeto.registra_erro_guia(erro)
+                    objeto.registra_erro_guia(erro)
