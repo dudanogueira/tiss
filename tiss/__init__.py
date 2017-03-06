@@ -102,10 +102,16 @@ class Parser(object):
         if self.tipo_transacao == 'ENVIO_LOTE_GUIAS':
             # neste caso, o arquivo xsd é  o tiss, dentro da pasta xsd
             self.arquivo_xsd = 'tiss'
+            # tambem existe um numero do lote
+            self.numero_lote = self.get_xpath("//ans:numeroLote")[0].text
+            # numero sequencial
+            self.numero_sequencial = self.get_xpath("//ans:sequencialTransacao")[0].text
         #
         # aqui precisa fazer testes em outros tipos de transação
         #  deve ser possivel/necessario filtrar isso nos plugins e providers
         #
+
+        
 
         # arquivo xsd não encontrado.
         if not self.arquivo_xsd:

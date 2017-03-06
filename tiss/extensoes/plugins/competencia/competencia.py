@@ -11,8 +11,8 @@ class CarteiraUnimed(IPlugin):
         # Executando PLUGIN: %s
         #
         ''' % self.name)
-        inicio = objeto.providers['competencia'][0]['reconhecimento_inicio']
-        fim = objeto.providers['competencia'][0]['reconhecimento_fim']
+        inicio = objeto.provider_conf['competencia']['reconhecimento_inicio']
+        fim = objeto.provider_conf['competencia']['reconhecimento_fim']
         if objeto.get_xpath("//ans:guiaResumoInternacao"):
             #print("GUIAS DE INTERNACAO")
             for guia in objeto.guias:

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yapsy.IPlugin import IPlugin
 
 class PluginModelo(IPlugin):
@@ -6,7 +7,7 @@ class PluginModelo(IPlugin):
 
     def executa(self, objeto):
         '''
-        Provê informações básicas do receptor e emissor do lote
+        Prove informações básicas do receptor e emissor do lote
         '''
         print('''
         #

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from yapsy.IPlugin import IPlugin
 
 class PluginModelo(IPlugin):
