@@ -179,7 +179,10 @@ class Parser(object):
             self.valid = False
             self.schema_valido = False
             self.schema_erros = xml_errors
-            self.erros['lote']['_xsd'] = xml_errors.error_log
+            i = 1
+            for erro in self.schema_erros.error_log:
+                self.erros['lote']['_schema_invalido%i' % i] = "Linha %s, Coluna: %s: %s" % (erro.line, erro.column, erro.message)
+                i += 1
 
     def calcula_hash(self):
         # remove epilogo do calculo
