@@ -166,7 +166,12 @@ class Parser(object):
         except etree.XMLSchemaParseError as xsd_erros:
             self.xsd_valido = False
             self.xsd_erros = xsd_erros
-            self.erros['lote']['_xsd_invalido'] = u'XSD Inválido!'
+            i = 1
+            for erro in self.xsd_erros.error_log:
+                self.erros['lote']['_xsd_invalido%i' % i] = "Arquivo: %s, Linha %s, Coluna: %s: %s" % (
+                    erro.filename, erro.line, erro.column, erro.message
+                )
+                i += 1
 
     def valida_estrutura(self):
         try:
