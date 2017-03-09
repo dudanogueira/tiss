@@ -76,7 +76,16 @@ class Parser(object):
             xml_errors = None
 
     def parse(self):
-        self.root = etree.parse(self.arquivo).getroot()
+        #
+        # tenta identar o XML para apontar erro em linha
+        conteudo = open(self.arquivo, encoding='iso-8859-1').read()
+        # remove o encoding do xml para deixar o lxml trabalhar
+        conteudo_sem = conteudo.replace('encoding="iso-8859-1"', '')
+        root = etree.fromstring(conteudo_sem)
+        # conteudo bonito, identado
+        cb = etree.tostring(root, pretty_print=True).decode()
+        self.root = etree.fromstring(cb)
+
         # checa se namespace valido.
         # namespace errado da erro de interpretação.
         try:
@@ -130,9 +139,16 @@ class Parser(object):
         '''retorna versao no formato N.NN.NN, conforme xml
         '''
         try:
-            self.version = self.get_xpath(
-                '//ans:versaoPadrao'
-            )[0].text.replace("\n", '').replace("\t", '')
+            # versao 3.0.1
+            versao301 = self.get_xpath(
+                '//ans:Padrao'
+            )
+            if versao301:
+                self.version = versao301[0].text
+            else:
+                self.version = self.get_xpath(
+                    '//ans:versaoPadrao'
+                )[0].text.replace("\n", '').replace("\t", '')
         except:
             self.valid = False
             self.erros['lote']['_versao'] = u"Erro ao detectar a versão do padrão TISS"
@@ -149,17 +165,20 @@ class Parser(object):
             self.xsd_valido = True
         except etree.XMLSchemaParseError as xsd_erros:
             self.xsd_valido = False
-            self.xsd_erros = xsd_erros.error_log
+            self.xsd_erros = xsd_erros
             self.erros['lote']['_xsd_invalido'] = u'XSD Inválido!'
 
     def valida_estrutura(self):
         try:
             self.xsd_schema.assertValid(self.root)
             self.valido = True
+            self.schema_valido = True
             self.calcula_hash()
             self.valida_hash()
         except etree.DocumentInvalid as xml_errors:
             self.valid = False
+            self.schema_valido = False
+            self.schema_erros = xml_errors
             self.erros['lote']['_xsd'] = xml_errors.error_log
 
     def calcula_hash(self):
