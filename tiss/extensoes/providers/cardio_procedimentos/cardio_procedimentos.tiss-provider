@@ -1,0 +1,9 @@
+[Core]
+Name = Cardio Procedimentos
+Module = cardio_procedimentos
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Provider de Procedimentos do Prestador para o Cardio

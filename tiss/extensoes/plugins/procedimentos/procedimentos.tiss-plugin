@@ -1,0 +1,9 @@
+[Core]
+Name = Plugin Procedimento
+Module = procedimento_plugin
+
+[Documentation]
+Author = Duda Nogueira
+Version = 0.1
+Website = http://dudanogueira.com.br
+Description = Confere se o Procedimento informado é permitido

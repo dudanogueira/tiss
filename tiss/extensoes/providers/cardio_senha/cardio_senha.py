@@ -50,7 +50,7 @@ class PluginModelo(IPlugin):
             banco = provider_conf['banco']
             senha = provider_conf['senha']
             print("conectando a banco...")
-            conn = pymssql.connect(servidor, usuario, senha, banco, as_dict=True)
+            conn = pymssql.connect(servidor, usuario, senha, "CARDIO", as_dict=True)
             cursor = conn.cursor()
             query = '''
             select
@@ -79,7 +79,7 @@ class PluginModelo(IPlugin):
                     "carteira" : '0'+str(carteira),
                     "procedimentos" : procedimentos,
                 }
-                provider[senha] = dados
-                objeto.registra_provider('senha', provider)
+                provider[str(senha)] = dados
+            objeto.registra_provider('senha', provider)
         except KeyError:
             print(u"Erro! Provider Conf do Cardio não encontrado!")

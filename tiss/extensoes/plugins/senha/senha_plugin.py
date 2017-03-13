@@ -44,18 +44,20 @@ class PluginModelo(IPlugin):
                         erro = {
                             'numero': numero,
                             'tag': "ans:senha",
-                            'mensagem': u"Senha já utilizada em outra guia."
+                            'mensagem': u"Senha (%) já utilizada em outra guia." % senha
                         }
                         objeto.registra_erro_guia(erro)
 
                     # confere  com senhas disponiveis no provider
                     try:
-                        carteira_senha = objeto.providers['senha'][0][int(senha)]['carteira']
+                        carteira_senha = objeto.providers['senha'][0][str(senha)]['carteira']
                         if not int(carteira_senha) == int(carteira):
                             erro = {
                                 'numero': numero,
                                 'tag': "ans:senha",
-                                'mensagem': u"Senha informada não percente a este beneficiário."
+                                'mensagem': u"Senha informada (%s) não percente a este beneficiário. (%s)" % (
+                                    senha, carteira
+                                )
                             }
                             objeto.registra_erro_guia(erro)
 
@@ -63,7 +65,7 @@ class PluginModelo(IPlugin):
                         erro = {
                             'numero': numero,
                             'tag': "ans:senha",
-                            'mensagem': u"Senha não encontrada no Sistema Autorizador."
+                            'mensagem': u"Senha (%s) não encontrada no Sistema Autorizador." % senha
                         }
                         objeto.registra_erro_guia(erro)
                 else:

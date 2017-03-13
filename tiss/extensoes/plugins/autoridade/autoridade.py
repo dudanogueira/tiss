@@ -42,7 +42,7 @@ class Autoridaded(IPlugin):
                     # pega o nome da tag sem namespace
                     id_tag = id.xpath("local-name()")
                     # tenta buscar no providers de autoridade
-                    if not str(objeto.providers['autoridade'][0][id_tag]) == str(id.text):
+                    if not str(objeto.providers['autoridade'][0]['prestador'][id_tag]) == str(id.text):
                         objeto.erros['lote']['_prestador_codigo_%s' % id_tag] = "%s do Prestador de Origem não confere com o cadastro." % id_tag
                     else:
                         id_valido = True
