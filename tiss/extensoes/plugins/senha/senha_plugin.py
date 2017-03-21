@@ -44,7 +44,7 @@ class PluginModelo(IPlugin):
                         erro = {
                             'numero': numero,
                             'tag': "ans:senha",
-                            'mensagem': u"Senha (%) já utilizada em outra guia." % senha
+                            'mensagem': u"Senha (%s) já utilizada em outra guia." % senha
                         }
                         objeto.registra_erro_guia(erro)
 
