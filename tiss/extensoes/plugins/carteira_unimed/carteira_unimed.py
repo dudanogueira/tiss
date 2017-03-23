@@ -16,22 +16,30 @@ class CarteiraUnimed(IPlugin):
             # objeto.nsmap é o namespace da ANS
             numero = guia.xpath('.//ans:numeroGuiaPrestador', namespaces=objeto.nsmap)[0].text
             carteira = guia.xpath('.//ans:numeroCarteira', namespaces=objeto.nsmap)[0].text
-            # carteira nao tem 17 digitos
-            if len(carteira) != 17:
-                erro = {
-                    'numero': numero,
-                    'tag': 'ans:numeroCarteira',
-                    'mensagem': "Quantidade de caracteres da CARTEIRA UNIMED deve ser igual a 17"
-                }
-                objeto.registra_erro_guia(erro)
-            else:
-                if not mod11_unimed(carteira[1:-1]) == carteira[1:]:
+            if carteira.isdigit():
+                # carteira nao tem 17 digitos
+                if len(carteira) != 17:
                     erro = {
                         'numero': numero,
-                        'tag': "ans:numeroCarteira",
-                        'mensagem': u"Dígito Verificador da CARTEIRA UNIMED incorreto."
+                        'tag': 'ans:numeroCarteira',
+                        'mensagem': "Quantidade de caracteres da CARTEIRA UNIMED deve ser igual a 17"
                     }
                     objeto.registra_erro_guia(erro)
+                else:
+                    if not mod11_unimed(carteira[1:-1]) == carteira[1:]:
+                        erro = {
+                            'numero': numero,
+                            'tag': "ans:numeroCarteira",
+                            'mensagem': u"Dígito Verificador da CARTEIRA UNIMED incorreto."
+                        }
+                        objeto.registra_erro_guia(erro)
+            else:
+                erro = {
+                        'numero': numero,
+                        'tag': 'ans:numeroCarteira',
+                        'mensagem': "CARTEIRA UNIMED deve ser somente dígitos."
+                    }
+                objeto.registra_erro_guia(erro)
 
 def mod11_unimed(a):
     '''

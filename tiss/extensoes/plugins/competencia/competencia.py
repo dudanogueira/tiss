@@ -11,8 +11,12 @@ class CarteiraUnimed(IPlugin):
         # Executando PLUGIN: %s
         #
         ''' % self.name)
-        inicio = objeto.provider_conf['competencia']['reconhecimento_inicio']
-        fim = objeto.provider_conf['competencia']['reconhecimento_fim']
+        try:
+            inicio = objeto.provider_conf['competencia']['reconhecimento_inicio']
+            fim = objeto.provider_conf['competencia']['reconhecimento_fim']
+        except:
+            print("NECESSARIO O PROVIDER DE COMPETENCIA!!!")
+            return False
         try:
             beneficiario_provider = objeto.providers['beneficiario'][0]
         except:

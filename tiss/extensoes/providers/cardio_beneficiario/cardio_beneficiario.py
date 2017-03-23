@@ -2,7 +2,7 @@
 from yapsy.IPlugin import IPlugin
 import datetime
 import pymssql
-
+import re
 
 class PluginModelo(IPlugin):
     '''
@@ -21,7 +21,9 @@ class PluginModelo(IPlugin):
         #
         ''' % self.name)
         # para todos os beneficiarios presentes na guia
-        beneficiarios_unicos = set([ "'%s'" % i.text for i in objeto.root.xpath("//ans:numeroCarteira", namespaces=objeto.nsmap)])
+        carteiras_e = objeto.root.xpath("//ans:numeroCarteira", namespaces=objeto.nsmap)
+        carteiras = [e.text for e in carteiras_e]
+        beneficiarios_unicos = set([ "'%s'" % re.sub(r"\D", "", i) for i in carteiras])
         provider = {}
         query = '''
         Select 
@@ -37,8 +39,11 @@ class PluginModelo(IPlugin):
 	        %s
         )
         ''' % ",".join(beneficiarios_unicos)
-        
-        provider_conf = objeto.provider_conf['cardio']
+        try:
+            provider_conf = objeto.provider_conf['cardio']
+        except:
+            print("INFO: provider do Cardio nao encontrado")
+            return False
         servidor = provider_conf['servidor']
         usuario = provider_conf['usuario']
         banco = provider_conf['banco']
